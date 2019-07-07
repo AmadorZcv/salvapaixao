@@ -3,7 +3,13 @@ import { View, Text, FlatList } from "react-native";
 import { connect } from "react-redux";
 import CarrinhoItem from "../components/CarrinhoItem";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
-import { calculateItemTotal } from "../redux/cart/reducer";
+import {
+  calculateItemTotal,
+  calculateTotalComIpi,
+  calculateTotalNoIpi,
+  calculateTotalIpi
+} from "../redux/cart/reducer";
+import { integerToReal } from "../config/formatUtils";
 
 class Carrinho extends PureComponent {
   constructor(props) {
@@ -17,7 +23,7 @@ class Carrinho extends PureComponent {
     this.props.dispatch(removeFromCart(id));
   };
   render() {
-    const { cart, products } = this.props;
+    const { cart, products, totalComIpi, subTotal, totalIpi } = this.props;
     return (
       <View>
         <View
@@ -57,6 +63,10 @@ class Carrinho extends PureComponent {
           </Text>
           <Text style={{ flex: 2, textAlign: "center" }}> Total </Text>
         </View>
+        <Text>
+          Total:{integerToReal(totalComIpi)}, subTotal:{integerToReal(subTotal)}
+          ,Ipi:{integerToReal(totalIpi)}
+        </Text>
       </View>
     );
   }
@@ -65,7 +75,10 @@ class Carrinho extends PureComponent {
 const mapStateToProps = state => {
   const { cart } = state.cart;
   const { products } = state.products;
-  return { cart, products };
+  const totalComIpi = calculateTotalComIpi(cart, products);
+  const subTotal = calculateTotalNoIpi(cart, products);
+  const totalIpi = calculateTotalIpi(cart, products);
+  return { cart, products, totalComIpi, subTotal, totalIpi };
 };
 
 export default connect(mapStateToProps)(Carrinho);

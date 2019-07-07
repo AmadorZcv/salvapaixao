@@ -38,3 +38,26 @@ export default (state = initialState, action) => {
 export const calculateItemTotal = (cart, products, id) => {
   return products[id].total * cart[id].qtd;
 };
+
+export const calculateTotalComIpi = (cart, products) => {
+  return Object.keys(cart).reduce((previous, current) => {
+    const newSoma = cart[current].qtd * products[current].total;
+    return previous + newSoma;
+  }, 0);
+};
+
+export const calculateTotalIpi = (cart, products) => {
+  return Object.keys(cart).reduce((previous, current) => {
+    console.log("aqui???", previous);
+    const newSoma = cart[current].qtd * products[current].ipic;
+    console.log("Soma é", newSoma);
+    console.log("cart current", cart[current], products[current]);
+    return previous + newSoma;
+  }, 0);
+};
+export const calculateTotalNoIpi = (cart, products) => {
+  return Object.keys(cart).reduce((previous, current) => {
+    const newSoma = cart[current].qtd * products[current].preco;
+    return previous + newSoma;
+  }, 0);
+};
