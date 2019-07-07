@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import CarrinhoItem from "../components/CarrinhoItem";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
@@ -12,10 +12,6 @@ import {
 import { integerToReal } from "../config/formatUtils";
 
 class Carrinho extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   onPlus = id => {
     this.props.dispatch(addToCart(id));
   };
@@ -58,15 +54,58 @@ class Carrinho extends PureComponent {
             marginVertical: 15
           }}
         >
-          <Text style={{ flex: 7, textAlign: "center", borderRightWidth: 1 }}>
+          <Text style={{ ...styles.leftContainer, textAlign: "center" }}>
             Informações
           </Text>
-          <Text style={{ flex: 2, textAlign: "center" }}> Total </Text>
+          <Text style={{ ...styles.rightContainer, textAlign: "center" }}>
+            Total
+          </Text>
         </View>
-        <Text>
-          Total:{integerToReal(totalComIpi)}, subTotal:{integerToReal(subTotal)}
-          ,Ipi:{integerToReal(totalIpi)}
-        </Text>
+
+        <View
+          style={{
+            flexDirection: "row",
+            backgroundColor: "lightgray"
+          }}
+        >
+          <View style={styles.leftContainer}>
+            <Text style={styles.informaçõesText}>SubTotal</Text>
+          </View>
+          <View style={styles.rightContainer}>
+            <Text style={styles.informaçõesValue}>
+              R$ {integerToReal(subTotal)}
+            </Text>
+          </View>
+        </View>
+        <View
+          style={{
+            flexDirection: "row"
+          }}
+        >
+          <View style={styles.leftContainer}>
+            <Text style={styles.informaçõesText}>IPI</Text>
+          </View>
+          <View style={styles.rightContainer}>
+            <Text style={styles.informaçõesValue}>
+              R$ {integerToReal(totalIpi)}
+            </Text>
+          </View>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            backgroundColor: "lightgray"
+          }}
+        >
+          <View style={styles.leftContainer}>
+            <Text style={styles.informaçõesText}>Total</Text>
+          </View>
+          <View style={styles.rightContainer}>
+            <Text style={styles.informaçõesValue}>
+              R$ {integerToReal(totalComIpi)}
+            </Text>
+          </View>
+        </View>
       </View>
     );
   }
@@ -82,3 +121,24 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(Carrinho);
+
+const styles = StyleSheet.create({
+  informaçõesText: {
+    textAlign: "left",
+    fontSize: 20,
+    paddingLeft: 10
+  },
+  informaçõesValue: {
+    textAlign: "left",
+    fontSize: 20,
+    paddingLeft: 3
+  },
+  leftContainer: {
+    flex: 7,
+
+    borderRightWidth: StyleSheet.hairlineWidth
+  },
+  rightContainer: {
+    flex: 2
+  }
+});
