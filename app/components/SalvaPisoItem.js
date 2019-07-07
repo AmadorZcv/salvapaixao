@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { integerToReal } from "../config/formatUtils";
 
 export default class SalvaPisoItem extends PureComponent {
   constructor(props) {
@@ -27,7 +28,7 @@ export default class SalvaPisoItem extends PureComponent {
             <Text style={styles.textValue}>{largura}</Text>
             <Text style={styles.textInfo}>Preço</Text>
             <Text style={styles.textInfo}>(ICMS)</Text>
-            <Text style={styles.textValue}>R$ {preco}</Text>
+            <Text style={styles.textValue}>R$ {integerToReal(preco)}</Text>
           </View>
         </View>
         <View style={{ flexDirection: "row" }}>
@@ -47,7 +48,7 @@ export default class SalvaPisoItem extends PureComponent {
             <Text style={styles.textValue}>{cobertura}</Text>
             <Text style={styles.textInfo}>IPI</Text>
             <Text style={styles.textInfo}>(R$)</Text>
-            <Text style={styles.textValue}>R$ {ipiR}</Text>
+            <Text style={styles.textValue}>R$ {integerToReal(ipiR)}</Text>
           </View>
         </View>
         <View
@@ -58,7 +59,7 @@ export default class SalvaPisoItem extends PureComponent {
           }}
         >
           <Text style={styles.textPreco}>Preço:</Text>
-          <Text style={styles.textPreco}>R$ {preco + ipiR}</Text>
+          <Text style={styles.textPreco}>R$ {integerToReal(preco + ipiR)}</Text>
         </View>
         <View style={{}}>
           <Text style={styles.textPreco}>Total:</Text>

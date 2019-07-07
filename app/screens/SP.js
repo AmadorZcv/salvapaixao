@@ -1,14 +1,9 @@
 import React, { PureComponent } from "react";
-import { Text, Image, ScrollView, FlatList } from "react-native";
+import { Text, Image, ScrollView } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 
 class SP extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     const { products } = this.props;
     return (
