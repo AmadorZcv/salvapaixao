@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Icon } from "react-native-elements";
 import CarrinhoImage from "./CarrinhoImage";
 import CarrinhoText from "./CarrinhoText";
+import { integerToReal } from "../config/formatUtils";
 
 export default class CarrinhoItem extends PureComponent {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class CarrinhoItem extends PureComponent {
   }
 
   render() {
-    const { item, index } = this.props;
+    const { item, index, total } = this.props;
     const backgroundColor = index % 2 === 0 ? "lightgray" : "white";
     return (
       <View
@@ -33,7 +34,7 @@ export default class CarrinhoItem extends PureComponent {
           <CarrinhoText id={item.id} />
         </View>
         <View style={{ flex: 2, paddingVertical: 8, alignItems: "center" }}>
-          <Text>R$ 1789,10</Text>
+          <Text>R$ {integerToReal(total)}</Text>
           <View
             style={{
               flexDirection: "row",

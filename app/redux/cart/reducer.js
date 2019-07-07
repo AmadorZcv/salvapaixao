@@ -34,3 +34,7 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export const calculateItemTotal = (cart, products, id) => {
+  return products[id].total * cart[id].qtd;
+};
