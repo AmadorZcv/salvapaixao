@@ -48,10 +48,7 @@ export const calculateTotalComIpi = (cart, products) => {
 
 export const calculateTotalIpi = (cart, products) => {
   return Object.keys(cart).reduce((previous, current) => {
-    console.log("aqui???", previous);
     const newSoma = cart[current].qtd * products[current].ipic;
-    console.log("Soma é", newSoma);
-    console.log("cart current", cart[current], products[current]);
     return previous + newSoma;
   }, 0);
 };
