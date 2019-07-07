@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import cart from "./cart/reducer";
-import data from "./products/data";
-console.log("Data é", data);
+import products from "./products/reducer";
 
 export default combineReducers({
-  cart
+  cart,
+  products
 });
