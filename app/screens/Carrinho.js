@@ -2,13 +2,19 @@ import React, { PureComponent } from "react";
 import { View, Text, FlatList } from "react-native";
 import { connect } from "react-redux";
 import CarrinhoItem from "../components/CarrinhoItem";
+import { addToCart, removeFromCart } from "../redux/cart/actions";
 
 class Carrinho extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
   }
-
+  onPlus = id => {
+    this.props.dispatch(addToCart(id));
+  };
+  onMinus = id => {
+    this.props.dispatch(removeFromCart(id));
+  };
   render() {
     const { cart } = this.props;
     return (
@@ -28,7 +34,12 @@ class Carrinho extends PureComponent {
         <FlatList
           data={Object.keys(cart)}
           renderItem={({ item, index }) => (
-            <CarrinhoItem item={cart[item]} index={index} />
+            <CarrinhoItem
+              item={cart[item]}
+              index={index}
+              onPlus={() => this.onPlus(item)}
+              onMinus={() => this.onMinus(item)}
+            />
           )}
           keyExtractor={item => item.toString()}
         />
