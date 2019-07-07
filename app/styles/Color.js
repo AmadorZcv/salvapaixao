@@ -36,3 +36,8 @@ export default Color;
   const disabledFonts = {
     primary: "rgba(0, 0, 0, 0.38)"
   };
+
+//#Division Bar do Cart.js
+  const divbarColor = {
+    primary: "rgba(0, 0, 44, 0.18)"
+  };
