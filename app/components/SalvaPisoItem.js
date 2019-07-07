@@ -1,13 +1,9 @@
 import React, { PureComponent } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { integerToReal } from "../config/formatUtils";
+import { Icon } from "react-native-elements";
 
 export default class SalvaPisoItem extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     const {
       index,
@@ -16,8 +12,12 @@ export default class SalvaPisoItem extends PureComponent {
       cobertura,
       preco,
       ipi,
-      ipiR
+      ipiR,
+      total
     } = this.props;
+    const trueTotal = total !== undefined ? total.qtd : 0;
+    const precoTotal = preco + ipiR;
+    const precoFinal = precoTotal * trueTotal;
     const backgroundColor = index % 2 === 0 ? "white" : "lightgray";
     return (
       <View style={{ flexDirection: "row", backgroundColor }}>
@@ -59,12 +59,28 @@ export default class SalvaPisoItem extends PureComponent {
           }}
         >
           <Text style={styles.textPreco}>Preço:</Text>
-          <Text style={styles.textPreco}>R$ {integerToReal(preco + ipiR)}</Text>
+          <Text style={styles.textPreco}>R$ {integerToReal(precoTotal)}</Text>
         </View>
         <View style={{}}>
           <Text style={styles.textPreco}>Total:</Text>
-          <Text style={{ ...styles.textPreco }}>R$ 0,00</Text>
-          <Text style={{ ...styles.textPreco, marginTop: 30 }}>- 0 +</Text>
+          <Text style={{ ...styles.textPreco }}>
+            R$ {integerToReal(precoFinal)}
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 20,
+              justifyContent: "space-between"
+            }}
+          >
+            <TouchableOpacity onPress={this.props.onMinus}>
+              <Icon name={"minus"} type={"feather"} />
+            </TouchableOpacity>
+            <Text style={styles.textPreco}> {trueTotal} </Text>
+            <TouchableOpacity onPress={this.props.onPlus}>
+              <Icon name={"plus"} type={"feather"} />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );

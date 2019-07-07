@@ -2,10 +2,17 @@ import React, { PureComponent } from "react";
 import { Text, Image, ScrollView } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
+import { addToCart, removeFromCart } from "../redux/cart/actions";
 
 class SP extends PureComponent {
+  onPlus = id => {
+    this.props.dispatch(addToCart(id));
+  };
+  onMinus = id => {
+    this.props.dispatch(removeFromCart(id));
+  };
   render() {
-    const { products } = this.props;
+    const { products, cart } = this.props;
     return (
       <ScrollView style={{ flex: 1 }}>
         <Image
@@ -20,6 +27,9 @@ class SP extends PureComponent {
           ipi={products["10000"].ipi}
           ipiR={products["10000"].ipic}
           comprimento={products["10000"].comprimento}
+          onPlus={() => this.onPlus("10000")}
+          onMinus={() => this.onMinus("10000")}
+          total={cart["10000"]}
         />
         <SalvaPisoItem
           index={1}
@@ -29,6 +39,9 @@ class SP extends PureComponent {
           ipi={products["10001"].ipi}
           ipiR={products["10001"].ipic}
           comprimento={products["10001"].comprimento}
+          onPlus={() => this.onPlus("10001")}
+          onMinus={() => this.onMinus("10001")}
+          total={cart["10001"]}
         />
 
         <Text style={{ fontSize: 20, color: "black" }}>
@@ -42,6 +55,9 @@ class SP extends PureComponent {
           ipi={products["10100"].ipi}
           ipiR={products["10100"].ipic}
           comprimento={products["10100"].comprimento}
+          onPlus={() => this.onPlus("10100")}
+          onMinus={() => this.onMinus("10100")}
+          total={cart["10100"]}
         />
       </ScrollView>
     );
@@ -49,7 +65,7 @@ class SP extends PureComponent {
 }
 const mapStateToProps = state => {
   const { products } = state.products;
-
-  return { products };
+  const { cart } = state.cart;
+  return { products, cart };
 };
 export default connect(mapStateToProps)(SP);
