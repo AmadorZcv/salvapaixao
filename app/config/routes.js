@@ -92,7 +92,7 @@ const HomeStack = createStackNavigator(
       screen: SP,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Salva Piso",
+          headerTitle: "Salva Piso Tradicional",
 
           headerRight: (
             <TouchableOpacity
