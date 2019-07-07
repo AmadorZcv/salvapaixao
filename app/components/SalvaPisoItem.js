@@ -18,6 +18,7 @@ export default class SalvaPisoItem extends PureComponent {
     const trueTotal = total !== undefined ? total.qtd : 0;
     const precoTotal = preco + ipiR;
     const precoFinal = precoTotal * trueTotal;
+    const formatPrecoFinal = precoFinal > 0 ? integerToReal(precoFinal) : "0";
     const backgroundColor = index % 2 === 0 ? "white" : "lightgray";
     return (
       <View style={{ flexDirection: "row", backgroundColor }}>
@@ -63,9 +64,7 @@ export default class SalvaPisoItem extends PureComponent {
         </View>
         <View style={{}}>
           <Text style={styles.textPreco}>Total:</Text>
-          <Text style={{ ...styles.textPreco }}>
-            R$ {integerToReal(precoFinal)}
-          </Text>
+          <Text style={{ ...styles.textPreco }}>R$ {formatPrecoFinal}</Text>
           <View
             style={{
               flexDirection: "row",
