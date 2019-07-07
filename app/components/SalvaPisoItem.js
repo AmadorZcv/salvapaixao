@@ -21,7 +21,7 @@ export default class SalvaPisoItem extends PureComponent {
     const formatPrecoFinal = precoFinal > 0 ? integerToReal(precoFinal) : "0";
     const backgroundColor = index % 2 === 0 ? "white" : "lightgray";
     return (
-      <View style={{ flexDirection: "row", backgroundColor }}>
+      <View style={{ flexDirection: "row", backgroundColor, flex: 1 }}>
         <View style={{ flexDirection: "row" }}>
           <View style={styles.column}>
             <Text style={styles.textInfo}>Largura</Text>
@@ -62,7 +62,7 @@ export default class SalvaPisoItem extends PureComponent {
           <Text style={styles.textPreco}>Preço:</Text>
           <Text style={styles.textPreco}>R$ {integerToReal(precoTotal)}</Text>
         </View>
-        <View style={{}}>
+        <View style={{ flex: 1 }}>
           <Text style={styles.textPreco}>Total:</Text>
           <Text style={{ ...styles.textPreco }}>R$ {formatPrecoFinal}</Text>
           <View
