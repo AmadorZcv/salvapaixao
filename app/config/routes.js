@@ -17,6 +17,8 @@ import SPLimpeza from "../screens/SPLimpeza";
 import SPResistente from "../screens/SPResistente";
 import SQuina from "../screens/SQuina";
 import SRalo from "../screens/SRalo";
+import Carrinho from "../screens/Carrinho";
+import Materiais from "../screens/Materiais";
 
 const HomeStack = createStackNavigator(
   {
@@ -47,7 +49,7 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Salva Bancada",
-          headerLeft: null,
+
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
@@ -69,7 +71,7 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Salva Metais",
-          headerLeft: null,
+
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
@@ -91,7 +93,7 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Salva Piso",
-          headerLeft: null,
+
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
@@ -113,7 +115,7 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Salva Piso Especiais",
-          headerLeft: null,
+
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
@@ -135,7 +137,7 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Salva Piso Pintura",
-          headerLeft: null,
+
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
@@ -157,7 +159,7 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Salva Piso Limpeza",
-          headerLeft: null,
+
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
@@ -179,7 +181,7 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Salva Piso Resistente",
-          headerLeft: null,
+
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
@@ -201,7 +203,7 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Salva Quina",
-          headerLeft: null,
+
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
@@ -223,7 +225,29 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Salva Ralo",
-          headerLeft: null,
+
+          headerRight: (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Carrinho")}
+              style={{ paddingRight: 10 }}
+            >
+              <Icon
+                name={"ios-cart"}
+                type={"ionicon"}
+                color={"#fff"}
+                size={36}
+              />
+            </TouchableOpacity>
+          )
+        };
+      }
+    },
+    Materiais: {
+      screen: Materiais,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Materiais Básicos",
+
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
@@ -241,7 +265,7 @@ const HomeStack = createStackNavigator(
       }
     },
     Carrinho: {
-      screen: Home,
+      screen: Carrinho,
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Carrinho"
