@@ -62,7 +62,7 @@ export default class CarrinhoItem extends PureComponent {
               <Icon name={"minus"} type={"feather"} />
             </TouchableOpacity>
             <Text> {item.qtd} </Text>
-            <TouchableOpacity onPress={this.props.onPlus} onLongPress={this.onLongPressPlus}>
+            <TouchableOpacity onPress={this.props.onPlus} onLongPress={this.onLongPressPlus} >
               <Icon name={"plus"} type={"feather"} />
             </TouchableOpacity>
           </View>
