@@ -54,19 +54,19 @@ class SPLimpeza extends PureComponent {
             backgroundColor: Color.darkBackground
           }}
         >
-          Limpeza Pesada Pós Obra (Porcelanato)
+          Limpeza Diária (Cerâmica {"&"} Porcelanato)
         </Text>
         <SalvaLimpezaItem
           index={1}
-          unidade={products["13000"].usidade}
-          diluicao={products["13000"].diluicao}
-          preco={products["13000"].preco}
-          ipi={products["13000"].ipi}
-          ipiR={products["13000"].ipic}
-          rendimento={products["13000"].rendimento}
-          onPlus={() => this.onPlus("13000")}
-          onMinus={() => this.onMinus("13000")}
-          total={cart["13000"]}
+          unidade={products["13100"].usidade}
+          diluicao={products["13100"].diluicao}
+          preco={products["13100"].preco}
+          ipi={products["13100"].ipi}
+          ipiR={products["13100"].ipic}
+          rendimento={products["13100"].rendimento}
+          onPlus={() => this.onPlus("13100")}
+          onMinus={() => this.onMinus("13100")}
+          total={cart["13100"]}
         /><Text
           style={{
             fontSize: 16,
@@ -75,19 +75,19 @@ class SPLimpeza extends PureComponent {
             fontFamily: "Roboto-Black"
           }}
         >
-          Limpeza Pesada Pós Obra (Porcelanato)
+          Limpeza Predas
       </Text>
         <SalvaLimpezaItem
           index={2}
-          unidade={products["13000"].usidade}
-          diluicao={products["13000"].diluicao}
-          preco={products["13000"].preco}
-          ipi={products["13000"].ipi}
-          ipiR={products["13000"].ipic}
-          rendimento={products["13000"].rendimento}
-          onPlus={() => this.onPlus("13000")}
-          onMinus={() => this.onMinus("13000")}
-          total={cart["13000"]}
+          unidade={products["13200"].usidade}
+          diluicao={products["13200"].diluicao}
+          preco={products["13200"].preco}
+          ipi={products["13200"].ipi}
+          ipiR={products["13200"].ipic}
+          rendimento={products["13200"].rendimento}
+          onPlus={() => this.onPlus("13200")}
+          onMinus={() => this.onMinus("13200")}
+          total={cart["13200"]}
         /><Text
           style={{
             fontSize: 16,
@@ -101,15 +101,15 @@ class SPLimpeza extends PureComponent {
     </Text>
         <SalvaLimpezaItem
           index={3}
-          unidade={products["13000"].usidade}
-          diluicao={products["13000"].diluicao}
-          preco={products["13000"].preco}
-          ipi={products["13000"].ipi}
-          ipiR={products["13000"].ipic}
-          rendimento={products["13000"].rendimento}
-          onPlus={() => this.onPlus("13000")}
-          onMinus={() => this.onMinus("13000")}
-          total={cart["13000"]}
+          unidade={products["13300"].usidade}
+          diluicao={products["13300"].diluicao}
+          preco={products["13300"].preco}
+          ipi={products["13300"].ipi}
+          ipiR={products["13300"].ipic}
+          rendimento={products["13300"].rendimento}
+          onPlus={() => this.onPlus("13300")}
+          onMinus={() => this.onMinus("13300")}
+          total={cart["13300"]}
         />
       </ScrollView>
     );
