@@ -7,22 +7,7 @@ export default class CarrinhoImage extends PureComponent {
     const style = { marginLeft: 8, width: 80, height: 80 };
     switch (id) {
       case "10000":
-        return (
-          <Image
-            source={require("../img/cart/spt-small.png")}
-            style={style}
-            resizeMode={"contain"}
-          />
-        );
-
       case "10001":
-        return (
-          <Image
-            source={require("../img/cart/spt-small.png")}
-            style={style}
-            resizeMode={"contain"}
-          />
-        );
       case "10100":
         return (
           <Image
@@ -43,6 +28,17 @@ export default class CarrinhoImage extends PureComponent {
         return (
           <Image
             source={require("../img/cart/spr-small.png")}
+            style={style}
+            resizeMode={"contain"}
+          />
+        );
+      case "14000":
+      case "14001":
+      case "14002":
+      case "14003":
+        return (
+          <Image
+            source={require("../img/cart/spin-small.png")}
             style={style}
             resizeMode={"contain"}
           />

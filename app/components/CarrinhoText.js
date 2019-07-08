@@ -6,15 +6,18 @@ export default class CarrinhoText extends PureComponent {
     const { id } = this.props;
     switch (id) {
       case "10000":
-        return "Salva Piso Tradicional";
       case "10001":
-        return "Salva Piso Tradicional";
       case "10100":
         return "Salva Piso Tradicional";
       case "11000":
         return "Salva Piso Madeira";
       case "12000":
         return "Salva Piso Extra Resistente";
+      case "14000":
+      case "14001":
+      case "14002":
+      case "14003":
+        return "Salva Pintura";
     }
   }
   underName() {
@@ -30,6 +33,14 @@ export default class CarrinhoText extends PureComponent {
         return "Papel + Bolha + TNT (1m)";
       case "12000":
         return "Papel+Manta Expandida (1,2m)";
+      case "14000":
+        return "Proteção Pintura (0,45m)";
+      case "14001":
+        return "Proteção Pintura (0,9m)";
+      case "14002":
+        return "Proteção Pintura (1,5m)";
+      case "14003":
+        return "Proteção Pintura (2,4m)";
     }
   }
 
