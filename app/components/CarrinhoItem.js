@@ -20,7 +20,7 @@ export default class CarrinhoItem extends PureComponent {
         style={{
           backgroundColor,
           flexDirection: "row",
-          paddingRight: 11
+          height: 49
         }}
       >
         <View
@@ -29,8 +29,9 @@ export default class CarrinhoItem extends PureComponent {
             flexDirection: "row",
             paddingVertical: 8,
             alignItems: "center",
-            borderColor: Color.divbarColor,
-            borderLeftWidth: StyleSheet.hairlineWidth
+            paddingLeft: 0,
+            borderRightWidth: StyleSheet.hairlineWidth,
+            borderColor: Color.divbarColor
           }}
         >
           <CarrinhoImage id={item.id} />
@@ -41,7 +42,7 @@ export default class CarrinhoItem extends PureComponent {
           <View
             style={{
               flexDirection: "row",
-              marginTop: 20,
+
               justifyContent: "space-between",
               alignItems: "center"
             }}

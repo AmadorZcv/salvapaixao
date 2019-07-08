@@ -36,11 +36,11 @@ class Carrinho extends PureComponent {
           >
             <Text style={{
               textAlign: "center", textAlignVertical: "center", width: 259, borderRightWidth: StyleSheet.hairlineWidth,
-              borderColor: Color.divbarColor
+              borderColor: Color.divbarColor, color: Color.primaryText, fontSize: 16
             }}>
               Produtos
           </Text>
-            <Text style={{ textAlign: "center", textAlignVertical: "center", width: 101 }}> SubTotal </Text>
+            <Text style={{ textAlign: "center", textAlignVertical: "center", width: 101, color: Color.primaryText, fontSize: 16 }}> SubTotal </Text>
           </View>
           <FlatList
             data={Object.keys(cart)}
@@ -64,10 +64,10 @@ class Carrinho extends PureComponent {
               marginBottom: 16
             }}
           >
-            <Text style={{ ...styles.leftContainer, textAlign: "center", textAlignVertical: "center" }}>
+            <Text style={{ ...styles.leftContainer, textAlign: "center", textAlignVertical: "center", color: Color.primaryText, fontSize: 16 }}>
               Informações
           </Text>
-            <Text style={{ ...styles.rightContainer, textAlign: "center", textAlignVertical: "center" }}>
+            <Text style={{ ...styles.rightContainer, textAlign: "center", textAlignVertical: "center", color: Color.primaryText, fontSize: 16 }}>
               Total
           </Text>
           </View>

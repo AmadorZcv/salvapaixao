@@ -4,7 +4,7 @@ import { Image } from "react-native";
 export default class CarrinhoImage extends PureComponent {
   render() {
     const { id } = this.props;
-    const style = { marginLeft: 8, width: 70, height: 37.5 };
+    const style = { marginLeft: 15, width: 70, height: 37.5 };
     switch (id) {
       case "10000":
       case "10001":

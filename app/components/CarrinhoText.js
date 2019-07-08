@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, Text } from "react-native";
+import { Color } from "../styles";
 
 export default class CarrinhoText extends PureComponent {
   name() {
@@ -83,8 +84,16 @@ export default class CarrinhoText extends PureComponent {
           flex: 1
         }}
       >
-        <Text style={{}}> {this.name()} </Text>
-        <Text style={{}}> {this.underName()} </Text>
+        <Text style={{
+          fontSize: 16,
+          color: Color.primaryText,
+
+        }}> {this.name()} </Text>
+        <Text style={{
+          fontSize: 10,
+          color: Color.secondaryText,
+
+        }}> {this.underName()} </Text>
       </View>
     );
   }
