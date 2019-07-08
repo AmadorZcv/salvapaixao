@@ -285,7 +285,8 @@ const HomeStack = createStackNavigator(
         textAlign: "center",
         justifyContent: "center",
         color: Color.primaryText,
-        fontSize: 20
+        fontSize: 20,
+        fontWeight: "500"
       },
       headerTintColor: Color.headerIcons
     }

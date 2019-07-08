@@ -3,6 +3,7 @@ import { Text, Image, ScrollView, Dimensions } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
+import { Color } from "../styles";
 
 class SP extends PureComponent {
   onPlus = id => {
@@ -22,10 +23,10 @@ class SP extends PureComponent {
         />
         <Text
           style={{
-            fontSize: 20,
-            color: "black",
-            fontWeight: "400",
-            paddingLeft: 10
+            fontSize: 16,
+            color: Color.primaryText,
+            paddingLeft: 10,
+            fontFamily: "Roboto-Black"
           }}
         >
           Papel + Bolha
