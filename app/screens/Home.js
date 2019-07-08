@@ -148,7 +148,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 16,
-    backgroundColor: Color.background
+    backgroundColor: Color.background,
+    paddingBottom: 24
   },
   cardLine: {
     flexDirection: "row",
@@ -162,6 +163,6 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     width: 160,
-    height: 80
+    height: 85
   }
 });
