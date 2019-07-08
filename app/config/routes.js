@@ -287,7 +287,7 @@ const HomeStack = createStackNavigator(
         color: Color.primaryText,
         fontSize: 20
       },
-      headerTintColor: Color.white
+      headerTintColor: Color.headerIcons
     }
   }
 );
