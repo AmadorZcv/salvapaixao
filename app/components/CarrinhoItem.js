@@ -1,9 +1,10 @@
 import React, { PureComponent } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import CarrinhoImage from "./CarrinhoImage";
 import CarrinhoText from "./CarrinhoText";
 import { integerToReal } from "../config/formatUtils";
+import { Color } from "../styles";
 
 export default class CarrinhoItem extends PureComponent {
   constructor(props) {
@@ -13,12 +14,13 @@ export default class CarrinhoItem extends PureComponent {
 
   render() {
     const { item, index, total } = this.props;
-    const backgroundColor = index % 2 === 0 ? "lightgray" : "white";
+    const backgroundColor = index % 2 === 0 ? Color.lightBackground : "white";
     return (
       <View
         style={{
           backgroundColor,
-          flexDirection: "row"
+          flexDirection: "row",
+          paddingRight: 11
         }}
       >
         <View
@@ -27,7 +29,8 @@ export default class CarrinhoItem extends PureComponent {
             flexDirection: "row",
             paddingVertical: 8,
             alignItems: "center",
-            borderRightWidth: 1
+            borderColor: Color.divbarColor,
+            borderLeftWidth: StyleSheet.hairlineWidth
           }}
         >
           <CarrinhoImage id={item.id} />

@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import CarrinhoItem from "../components/CarrinhoItem";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
@@ -22,94 +22,101 @@ class Carrinho extends PureComponent {
   render() {
     const { cart, products, totalComIpi, subTotal, totalIpi } = this.props;
     return (
-      <View>
-        <View
-          style={{
-            flexDirection: "row",
-            backgroundColor: Color.darkBackground,
-            marginTop: 21,
-            height: 30,
-            marginBottom: 16
-          }}
-        >
-          <Text style={{ textAlign: "center", textAlignVertical: "center", width: 259 }}>
-            Produtos
-          </Text>
-          <Text style={{ textAlign: "center", textAlignVertical: "center", width: 101 }}> SubTotal </Text>
-        </View>
-        <FlatList
-          data={Object.keys(cart)}
-          renderItem={({ item, index }) => (
-            <CarrinhoItem
-              item={cart[item]}
-              index={index}
-              onPlus={() => this.onPlus(item)}
-              onMinus={() => this.onMinus(item)}
-              total={calculateItemTotal(cart, products, item)}
-            />
-          )}
-          keyExtractor={item => item.toString()}
-        />
-        <View
-          style={{
-            flexDirection: "row",
-            backgroundColor: "lightgray",
-            marginVertical: 15
-          }}
-        >
-          <Text style={{ ...styles.leftContainer, textAlign: "center" }}>
-            Informações
-          </Text>
-          <Text style={{ ...styles.rightContainer, textAlign: "center" }}>
-            Total
-          </Text>
-        </View>
+      <View style={{ paddingBottom: 18 }}>
+        <ScrollView>
+          <View
+            style={{
+              flexDirection: "row",
+              backgroundColor: Color.darkBackground,
+              marginTop: 21,
+              height: 30,
+              marginBottom: 16,
 
-        <View
-          style={{
-            flexDirection: "row",
-            backgroundColor: "lightgray"
-          }}
-        >
-          <View style={styles.leftContainer}>
-            <Text style={styles.informaçõesText}>SubTotal</Text>
+            }}
+          >
+            <Text style={{
+              textAlign: "center", textAlignVertical: "center", width: 259, borderRightWidth: StyleSheet.hairlineWidth,
+              borderColor: Color.divbarColor
+            }}>
+              Produtos
+          </Text>
+            <Text style={{ textAlign: "center", textAlignVertical: "center", width: 101 }}> SubTotal </Text>
           </View>
-          <View style={styles.rightContainer}>
-            <Text style={styles.informaçõesValue}>
-              R$ {integerToReal(subTotal)}
-            </Text>
+          <FlatList
+            data={Object.keys(cart)}
+            renderItem={({ item, index }) => (
+              <CarrinhoItem
+                item={cart[item]}
+                index={index}
+                onPlus={() => this.onPlus(item)}
+                onMinus={() => this.onMinus(item)}
+                total={calculateItemTotal(cart, products, item)}
+              />
+            )}
+            keyExtractor={item => item.toString()}
+          />
+          <View
+            style={{
+              flexDirection: "row",
+              backgroundColor: Color.darkBackground,
+              marginTop: 21,
+              height: 30,
+              marginBottom: 16
+            }}
+          >
+            <Text style={{ ...styles.leftContainer, textAlign: "center", textAlignVertical: "center" }}>
+              Informações
+          </Text>
+            <Text style={{ ...styles.rightContainer, textAlign: "center", textAlignVertical: "center" }}>
+              Total
+          </Text>
           </View>
-        </View>
-        <View
-          style={{
-            flexDirection: "row"
-          }}
-        >
-          <View style={styles.leftContainer}>
-            <Text style={styles.informaçõesText}>IPI</Text>
+
+          <View
+            style={{
+              flexDirection: "row",
+              backgroundColor: Color.darkBackground
+            }}
+          >
+            <View style={styles.leftContainer}>
+              <Text style={styles.informaçõesText}>Subtotal sem IPI</Text>
+            </View>
+            <View style={styles.rightContainer}>
+              <Text style={styles.informaçõesValue}>
+                R$ {integerToReal(subTotal)}
+              </Text>
+            </View>
           </View>
-          <View style={styles.rightContainer}>
-            <Text style={styles.informaçõesValue}>
-              R$ {integerToReal(totalIpi)}
-            </Text>
+          <View
+            style={{
+              flexDirection: "row"
+            }}
+          >
+            <View style={styles.leftContainer}>
+              <Text style={styles.informaçõesText}>Valor do IPI</Text>
+            </View>
+            <View style={styles.rightContainer}>
+              <Text style={styles.informaçõesValue}>
+                R$ {integerToReal(totalIpi)}
+              </Text>
+            </View>
           </View>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            backgroundColor: "lightgray"
-          }}
-        >
-          <View style={styles.leftContainer}>
-            <Text style={styles.informaçõesText}>Total</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              backgroundColor: Color.darkBackground
+            }}
+          >
+            <View style={styles.leftContainer}>
+              <Text style={styles.informaçõesText}>Valor Total com IPI</Text>
+            </View>
+            <View style={styles.rightContainer}>
+              <Text style={styles.informaçõesValue}>
+                R$ {integerToReal(totalComIpi)}
+              </Text>
+            </View>
           </View>
-          <View style={styles.rightContainer}>
-            <Text style={styles.informaçõesValue}>
-              R$ {integerToReal(totalComIpi)}
-            </Text>
-          </View>
-        </View>
-      </View>
+        </ScrollView></View>
     );
   }
 }
@@ -128,18 +135,23 @@ export default connect(mapStateToProps)(Carrinho);
 const styles = StyleSheet.create({
   informaçõesText: {
     textAlign: "left",
+    textAlignVertical: "center",
     fontSize: 20,
-    paddingLeft: 10
+    height: 30,
+    paddingLeft: 34
   },
   informaçõesValue: {
-    textAlign: "left",
+    textAlign: "right",
+    textAlignVertical: "center",
     fontSize: 20,
-    paddingLeft: 3
+    paddingRight: 5,
+    height: 30,
   },
   leftContainer: {
     width: 259,
 
-    borderRightWidth: StyleSheet.hairlineWidth
+    borderRightWidth: StyleSheet.hairlineWidth,
+    borderColor: Color.divbarColor
   },
   rightContainer: {
     width: 101,
