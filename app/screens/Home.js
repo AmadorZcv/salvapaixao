@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { Image } from "react-native-elements";
+import Color from "../styles/Color";
 
 export default class Home extends PureComponent {
   constructor(props) {
@@ -60,45 +61,81 @@ export default class Home extends PureComponent {
       <ScrollView style={styles.container}>
         <View style={{ ...styles.cardLine, marginTop: 5 }}>
           <TouchableOpacity style={styles.card} onPress={onSalvaPiso}>
-            <Image source={require("../img/index/spt-logo.png")} />
+            <Image
+              style={styles.imageStyle}
+              source={require("../img/index/spt-logo.png")}
+              resizeMode={"stretch"}
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.card} onPress={onSalvaPisoEspeciais}>
-            <Image source={require("../img/index/spm-logo.png")} />
+            <Image
+              style={styles.imageStyle}
+              source={require("../img/index/spm-logo.png")}
+              resizeMode={"stretch"}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.cardLine}>
           <TouchableOpacity style={styles.card} onPress={onSalvaPisoResistente}>
-            <Image source={require("../img/index/spr-logo.png")} />
+            <Image
+              style={styles.imageStyle}
+              source={require("../img/index/spr-logo.png")}
+              resizeMode={"stretch"}
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.card} onPress={onSalvaPisoLimpeza}>
-            <Image source={require("../img/index/spl-logo.png")} />
+            <Image
+              style={styles.imageStyle}
+              source={require("../img/index/spl-logo.png")}
+              resizeMode={"stretch"}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.cardLine}>
           <TouchableOpacity style={styles.card} onPress={onSalvaPintura}>
-            <Image source={require("../img/index/spin-logo.png")} />
+            <Image
+              style={styles.imageStyle}
+              source={require("../img/index/spin-logo.png")}
+              resizeMode={"stretch"}
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.card} onPress={onSalvaQuina}>
-            <Image source={require("../img/index/sq-logo.png")} />
+            <Image
+              style={styles.imageStyle}
+              source={require("../img/index/sq-logo.png")}
+              resizeMode={"cover"}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.cardLine}>
           <TouchableOpacity style={styles.card} onPress={onSalvaMetais}>
-            <Image source={require("../img/index/sm-logo.png")} />
+            <Image
+              style={styles.imageStyle}
+              source={require("../img/index/sm-logo.png")}
+              resizeMode={"stretch"}
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.card} onPress={onSalvaBancada}>
-            <Image source={require("../img/index/sb-logo.png")} />
+            <Image
+              style={styles.imageStyle}
+              source={require("../img/index/sb-logo.png")}
+              resizeMode={"stretch"}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.cardLine}>
           <TouchableOpacity style={styles.card} onPress={onSalvaRalo}>
-            <Image source={require("../img/index/sr-logo.png")} />
+            <Image
+              style={styles.imageStyle}
+              source={require("../img/index/sr-logo.png")}
+              resizeMode={"stretch"}
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.card} onPress={onMateriais}>
             <Image
+              style={styles.imageStyle}
               source={require("../img/index/smb-logo.png")}
               resizeMode={"stretch"}
-              style={{ width: 170 }}
             />
           </TouchableOpacity>
         </View>
@@ -108,16 +145,23 @@ export default class Home extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: {
+    flex: 1,
+    paddingHorizontal: 16,
+    backgroundColor: Color.background
+  },
   cardLine: {
     flexDirection: "row",
     justifyContent: "center"
   },
   card: {
-    margin: 5,
-    flex: 1,
+    margin: 8,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#e6e7e9"
+  },
+  imageStyle: {
+    width: 160,
+    height: 80
   }
 });
