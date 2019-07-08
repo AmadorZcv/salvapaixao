@@ -18,6 +18,8 @@ export default class CarrinhoText extends PureComponent {
       case "14002":
       case "14003":
         return "Salva Pintura";
+      case "16000":
+        return "Salva Metais"
     }
   }
   underName() {
@@ -41,6 +43,8 @@ export default class CarrinhoText extends PureComponent {
         return "Proteção Pintura (1,5m)";
       case "14003":
         return "Proteção Pintura (2,4m)";
+      case "16000":
+        return "Filme para Envolvimento (6 unid)"
     }
   }
 
