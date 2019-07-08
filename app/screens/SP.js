@@ -56,7 +56,12 @@ class SP extends PureComponent {
           total={cart["10001"]}
         />
 
-        <Text style={{ fontSize: 20, color: "black" }}>
+        <Text style={{
+          fontSize: 16,
+          color: Color.primaryText,
+          paddingLeft: 10,
+          fontFamily: "Roboto-Black"
+        }}>
           Papel + Bolha + Fita Adesiva
         </Text>
         <SalvaPisoItem
