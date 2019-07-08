@@ -6,7 +6,7 @@ import {
   createStackNavigator
 } from "react-navigation";
 import Home from "../screens/Home";
-import { Icon } from "react-native-elements";
+import { Icon, Image } from "react-native-elements";
 import { Color, TextStyle } from "../styles";
 import SBancada from "../screens/SBancada";
 import SMetais from "../screens/SMetais";
@@ -27,18 +27,20 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Tela Inicial",
-          headerLeft: null,
+          headerLeft: <Icon
+            name={"menu"}
+            type={"material-community"}
+            color={Color.headerIcons}
+            size={24}
+            containerStyle={{ paddingLeft: 16 }}
+          />,
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -53,14 +55,10 @@ const HomeStack = createStackNavigator(
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -75,14 +73,10 @@ const HomeStack = createStackNavigator(
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -97,14 +91,10 @@ const HomeStack = createStackNavigator(
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -119,14 +109,10 @@ const HomeStack = createStackNavigator(
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -141,14 +127,10 @@ const HomeStack = createStackNavigator(
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -163,14 +145,10 @@ const HomeStack = createStackNavigator(
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -185,14 +163,10 @@ const HomeStack = createStackNavigator(
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -207,14 +181,10 @@ const HomeStack = createStackNavigator(
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -229,14 +199,10 @@ const HomeStack = createStackNavigator(
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -251,14 +217,10 @@ const HomeStack = createStackNavigator(
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 10 }}
+              style={{ paddingRight: 16 }}
             >
-              <Icon
-                name={"ios-cart"}
-                type={"ionicon"}
-                color={Color.headerIcons}
-                size={36}
-              />
+              <Image style={{ height: 20, width: 20 }} source={require("../img/icons/shopping-cart.png")} />
+
             </TouchableOpacity>
           )
         };
@@ -286,7 +248,7 @@ const HomeStack = createStackNavigator(
         justifyContent: "center",
         color: Color.primaryText,
         fontSize: 20,
-        fontWeight: "500"
+        fontWeight: "500", marginLeft: 20
       },
       headerTintColor: Color.headerIcons
     }
