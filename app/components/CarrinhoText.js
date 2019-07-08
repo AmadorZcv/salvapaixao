@@ -11,6 +11,8 @@ export default class CarrinhoText extends PureComponent {
         return "Salva Piso Tradicional";
       case "10100":
         return "Salva Piso Tradicional";
+      case "11000":
+        return "Salva Piso Madeira";
     }
   }
   underName() {
@@ -22,6 +24,8 @@ export default class CarrinhoText extends PureComponent {
         return "Papel + Bolha (0.5m)";
       case "10100":
         return "Papel + Bolha + Fita Adesiva (1m)";
+      case "11000":
+        return "Papel + Bolha + TNT (1m)";
     }
   }
 
