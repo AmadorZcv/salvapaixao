@@ -58,87 +58,88 @@ export default class Home extends PureComponent {
       onSalvaRalo
     } = this;
     return (
-      <ScrollView style={styles.container}>
-        <View style={{ ...styles.cardLine, marginTop: 5 }}>
-          <TouchableOpacity style={styles.card} onPress={onSalvaPiso}>
-            <Image
-              style={styles.imageStyle}
-              source={require("../img/index/spt-logo.png")}
-              resizeMode={"stretch"}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.card} onPress={onSalvaPisoEspeciais}>
-            <Image
-              style={styles.imageStyle}
-              source={require("../img/index/spm-logo.png")}
-              resizeMode={"stretch"}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.cardLine}>
-          <TouchableOpacity style={styles.card} onPress={onSalvaPisoResistente}>
-            <Image
-              style={styles.imageStyle}
-              source={require("../img/index/spr-logo.png")}
-              resizeMode={"stretch"}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.card} onPress={onSalvaPisoLimpeza}>
-            <Image
-              style={styles.imageStyle}
-              source={require("../img/index/spl-logo.png")}
-              resizeMode={"stretch"}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.cardLine}>
-          <TouchableOpacity style={styles.card} onPress={onSalvaPintura}>
-            <Image
-              style={styles.imageStyle}
-              source={require("../img/index/spin-logo.png")}
-              resizeMode={"stretch"}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.card} onPress={onSalvaQuina}>
-            <Image
-              style={styles.imageStyle}
-              source={require("../img/index/sq-logo.png")}
-              resizeMode={"cover"}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.cardLine}>
-          <TouchableOpacity style={styles.card} onPress={onSalvaMetais}>
-            <Image
-              style={styles.imageStyle}
-              source={require("../img/index/sm-logo.png")}
-              resizeMode={"stretch"}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.card} onPress={onSalvaBancada}>
-            <Image
-              style={styles.imageStyle}
-              source={require("../img/index/sb-logo.png")}
-              resizeMode={"stretch"}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.cardLine}>
-          <TouchableOpacity style={styles.card} onPress={onSalvaRalo}>
-            <Image
-              style={styles.imageStyle}
-              source={require("../img/index/sr-logo.png")}
-              resizeMode={"stretch"}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.card} onPress={onMateriais}>
-            <Image
-              style={styles.imageStyle}
-              source={require("../img/index/smb-logo.png")}
-              resizeMode={"stretch"}
-            />
-          </TouchableOpacity>
-        </View>
+      <ScrollView >
+        <View style={styles.container}>
+          <View style={{ ...styles.cardLine, marginTop: 5 }}>
+            <TouchableOpacity style={styles.card} onPress={onSalvaPiso}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../img/index/spt-logo.png")}
+                resizeMode={"stretch"}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.card} onPress={onSalvaPisoEspeciais}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../img/index/spm-logo.png")}
+                resizeMode={"stretch"}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.cardLine}>
+            <TouchableOpacity style={styles.card} onPress={onSalvaPisoResistente}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../img/index/spr-logo.png")}
+                resizeMode={"stretch"}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.card} onPress={onSalvaPisoLimpeza}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../img/index/spl-logo.png")}
+                resizeMode={"stretch"}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.cardLine}>
+            <TouchableOpacity style={styles.card} onPress={onSalvaPintura}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../img/index/spin-logo.png")}
+                resizeMode={"stretch"}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.card} onPress={onSalvaQuina}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../img/index/sq-logo.png")}
+                resizeMode={"center"}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.cardLine}>
+            <TouchableOpacity style={styles.card} onPress={onSalvaMetais}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../img/index/sm-logo.png")}
+                resizeMode={"stretch"}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.card} onPress={onSalvaBancada}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../img/index/sb-logo.png")}
+                resizeMode={"stretch"}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.cardLine}>
+            <TouchableOpacity style={styles.card} onPress={onSalvaRalo}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../img/index/sr-logo.png")}
+                resizeMode={"stretch"}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.card} onPress={onMateriais}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../img/index/smb-logo.png")}
+                resizeMode={"stretch"}
+              />
+            </TouchableOpacity>
+          </View></View>
       </ScrollView>
     );
   }
@@ -147,7 +148,7 @@ export default class Home extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
+    padding: 8,
     backgroundColor: Color.background,
     paddingBottom: 24
   },
@@ -159,10 +160,12 @@ const styles = StyleSheet.create({
     margin: 8,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#e6e7e9"
+    backgroundColor: "#e6e7e9",
+    borderRadius: 5
   },
   imageStyle: {
-    width: 160,
-    height: 85
+    width: 156,
+    height: 101,
+    borderRadius: 5
   }
 });
