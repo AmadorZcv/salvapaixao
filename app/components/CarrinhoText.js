@@ -20,6 +20,11 @@ export default class CarrinhoText extends PureComponent {
         return "Salva Pintura";
       case "16000":
         return "Salva Metais"
+      case "17000":
+      case "17001":
+      case "17002":
+      case "17003":
+        return "Salva Bancada";
     }
   }
   underName() {
@@ -45,6 +50,14 @@ export default class CarrinhoText extends PureComponent {
         return "Proteção Pintura (2,4m)";
       case "16000":
         return "Filme para Envolvimento (6 unid)"
+      case "17000":
+        return "Adesivo para Proteção (0,45m)"
+      case "17001":
+        return "Adesivo para Proteção (0,60m)"
+      case "17002":
+        return "Adesivo para Proteção (0,40m)"
+      case "17003":
+        return "Adesivo para Proteção (0,60m)(30m²)"
     }
   }
 

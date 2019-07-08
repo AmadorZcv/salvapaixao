@@ -51,6 +51,15 @@ export default class CarrinhoImage extends PureComponent {
             resizeMode={"contain"}
           />
         );
+      case "17000":
+      case "17001":
+      case "17002":
+      case "17003":
+        return <Image
+          source={require("../img/cart/sban-small.png")}
+          style={style}
+          resizeMode={"contain"}
+        />;
       default:
         return null;
     }
