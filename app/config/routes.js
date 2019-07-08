@@ -26,7 +26,7 @@ const HomeStack = createStackNavigator(
       screen: Home,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Salva Paixão",
+          headerTitle: "Tela Inicial",
           headerLeft: null,
           headerRight: (
             <TouchableOpacity
@@ -36,7 +36,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -58,7 +58,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -80,7 +80,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -102,7 +102,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -124,7 +124,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -146,7 +146,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -168,7 +168,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -190,7 +190,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -212,7 +212,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -234,7 +234,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -256,7 +256,7 @@ const HomeStack = createStackNavigator(
               <Icon
                 name={"ios-cart"}
                 type={"ionicon"}
-                color={"#fff"}
+                color={Color.headerIcons}
                 size={36}
               />
             </TouchableOpacity>
@@ -277,13 +277,15 @@ const HomeStack = createStackNavigator(
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: Color.primary
+        backgroundColor: Color.header
       },
       headerTitleStyle: {
         ...TextStyle.header,
         alignSelf: "center",
         textAlign: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        color: Color.primaryText,
+        fontSize: 20
       },
       headerTintColor: Color.white
     }

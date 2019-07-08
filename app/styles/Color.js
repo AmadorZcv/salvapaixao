@@ -6,7 +6,9 @@ const Color = {
   textSubtitle: "#757575",
   darkBackground: "#E2E2E2",
   lightBackground: "#EEEEEE",
-  header: "#F5F5F5"
+  header: "#F5F5F5",
+  primaryText: "rgba(0, 0, 0, 0.87)",
+  secondaryText: "rgba(0, 0, 0, 0.54)"
 };
 
 export default Color;
@@ -31,7 +33,7 @@ const headerColor = {
 
 //#Font Color Scheme
 //Para as fontes escuras
-const primaryFonts = {
+export const primaryFonts = {
   primary: "rgba(0, 0, 0, 0.87)"
 };
 //Para as fontes claras e SVGs, Ícones

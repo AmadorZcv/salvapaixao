@@ -6,7 +6,8 @@ const header = {
   ...base,
   color: Color.white,
   fontSize: 34,
-  textAlign: "center"
+  textAlign: "center",
+  color: Color.header
 };
 
 const normal = {
