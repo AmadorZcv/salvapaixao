@@ -8,21 +8,41 @@ export default class CarrinhoImage extends PureComponent {
     switch (id) {
       case "10000":
         return (
-          <Image source={require("../img/cart/spt-small.png")} style={style} />
+          <Image
+            source={require("../img/cart/spt-small.png")}
+            style={style}
+            resizeMode={"contain"}
+          />
         );
 
       case "10001":
         return (
-          <Image source={require("../img/cart/spt-small.png")} style={style} />
+          <Image
+            source={require("../img/cart/spt-small.png")}
+            style={style}
+            resizeMode={"contain"}
+          />
         );
       case "10100":
         return (
-          <Image source={require("../img/cart/spt-small.png")} style={style} />
+          <Image
+            source={require("../img/cart/spt-small.png")}
+            style={style}
+            resizeMode={"contain"}
+          />
         );
       case "11000":
         return (
           <Image
             source={require("../img/cart/spm-small.png")}
+            style={style}
+            resizeMode={"contain"}
+          />
+        );
+      case "12000":
+        return (
+          <Image
+            source={require("../img/cart/spr-small.png")}
             style={style}
             resizeMode={"contain"}
           />
