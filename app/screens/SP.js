@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Text, Image, ScrollView } from "react-native";
+import { Text, Image, ScrollView, Dimensions } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
@@ -13,12 +13,23 @@ class SP extends PureComponent {
   };
   render() {
     const { products, cart } = this.props;
+    const { width } = Dimensions.get;
     return (
       <ScrollView style={{ flex: 1 }}>
         <Image
           source={require("../img/product-screen/sp-tradicional-top.png")}
+          style={{ width, height: 190 }}
         />
-        <Text style={{ fontSize: 20, color: "black" }}> Papel + Bolha </Text>
+        <Text
+          style={{
+            fontSize: 20,
+            color: "black",
+            fontWeight: "400",
+            paddingLeft: 10
+          }}
+        >
+          Papel + Bolha
+        </Text>
         <SalvaPisoItem
           index={0}
           largura={products["10000"].largura}

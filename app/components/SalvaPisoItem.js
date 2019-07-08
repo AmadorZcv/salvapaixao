@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { integerToReal } from "../config/formatUtils";
 import { Icon } from "react-native-elements";
+import { Color } from "../styles";
 
 export default class SalvaPisoItem extends PureComponent {
   render() {
@@ -21,7 +22,14 @@ export default class SalvaPisoItem extends PureComponent {
     const formatPrecoFinal = precoFinal > 0 ? integerToReal(precoFinal) : "0";
     const backgroundColor = index % 2 === 0 ? "white" : "lightgray";
     return (
-      <View style={{ flexDirection: "row", backgroundColor, flex: 1 }}>
+      <View
+        style={{
+          flexDirection: "row",
+          backgroundColor,
+          flex: 1,
+          paddingLeft: 7
+        }}
+      >
         <View style={{ flexDirection: "row" }}>
           <View style={styles.column}>
             <Text style={styles.textInfo}>Largura</Text>
@@ -52,24 +60,16 @@ export default class SalvaPisoItem extends PureComponent {
             <Text style={styles.textValue}>R$ {integerToReal(ipiR)}</Text>
           </View>
         </View>
-        <View
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            marginHorizontal: 10
-          }}
-        >
-          <Text style={styles.textPreco}>Preço:</Text>
-          <Text style={styles.textPreco}>R$ {integerToReal(precoTotal)}</Text>
-        </View>
+
         <View style={{ flex: 1 }}>
-          <Text style={styles.textPreco}>Total:</Text>
-          <Text style={{ ...styles.textPreco }}>R$ {formatPrecoFinal}</Text>
+          <Text style={styles.textPreco}>R$ {integerToReal(precoTotal)}</Text>
+          <Text style={styles.textCusto}>Custo Total:</Text>
+          <Text style={styles.textValueFinal}>R$ {formatPrecoFinal}</Text>
           <View
             style={{
               flexDirection: "row",
-              marginTop: 20,
-              justifyContent: "space-between"
+              marginTop: 5,
+              justifyContent: "space-around"
             }}
           >
             <TouchableOpacity onPress={this.props.onMinus}>
@@ -90,18 +90,28 @@ const styles = StyleSheet.create({
     marginHorizontal: 5
   },
   textValue: {
-    color: "gray",
+    color: Color.secondaryText,
     textAlign: "center",
     paddingTop: 3
   },
   textInfo: {
     fontWeight: "bold",
     color: "black",
-    textAlign: "center"
+    textAlign: "center",
+    color: Color.primaryText,
+    fontWeight: "600"
   },
   textPreco: {
     fontSize: 20,
-    color: "black",
-    textAlign: "center"
+    color: Color.primaryText,
+    textAlign: "center",
+    fontWeight: "100",
+    marginBottom: 5
+  },
+  textCusto: { fontSize: 18, textAlign: "center", color: Color.secondaryText },
+  textValueFinal: {
+    fontSize: 20,
+    textAlign: "center",
+    color: Color.primaryText
   }
 });
