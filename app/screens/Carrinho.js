@@ -10,6 +10,7 @@ import {
   calculateTotalIpi
 } from "../redux/cart/reducer";
 import { integerToReal } from "../config/formatUtils";
+import { Color } from "../styles";
 
 class Carrinho extends PureComponent {
   onPlus = id => {
@@ -25,14 +26,16 @@ class Carrinho extends PureComponent {
         <View
           style={{
             flexDirection: "row",
-            backgroundColor: "lightgray",
-            marginVertical: 15
+            backgroundColor: Color.darkBackground,
+            marginTop: 21,
+            height: 30,
+            marginBottom: 16
           }}
         >
-          <Text style={{ flex: 7, textAlign: "center", borderRightWidth: 1 }}>
+          <Text style={{ textAlign: "center", textAlignVertical: "center", width: 259 }}>
             Produtos
           </Text>
-          <Text style={{ flex: 2, textAlign: "center" }}> SubTotal </Text>
+          <Text style={{ textAlign: "center", textAlignVertical: "center", width: 101 }}> SubTotal </Text>
         </View>
         <FlatList
           data={Object.keys(cart)}
@@ -134,11 +137,12 @@ const styles = StyleSheet.create({
     paddingLeft: 3
   },
   leftContainer: {
-    flex: 7,
+    width: 259,
 
     borderRightWidth: StyleSheet.hairlineWidth
   },
   rightContainer: {
-    flex: 2
+    width: 101,
+
   }
 });

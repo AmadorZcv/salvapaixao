@@ -23,7 +23,7 @@ export default class CarrinhoItem extends PureComponent {
       >
         <View
           style={{
-            flex: 7,
+            width: 259,
             flexDirection: "row",
             paddingVertical: 8,
             alignItems: "center",
@@ -33,7 +33,7 @@ export default class CarrinhoItem extends PureComponent {
           <CarrinhoImage id={item.id} />
           <CarrinhoText id={item.id} />
         </View>
-        <View style={{ flex: 2, paddingVertical: 8, alignItems: "center" }}>
+        <View style={{ width: 101, paddingVertical: 8, alignItems: "center" }}>
           <Text>R$ {integerToReal(total)}</Text>
           <View
             style={{
