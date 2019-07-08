@@ -25,6 +25,11 @@ export default class CarrinhoText extends PureComponent {
       case "17002":
       case "17003":
         return "Salva Bancada";
+      case "13000":
+      case "13100":
+      case "13200":
+      case "13300":
+        return "Salva Piso Limpeza";
     }
   }
   underName() {
@@ -58,6 +63,14 @@ export default class CarrinhoText extends PureComponent {
         return "Adesivo para Proteção (0,40m)"
       case "17003":
         return "Adesivo para Proteção (0,60m)(30m²)"
+      case "13000":
+        return "Pós Obra"
+      case "13100":
+        return "Limpeza Diária"
+      case "13200":
+        return "Limpa Pedras"
+      case "13300":
+        return "Limpa Rejunte";
     }
   }
 
