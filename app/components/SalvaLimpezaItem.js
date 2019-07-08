@@ -4,13 +4,13 @@ import { integerToReal } from "../config/formatUtils";
 import { Icon } from "react-native-elements";
 import { Color } from "../styles";
 
-export default class SalvaPinturaItem extends PureComponent {
+export default class SalvaLimpezaItem extends PureComponent {
     render() {
         const {
             index,
-            altura,
-            comprimento,
-            cobertura,
+            unidade,
+            diluicao,
+            rendimento,
             preco,
             ipi,
             ipiR,
@@ -20,7 +20,7 @@ export default class SalvaPinturaItem extends PureComponent {
         const precoTotal = preco + ipiR;
         const precoFinal = precoTotal * trueTotal;
         const formatPrecoFinal = precoFinal > 0 ? integerToReal(precoFinal) : "0";
-        const backgroundColor = index % 2 === 0 ? "white" : "lightgray";
+        const backgroundColor = index % 2 === 0 ? "white" : Color.darkBackground;
         return (
             <View
                 style={{
@@ -32,9 +32,9 @@ export default class SalvaPinturaItem extends PureComponent {
             >
                 <View style={{ flexDirection: "row" }}>
                     <View style={styles.column}>
-                        <Text style={styles.textInfo}>Altura</Text>
-                        <Text style={styles.textInfo}>(Metros)</Text>
-                        <Text style={styles.textValue}>{altura}</Text>
+                        <Text style={styles.textInfo}>Unidade</Text>
+                        <Text style={styles.textInfo}>(Litros)</Text>
+                        <Text style={styles.textValue}>{unidade}</Text>
                         <Text style={styles.textInfo}>Preço</Text>
                         <Text style={styles.textInfo}>(ICMS)</Text>
                         <Text style={styles.textValue}>R$ {integerToReal(preco)}</Text>
@@ -42,9 +42,9 @@ export default class SalvaPinturaItem extends PureComponent {
                 </View>
                 <View style={{ flexDirection: "row" }}>
                     <View style={styles.column}>
-                        <Text style={styles.textInfo}>Comprimento</Text>
-                        <Text style={styles.textInfo}>(Metros)</Text>
-                        <Text style={styles.textValue}>{comprimento}</Text>
+                        <Text style={styles.textInfo}>Diluição</Text>
+                        <Text style={styles.textInfo}>{" "}</Text>
+                        <Text style={styles.textValue}>{diluicao}</Text>
                         <Text style={styles.textInfo}>IPI</Text>
                         <Text style={styles.textInfo}>(%)</Text>
                         <Text style={styles.textValue}>{ipi}</Text>
@@ -52,9 +52,9 @@ export default class SalvaPinturaItem extends PureComponent {
                 </View>
                 <View style={{ flexDirection: "row" }}>
                     <View style={styles.column}>
-                        <Text style={styles.textInfo}>Cobertura</Text>
+                        <Text style={styles.textInfo}>Rendimento</Text>
                         <Text style={styles.textInfo}>(Metros²)</Text>
-                        <Text style={styles.textValue}>{cobertura}</Text>
+                        <Text style={styles.textValue}>{rendimento}</Text>
                         <Text style={styles.textInfo}>IPI</Text>
                         <Text style={styles.textInfo}>(R$)</Text>
                         <Text style={styles.textValue}>R$ {integerToReal(ipiR)}</Text>
@@ -74,7 +74,7 @@ export default class SalvaPinturaItem extends PureComponent {
                         <TouchableOpacity onPress={this.props.onMinus}>
                             <Icon name={"minus"} type={"feather"} />
                         </TouchableOpacity>
-                        <Text style={styles.textPreco}> {trueTotal} </Text>
+                        <Text style={styles.contadorText}> {trueTotal} </Text>
                         <TouchableOpacity onPress={this.props.onPlus}>
                             <Icon name={"plus"} type={"feather"} />
                         </TouchableOpacity>

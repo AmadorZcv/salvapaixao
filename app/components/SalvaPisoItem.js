@@ -68,8 +68,7 @@ export default class SalvaPisoItem extends PureComponent {
           <View
             style={{
               flexDirection: "row",
-              marginTop: 5,
-              justifyContent: "space-around"
+                            marginTop: 5, justifyContent: "center"
             }}
           >
             <TouchableOpacity onPress={this.props.onMinus}>
