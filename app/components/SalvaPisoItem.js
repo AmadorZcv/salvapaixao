@@ -27,48 +27,52 @@ export default class SalvaPisoItem extends PureComponent {
           flexDirection: "row",
           backgroundColor,
           flex: 1,
-          paddingLeft: 7
+          paddingLeft: 6,
+          height: 105,
+          paddingVertical: 9
         }}
       >
-        <View style={{ flexDirection: "row" }}>
-          <View style={styles.column}>
-            <Text style={styles.textInfo}>Largura</Text>
-            <Text style={styles.textInfo}>(Metros)</Text>
-            <Text style={styles.textValue}>{largura}</Text>
-            <Text style={styles.textInfo}>Preço</Text>
-            <Text style={styles.textInfo}>(ICMS)</Text>
-            <Text style={styles.textValue}>R$ {integerToReal(preco)}</Text>
+        <View style={{ flexDirection: "row", width: 187, justifyContent: "space-between" }}>
+          <View style={{ flexDirection: "row" }}>
+            <View style={styles.column}>
+              <Text style={styles.textInfo}>Largura</Text>
+              <Text style={styles.textInfo}>(Metros)</Text>
+              <Text style={styles.textValue}>{largura}</Text>
+              <Text style={styles.textInfo}>Preço</Text>
+              <Text style={styles.textInfo}>(ICMS)</Text>
+              <Text style={styles.textValue}>R$ {integerToReal(preco)}</Text>
+            </View>
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <View style={styles.column}>
+              <Text style={styles.textInfo}>Comprimento</Text>
+              <Text style={styles.textInfo}>(Metros)</Text>
+              <Text style={styles.textValue}>{comprimento}</Text>
+              <Text style={styles.textInfo}>IPI</Text>
+              <Text style={styles.textInfo}>(%)</Text>
+              <Text style={styles.textValue}>{ipi}</Text>
+            </View>
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <View style={styles.column}>
+              <Text style={styles.textInfo}>Cobertura</Text>
+              <Text style={styles.textInfo}>(Metros²)</Text>
+              <Text style={styles.textValue}>{cobertura}</Text>
+              <Text style={styles.textInfo}>IPI</Text>
+              <Text style={styles.textInfo}>(R$)</Text>
+              <Text style={styles.textValue}>R$ {integerToReal(ipiR)}</Text>
+            </View>
           </View>
         </View>
-        <View style={{ flexDirection: "row" }}>
-          <View style={styles.column}>
-            <Text style={styles.textInfo}>Comprimento</Text>
-            <Text style={styles.textInfo}>(Metros)</Text>
-            <Text style={styles.textValue}>{comprimento}</Text>
-            <Text style={styles.textInfo}>IPI</Text>
-            <Text style={styles.textInfo}>(%)</Text>
-            <Text style={styles.textValue}>{ipi}</Text>
-          </View>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <View style={styles.column}>
-            <Text style={styles.textInfo}>Cobertura</Text>
-            <Text style={styles.textInfo}>(Metros²)</Text>
-            <Text style={styles.textValue}>{cobertura}</Text>
-            <Text style={styles.textInfo}>IPI</Text>
-            <Text style={styles.textInfo}>(R$)</Text>
-            <Text style={styles.textValue}>R$ {integerToReal(ipiR)}</Text>
-          </View>
-        </View>
-
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 }} />
+        <View style={{ justifyContent: "center", alignItems: "center", paddingRight: 26 }}>
           <Text style={styles.textPreco}>R$ {integerToReal(precoTotal)}</Text>
           <Text style={styles.textCusto}>Custo Total:</Text>
           <Text style={styles.textValueFinal}>R$ {formatPrecoFinal}</Text>
           <View
             style={{
               flexDirection: "row",
-                            marginTop: 5, justifyContent: "center"
+              marginTop: 5, justifyContent: "center",
             }}
           >
             <TouchableOpacity onPress={this.props.onMinus}>
@@ -92,25 +96,27 @@ const styles = StyleSheet.create({
     color: Color.secondaryText,
     textAlign: "center",
     paddingTop: 3,
-    fontSize: 10
+    fontSize: 10, marginBottom: 10
   },
   textInfo: {
     textAlign: "center",
     color: Color.primaryText,
     fontWeight: "600",
-    fontSize: 10
+    fontSize: 10,
+
   },
   textPreco: {
     fontSize: 15,
     color: Color.secondaryText,
-    textAlign: "center",
+
     fontWeight: "100",
-    marginBottom: 5
+    marginBottom: 5,
+
   },
-  textCusto: { fontSize: 12, textAlign: "center", color: Color.primaryText },
+  textCusto: { fontSize: 12, color: Color.primaryText },
   textValueFinal: {
     fontSize: 16,
-    textAlign: "center",
+
     color: Color.primaryText
   },
   contadorText: {

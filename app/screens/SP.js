@@ -26,7 +26,10 @@ class SP extends PureComponent {
             fontSize: 16,
             color: Color.primaryText,
             paddingLeft: 10,
-            fontFamily: "Roboto-Black"
+            fontFamily: "Roboto-Black",
+
+            height: 31,
+            textAlignVertical: "center"
           }}
         >
           Papel + Bolha
