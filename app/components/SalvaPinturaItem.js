@@ -92,26 +92,32 @@ const styles = StyleSheet.create({
     textValue: {
         color: Color.secondaryText,
         textAlign: "center",
-        paddingTop: 3
+        paddingTop: 3,
+        fontSize: 10
     },
     textInfo: {
-        fontWeight: "bold",
-        color: "black",
         textAlign: "center",
         color: Color.primaryText,
-        fontWeight: "600"
+        fontWeight: "600",
+        fontSize: 10
     },
     textPreco: {
-        fontSize: 20,
-        color: Color.primaryText,
+        fontSize: 15,
+        color: Color.secondaryText,
         textAlign: "center",
         fontWeight: "100",
         marginBottom: 5
     },
-    textCusto: { fontSize: 18, textAlign: "center", color: Color.secondaryText },
+    textCusto: { fontSize: 12, textAlign: "center", color: Color.primaryText },
     textValueFinal: {
-        fontSize: 20,
+        fontSize: 16,
         textAlign: "center",
         color: Color.primaryText
+    },
+    contadorText: {
+        fontSize: 16,
+        color: Color.secondaryText,
+        textAlign: "center",
+        marginBottom: 5
     }
 });
