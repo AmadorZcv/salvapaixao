@@ -5,6 +5,7 @@ import CarrinhoImage from "./CarrinhoImage";
 import CarrinhoText from "./CarrinhoText";
 import { integerToReal } from "../config/formatUtils";
 import { Color } from "../styles";
+import Counter from "./Counter";
 
 export default class CarrinhoItem extends PureComponent {
   constructor(props) {
@@ -13,16 +14,14 @@ export default class CarrinhoItem extends PureComponent {
   }
   onLongPressPlus = () => {
     for (let index = 0; index <= 10; index++) {
-      this.props.onPlus()
-
+      this.props.onPlus();
     }
-  }
+  };
   onLongPressMinus = () => {
     for (let index = 0; index <= 10; index++) {
-      this.props.onMinus()
-
+      this.props.onMinus();
     }
-  }
+  };
   render() {
     const { item, index, total } = this.props;
     const backgroundColor = index % 2 === 0 ? Color.lightBackground : "white";
@@ -50,22 +49,12 @@ export default class CarrinhoItem extends PureComponent {
         </View>
         <View style={{ width: 101, paddingVertical: 8, alignItems: "center" }}>
           <Text>R$ {integerToReal(total)}</Text>
-          <View
-            style={{
-              flexDirection: "row",
 
-              justifyContent: "space-between",
-              alignItems: "center"
-            }}
-          >
-            <TouchableOpacity onPress={this.props.onMinus} onLongPress={this.onLongPressMinus}>
-              <Icon name={"minus"} type={"feather"} />
-            </TouchableOpacity>
-            <Text> {item.qtd} </Text>
-            <TouchableOpacity onPress={this.props.onPlus} onLongPress={this.onLongPressPlus} >
-              <Icon name={"plus"} type={"feather"} />
-            </TouchableOpacity>
-          </View>
+          <Counter
+            total={item.qtd}
+            onPlus={this.props.onPlus}
+            onMinus={this.props.onMinus}
+          />
         </View>
       </View>
     );

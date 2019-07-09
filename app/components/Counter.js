@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
-import { Icon } from "react-native-elements";
+import { Icon, Image } from "react-native-elements";
 import { contadorText } from "../styles/Text";
 
 export default class Counter extends PureComponent {
@@ -38,7 +38,10 @@ export default class Counter extends PureComponent {
           onPressIn={this.minusOne}
           onPressOut={this.stopTimer}
         >
-          <Icon name={"minus"} type={"feather"} />
+          <Image
+            source={require("../img/icons/minus.png")}
+            style={{ width: 24, height: 24 }}
+          />
         </TouchableOpacity>
         <Text style={contadorText}> {total} </Text>
         <TouchableOpacity
@@ -46,7 +49,10 @@ export default class Counter extends PureComponent {
           onPressIn={this.addOne}
           onPressOut={this.stopTimer}
         >
-          <Icon name={"plus"} type={"feather"} />
+          <Image
+            source={require("../img/icons/plus.png")}
+            style={{ width: 24, height: 24 }}
+          />
         </TouchableOpacity>
       </View>
     );
