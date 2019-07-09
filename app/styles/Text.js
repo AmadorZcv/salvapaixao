@@ -15,7 +15,7 @@ const normal = {
   fontSize: 24
 };
 //Base dos textos primários
-const primaryBig = {
+export const primaryBig = {
   fontSize: 16,
   color: Color.primaryText
 };

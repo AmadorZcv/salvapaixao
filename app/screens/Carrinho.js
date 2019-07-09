@@ -11,6 +11,7 @@ import {
 } from "../redux/cart/reducer";
 import { integerToReal } from "../config/formatUtils";
 import { Color } from "../styles";
+import { primaryBig } from "../styles/Text";
 
 class Carrinho extends PureComponent {
   onPlus = id => {
@@ -30,17 +31,31 @@ class Carrinho extends PureComponent {
               backgroundColor: Color.darkBackground,
               marginTop: 21,
               height: 30,
-              marginBottom: 16,
-
+              marginBottom: 16
             }}
           >
-            <Text style={{
-              textAlign: "center", textAlignVertical: "center", width: 259, borderRightWidth: StyleSheet.hairlineWidth,
-              borderColor: Color.divbarColor, color: Color.primaryText, fontSize: 16
-            }}>
+            <Text
+              style={{
+                ...primaryBig,
+                textAlign: "center",
+                textAlignVertical: "center",
+                width: 259,
+                borderRightWidth: StyleSheet.hairlineWidth,
+                borderColor: Color.divbarColor
+              }}
+            >
               Produtos
-          </Text>
-            <Text style={{ textAlign: "center", textAlignVertical: "center", width: 101, color: Color.primaryText, fontSize: 16 }}> SubTotal </Text>
+            </Text>
+            <Text
+              style={{
+                ...primaryBig,
+                textAlign: "center",
+                textAlignVertical: "center",
+                width: 101
+              }}
+            >
+              SubTotal
+            </Text>
           </View>
           <FlatList
             data={Object.keys(cart)}
@@ -64,12 +79,26 @@ class Carrinho extends PureComponent {
               marginBottom: 16
             }}
           >
-            <Text style={{ ...styles.leftContainer, textAlign: "center", textAlignVertical: "center", color: Color.primaryText, fontSize: 16 }}>
+            <Text
+              style={{
+                ...styles.leftContainer,
+                ...primaryBig,
+                textAlign: "center",
+                textAlignVertical: "center"
+              }}
+            >
               Informações
-          </Text>
-            <Text style={{ ...styles.rightContainer, textAlign: "center", textAlignVertical: "center", color: Color.primaryText, fontSize: 16 }}>
+            </Text>
+            <Text
+              style={{
+                ...styles.rightContainer,
+                ...primaryBig,
+                textAlign: "center",
+                textAlignVertical: "center"
+              }}
+            >
               Total
-          </Text>
+            </Text>
           </View>
 
           <View
@@ -116,7 +145,8 @@ class Carrinho extends PureComponent {
               </Text>
             </View>
           </View>
-        </ScrollView></View>
+        </ScrollView>
+      </View>
     );
   }
 }
@@ -145,7 +175,7 @@ const styles = StyleSheet.create({
     textAlignVertical: "center",
     fontSize: 20,
     paddingRight: 5,
-    height: 30,
+    height: 30
   },
   leftContainer: {
     width: 259,
@@ -154,7 +184,6 @@ const styles = StyleSheet.create({
     borderColor: Color.divbarColor
   },
   rightContainer: {
-    width: 101,
-
+    width: 101
   }
 });
