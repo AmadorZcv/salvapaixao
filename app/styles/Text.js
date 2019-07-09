@@ -14,6 +14,15 @@ const normal = {
   ...base,
   fontSize: 24
 };
+//Label dos produtos ex: Papel + Bolha
+export const productLabel = {
+  fontSize: 16,
+  color: Color.primaryText,
+  paddingLeft: 10,
+
+  height: 31,
+  textAlignVertical: "center"
+};
 
 const TextStyle = { header, normal };
 

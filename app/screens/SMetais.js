@@ -5,6 +5,7 @@ import { addToCart, removeFromCart } from "../redux/cart/actions";
 import { Color } from "../styles";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
 import SalvaPisoItem from "../components/SalvaPisoItem";
+import { productLabel } from "../styles/Text";
 class SMetais extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -21,16 +22,7 @@ class SMetais extends PureComponent {
           source={require("../img/product-screen/s-metais-top.png")}
           style={{ width, height: 190 }}
         />
-        <Text
-          style={{
-            fontSize: 16,
-            color: Color.primaryText,
-            paddingLeft: 10,
-            fontFamily: "Roboto-Black"
-          }}
-        >
-          Filme para Envolvimento
-        </Text>
+        <Text style={productLabel}>Filme para Envolvimento</Text>
         <SalvaPisoItem
           index={0}
           largura={products["16000"].largura}
@@ -43,7 +35,6 @@ class SMetais extends PureComponent {
           onMinus={() => this.onMinus("16000")}
           total={cart["16000"]}
         />
-
       </ScrollView>
     );
   }

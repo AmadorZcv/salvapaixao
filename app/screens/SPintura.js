@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
 import { Color } from "../styles";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
+import { productLabel } from "../styles/Text";
 class SPintura extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -20,16 +21,7 @@ class SPintura extends PureComponent {
           source={require("../img/product-screen/s-pintura-top.png")}
           style={{ width, height: 190 }}
         />
-        <Text
-          style={{
-            fontSize: 16,
-            color: Color.primaryText,
-            paddingLeft: 10,
-            fontFamily: "Roboto-Black"
-          }}
-        >
-          Proteção Pintura
-        </Text>
+        <Text style={productLabel}>Proteção Pintura</Text>
         <SalvaPinturaItem
           index={0}
           altura={products["14000"].altura}
@@ -88,4 +80,3 @@ const mapStateToProps = state => {
   return { products, cart };
 };
 export default connect(mapStateToProps)(SPintura);
-

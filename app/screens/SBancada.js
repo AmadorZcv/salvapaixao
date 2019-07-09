@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
 import { Color } from "../styles";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
+import { productLabel } from "../styles/Text";
 class SBancada extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -20,16 +21,7 @@ class SBancada extends PureComponent {
           source={require("../img/product-screen/s-bancada-top.png")}
           style={{ width, height: 190 }}
         />
-        <Text
-          style={{
-            fontSize: 16,
-            color: Color.primaryText,
-            paddingLeft: 10,
-            fontFamily: "Roboto-Black"
-          }}
-        >
-          Adesivo para Proteção
-        </Text>
+        <Text style={productLabel}>Adesivo para Proteção</Text>
         <SalvaPinturaItem
           index={0}
           altura={products["17000"].altura}

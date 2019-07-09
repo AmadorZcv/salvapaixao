@@ -4,6 +4,7 @@ import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
 import { Color } from "../styles";
+import { productLabel } from "../styles/Text";
 class SPResistente extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -20,16 +21,7 @@ class SPResistente extends PureComponent {
           source={require("../img/product-screen/sp-resistente-top.png")}
           style={{ width, height: 190 }}
         />
-        <Text
-          style={{
-            fontSize: 16,
-            color: Color.primaryText,
-            paddingLeft: 10,
-            fontFamily: "Roboto-Black"
-          }}
-        >
-          Papel + Manta Expandida
-        </Text>
+        <Text style={productLabel}>Papel + Manta Expandida</Text>
         <SalvaPisoItem
           index={0}
           largura={products["12000"].largura}

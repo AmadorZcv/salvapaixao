@@ -4,6 +4,7 @@ import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
 import { Color } from "../styles";
+import { productLabel } from "../styles/Text";
 class SPEspeciais extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -20,16 +21,7 @@ class SPEspeciais extends PureComponent {
           source={require("../img/product-screen/sp-madeira-top.png")}
           style={{ width, height: 190 }}
         />
-        <Text
-          style={{
-            fontSize: 16,
-            color: Color.primaryText,
-            paddingLeft: 10,
-            fontFamily: "Roboto-Black"
-          }}
-        >
-          Papel + Bolha + TNT
-        </Text>
+        <Text style={productLabel}>Papel + Bolha + TNT</Text>
         <SalvaPisoItem
           index={0}
           largura={products["11000"].largura}
