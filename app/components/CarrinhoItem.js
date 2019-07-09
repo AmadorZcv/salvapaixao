@@ -33,7 +33,7 @@ export default class CarrinhoItem extends PureComponent {
           height: 49
         }}
       >
-        <View
+        <TouchableOpacity
           style={{
             width: 259,
             flexDirection: "row",
@@ -43,10 +43,11 @@ export default class CarrinhoItem extends PureComponent {
             borderRightWidth: StyleSheet.hairlineWidth,
             borderColor: Color.divbarColor
           }}
+          onPress={this.props.onNavigate}
         >
           <CarrinhoImage id={item.id} />
           <CarrinhoText id={item.id} />
-        </View>
+        </TouchableOpacity>
         <View style={{ width: 101, paddingVertical: 8, alignItems: "center" }}>
           <Text>R$ {integerToReal(total)}</Text>
           <Counter
