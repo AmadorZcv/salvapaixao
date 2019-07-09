@@ -4,6 +4,7 @@ import { integerToReal } from "../config/formatUtils";
 
 import { textInfo, textValue } from "../styles/Text";
 import PrecoCustoCounter from "./PrecoCustoCounter";
+import { itemContainer, columnContainer } from "../styles/Containers";
 
 export default class SalvaPinturaItem extends PureComponent {
   render() {

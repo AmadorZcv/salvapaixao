@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
-import { Color } from "../styles";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
 import { productLabel } from "../styles/Text";
 class SPintura extends PureComponent {
