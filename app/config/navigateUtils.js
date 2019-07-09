@@ -3,11 +3,11 @@ export function navigateFromId(id) {
     case "10000":
     case "10001":
     case "10100":
-      return "SalvaBancada";
+      return "SalvaPiso";
     case "11000":
       return "SalvaPisoEspeciais";
     case "12000":
-      return "SalvaPiso";
+      return "SalvaPisoResistente";
     case "14000":
     case "14001":
     case "14002":
