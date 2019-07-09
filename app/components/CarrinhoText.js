@@ -9,11 +9,11 @@ export default class CarrinhoText extends PureComponent {
       case "10000":
       case "10001":
       case "10100":
-        return "Salva Piso Tradicional";
+        return "Tradicional";
       case "11000":
-        return "Salva Piso Madeira";
+        return "Madeira";
       case "12000":
-        return "Salva Piso Extra Resistente";
+        return "Extra Resistente";
       case "14000":
       case "14001":
       case "14002":
@@ -30,7 +30,7 @@ export default class CarrinhoText extends PureComponent {
       case "13100":
       case "13200":
       case "13300":
-        return "Salva Piso Limpeza";
+        return "Limpeza";
       case "19000":
       case "19001":
         return "Papelão Ondulado";
