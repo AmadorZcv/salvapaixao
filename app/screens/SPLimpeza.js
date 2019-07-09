@@ -37,7 +37,9 @@ class SPLimpeza extends PureComponent {
           onMinus={() => this.onMinus("13000")}
           total={cart["13000"]}
         />
-        <Text style={productLabel}>
+        <Text
+          style={{ ...productLabel, backgroundColor: Color.darkBackground }}
+        >
           Limpeza Diária (Cerâmica {"&"} Porcelanato)
         </Text>
         <SalvaLimpezaItem
@@ -65,7 +67,11 @@ class SPLimpeza extends PureComponent {
           onMinus={() => this.onMinus("13200")}
           total={cart["13200"]}
         />
-        <Text style={productLabel}>Limpeza Pesada Pós Obra (Porcelanato)</Text>
+        <Text
+          style={{ ...productLabel, backgroundColor: Color.darkBackground }}
+        >
+          Limpeza Pesada Pós Obra (Porcelanato)
+        </Text>
         <SalvaLimpezaItem
           index={3}
           unidade={products["13300"].usidade}
