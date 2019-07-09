@@ -12,6 +12,7 @@ import {
 import { integerToReal } from "../config/formatUtils";
 import { Color } from "../styles";
 import { primaryBig } from "../styles/Text";
+import { navigateFromId } from "../config/navigateUtils";
 
 class Carrinho extends PureComponent {
   onPlus = id => {
@@ -19,6 +20,9 @@ class Carrinho extends PureComponent {
   };
   onMinus = id => {
     this.props.dispatch(removeFromCart(id));
+  };
+  onNavigate = id => {
+    this.props.navigation.navigate(navigateFromId(id));
   };
   render() {
     const { cart, products, totalComIpi, subTotal, totalIpi } = this.props;
@@ -66,6 +70,7 @@ class Carrinho extends PureComponent {
                 onPlus={() => this.onPlus(item)}
                 onMinus={() => this.onMinus(item)}
                 total={calculateItemTotal(cart, products, item)}
+                onNavigate={() => this.onNavigate(item)}
               />
             )}
             keyExtractor={item => item.toString()}
