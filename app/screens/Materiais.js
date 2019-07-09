@@ -79,8 +79,8 @@ class Materiais extends PureComponent {
               ipi={products[item].ipi}
               ipiR={products[item].ipic}
               comprimento={products[item].comprimento}
-              onPlus={() => this.onPlus("14001")}
-              onMinus={() => this.onMinus("14001")}
+              onPlus={() => this.onPlus(item)}
+              onMinus={() => this.onMinus(item)}
               total={cart[item]}
             />
           )}
@@ -98,8 +98,8 @@ class Materiais extends PureComponent {
               ipi={products[item].ipi}
               ipiR={products[item].ipic}
               comprimento={products[item].comprimento}
-              onPlus={() => this.onPlus("14001")}
-              onMinus={() => this.onMinus("14001")}
+              onPlus={() => this.onPlus(item)}
+              onMinus={() => this.onMinus(item)}
               total={cart[item]}
             />
           )}
