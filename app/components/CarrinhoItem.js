@@ -49,7 +49,6 @@ export default class CarrinhoItem extends PureComponent {
         </View>
         <View style={{ width: 101, paddingVertical: 8, alignItems: "center" }}>
           <Text>R$ {integerToReal(total)}</Text>
-
           <Counter
             total={item.qtd}
             onPlus={this.props.onPlus}
