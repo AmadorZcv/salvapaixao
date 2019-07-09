@@ -87,6 +87,28 @@ export default class CarrinhoText extends PureComponent {
         return "Limpa Pedras";
       case "13300":
         return "Limpa Rejunte";
+      case "19000":
+        return "Largura: 1,2m Comprimento: 25m";
+      case "19001":
+        return "Largura: 1,2m Comprimento: 50m";
+      case "19100":
+        return "Largura: 6m Comprimento: 5m";
+      case "19101":
+        return "Largura: 5m Comprimento: 4m";
+      case "19102":
+        return "Largura: 4m Comprimento: 5m";
+      case "19103":
+        return "Largura: 4m Comprimento: 3m";
+      case "19104":
+        return "Largura: 3m Comprimento: 3m";
+      case "19105":
+        return "Largura: 3m Comprimento: 2m";
+      case "19200":
+        return "Altura: 1,8cm Comprimento: 50m"
+      case "19201":
+        return "Altura: 4,8cm Comprimento: 50m";
+      case "19300":
+        return "Altura: 4,8cm Comprimento: 50m";
     }
   }
 
