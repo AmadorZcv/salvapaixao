@@ -230,7 +230,7 @@ const HomeStack = createStackNavigator(
       screen: Carrinho,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Carrinho"
+          headerTitle: "Orçamento"
         };
       }
     }
