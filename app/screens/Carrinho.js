@@ -173,14 +173,16 @@ const styles = StyleSheet.create({
     textAlignVertical: "center",
     fontSize: 17,
     height: 30,
-    paddingLeft: 34
+    paddingLeft: 34,
+    color: Color.primaryText
   },
   informaçõesValue: {
     textAlign: "left",
     textAlignVertical: "center",
     fontSize: 17,
     paddingLeft: 3.5,
-    height: 30
+    height: 30,
+    color: Color.primaryText
   },
   leftContainer: {
     width: 259,
