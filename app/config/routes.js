@@ -262,7 +262,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 24, width: 24 }}
                 source={require("../img/icons/home.png")}
               />
             </TouchableOpacity>
