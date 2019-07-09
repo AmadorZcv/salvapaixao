@@ -115,7 +115,7 @@ const HomeStack = createStackNavigator(
       screen: SPEspeciais,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Salva Piso Especiais",
+          headerTitle: "Salva Piso Madeira",
 
           headerRight: (
             <TouchableOpacity
