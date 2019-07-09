@@ -166,15 +166,15 @@ const styles = StyleSheet.create({
   informaçõesText: {
     textAlign: "left",
     textAlignVertical: "center",
-    fontSize: 20,
+    fontSize: 17,
     height: 30,
     paddingLeft: 34
   },
   informaçõesValue: {
-    textAlign: "right",
+    textAlign: "left",
     textAlignVertical: "center",
-    fontSize: 20,
-    paddingRight: 5,
+    fontSize: 17,
+    paddingLeft: 3.5,
     height: 30
   },
   leftContainer: {
