@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
 import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/cart/actions";
+import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import { Color } from "../styles";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
 import { productLabel } from "../styles/Text";
@@ -11,6 +11,9 @@ class SBancada extends PureComponent {
   };
   onMinus = id => {
     this.props.dispatch(removeFromCart(id));
+  };
+  onChange = (qtd, id) => {
+    this.props.dispatch(setQtdCart(qtd, id));
   };
   render() {
     const { products, cart } = this.props;
@@ -32,6 +35,7 @@ class SBancada extends PureComponent {
           comprimento={products["17000"].comprimento}
           onPlus={() => this.onPlus("17000")}
           onMinus={() => this.onMinus("17000")}
+          onChange={qtd => this.onChange(qtd, "17000")}
           total={cart["17000"]}
         />
         <SalvaPinturaItem
@@ -44,6 +48,7 @@ class SBancada extends PureComponent {
           comprimento={products["17001"].comprimento}
           onPlus={() => this.onPlus("17001")}
           onMinus={() => this.onMinus("17001")}
+          onChange={qtd => this.onChange(qtd, "17001")}
           total={cart["17001"]}
         />
         <SalvaPinturaItem
@@ -56,6 +61,7 @@ class SBancada extends PureComponent {
           comprimento={products["17002"].comprimento}
           onPlus={() => this.onPlus("17002")}
           onMinus={() => this.onMinus("17002")}
+          onChange={qtd => this.onChange(qtd, "17002")}
           total={cart["17002"]}
         />
         <SalvaPinturaItem
@@ -68,6 +74,7 @@ class SBancada extends PureComponent {
           comprimento={products["17003"].comprimento}
           onPlus={() => this.onPlus("17003")}
           onMinus={() => this.onMinus("17003")}
+          onChange={qtd => this.onChange(qtd, "17003")}
           total={cart["17003"]}
         />
       </ScrollView>

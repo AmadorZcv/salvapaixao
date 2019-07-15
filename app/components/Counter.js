@@ -20,7 +20,7 @@ export default class Counter extends PureComponent {
     this.setState({ modal: false });
   };
   render() {
-    const { total, onMinus, onPlus, precoFinal } = this.props;
+    const { total, onMinus, onPlus, precoFinal, onChange } = this.props;
 
     return (
       <View
@@ -52,6 +52,7 @@ export default class Counter extends PureComponent {
           total={total}
           onMinus={onMinus}
           onPlus={onPlus}
+          onChange={onChange}
         />
       </View>
     );

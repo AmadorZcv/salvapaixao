@@ -1,9 +1,7 @@
 import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
 import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/cart/actions";
-import { Color } from "../styles";
-import SalvaPinturaItem from "../components/SalvaPinturaItem";
+import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { productLabel } from "../styles/Text";
 class SMetais extends PureComponent {
@@ -12,6 +10,9 @@ class SMetais extends PureComponent {
   };
   onMinus = id => {
     this.props.dispatch(removeFromCart(id));
+  };
+  onChange = (qtd, id) => {
+    this.props.dispatch(setQtdCart(qtd, id));
   };
   render() {
     const { products, cart } = this.props;
@@ -33,6 +34,7 @@ class SMetais extends PureComponent {
           comprimento={products["16000"].comprimento}
           onPlus={() => this.onPlus("16000")}
           onMinus={() => this.onMinus("16000")}
+          onChange={qtd => this.onChange(qtd, "16000")}
           total={cart["16000"]}
         />
       </ScrollView>

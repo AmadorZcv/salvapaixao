@@ -57,6 +57,7 @@ export default class SalvaPinturaItem extends PureComponent {
         <PrecoCustoCounter
           onPlus={this.props.onPlus}
           onMinus={this.props.onMinus}
+          onChange={this.props.onChange}
           total={trueTotal}
           precoTotal={precoTotal}
           precoFinal={formatPrecoFinal}

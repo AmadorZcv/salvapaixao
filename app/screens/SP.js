@@ -2,8 +2,8 @@ import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/cart/actions";
-import { Color } from "../styles";
+import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
+
 import { productLabel } from "../styles/Text";
 
 class SP extends PureComponent {
@@ -12,6 +12,9 @@ class SP extends PureComponent {
   };
   onMinus = id => {
     this.props.dispatch(removeFromCart(id));
+  };
+  onChange = (qtd, id) => {
+    this.props.dispatch(setQtdCart(qtd, id));
   };
   render() {
     const { products, cart } = this.props;
@@ -33,6 +36,7 @@ class SP extends PureComponent {
           comprimento={products["10000"].comprimento}
           onPlus={() => this.onPlus("10000")}
           onMinus={() => this.onMinus("10000")}
+          onChange={qtd => this.onChange(qtd, "10000")}
           total={cart["10000"]}
         />
         <SalvaPisoItem
@@ -45,6 +49,7 @@ class SP extends PureComponent {
           comprimento={products["10001"].comprimento}
           onPlus={() => this.onPlus("10001")}
           onMinus={() => this.onMinus("10001")}
+          onChange={qtd => this.onChange(qtd, "10001")}
           total={cart["10001"]}
         />
 
@@ -59,6 +64,7 @@ class SP extends PureComponent {
           comprimento={products["10100"].comprimento}
           onPlus={() => this.onPlus("10100")}
           onMinus={() => this.onMinus("10100")}
+          onChange={qtd => this.onChange(qtd, "10100")}
           total={cart["10100"]}
         />
       </ScrollView>

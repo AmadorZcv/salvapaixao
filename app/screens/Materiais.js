@@ -2,8 +2,7 @@ import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/cart/actions";
-import { Color } from "../styles";
+import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import { productLabel } from "../styles/Text";
 import { FlatList } from "react-native-gesture-handler";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
@@ -14,6 +13,9 @@ class Materiais extends PureComponent {
   };
   onMinus = id => {
     this.props.dispatch(removeFromCart(id));
+  };
+  onChange = (qtd, id) => {
+    this.props.dispatch(setQtdCart(qtd, id));
   };
   render() {
     const { products, cart } = this.props;
@@ -43,6 +45,7 @@ class Materiais extends PureComponent {
               comprimento={products[item].comprimento}
               onPlus={() => this.onPlus(item)}
               onMinus={() => this.onMinus(item)}
+              onChange={qtd => this.onChange(qtd, item)}
               total={cart[item]}
             />
           )}
@@ -62,6 +65,7 @@ class Materiais extends PureComponent {
               comprimento={products[item].comprimento}
               onPlus={() => this.onPlus(item)}
               onMinus={() => this.onMinus(item)}
+              onChange={qtd => this.onChange(qtd, item)}
               total={cart[item]}
             />
           )}
@@ -81,6 +85,7 @@ class Materiais extends PureComponent {
               comprimento={products[item].comprimento}
               onPlus={() => this.onPlus(item)}
               onMinus={() => this.onMinus(item)}
+              onChange={qtd => this.onChange(qtd, item)}
               total={cart[item]}
             />
           )}
@@ -100,6 +105,7 @@ class Materiais extends PureComponent {
               comprimento={products[item].comprimento}
               onPlus={() => this.onPlus(item)}
               onMinus={() => this.onMinus(item)}
+              onChange={qtd => this.onChange(qtd, item)}
               total={cart[item]}
             />
           )}

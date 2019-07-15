@@ -4,19 +4,47 @@ import { Overlay, Image } from "react-native-elements";
 import { textValueFinal, contadorText } from "../styles/Text";
 
 export default class ModalQuantidade extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: ""
+    };
+  }
+
+  onChangeText = text => {
+    const { onChange } = this.props;
+    const cleanText = text.replace(/[^\d.-]/g, "");
+    this.setState({ text: cleanText });
+    if (cleanText !== "") {
+      //Se for uma string de numeros e não vazia
+      if (cleanText.match(/^\d+$/)) {
+        onChange(cleanText);
+      }
+    }
+  };
+  onBackdropPress = () => {
+    const { onCloseModal, onChange } = this.props;
+    onChange(this.state.text);
+    onCloseModal();
+  };
+  componentDidMount() {
+    const { total } = this.props;
+    this.setState({ text: total.toString() });
+  }
   render() {
     const {
       total,
       onMinus,
       onPlus,
       precoFinal,
-      onCloseModal,
+
       isVisible
     } = this.props;
     return (
       <Overlay
         isVisible={isVisible}
-        onBackdropPress={onCloseModal}
+        onBackdropPress={this.onBackdropPress}
         overlayStyle={{
           height: 118,
           width: 209,
@@ -42,9 +70,13 @@ export default class ModalQuantidade extends PureComponent {
               />
             </TouchableOpacity>
 
-            <TextInput style={{ ...contadorText, fontSize: 28, flex: 1 }}>
-              {total}
-            </TextInput>
+            <TextInput
+              style={{ ...contadorText, fontSize: 28, flex: 1 }}
+              autoFocus={true}
+              keyboardType={"numeric"}
+              onChangeText={this.onChangeText}
+              value={this.state.text}
+            />
 
             <TouchableOpacity onPress={onPlus}>
               <Image

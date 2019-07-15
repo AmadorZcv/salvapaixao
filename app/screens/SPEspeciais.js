@@ -2,8 +2,7 @@ import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/cart/actions";
-import { Color } from "../styles";
+import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import { productLabel } from "../styles/Text";
 class SPEspeciais extends PureComponent {
   onPlus = id => {
@@ -11,6 +10,9 @@ class SPEspeciais extends PureComponent {
   };
   onMinus = id => {
     this.props.dispatch(removeFromCart(id));
+  };
+  onChange = (qtd, id) => {
+    this.props.dispatch(setQtdCart(qtd, id));
   };
   render() {
     const { products, cart } = this.props;
@@ -32,6 +34,7 @@ class SPEspeciais extends PureComponent {
           comprimento={products["11000"].comprimento}
           onPlus={() => this.onPlus("11000")}
           onMinus={() => this.onMinus("11000")}
+          onChange={qtd => this.onChange(qtd, "11000")}
           total={cart["11000"]}
         />
       </ScrollView>

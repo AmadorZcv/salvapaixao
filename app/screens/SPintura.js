@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
 import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/cart/actions";
+import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
 import { productLabel } from "../styles/Text";
 class SPintura extends PureComponent {
@@ -10,6 +10,9 @@ class SPintura extends PureComponent {
   };
   onMinus = id => {
     this.props.dispatch(removeFromCart(id));
+  };
+  onChange = (qtd, id) => {
+    this.props.dispatch(setQtdCart(qtd, id));
   };
   render() {
     const { products, cart } = this.props;
@@ -31,6 +34,7 @@ class SPintura extends PureComponent {
           comprimento={products["14000"].comprimento}
           onPlus={() => this.onPlus("14000")}
           onMinus={() => this.onMinus("14000")}
+          onChange={qtd => this.onChange(qtd, "14000")}
           total={cart["14000"]}
         />
         <SalvaPinturaItem
@@ -43,6 +47,7 @@ class SPintura extends PureComponent {
           comprimento={products["14001"].comprimento}
           onPlus={() => this.onPlus("14001")}
           onMinus={() => this.onMinus("14001")}
+          onChange={qtd => this.onChange(qtd, "14001")}
           total={cart["14001"]}
         />
         <SalvaPinturaItem
@@ -55,6 +60,7 @@ class SPintura extends PureComponent {
           comprimento={products["14002"].comprimento}
           onPlus={() => this.onPlus("14002")}
           onMinus={() => this.onMinus("14002")}
+          onChange={qtd => this.onChange(qtd, "14002")}
           total={cart["14002"]}
         />
         <SalvaPinturaItem
@@ -67,6 +73,7 @@ class SPintura extends PureComponent {
           comprimento={products["14003"].comprimento}
           onPlus={() => this.onPlus("14003")}
           onMinus={() => this.onMinus("14003")}
+          onChange={qtd => this.onChange(qtd, "14003")}
           total={cart["14003"]}
         />
       </ScrollView>

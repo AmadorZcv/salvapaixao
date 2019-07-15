@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
 
 import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/cart/actions";
+import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import { Color } from "../styles";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
 import SalvaLimpezaItem from "../components/SalvaLimpezaItem";
@@ -14,6 +14,9 @@ class SPLimpeza extends PureComponent {
   };
   onMinus = id => {
     this.props.dispatch(removeFromCart(id));
+  };
+  onChange = (qtd, id) => {
+    this.props.dispatch(setQtdCart(qtd, id));
   };
   render() {
     const { products, cart } = this.props;
@@ -35,6 +38,7 @@ class SPLimpeza extends PureComponent {
           rendimento={products["13000"].rendimento}
           onPlus={() => this.onPlus("13000")}
           onMinus={() => this.onMinus("13000")}
+          onChange={qtd => this.onChange(qtd, "13000")}
           total={cart["13000"]}
         />
         <Text
@@ -52,6 +56,7 @@ class SPLimpeza extends PureComponent {
           rendimento={products["13100"].rendimento}
           onPlus={() => this.onPlus("13100")}
           onMinus={() => this.onMinus("13100")}
+          onChange={qtd => this.onChange(qtd, "13100")}
           total={cart["13100"]}
         />
         <Text style={productLabel}>Limpeza Predas</Text>
@@ -65,6 +70,7 @@ class SPLimpeza extends PureComponent {
           rendimento={products["13200"].rendimento}
           onPlus={() => this.onPlus("13200")}
           onMinus={() => this.onMinus("13200")}
+          onChange={qtd => this.onChange(qtd, "13200")}
           total={cart["13200"]}
         />
         <Text
@@ -82,6 +88,7 @@ class SPLimpeza extends PureComponent {
           rendimento={products["13300"].rendimento}
           onPlus={() => this.onPlus("13300")}
           onMinus={() => this.onMinus("13300")}
+          onChange={qtd => this.onChange(qtd, "13300")}
           total={cart["13300"]}
         />
       </ScrollView>

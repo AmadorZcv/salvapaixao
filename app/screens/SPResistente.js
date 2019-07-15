@@ -3,7 +3,7 @@ import { Text, Image, ScrollView, Dimensions } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/cart/actions";
-import { Color } from "../styles";
+
 import { productLabel } from "../styles/Text";
 class SPResistente extends PureComponent {
   onPlus = id => {
@@ -11,6 +11,9 @@ class SPResistente extends PureComponent {
   };
   onMinus = id => {
     this.props.dispatch(removeFromCart(id));
+  };
+  onChange = (qtd, id) => {
+    this.props.dispatch(setQtdCart(qtd, id));
   };
   render() {
     const { products, cart } = this.props;
@@ -32,6 +35,7 @@ class SPResistente extends PureComponent {
           comprimento={products["12000"].comprimento}
           onPlus={() => this.onPlus("12000")}
           onMinus={() => this.onMinus("12000")}
+          onChange={qtd => this.onChange(qtd, "12000")}
           total={cart["12000"]}
         />
       </ScrollView>

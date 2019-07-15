@@ -7,7 +7,14 @@ import { textPreco, textCusto, textValueFinal } from "../styles/Text";
 
 export default class PrecoCustoCounter extends PureComponent {
   render() {
-    const { precoTotal, precoFinal, total, onMinus, onPlus } = this.props;
+    const {
+      precoTotal,
+      precoFinal,
+      total,
+      onMinus,
+      onPlus,
+      onChange
+    } = this.props;
     return (
       <View style={precoValueContainer}>
         <Text style={textPreco}>R$ {integerToReal(precoTotal)}</Text>
@@ -18,6 +25,7 @@ export default class PrecoCustoCounter extends PureComponent {
           onMinus={onMinus}
           total={total}
           precoFinal={precoFinal}
+          onChange={onChange}
         />
       </View>
     );
