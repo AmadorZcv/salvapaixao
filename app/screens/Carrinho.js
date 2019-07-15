@@ -6,7 +6,8 @@ import {
   addToCart,
   removeFromCart,
   setQtdCart,
-  removeItem
+  removeItem,
+  cleanCart
 } from "../redux/cart/actions";
 import {
   calculateItemTotal,
@@ -21,6 +22,9 @@ import { navigateFromId } from "../config/navigateUtils";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 class Carrinho extends PureComponent {
+  onClean = () => {
+    this.props.dispatch(cleanCart());
+  };
   onPlus = id => {
     this.props.dispatch(addToCart(id));
   };
@@ -44,7 +48,10 @@ class Carrinho extends PureComponent {
           <View
             style={{ marginTop: 10, alignItems: "flex-end", marginBottom: 5 }}
           >
-            <TouchableOpacity style={{ paddingRight: 5 }}>
+            <TouchableOpacity
+              style={{ paddingRight: 5 }}
+              onPress={this.onClean}
+            >
               <Text style={{ color: Color.secondaryText, fontSize: 13 }}>
                 Limpar Carrinho
               </Text>
@@ -101,7 +108,10 @@ class Carrinho extends PureComponent {
           <View
             style={{ marginTop: 15, alignItems: "flex-end", marginBottom: 5 }}
           >
-            <TouchableOpacity style={{ paddingRight: 5 }}>
+            <TouchableOpacity
+              style={{ paddingRight: 5 }}
+              onPress={this.onClean}
+            >
               <Text style={{ color: Color.secondaryText, fontSize: 13 }}>
                 Limpar Carrinho
               </Text>
