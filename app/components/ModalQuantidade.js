@@ -31,20 +31,12 @@ export default class ModalQuantidade extends PureComponent {
   };
   onBackdropPress = () => {
     const { onCloseModal, onChange } = this.props;
-    console.log("My text is", this.state.text);
     onChange(this.state.text);
     onCloseModal();
   };
 
   render() {
-    const {
-      total,
-      onMinus,
-      onPlus,
-      precoFinal,
-
-      isVisible
-    } = this.props;
+    const { onMinus, onPlus, precoFinal, isVisible } = this.props;
     return (
       <Overlay
         isVisible={isVisible}

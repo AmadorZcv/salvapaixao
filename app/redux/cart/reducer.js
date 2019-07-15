@@ -6,7 +6,6 @@ const initialState = {
 
 const removeFromCart = (state, id) => {
   if (state.cart[id] !== undefined) {
-    console.log("here maybe22");
     const qtd = state.cart[id].qtd - 1;
     if (qtd <= 0) {
       return update(state, {
@@ -39,7 +38,6 @@ export default (state = initialState, action) => {
       const parsedNumber = parseInt(action.payload.qtd, 10);
       const idHere = action.payload.id;
       const qtdHere = !isNaN(parsedNumber) ? parsedNumber : 0;
-      console.log("qtd is", qtdHere);
       if (qtdHere === 0) {
         return update(state, {
           cart: { $unset: [idHere] }
