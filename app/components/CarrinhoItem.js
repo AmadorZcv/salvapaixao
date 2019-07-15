@@ -54,6 +54,8 @@ export default class CarrinhoItem extends PureComponent {
             total={item.qtd}
             onPlus={this.props.onPlus}
             onMinus={this.props.onMinus}
+            onChange={this.props.onChange}
+            precoFinal={integerToReal(total)}
           />
         </View>
       </View>
