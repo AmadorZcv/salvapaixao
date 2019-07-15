@@ -22,8 +22,7 @@ export default class ModalQuantidade extends PureComponent {
           width: 209,
           borderRadius: 5,
           backgroundColor: "#FAFAFA",
-          padding: 20,
-          paddingHorizontal: 40
+          padding: 20
         }}
       >
         <View>
@@ -39,7 +38,7 @@ export default class ModalQuantidade extends PureComponent {
             <TouchableOpacity onPress={onMinus}>
               <Image
                 source={require("../img/icons/minus.png")}
-                style={{ width: 24, height: 24 }}
+                style={{ width: 30, height: 30 }}
               />
             </TouchableOpacity>
 
@@ -50,7 +49,7 @@ export default class ModalQuantidade extends PureComponent {
             <TouchableOpacity onPress={onPlus}>
               <Image
                 source={require("../img/icons/plus.png")}
-                style={{ width: 24, height: 24 }}
+                style={{ width: 30, height: 30 }}
               />
             </TouchableOpacity>
           </View>
