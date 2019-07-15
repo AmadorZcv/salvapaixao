@@ -13,7 +13,12 @@ export default class PrecoCustoCounter extends PureComponent {
         <Text style={textPreco}>R$ {integerToReal(precoTotal)}</Text>
         <Text style={textCusto}>Custo Total:</Text>
         <Text style={textValueFinal}>R$ {precoFinal}</Text>
-        <Counter onPlus={onPlus} onMinus={onMinus} total={total} />
+        <Counter
+          onPlus={onPlus}
+          onMinus={onMinus}
+          total={total}
+          precoFinal={precoFinal}
+        />
       </View>
     );
   }

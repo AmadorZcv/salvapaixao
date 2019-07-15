@@ -1,12 +1,26 @@
 import React, { PureComponent } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
-import { Image } from "react-native-elements";
-import { contadorText } from "../styles/Text";
+import { Image, Overlay } from "react-native-elements";
+import { contadorText, textValueFinal } from "../styles/Text";
+import ModalQuantidade from "./ModalQuantidade";
 
 export default class Counter extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      modal: false
+    };
+  }
+  openModal = () => {
+    this.setState({ modal: true });
+  };
+  closeModal = () => {
+    this.setState({ modal: false });
+  };
   render() {
-    const { total, onMinus, onPlus } = this.props;
+    const { total, onMinus, onPlus, precoFinal } = this.props;
 
     return (
       <View
@@ -22,13 +36,23 @@ export default class Counter extends PureComponent {
             style={{ width: 24, height: 24 }}
           />
         </TouchableOpacity>
-        <Text style={contadorText}> {total} </Text>
+        <TouchableOpacity onPress={this.openModal}>
+          <Text style={contadorText}> {total} </Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={onPlus}>
           <Image
             source={require("../img/icons/plus.png")}
             style={{ width: 24, height: 24 }}
           />
         </TouchableOpacity>
+        <ModalQuantidade
+          isVisible={this.state.modal}
+          onCloseModal={this.closeModal}
+          precoFinal={precoFinal}
+          total={total}
+          onMinus={onMinus}
+          onPlus={onPlus}
+        />
       </View>
     );
   }
