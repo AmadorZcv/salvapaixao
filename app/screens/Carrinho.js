@@ -18,6 +18,7 @@ import { integerToReal } from "../config/formatUtils";
 import { Color } from "../styles";
 import { primaryBig } from "../styles/Text";
 import { navigateFromId } from "../config/navigateUtils";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 class Carrinho extends PureComponent {
   onPlus = id => {
@@ -41,10 +42,19 @@ class Carrinho extends PureComponent {
       <View style={{ paddingBottom: 18 }}>
         <ScrollView>
           <View
+            style={{ marginTop: 10, alignItems: "flex-end", marginBottom: 5 }}
+          >
+            <TouchableOpacity style={{ paddingRight: 5 }}>
+              <Text style={{ color: Color.secondaryText, fontSize: 13 }}>
+                Limpar Carrinho
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View
             style={{
               flexDirection: "row",
               backgroundColor: Color.darkBackground,
-              marginTop: 21,
+
               height: 30,
               marginBottom: 16
             }}
@@ -89,10 +99,19 @@ class Carrinho extends PureComponent {
             keyExtractor={item => item.toString()}
           />
           <View
+            style={{ marginTop: 15, alignItems: "flex-end", marginBottom: 5 }}
+          >
+            <TouchableOpacity style={{ paddingRight: 5 }}>
+              <Text style={{ color: Color.secondaryText, fontSize: 13 }}>
+                Limpar Carrinho
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View
             style={{
               flexDirection: "row",
               backgroundColor: Color.darkBackground,
-              marginTop: 21,
+
               height: 30,
               marginBottom: 16
             }}
