@@ -4,9 +4,25 @@ const initialState = {
   cart: {}
 };
 
+const removeFromCart = (state, id) => {
+  if (state.cart[id] !== undefined) {
+    console.log("here maybe22");
+    const qtd = state.cart[id].qtd - 1;
+    if (qtd <= 0) {
+      return update(state, {
+        cart: { $unset: [id] }
+      });
+    } else {
+      return update(state, {
+        cart: { [id]: { $set: { id: id, qtd: qtd } } }
+      });
+    }
+  }
+};
 export default (state = initialState, action) => {
   const id = action.payload;
   const isInCart = state.cart[id] !== undefined;
+
   switch (action.type) {
     case ADD_TO_CART:
       if (isInCart) {
@@ -18,25 +34,22 @@ export default (state = initialState, action) => {
         return update(state, { cart: { [id]: { $set: { id: id, qtd: 1 } } } });
       }
     case REMOVE_FROM_CART:
-      if (isInCart) {
-        const qtd = state.cart[id].qtd - 1;
-        if (qtd <= 0) {
-          return update(state, {
-            cart: { $unset: [id] }
-          });
-        } else {
-          return update(state, {
-            cart: { [id]: { $set: { id: id, qtd: qtd } } }
-          });
-        }
-      }
+      return removeFromCart(state, id);
     case SET_QTD:
       const parsedNumber = parseInt(action.payload.qtd, 10);
       const idHere = action.payload.id;
-      const qtdHere = parsedNumber !== NaN ? parsedNumber : 0;
-      return update(state, {
-        cart: { [idHere]: { $set: { id: idHere, qtd: qtdHere } } }
-      });
+      const qtdHere = !isNaN(parsedNumber) ? parsedNumber : 0;
+      console.log("qtd is", qtdHere);
+      if (qtdHere === 0) {
+        return update(state, {
+          cart: { $unset: [idHere] }
+        });
+      } else {
+        return update(state, {
+          cart: { [idHere]: { $set: { id: idHere, qtd: qtdHere } } }
+        });
+      }
+
     default:
       return state;
   }

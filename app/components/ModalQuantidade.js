@@ -8,8 +8,14 @@ export default class ModalQuantidade extends PureComponent {
     super(props);
 
     this.state = {
-      text: ""
+      text: "",
+      isVisible: false
     };
+  }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return nextProps.isVisible === prevState.isVisible
+      ? {}
+      : { text: nextProps.total.toString(), isVisible: nextProps.isVisible };
   }
 
   onChangeText = text => {
@@ -25,13 +31,11 @@ export default class ModalQuantidade extends PureComponent {
   };
   onBackdropPress = () => {
     const { onCloseModal, onChange } = this.props;
+    console.log("My text is", this.state.text);
     onChange(this.state.text);
     onCloseModal();
   };
-  componentDidMount() {
-    const { total } = this.props;
-    this.setState({ text: total.toString() });
-  }
+
   render() {
     const {
       total,
