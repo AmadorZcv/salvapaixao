@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "./actions";
+import { ADD_TO_CART, REMOVE_FROM_CART, SET_QTD } from "./actions";
 import update from "immutability-helper";
 const initialState = {
   cart: {}
@@ -30,6 +30,13 @@ export default (state = initialState, action) => {
           });
         }
       }
+    case SET_QTD:
+      const parsedNumber = parseInt(action.payload.qtd, 10);
+      const idHere = action.payload.id;
+      const qtdHere = parsedNumber !== NaN ? parsedNumber : 0;
+      return update(state, {
+        cart: { [idHere]: { $set: { id: idHere, qtd: qtdHere } } }
+      });
     default:
       return state;
   }
