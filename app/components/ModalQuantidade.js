@@ -8,26 +8,33 @@ export default class ModalQuantidade extends PureComponent {
     super(props);
 
     this.state = {
-      text: "",
+      text: "0",
       isVisible: false
     };
   }
   static getDerivedStateFromProps(nextProps, prevState) {
+    let text = nextProps.total.toString();
+    console.log("props são");
+    if (prevState.text === "" && nextProps.total.toString() === "0") {
+      text = "";
+    }
     return nextProps.isVisible === prevState.isVisible
-      ? {}
-      : { text: nextProps.total.toString(), isVisible: nextProps.isVisible };
+      ? { text }
+      : { text, isVisible: nextProps.isVisible };
   }
-
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.isVisible !== this.state.isVisible && this.state.isVisible) {
+      setTimeout(() => {
+        this.ref.focus();
+      }, 1);
+    }
+  }
   onChangeText = text => {
     const { onChange } = this.props;
-    const cleanText = text.replace(/[^\d.-]/g, "");
-    this.setState({ text: cleanText });
-    if (cleanText !== "") {
-      //Se for uma string de numeros e não vazia
-      if (cleanText.match(/^\d+$/)) {
-        onChange(cleanText);
-      }
-    }
+    const cleanText = text.replace(/[^\d-]/g, "");
+    this.setState({ text: cleanText }, () => {
+      onChange(cleanText);
+    });
   };
   onBackdropPress = () => {
     const { onCloseModal, onChange } = this.props;
@@ -68,7 +75,7 @@ export default class ModalQuantidade extends PureComponent {
 
             <TextInput
               style={{ ...contadorText, fontSize: 28, flex: 1 }}
-              autoFocus={true}
+              ref={ref => (this.ref = ref)}
               keyboardType={"numeric"}
               onChangeText={this.onChangeText}
               value={this.state.text}
