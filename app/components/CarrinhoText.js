@@ -28,6 +28,9 @@ export default class CarrinhoText extends PureComponent {
       case "17002":
       case "17003":
         return "Salva Bancada";
+      case "18000":
+      case "18001":
+        return "Salva Ralo";
       case "13000":
       case "13100":
       case "13200":
