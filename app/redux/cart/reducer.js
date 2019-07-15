@@ -17,6 +17,7 @@ const removeFromCart = (state, id) => {
       });
     }
   }
+  return state;
 };
 export default (state = initialState, action) => {
   const id = action.payload;
