@@ -19,6 +19,8 @@ export default class CarrinhoText extends PureComponent {
       case "14002":
       case "14003":
         return "Salva Pintura";
+      case "15000":
+        return "Salva Quina";
       case "16000":
         return "Salva Metais";
       case "17000":
@@ -104,7 +106,7 @@ export default class CarrinhoText extends PureComponent {
       case "19105":
         return "Largura: 3m Comprimento: 2m";
       case "19200":
-        return "Altura: 1,8cm Comprimento: 50m"
+        return "Altura: 1,8cm Comprimento: 50m";
       case "19201":
         return "Altura: 4,8cm Comprimento: 50m";
       case "19300":

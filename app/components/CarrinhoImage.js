@@ -43,6 +43,14 @@ export default class CarrinhoImage extends PureComponent {
             resizeMode={"contain"}
           />
         );
+      case "15000":
+        return (
+          <Image
+            source={require("../img/cart/sq-small.png")}
+            style={style}
+            resizeMode={"contain"}
+          />
+        );
       case "16000":
         return (
           <Image
