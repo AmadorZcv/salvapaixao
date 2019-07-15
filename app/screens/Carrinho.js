@@ -2,7 +2,12 @@ import React, { PureComponent } from "react";
 import { View, Text, FlatList, StyleSheet, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import CarrinhoItem from "../components/CarrinhoItem";
-import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
+import {
+  addToCart,
+  removeFromCart,
+  setQtdCart,
+  removeItem
+} from "../redux/cart/actions";
 import {
   calculateItemTotal,
   calculateTotalComIpi,
@@ -20,6 +25,9 @@ class Carrinho extends PureComponent {
   };
   onMinus = id => {
     this.props.dispatch(removeFromCart(id));
+  };
+  onRemove = id => {
+    this.props.dispatch(removeItem(id));
   };
   onChange = (qtd, id) => {
     this.props.dispatch(setQtdCart(qtd, id));
@@ -72,6 +80,7 @@ class Carrinho extends PureComponent {
                 index={index}
                 onPlus={() => this.onPlus(item)}
                 onMinus={() => this.onMinus(item)}
+                onRemove={() => this.onRemove(item)}
                 onChange={qtd => this.onChange(qtd, item)}
                 total={calculateItemTotal(cart, products, item)}
                 onNavigate={() => this.onNavigate(item)}

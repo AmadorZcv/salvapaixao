@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
+import Swipeout from "react-native-swipeout";
 import CarrinhoImage from "./CarrinhoImage";
 import CarrinhoText from "./CarrinhoText";
 import { integerToReal } from "../config/formatUtils";
@@ -12,53 +13,76 @@ export default class CarrinhoItem extends PureComponent {
     super(props);
     this.state = {};
   }
-  onLongPressPlus = () => {
-    for (let index = 0; index <= 10; index++) {
-      this.props.onPlus();
-    }
-  };
-  onLongPressMinus = () => {
-    for (let index = 0; index <= 10; index++) {
-      this.props.onMinus();
-    }
-  };
+
   render() {
-    const { item, index, total } = this.props;
+    const { item, index, total, onRemove } = this.props;
     const backgroundColor = index % 2 === 0 ? Color.lightBackground : "white";
+
     return (
-      <View
-        style={{
-          backgroundColor,
-          flexDirection: "row",
-          height: 49
-        }}
+      <Swipeout
+        autoClose={true}
+        buttonWidth={49}
+        left={[
+          {
+            text: "Excluir",
+            backgroundColor: "red",
+            underlayColor: "rgba(0, 0, 0, 1, 0.6)",
+            onPress: () => onRemove(),
+            component: (
+              <Text
+                style={{
+                  color: "rgba(255,255,255,0.87)",
+                  backgroundColor: "#FE3A3A",
+                  fontSize: 13,
+                  width: 49,
+                  textAlign: "center",
+                  textAlignVertical: "center",
+                  alignSelf: "center",
+                  flex: 1
+                }}
+              >
+                Excluir
+              </Text>
+            )
+          }
+        ]}
       >
-        <TouchableOpacity
+        <View
           style={{
-            width: 259,
+            backgroundColor,
             flexDirection: "row",
-            paddingVertical: 8,
-            alignItems: "center",
-            paddingLeft: 0,
-            borderRightWidth: StyleSheet.hairlineWidth,
-            borderColor: Color.divbarColor
+            height: 49
           }}
-          onPress={this.props.onNavigate}
         >
-          <CarrinhoImage id={item.id} />
-          <CarrinhoText id={item.id} />
-        </TouchableOpacity>
-        <View style={{ width: 101, paddingVertical: 8, alignItems: "center" }}>
-          <Text>R$ {integerToReal(total)}</Text>
-          <Counter
-            total={item.qtd}
-            onPlus={this.props.onPlus}
-            onMinus={this.props.onMinus}
-            onChange={this.props.onChange}
-            precoFinal={integerToReal(total)}
-          />
+          <TouchableOpacity
+            style={{
+              width: 259,
+              flexDirection: "row",
+              paddingVertical: 8,
+              alignItems: "center",
+              paddingLeft: 0,
+              borderRightWidth: StyleSheet.hairlineWidth,
+              borderColor: Color.divbarColor
+            }}
+            onPress={this.props.onNavigate}
+          >
+            <CarrinhoImage id={item.id} />
+            <CarrinhoText id={item.id} />
+          </TouchableOpacity>
+          <View
+            style={{ width: 101, paddingVertical: 8, alignItems: "center" }}
+          >
+            <Text>R$ {integerToReal(total)}</Text>
+            <Counter
+              total={item.qtd}
+              onPlus={this.props.onPlus}
+              onMinus={this.props.onMinus}
+              onChange={this.props.onChange}
+              precoFinal={integerToReal(total)}
+            />
+          </View>
         </View>
-      </View>
+      </Swipeout>
     );
   }
 }
