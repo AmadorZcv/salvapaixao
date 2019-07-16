@@ -86,7 +86,7 @@ class Carrinho extends PureComponent {
                 width: 101
               }}
             >
-              SubTotal
+              Subtotal
             </Text>
           </View>
           <FlatList
