@@ -21,7 +21,17 @@ export default class SalvaRaloItem extends PureComponent {
     this.setState({ modal: false });
   };
   render() {
-    const { index, largura, preco, ipi, ipiR, total } = this.props;
+    const {
+      index,
+      largura,
+      preco,
+      ipi,
+      ipiR,
+      total,
+      onMinus,
+      onChange,
+      onPlus
+    } = this.props;
     const trueTotal = total !== undefined ? total.qtd : 0;
     const precoTotal = preco + ipiR;
     const precoFinal = precoTotal * trueTotal;
