@@ -27,6 +27,7 @@ import { Color } from "../styles";
 import { primaryBig } from "../styles/Text";
 import { navigateFromId } from "../config/navigateUtils";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Button } from "react-native-elements";
 
 class Carrinho extends PureComponent {
   onClean = () => {
@@ -214,6 +215,10 @@ class Carrinho extends PureComponent {
               </Text>
             </View>
           </View>
+          <Button
+            title={"Salvar"}
+            onPress={() => this.props.navigation.navigate("SalvarOrcamento")}
+          />
         </ScrollView>
       </View>
     );
