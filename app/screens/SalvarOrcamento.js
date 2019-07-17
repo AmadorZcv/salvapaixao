@@ -13,12 +13,64 @@ class SalvarOrcamento extends PureComponent {
     this.state = {
       criacao: moment(),
       validade: moment(),
-      condicao: "30"
+      condicao: "30",
+      nome: "",
+      cpf: "",
+      ramo: "",
+      nomeCompleto: "",
+      telefone: "",
+      email: "",
+      uf: "",
+      cidade: ""
     };
   }
+
   salvarOrcamento = () => {
     const { dispatch, cart } = this.props;
-    dispatch(add_orcamento({ cart, detalhes: { nome: "asd" } }));
+    const {
+      cidade,
+      condicao,
+      cpf,
+      criacao,
+      email,
+      nome,
+      nomeCompleto,
+      ramo,
+      telefone,
+      uf,
+      validade
+    } = this.state;
+    console.log("Hello?", {
+      cidade,
+      condicao,
+      cpf,
+      criacao,
+      email,
+      nome,
+      nomeCompleto,
+      ramo,
+      telefone,
+      uf,
+      validade
+    });
+    dispatch(
+      add_orcamento({
+        cart,
+        detalhes: {
+          cidade,
+          condicao,
+          cpf,
+          criacao,
+          email,
+          nome,
+          nomeCompleto,
+          ramo,
+          telefone,
+          uf,
+          validade
+        }
+      })
+    );
   };
   render() {
     return (
@@ -75,24 +127,44 @@ class SalvarOrcamento extends PureComponent {
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite o nome da empresa"}
+          onChangeText={(formatted, extracted) => {
+            this.setState({
+              nome: formatted
+            });
+          }}
         />
         <Text style={styles.labelStyle}>CNPJ/CPF</Text>
         <TextInputMask
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite o nome da empresa"}
+          onChangeText={(formatted, extracted) => {
+            this.setState({
+              cpf: formatted
+            });
+          }}
         />
         <Text style={styles.labelStyle}>Ramo/Atividade</Text>
         <TextInputMask
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite a que se aplica a empresa"}
+          onChangeText={(formatted, extracted) => {
+            this.setState({
+              ramo: formatted
+            });
+          }}
         />
         <Text style={styles.labelStyle}>Nome completo</Text>
         <TextInputMask
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite o nome da pessoa"}
+          onChangeText={(formatted, extracted) => {
+            this.setState({
+              nomeCompleto: formatted
+            });
+          }}
         />
         <Text style={styles.labelStyle}>Telefone</Text>
         <TextInputMask
@@ -101,12 +173,22 @@ class SalvarOrcamento extends PureComponent {
           keyboardType="numeric"
           mask="([00]) [00000]-[0000]"
           placeholder={"Digite o telefone"}
+          onChangeText={(formatted, extracted) => {
+            this.setState({
+              telefone: extracted
+            });
+          }}
         />
         <Text style={styles.labelStyle}>E-mail</Text>
         <TextInputMask
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite o email para contato"}
+          onChangeText={(formatted, extracted) => {
+            this.setState({
+              email: formatted
+            });
+          }}
         />
         <View style={styles.ufContainer}>
           <View>
@@ -115,6 +197,11 @@ class SalvarOrcamento extends PureComponent {
               keyboardType="default"
               style={{ ...styles.inputStyle, width: "90%" }}
               placeholder={"Digite o estado             "}
+              onChangeText={(formatted, extracted) => {
+                this.setState({
+                  uf: formatted
+                });
+              }}
             />
           </View>
           <View>
@@ -123,6 +210,11 @@ class SalvarOrcamento extends PureComponent {
               keyboardType="default"
               style={{ ...styles.inputStyle, width: "100%" }}
               placeholder={"Digite a cidade             "}
+              onChangeText={(formatted, extracted) => {
+                this.setState({
+                  cidade: formatted
+                });
+              }}
             />
           </View>
         </View>
