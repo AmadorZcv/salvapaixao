@@ -1,5 +1,12 @@
 import React, { PureComponent } from "react";
-import { View, Text, FlatList, StyleSheet, ScrollView, Alert } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  ScrollView,
+  Alert
+} from "react-native";
 import { connect } from "react-redux";
 import CarrinhoItem from "../components/CarrinhoItem";
 import {
@@ -23,19 +30,22 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 class Carrinho extends PureComponent {
   onClean = () => {
-    Alert.alert(
-      'Excluir',
-      'Você tem certeza que deseja excluir todos os itens?',
-      [
-        {
-          text: 'Cancelar',
-          onPress: () => console.log('Cancelar Pressionado'),
-          style: 'cancel',
-        },
-        {text: 'Excluir', onPress: () => this.props.dispatch(cleanCart())},
-      ],
-      {cancelable: false},
-    );
+    const { cart } = this.props;
+    if (Object.keys(cart).length > 0) {
+      Alert.alert(
+        "Excluir",
+        "Você tem certeza que deseja excluir todos os itens?",
+        [
+          {
+            text: "Cancelar",
+            onPress: () => console.log("Cancelar Pressionado"),
+            style: "cancel"
+          },
+          { text: "Excluir", onPress: () => this.props.dispatch(cleanCart()) }
+        ],
+        { cancelable: false }
+      );
+    }
   };
   onPlus = id => {
     this.props.dispatch(addToCart(id));
