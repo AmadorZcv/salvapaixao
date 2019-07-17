@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { Icon } from "react-native-elements";
 import Swipeout from "react-native-swipeout";
 import CarrinhoImage from "./CarrinhoImage";
@@ -27,7 +27,21 @@ export default class CarrinhoItem extends PureComponent {
             text: "Excluir",
             backgroundColor: "red",
             underlayColor: "rgba(0, 0, 0, 1, 0.6)",
-            onPress: () => onRemove(),
+            onPress: () => {
+              Alert.alert(
+                'Excluir',
+                'Você tem certeza que deseja excluir?',
+                [
+                  {
+                    text: 'Cancelar',
+                    onPress: () => console.log('Cancelar Pressionado'),
+                    style: 'cancel',
+                  },
+                  {text: 'Excluir', onPress: () => onRemove()},
+                ],
+                {cancelable: false},
+              );
+            },
             component: (
               <Text
                 style={{
