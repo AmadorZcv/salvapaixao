@@ -3,7 +3,8 @@ import {
   REMOVE_FROM_CART,
   SET_QTD,
   REMOVE_ITEM_CART,
-  CLEAN_CART
+  CLEAN_CART,
+  SET_CART
 } from "./actions";
 import update from "immutability-helper";
 const initialState = {
@@ -60,6 +61,8 @@ export default (state = initialState, action) => {
       }
     case CLEAN_CART:
       return initialState;
+    case SET_CART:
+      return { ...state, cart: action.payload };
     default:
       return state;
   }

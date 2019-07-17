@@ -4,6 +4,12 @@ export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const REMOVE_ITEM_CART = "REMOVE_ITEM_CART";
 export const SET_QTD = "SET_QTD";
 
+export const SET_CART = "SET_CART";
+export const setCart = cart => ({
+  type: SET_CART,
+  payload: cart
+});
+
 export const addToCart = id => ({
   type: ADD_TO_CART,
   payload: id
