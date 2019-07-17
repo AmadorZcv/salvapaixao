@@ -139,7 +139,14 @@ export default class Home extends PureComponent {
                 resizeMode={"stretch"}
               />
             </TouchableOpacity>
-          </View></View>
+          </View>
+          <View style={styles.logoView}>
+          <Image
+                style={styles.logoStyle}
+                source={require("../img/logo/fabricado-salvabras.png")}
+                resizeMode={"contain"}
+              /></View>
+          </View>
       </ScrollView>
     );
   }
@@ -148,7 +155,6 @@ export default class Home extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 8,
     backgroundColor: Color.background,
     paddingBottom: 24
   },
@@ -167,5 +173,11 @@ const styles = StyleSheet.create({
     width: 156,
     height: 101,
     borderRadius: 5
+  },
+  logoView: {
+    paddingTop: 15,
+  },
+  logoStyle: {
+    height: 59,
   }
 });
