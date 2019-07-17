@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Provider } from "react-redux";
 import SplashScreen from "./app/components/SplashScreen";
 import makeStore from "./app/redux/store";
-//import Router from "./app/config/Router";
+import Router from "./app/config/Router";
 import Drawer from "./app/config/routes";
 
 class App extends Component {
@@ -32,7 +32,7 @@ class App extends Component {
     }
     return (
       <Provider store={this.state.store}>
-        <Drawer />
+        <Router />
       </Provider>
     );
   }
