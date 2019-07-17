@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/cart/actions";
+import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 
 import { productLabel } from "../styles/Text";
 class SPResistente extends PureComponent {
