@@ -5650,7 +5650,7 @@ redux-storage-decorator-filter@^1.1.8:
 
 redux-storage-engine-reactnativeasyncstorage@^1.0.5:
   version "1.0.5"
-  resolved "https://registry.yarnpkg.com/redux-storage-engine-reactnativeasyncstorage/-/redux-storage-engine-salvacompraasyncstorage-1.0.5.tgz#d51fd40e8dac2d8996e0f5b6a6b1fd9d45e9960b"
+  resolved "https://registry.yarnpkg.com/redux-storage-engine-reactnativeasyncstorage/-/redux-storage-engine-reactnativeasyncstorage-1.0.5.tgz#d51fd40e8dac2d8996e0f5b6a6b1fd9d45e9960b"
   integrity sha1-1R/UDo2sLYmW4PW2prH9nUXplgs=
 
 redux-storage-merger-simple@^1.0.2:
