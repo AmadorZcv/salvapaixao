@@ -16,7 +16,7 @@ let engine = createEngine("my-save-key");
 //Tempo para salvar
 engine = debounce(engine, 1000);
 //Salvar somente o user Reducer
-engine = filter(engine, ["orcamento"]);
+engine = filter(engine, ["orcamentos"]);
 //Criar o middleware de storage
 const reduxStorageMiddleware = storage.createMiddleware(engine);
 // Adicionando o reduxStorage
@@ -26,20 +26,17 @@ middleWare.push(reduxStorageMiddleware);
 const loadStore = storage.createLoader(engine);
 
 //const createStoreWithMiddleware = applyMiddleware(...middleWare)(createStore);
-export default function makeStore(callback) {
+export default async function makeStore() {
   let store;
   if (__DEV__) {
     store = createStore(
-      reducers,
+      wrappedReducer,
       composeEnhancer(applyMiddleware(...middleWare))
     );
   } else {
     store = createStore(wrappedReducer, applyMiddleware(...middleWare));
   }
-
+  await loadStore(store);
   //Chamar a função para carregar o estado e chamar o callback quando terminar
-  loadStore(store)
-    .then(newState => callback("State loaded", newState))
-    .catch(() => callback("Failed to load previous state", null));
   return store;
 }

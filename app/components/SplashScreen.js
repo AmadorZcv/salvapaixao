@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, Text } from "react-native";
+import { Image } from "react-native-elements";
 
 export default class SplashScreen extends PureComponent {
   constructor(props) {

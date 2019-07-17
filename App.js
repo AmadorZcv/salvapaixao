@@ -20,11 +20,17 @@ class App extends Component {
     if (__DEV__) {
       console.log("message", message, "New State", state);
     }
-    this.setState({ loadingRedux: false });
+    //this.setState({ loadingRedux: false });
+  }
+  async loadStore() {
+    const store = await makeStore();
+    console.log("store é", store);
+    this.setState({ store: store }, () =>
+      this.setState({ loadingRedux: false })
+    );
   }
   componentWillMount() {
-    const store = makeStore(this.callbackRedux);
-    this.setState({ store: store });
+    this.loadStore();
   }
   render() {
     if (this.state.loadingRedux) {
@@ -38,8 +44,3 @@ class App extends Component {
   }
 }
 export default App;
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-});
