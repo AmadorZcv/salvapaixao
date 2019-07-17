@@ -10,7 +10,10 @@ export default class SplashScreen extends PureComponent {
   render() {
     return (
       <View>
-        <Text> componentText </Text>
+        <Image
+          source={require("../img/logo/ntp-logo.png")}
+          resizeMode={"contain"}
+        />
       </View>
     );
   }
