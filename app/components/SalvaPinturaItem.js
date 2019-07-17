@@ -30,7 +30,10 @@ export default class SalvaPinturaItem extends PureComponent {
       preco,
       ipi,
       ipiR,
-      total
+      total,
+      onMinus,
+      onChange,
+      onPlus
     } = this.props;
     const trueTotal = total !== undefined ? total.qtd : 0;
     const precoTotal = preco + ipiR;

@@ -21,7 +21,18 @@ export default class SalvaQuinaItem extends PureComponent {
     this.setState({ modal: false });
   };
   render() {
-    const { index, altura, comprimento, preco, ipi, ipiR, total } = this.props;
+    const {
+      index,
+      altura,
+      comprimento,
+      preco,
+      ipi,
+      ipiR,
+      total,
+      onMinus,
+      onChange,
+      onPlus
+    } = this.props;
     const trueTotal = total !== undefined ? total.qtd : 0;
     const precoTotal = preco + ipiR;
     const precoFinal = precoTotal * trueTotal;
