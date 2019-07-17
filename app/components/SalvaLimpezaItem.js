@@ -1,12 +1,27 @@
 import React, { PureComponent } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { integerToReal } from "../config/formatUtils";
 
 import { Color } from "../styles";
 import PrecoCustoCounter from "./PrecoCustoCounter";
 import { itemContainer, columnContainer } from "../styles/Containers";
 import { textInfo, textValue } from "../styles/Text";
+import ModalQuantidade from "./ModalQuantidade";
+
 export default class SalvaLimpezaItem extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      modal: false
+    };
+  }
+  openModal = () => {
+    this.setState({ modal: true });
+  };
+  closeModal = () => {
+    this.setState({ modal: false });
+  };
   render() {
     const {
       index,
@@ -24,7 +39,10 @@ export default class SalvaLimpezaItem extends PureComponent {
     const formatPrecoFinal = precoFinal > 0 ? integerToReal(precoFinal) : "0";
     const backgroundColor = index % 2 === 0 ? "white" : Color.darkBackground;
     return (
-      <View style={{ ...itemContainer, backgroundColor }}>
+      <TouchableOpacity
+        style={{ ...itemContainer, backgroundColor }}
+        onPress={this.openModal}
+      >
         <View style={columnContainer}>
           <View>
             <Text style={textInfo}>Unidade</Text>
@@ -62,7 +80,16 @@ export default class SalvaLimpezaItem extends PureComponent {
           precoTotal={precoTotal}
           precoFinal={formatPrecoFinal}
         />
-      </View>
+        <ModalQuantidade
+          isVisible={this.state.modal}
+          onCloseModal={this.closeModal}
+          precoFinal={formatPrecoFinal}
+          total={trueTotal}
+          onMinus={onMinus}
+          onPlus={onPlus}
+          onChange={onChange}
+        />
+      </TouchableOpacity>
     );
   }
 }

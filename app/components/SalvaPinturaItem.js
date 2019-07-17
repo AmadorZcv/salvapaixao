@@ -1,12 +1,26 @@
 import React, { PureComponent } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { integerToReal } from "../config/formatUtils";
 
 import { textInfo, textValue } from "../styles/Text";
 import PrecoCustoCounter from "./PrecoCustoCounter";
 import { itemContainer, columnContainer } from "../styles/Containers";
+import ModalQuantidade from "./ModalQuantidade";
 
 export default class SalvaPinturaItem extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      modal: false
+    };
+  }
+  openModal = () => {
+    this.setState({ modal: true });
+  };
+  closeModal = () => {
+    this.setState({ modal: false });
+  };
   render() {
     const {
       index,
@@ -24,7 +38,10 @@ export default class SalvaPinturaItem extends PureComponent {
     const formatPrecoFinal = precoFinal > 0 ? integerToReal(precoFinal) : "0";
     const backgroundColor = index % 2 === 0 ? "white" : "lightgray";
     return (
-      <View style={{ ...itemContainer, backgroundColor }}>
+      <TouchableOpacity
+        style={{ ...itemContainer, backgroundColor }}
+        onPress={this.openModal}
+      >
         <View style={columnContainer}>
           <View>
             <Text style={textInfo}>Altura</Text>
@@ -62,7 +79,16 @@ export default class SalvaPinturaItem extends PureComponent {
           precoTotal={precoTotal}
           precoFinal={formatPrecoFinal}
         />
-      </View>
+        <ModalQuantidade
+          isVisible={this.state.modal}
+          onCloseModal={this.closeModal}
+          precoFinal={formatPrecoFinal}
+          total={trueTotal}
+          onMinus={onMinus}
+          onPlus={onPlus}
+          onChange={onChange}
+        />
+      </TouchableOpacity>
     );
   }
 }
