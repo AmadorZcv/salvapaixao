@@ -44,7 +44,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -64,7 +64,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -84,7 +84,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -104,7 +104,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -124,7 +124,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -144,7 +144,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -164,7 +164,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -184,7 +184,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -204,7 +204,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -224,7 +224,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -244,7 +244,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 20, width: 20 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
               />
             </TouchableOpacity>
@@ -263,7 +263,7 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 24, width: 24 }}
+                style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/home.png")}
               />
             </TouchableOpacity>
