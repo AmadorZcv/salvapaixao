@@ -1,6 +1,14 @@
 export function integerToReal(value) {
   const string = value.toString();
-  if (string.length > 5) {
+  if (string.length == 1) {
+    const formatted = "0,0" + string;
+    return formatted;
+  }
+  else if (string.length == 2) {
+    const formatted = "0," + string;
+    return formatted;
+  }
+  else if (string.length > 5) {
     const formatted =
       string.slice(0, string.length - 5) +
       " " +
