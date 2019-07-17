@@ -4,7 +4,9 @@ import {
   createBottomTabNavigator,
   createAppContainer,
   createStackNavigator,
-  NavigationActions
+  NavigationActions,
+  createDrawerNavigator,
+  DrawerActions
 } from "react-navigation";
 import Home from "../screens/Home";
 import { Icon, Image } from "react-native-elements";
@@ -30,13 +32,17 @@ const HomeStack = createStackNavigator(
         return {
           headerTitle: "Tela Inicial",
           headerLeft: (
-            <Icon
-              name={"menu"}
-              type={"material-community"}
-              color={Color.headerIcons}
-              size={24}
-              containerStyle={{ paddingLeft: 16 }}
-            />
+            <TouchableOpacity
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            >
+              <Icon
+                name={"menu"}
+                type={"material-community"}
+                color={Color.headerIcons}
+                size={24}
+                containerStyle={{ paddingLeft: 16 }}
+              />
+            </TouchableOpacity>
           ),
           headerRight: (
             <TouchableOpacity
@@ -300,5 +306,29 @@ const HomeStack = createStackNavigator(
     }
   }
 );
-
-export default createAppContainer(HomeStack);
+const DrawerNavigatorExample = createDrawerNavigator({
+  //Drawer Optons and indexing
+  Home: {
+    //Title
+    screen: HomeStack,
+    navigationOptions: {
+      drawerLabel: "Inicial"
+    }
+  },
+  Salvos: {
+    //Title
+    screen: HomeStack,
+    navigationOptions: {
+      drawerLabel: "Salvos"
+    }
+  },
+  Ultimos: {
+    //Title
+    screen: HomeStack,
+    navigationOptions: {
+      drawerLabel: "ASD"
+    }
+  }
+});
+//export default createAppContainer(DrawerNavigatorExample);
+export default createAppContainer(DrawerNavigatorExample);
