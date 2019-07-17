@@ -23,6 +23,7 @@ import SRalo from "../screens/SRalo";
 import Carrinho from "../screens/Carrinho";
 import Materiais from "../screens/Materiais";
 import SalvarOrcamento from "../screens/SalvarOrcamento";
+import { CustomDrawerContentComponent } from "../components/DrawerComponent";
 
 const HomeStack = createStackNavigator(
   {
@@ -306,29 +307,34 @@ const HomeStack = createStackNavigator(
     }
   }
 );
-const DrawerNavigatorExample = createDrawerNavigator({
-  //Drawer Optons and indexing
-  Home: {
-    //Title
-    screen: HomeStack,
-    navigationOptions: {
-      drawerLabel: "Inicial"
+const DrawerNavigatorExample = createDrawerNavigator(
+  {
+    //Drawer Optons and indexing
+    Home: {
+      //Title
+      screen: HomeStack,
+      navigationOptions: {
+        drawerLabel: "Inicial"
+      }
+    },
+    Salvos: {
+      //Title
+      screen: HomeStack,
+      navigationOptions: {
+        drawerLabel: "Salvos"
+      }
+    },
+    Ultimos: {
+      //Title
+      screen: HomeStack,
+      navigationOptions: {
+        drawerLabel: "ASD"
+      }
     }
   },
-  Salvos: {
-    //Title
-    screen: HomeStack,
-    navigationOptions: {
-      drawerLabel: "Salvos"
-    }
-  },
-  Ultimos: {
-    //Title
-    screen: HomeStack,
-    navigationOptions: {
-      drawerLabel: "ASD"
-    }
+  {
+    contentComponent: CustomDrawerContentComponent
   }
-});
+);
 //export default createAppContainer(DrawerNavigatorExample);
 export default createAppContainer(DrawerNavigatorExample);
