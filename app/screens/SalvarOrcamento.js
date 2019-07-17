@@ -121,7 +121,7 @@ export default class SalvarOrcamento extends PureComponent {
           </View>
         </View>
         <CheckBox
-          title={"Salvar orçamento"}
+          title={"Exportar orçamento para PDF"}
           containerStyle={{ backgroundColor: "#fff" }}
         />
         <Button
@@ -136,7 +136,8 @@ const styles = StyleSheet.create({
   container: { paddingHorizontal: 30 },
   dateContainer: {
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
+    marginVertical: 5
   },
   dateLabel: {
     width: 150
