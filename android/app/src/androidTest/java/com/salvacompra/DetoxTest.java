@@ -1,4 +1,4 @@
-package com.reactnative;
+package com.salvacompra;
 
 import com.wix.detox.Detox;
 
