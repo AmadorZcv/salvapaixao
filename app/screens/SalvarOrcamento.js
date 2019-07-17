@@ -2,9 +2,12 @@ import React, { PureComponent } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import TextInputMask from "react-native-text-input-mask";
 import moment from "moment";
-import { Button, CheckBox } from "react-native-elements";
+import { connect } from "react-redux";
 
-export default class SalvarOrcamento extends PureComponent {
+import { Button, CheckBox } from "react-native-elements";
+import { add_orcamento } from "../redux/orcamentos/actions";
+
+class SalvarOrcamento extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +16,10 @@ export default class SalvarOrcamento extends PureComponent {
       condicao: "30"
     };
   }
-
+  salvarOrcamento = () => {
+    const { dispatch, cart } = this.props;
+    dispatch(add_orcamento({ cart, detalhes: { nome: "asd" } }));
+  };
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -127,11 +133,17 @@ export default class SalvarOrcamento extends PureComponent {
         <Button
           title={"Salvar Orçamento"}
           containerStyle={{ marginBottom: 30, marginTop: 10 }}
+          onPress={this.salvarOrcamento}
         />
       </ScrollView>
     );
   }
 }
+const mapStateToProps = state => {
+  const { cart } = state.cart;
+  return { cart };
+};
+export default connect(mapStateToProps)(SalvarOrcamento);
 const styles = StyleSheet.create({
   container: { paddingHorizontal: 30 },
   dateContainer: {

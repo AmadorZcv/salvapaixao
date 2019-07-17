@@ -8,7 +8,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_ORCAMENTO:
-      return update(state, { orcamentos: { $push: action.payload } });
+      return update(state, { orcamentos: { $push: [action.payload] } });
 
     default:
       return state;
