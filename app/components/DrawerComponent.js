@@ -15,8 +15,9 @@ export const CustomDrawerContentComponent = props => {
           style={styles.container}
           forceInset={{ top: "always", horizontal: "never" }}
         >
-          <Text>HAHAHA</Text>
+          <Text>Salva Brás</Text>
           <DrawerItems {...props} />
+          <Text>Sair</Text>
         </SafeAreaView>
       </ScrollView>
     </Animated.View>

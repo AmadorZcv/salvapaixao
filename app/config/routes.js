@@ -24,7 +24,120 @@ import Carrinho from "../screens/Carrinho";
 import Materiais from "../screens/Materiais";
 import SalvarOrcamento from "../screens/SalvarOrcamento";
 import { CustomDrawerContentComponent } from "../components/DrawerComponent";
+import Orcamentos from "../screens/Orcamentos";
+import Config from "../screens/Config";
 
+const OrcamentoStack = createStackNavigator(
+  {
+    Orcamentos: {
+      screen: Orcamentos,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Orçamentos",
+          headerLeft: (
+            <TouchableOpacity
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            >
+              <Icon
+                name={"menu"}
+                type={"material-community"}
+                color={Color.headerIcons}
+                size={24}
+                containerStyle={{ paddingLeft: 16 }}
+              />
+            </TouchableOpacity>
+          ),
+          headerRight: (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Home")}
+              style={{ paddingRight: 16 }}
+            >
+              <Image
+                style={{ height: 22, width: 22, margin: 5 }}
+                source={require("../img/icons/home.png")}
+              />
+            </TouchableOpacity>
+          )
+        };
+      }
+    }
+  },
+  {
+    /* The header config from HomeScreen is now here */
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: Color.header
+      },
+      headerTitleStyle: {
+        ...TextStyle.header,
+        alignSelf: "center",
+        textAlign: "center",
+        justifyContent: "center",
+        color: Color.primaryText,
+        fontSize: 20,
+        fontWeight: "500",
+        marginLeft: 20
+      },
+      headerTintColor: Color.headerIcons
+    }
+  }
+);
+
+const ConfigStack = createStackNavigator(
+  {
+    Config: {
+      screen: Config,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Configurações",
+          headerLeft: (
+            <TouchableOpacity
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            >
+              <Icon
+                name={"menu"}
+                type={"material-community"}
+                color={Color.headerIcons}
+                size={24}
+                containerStyle={{ paddingLeft: 16 }}
+              />
+            </TouchableOpacity>
+          ),
+          headerRight: (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Home")}
+              style={{ paddingRight: 16 }}
+            >
+              <Image
+                style={{ height: 22, width: 22, margin: 5 }}
+                source={require("../img/icons/home.png")}
+              />
+            </TouchableOpacity>
+          )
+        };
+      }
+    }
+  },
+  {
+    /* The header config from HomeScreen is now here */
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: Color.header
+      },
+      headerTitleStyle: {
+        ...TextStyle.header,
+        alignSelf: "center",
+        textAlign: "center",
+        justifyContent: "center",
+        color: Color.primaryText,
+        fontSize: 20,
+        fontWeight: "500",
+        marginLeft: 20
+      },
+      headerTintColor: Color.headerIcons
+    }
+  }
+);
 const HomeStack = createStackNavigator(
   {
     Home: {
@@ -319,16 +432,16 @@ const DrawerNavigatorExample = createDrawerNavigator(
     },
     Salvos: {
       //Title
-      screen: HomeStack,
+      screen: OrcamentoStack,
       navigationOptions: {
-        drawerLabel: "Salvos"
+        drawerLabel: "Orçamentos"
       }
     },
-    Ultimos: {
+    Config: {
       //Title
-      screen: HomeStack,
+      screen: ConfigStack,
       navigationOptions: {
-        drawerLabel: "ASD"
+        drawerLabel: "Configurações"
       }
     }
   },
