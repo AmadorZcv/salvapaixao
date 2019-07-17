@@ -14,7 +14,6 @@ export default class ModalQuantidade extends PureComponent {
   }
   static getDerivedStateFromProps(nextProps, prevState) {
     let text = nextProps.total.toString();
-    console.log("props são");
     if (prevState.text === "" && nextProps.total.toString() === "0") {
       text = "";
     }
