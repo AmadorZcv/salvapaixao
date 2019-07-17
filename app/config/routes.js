@@ -20,6 +20,7 @@ import SQuina from "../screens/SQuina";
 import SRalo from "../screens/SRalo";
 import Carrinho from "../screens/Carrinho";
 import Materiais from "../screens/Materiais";
+import SalvarOrcamento from "../screens/SalvarOrcamento";
 
 const HomeStack = createStackNavigator(
   {
@@ -267,6 +268,14 @@ const HomeStack = createStackNavigator(
               />
             </TouchableOpacity>
           )
+        };
+      }
+    },
+    SalvarOrcamento: {
+      screen: SalvarOrcamento,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Salvar Orçamento"
         };
       }
     }
