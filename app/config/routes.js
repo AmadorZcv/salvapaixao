@@ -26,6 +26,7 @@ import SalvarOrcamento from "../screens/SalvarOrcamento";
 import { CustomDrawerContentComponent } from "../components/DrawerComponent";
 import Orcamentos from "../screens/Orcamentos";
 import Config from "../screens/Config";
+import Orcamento from "../screens/Orcamento";
 
 const OrcamentoStack = createStackNavigator(
   {
@@ -47,6 +48,26 @@ const OrcamentoStack = createStackNavigator(
               />
             </TouchableOpacity>
           ),
+          headerRight: (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Home")}
+              style={{ paddingRight: 16 }}
+            >
+              <Image
+                style={{ height: 22, width: 22, margin: 5 }}
+                source={require("../img/icons/home.png")}
+              />
+            </TouchableOpacity>
+          )
+        };
+      }
+    },
+    Orcamento: {
+      screen: Orcamento,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Orcamento",
+
           headerRight: (
             <TouchableOpacity
               onPress={() => navigation.navigate("Home")}

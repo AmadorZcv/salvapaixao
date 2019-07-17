@@ -78,6 +78,7 @@ export default class ModalQuantidade extends PureComponent {
               keyboardType={"numeric"}
               onChangeText={this.onChangeText}
               value={this.state.text}
+              maxLength={3}
             />
 
             <TouchableOpacity onPress={onPlus}>

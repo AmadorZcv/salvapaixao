@@ -1,7 +1,10 @@
 import React, { PureComponent } from "react";
-import { View, Text } from "react-native";
+import { View, TouchableOpacity } from "react-native";
+import { connect } from "react-redux";
+import { FlatList } from "react-native-gesture-handler";
+import { Text } from "react-native-elements";
 
-export default class Orcamentos extends PureComponent {
+class Orcamentos extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
@@ -10,8 +13,26 @@ export default class Orcamentos extends PureComponent {
   render() {
     return (
       <View>
-        <Text> Orcamentos </Text>
+        <FlatList
+          data={this.props.orcamentos}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate("Orcamento", {
+                  orcamento: item
+                })
+              }
+            >
+              <Text>{item.detalhes.nome}</Text>
+            </TouchableOpacity>
+          )}
+        />
       </View>
     );
   }
 }
+const mapStateToProps = state => {
+  const { orcamentos } = state.orcamentos;
+  return { orcamentos };
+};
+export default connect(mapStateToProps)(Orcamentos);
