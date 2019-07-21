@@ -1,8 +1,8 @@
-##Versão 1.0.1 de Release
+# Versão 1.0.1 de Release
 
-Data: 17/07/2019
+* Data: 17/07/2019
 
-##Desenvolvido por:
+# Desenvolvido por:
 
-@amadorzcv
-@booude
+### @amadorzcv
+### @booude
