@@ -1,5 +1,10 @@
 import React, { PureComponent } from "react";
-import { View, Dimensions, ImageBackground } from "react-native";
+import {
+  View,
+  Dimensions,
+  ImageBackground,
+  KeyboardAvoidingView
+} from "react-native";
 import { Input, Button, Image, Text, normalize } from "react-native-elements";
 import VersionNumber from "react-native-version-number";
 import { connect } from "react-redux";
@@ -14,15 +19,19 @@ class Login extends PureComponent {
     };
   }
   onLogin = () => {
+    console.log("here maybe?");
+
     const { login, senha } = this.state;
     if (login === "dev" && senha === "2019salvacompra") {
       this.props.dispatch({ type: "SET_LOGGED", payload: true });
+    } else {
+      alert("Credencias incorretas");
     }
   };
   render() {
     const { width } = Dimensions.get("window");
     return (
-      <View
+      <KeyboardAvoidingView
         style={{
           flex: 1,
           justifyContent: "center",
@@ -37,7 +46,7 @@ class Login extends PureComponent {
         />
         <View
           style={{
-            height: "35%",
+            height: 200,
             width: 250,
             alignItems: "center",
             marginTop: 15
@@ -118,21 +127,22 @@ class Login extends PureComponent {
               Esqueceu a senha?
             </Text>
           </View>
-          <Button
-            title={"Entrar"}
-            containerStyle={{
-              width: "55%"
-            }}
-            titleStyle={{ fontSize: normalize(13) }}
-            onPress={this.onLogin}
-            buttonStyle={{ backgroundColor: "#247378", borderRadius: 5 }}
-          />
         </View>
-
-        <View style={{ flex: 1 }} />
+        <Button
+          title={"Entrar"}
+          containerStyle={{
+            width: "55%",
+            flex: 1,
+            marginTop: 40
+          }}
+          titleStyle={{ fontSize: normalize(13) }}
+          onPress={this.onLogin}
+          buttonStyle={{ backgroundColor: "#247378", borderRadius: 5 }}
+          activeOpacity={1}
+        />
         <ImageBackground
           source={require("../img/logo/login-bg.png")}
-          style={{ width: width, height: 200, alignItems: "center" }}
+          style={{ width: width, height: 170, alignItems: "center" }}
           resizeMode={"stretch"}
         >
           <Image
@@ -159,7 +169,8 @@ class Login extends PureComponent {
             </Text>
           </View>
         </ImageBackground>
-      </View>
+        <View />
+      </KeyboardAvoidingView>
     );
   }
 }
