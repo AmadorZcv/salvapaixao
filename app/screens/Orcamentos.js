@@ -1,8 +1,10 @@
 import React, { PureComponent } from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, SectionList } from "react-native";
 import { connect } from "react-redux";
 import { FlatList } from "react-native-gesture-handler";
-import { Text } from "react-native-elements";
+import { Text, normalize } from "react-native-elements";
+import OrcamentoItem from "../components/OrcamentoItem";
+import { Color } from "../styles";
 
 class Orcamentos extends PureComponent {
   constructor(props) {
@@ -11,21 +13,27 @@ class Orcamentos extends PureComponent {
   }
 
   render() {
+    const { orcamentos } = this.props;
     return (
-      <View>
-        <FlatList
-          data={this.props.orcamentos}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigation.navigate("Orcamento", {
-                  orcamento: item
-                })
-              }
-            >
-              <Text>{item.detalhes.nome}</Text>
-            </TouchableOpacity>
+      <View style={{ backgroundColor: Color.background }}>
+        <SectionList
+          renderItem={({ item, index, section }) => (
+            <OrcamentoItem item={item} index={index} />
           )}
+          renderSectionHeader={({ section: { title } }) => (
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: normalize(23),
+                paddingLeft: 38,
+                color: Color.primaryText
+              }}
+            >
+              {title}
+            </Text>
+          )}
+          sections={orcamentos}
+          keyExtractor={(item, index) => item + index}
         />
       </View>
     );
