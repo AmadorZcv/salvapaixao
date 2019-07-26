@@ -1,7 +1,8 @@
 import React from "react";
-import { ScrollView, StyleSheet, Animated } from "react-native";
+import { ScrollView, StyleSheet, Animated, View } from "react-native";
 import { DrawerItems, SafeAreaView } from "react-navigation";
 import { Text } from "react-native-elements";
+import { Color } from "../styles";
 
 export const CustomDrawerContentComponent = props => {
   const translateX = props.drawerOpenProgress.interpolate({
@@ -15,9 +16,18 @@ export const CustomDrawerContentComponent = props => {
           style={styles.container}
           forceInset={{ top: "always", horizontal: "never" }}
         >
+          <View>
+            <Text>Perfil</Text>
+          </View>
+          <View>
+            <Text>Icones</Text>
+          </View>
+          <View>
+            <Text>Final</Text>
+          </View>
           <Text>Salva Brás</Text>
           <DrawerItems {...props} />
-          <Text>Sair</Text>
+          <Text style={{ flex: 1, justifyContent: "flex-end" }}>Sair</Text>
         </SafeAreaView>
       </ScrollView>
     </Animated.View>
@@ -26,6 +36,7 @@ export const CustomDrawerContentComponent = props => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: Color.background
   }
 });
