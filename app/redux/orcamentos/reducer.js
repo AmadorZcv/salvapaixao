@@ -15,18 +15,18 @@ export default (state = initialState, action) => {
       const { criacao } = action.payload.detalhes;
       const title = moment(criacao).format("DD/MM/YYYY");
       const index = orcamentos.findIndex(value => value.title === title);
-      console.log("index é", index);
+
       if (index === -1) {
         const oldOrcamentos = state.orcamentos;
         oldOrcamentos.push({
           title,
           data: [action.payload]
         });
-        console.log("old é", oldOrcamentos);
+
         const newOrcamentos = _.sortBy(oldOrcamentos, function(o) {
           return new moment(o.title, "DD/MM/YYYY");
         }).reverse();
-        console.log("new orcamentos é", newOrcamentos);
+
         return update(state, {
           orcamentos: { $set: newOrcamentos }
         });
