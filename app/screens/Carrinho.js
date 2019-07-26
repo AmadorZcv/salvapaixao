@@ -5,7 +5,8 @@ import {
   FlatList,
   StyleSheet,
   ScrollView,
-  Alert
+  Alert,
+  TouchableOpacity
 } from "react-native";
 import { connect } from "react-redux";
 import CarrinhoItem from "../components/CarrinhoItem";
@@ -26,7 +27,7 @@ import { integerToReal } from "../config/formatUtils";
 import { Color } from "../styles";
 import { primaryBig } from "../styles/Text";
 import { navigateFromId } from "../config/navigateUtils";
-import { TouchableOpacity } from "react-native-gesture-handler";
+
 import { Button, normalize } from "react-native-elements";
 
 class Carrinho extends PureComponent {
