@@ -185,8 +185,13 @@ const HomeStack = createStackNavigator(
               style={{ paddingRight: 16 }}
             >
               <Image
-                style={{ height: 22, width: 22, margin: 5 }}
+                style={{
+                  height: 22,
+                  width: 22,
+                  margin: 5
+                }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
@@ -207,6 +212,7 @@ const HomeStack = createStackNavigator(
               <Image
                 style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
@@ -227,6 +233,7 @@ const HomeStack = createStackNavigator(
               <Image
                 style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
@@ -247,6 +254,7 @@ const HomeStack = createStackNavigator(
               <Image
                 style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
@@ -267,6 +275,7 @@ const HomeStack = createStackNavigator(
               <Image
                 style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
@@ -287,6 +296,7 @@ const HomeStack = createStackNavigator(
               <Image
                 style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
@@ -307,6 +317,7 @@ const HomeStack = createStackNavigator(
               <Image
                 style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
@@ -327,6 +338,7 @@ const HomeStack = createStackNavigator(
               <Image
                 style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
@@ -347,6 +359,7 @@ const HomeStack = createStackNavigator(
               <Image
                 style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
@@ -367,6 +380,7 @@ const HomeStack = createStackNavigator(
               <Image
                 style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
@@ -387,6 +401,7 @@ const HomeStack = createStackNavigator(
               <Image
                 style={{ height: 22, width: 22, margin: 5 }}
                 source={require("../img/icons/shopping-cart.png")}
+                resizeMode={"contain"}
               />
             </TouchableOpacity>
           )
