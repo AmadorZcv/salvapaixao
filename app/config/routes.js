@@ -30,6 +30,8 @@ import Orcamento from "../screens/Orcamento";
 import HeaderButton from "../components/header/HeaderButton";
 import CarrinhoIcon from "../components/header/CarrinhoIcon";
 import CarrinhoButton from "../components/header/CarrinhoButton";
+import HomeButton from "../components/header/HomeButton";
+import MenuButton from "../components/header/MenuButton";
 
 const OrcamentoStack = createStackNavigator(
   {
@@ -39,28 +41,12 @@ const OrcamentoStack = createStackNavigator(
         return {
           headerTitle: "Orçamentos",
           headerLeft: (
-            <TouchableOpacity
+            <MenuButton
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            >
-              <Icon
-                name={"menu"}
-                type={"material-community"}
-                color={Color.headerIcons}
-                size={24}
-                containerStyle={{ paddingLeft: 16 }}
-              />
-            </TouchableOpacity>
+            />
           ),
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Home")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/home.png")}
-              />
-            </TouchableOpacity>
+            <HomeButton onPress={() => navigation.navigate("Home")} />
           )
         };
       }
@@ -72,15 +58,7 @@ const OrcamentoStack = createStackNavigator(
           headerTitle: "Orcamento",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Home")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/home.png")}
-              />
-            </TouchableOpacity>
+            <HomeButton onPress={() => navigation.navigate("Home")} />
           )
         };
       }
@@ -115,28 +93,12 @@ const ConfigStack = createStackNavigator(
         return {
           headerTitle: "Configurações",
           headerLeft: (
-            <TouchableOpacity
+            <MenuButton
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            >
-              <Icon
-                name={"menu"}
-                type={"material-community"}
-                color={Color.headerIcons}
-                size={24}
-                containerStyle={{ paddingLeft: 16 }}
-              />
-            </TouchableOpacity>
+            />
           ),
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Home")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/home.png")}
-              />
-            </TouchableOpacity>
+            <HomeButton onPress={() => navigation.navigate("Home")} />
           )
         };
       }
@@ -170,17 +132,9 @@ const HomeStack = createStackNavigator(
         return {
           headerTitle: "Tela Inicial",
           headerLeft: (
-            <TouchableOpacity
+            <MenuButton
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            >
-              <Icon
-                name={"menu"}
-                type={"material-community"}
-                color={Color.headerIcons}
-                size={24}
-                containerStyle={{ paddingLeft: 16 }}
-              />
-            </TouchableOpacity>
+            />
           ),
           headerRight: (
             <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
@@ -313,17 +267,7 @@ const HomeStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Orçamento",
-          headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.popToTop()}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/home.png")}
-              />
-            </TouchableOpacity>
-          )
+          headerRight: <HomeButton onPress={() => navigation.popToTop()} />
         };
       }
     },
