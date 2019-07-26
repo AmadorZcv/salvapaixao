@@ -16,7 +16,7 @@ let engine = createEngine("my-save-key");
 //Tempo para salvar
 engine = debounce(engine, 1000);
 //Salvar somente o user Reducer
-engine = filter(engine, ["orcamentos"]);
+//engine = filter(engine, ["orcamentos"]);
 //Criar o middleware de storage
 const reduxStorageMiddleware = storage.createMiddleware(engine);
 // Adicionando o reduxStorage
