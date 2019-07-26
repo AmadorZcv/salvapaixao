@@ -1,4 +1,5 @@
 import Color from "./Color";
+import { normalize } from "react-native-elements";
 
 const ProdutoItem = {
   column: {
@@ -17,15 +18,19 @@ const ProdutoItem = {
     fontWeight: "600"
   },
   textPreco: {
-    fontSize: 20,
+    fontSize: normalize(20),
     color: Color.primaryText,
     textAlign: "center",
     fontWeight: "100",
     marginBottom: 5
   },
-  textCusto: { fontSize: 18, textAlign: "center", color: Color.secondaryText },
+  textCusto: {
+    fontSize: normalize(18),
+    textAlign: "center",
+    color: Color.secondaryText
+  },
   textValueFinal: {
-    fontSize: 20,
+    fontSize: normalize(20),
     textAlign: "center",
     color: Color.primaryText
   }

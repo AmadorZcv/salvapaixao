@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Alert
 } from "react-native";
-import { Icon } from "react-native-elements";
+import { Icon, normalize } from "react-native-elements";
 import Swipeout from "react-native-swipeout";
 import CarrinhoImage from "./CarrinhoImage";
 import CarrinhoText from "./CarrinhoText";
@@ -62,7 +62,7 @@ export default class CarrinhoItem extends PureComponent {
                 style={{
                   color: "rgba(255,255,255,0.87)",
                   backgroundColor: "#FE3A3A",
-                  fontSize: 13,
+                  fontSize: normalize(13),
                   width: 49,
                   textAlign: "center",
                   textAlignVertical: "center",

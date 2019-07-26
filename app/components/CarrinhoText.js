@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { View, Text } from "react-native";
 import { Color } from "../styles";
+import { normalize } from "react-native-elements";
 
 export default class CarrinhoText extends PureComponent {
   name() {
@@ -128,21 +129,19 @@ export default class CarrinhoText extends PureComponent {
       >
         <Text
           style={{
-            fontSize: 16,
+            fontSize: normalize(16),
             color: Color.primaryText
           }}
         >
-          {" "}
-          {this.name()}{" "}
+          {this.name()}
         </Text>
         <Text
           style={{
-            fontSize: 10,
+            fontSize: normalize(10),
             color: Color.secondaryText
           }}
         >
-          {" "}
-          {this.underName()}{" "}
+          {this.underName()}
         </Text>
       </View>
     );
