@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import {
   createBottomTabNavigator,
   createAppContainer,
@@ -307,26 +307,86 @@ const DrawerNavigatorExample = createDrawerNavigator(
       //Title
       screen: HomeStack,
       navigationOptions: {
-        drawerLabel: "Inicial"
+        drawerLabel: "Inicial",
+        drawerIcon: () => (
+          <Image
+            source={require("../img/icons/home.png")}
+            style={{ width: 20, height: 24 }}
+            resizeMode={"contain"}
+          />
+        )
+      }
+    },
+    UltimoOrcamento: {
+      //Title
+      screen: OrcamentoStack,
+      navigationOptions: {
+        drawerLabel: "Último orçamento",
+        drawerIcon: () => (
+          <Image
+            source={require("../img/icons/last-document.png")}
+            style={{ opacity: 0.54 }}
+          />
+        )
       }
     },
     Salvos: {
       //Title
       screen: OrcamentoStack,
       navigationOptions: {
-        drawerLabel: "Orçamentos"
+        drawerLabel: "Orçamentos salvos",
+        drawerIcon: () => (
+          <Image
+            source={require("../img/icons/document.png")}
+            style={{ opacity: 0.54 }}
+          />
+        )
+      }
+    },
+    Relatorio: {
+      //Title
+      screen: OrcamentoStack,
+      navigationOptions: {
+        drawerLabel: "Relatório mensal",
+        drawerIcon: () => (
+          <Image
+            source={require("../img/icons/folder.png")}
+            style={{ opacity: 0.54 }}
+          />
+        )
       }
     },
     Config: {
       //Title
       screen: ConfigStack,
       navigationOptions: {
-        drawerLabel: "Configurações"
+        drawerLabel: "Configurações",
+        drawerIcon: () => (
+          <Image
+            source={require("../img/icons/settings.png")}
+            style={{ opacity: 0.54 }}
+          />
+        )
       }
     }
   },
   {
-    contentComponent: CustomDrawerContentComponent
+    contentComponent: CustomDrawerContentComponent,
+    contentOptions: {
+      activeTintColor: "#e91e63",
+      itemsContainerStyle: {
+        marginVertical: 0
+      },
+      iconContainerStyle: {
+        opacity: 1
+      },
+      labelStyle: {
+        marginLeft: 0,
+        fontWeight: "normal",
+        color: Color.secondaryText
+      }
+    },
+    drawerWidth: 240
   }
 );
 //export default createAppContainer(DrawerNavigatorExample);
