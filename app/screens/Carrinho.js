@@ -27,7 +27,7 @@ import { Color } from "../styles";
 import { primaryBig } from "../styles/Text";
 import { navigateFromId } from "../config/navigateUtils";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Button } from "react-native-elements";
+import { Button, normalize } from "react-native-elements";
 
 class Carrinho extends PureComponent {
   onClean = () => {
@@ -75,7 +75,9 @@ class Carrinho extends PureComponent {
               style={{ paddingRight: 5 }}
               onPress={this.onClean}
             >
-              <Text style={{ color: Color.secondaryText, fontSize: 13 }}>
+              <Text
+                style={{ color: Color.secondaryText, fontSize: normalize(13) }}
+              >
                 Limpar Carrinho
               </Text>
             </TouchableOpacity>
@@ -135,7 +137,9 @@ class Carrinho extends PureComponent {
               style={{ paddingRight: 5 }}
               onPress={this.onClean}
             >
-              <Text style={{ color: Color.secondaryText, fontSize: 13 }}>
+              <Text
+                style={{ color: Color.secondaryText, fontSize: normalize(13) }}
+              >
                 Limpar Carrinho
               </Text>
             </TouchableOpacity>
@@ -240,7 +244,7 @@ const styles = StyleSheet.create({
   informaçõesText: {
     textAlign: "left",
     textAlignVertical: "center",
-    fontSize: 17,
+    fontSize: normalize(17),
     height: 30,
     paddingLeft: 34,
     color: Color.primaryText
@@ -248,7 +252,7 @@ const styles = StyleSheet.create({
   informaçõesValue: {
     textAlign: "left",
     textAlignVertical: "center",
-    fontSize: 17,
+    fontSize: normalize(17),
     paddingLeft: 3.5,
     height: 30,
     color: Color.primaryText

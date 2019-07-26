@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Text, View, TouchableOpacity, TextInput } from "react-native";
-import { Overlay, Image } from "react-native-elements";
+import { Overlay, Image, normalize } from "react-native-elements";
 import { textValueFinal, contadorText } from "../styles/Text";
 
 export default class ModalQuantidade extends PureComponent {
@@ -56,7 +56,9 @@ export default class ModalQuantidade extends PureComponent {
         }}
       >
         <View>
-          <Text style={{ ...textValueFinal, fontSize: 26 }}>{precoFinal}</Text>
+          <Text style={{ ...textValueFinal, fontSize: normalize(26) }}>
+            {precoFinal}
+          </Text>
           <View
             style={{
               flexDirection: "row",
@@ -73,7 +75,7 @@ export default class ModalQuantidade extends PureComponent {
             </TouchableOpacity>
 
             <TextInput
-              style={{ ...contadorText, fontSize: 28, flex: 1 }}
+              style={{ ...contadorText, fontSize: normalize(28), flex: 1 }}
               ref={ref => (this.ref = ref)}
               keyboardType={"numeric"}
               onChangeText={this.onChangeText}

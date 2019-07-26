@@ -9,7 +9,7 @@ import {
   DrawerActions
 } from "react-navigation";
 import Home from "../screens/Home";
-import { Icon, Image } from "react-native-elements";
+import { Icon, Image, normalize } from "react-native-elements";
 import { Color, TextStyle } from "../styles";
 import SBancada from "../screens/SBancada";
 import SMetais from "../screens/SMetais";
@@ -76,7 +76,7 @@ const OrcamentoStack = createStackNavigator(
         textAlign: "center",
         justifyContent: "center",
         color: Color.primaryText,
-        fontSize: 20,
+        fontSize: normalize(20),
         fontWeight: "500",
         marginLeft: 20
       },
@@ -116,7 +116,7 @@ const ConfigStack = createStackNavigator(
         textAlign: "center",
         justifyContent: "center",
         color: Color.primaryText,
-        fontSize: 20,
+        fontSize: normalize(20),
         fontWeight: "500",
         marginLeft: 20
       },
@@ -292,7 +292,7 @@ const HomeStack = createStackNavigator(
         textAlign: "center",
         justifyContent: "center",
         color: Color.primaryText,
-        fontSize: 20,
+        fontSize: normalize(20),
         fontWeight: "500",
         marginLeft: 20
       },

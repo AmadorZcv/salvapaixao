@@ -1,22 +1,23 @@
 import Color from "./Color";
+import { normalize } from "react-native-elements";
 
 const helvetica = "Helvetica";
 const base = { fontFamily: helvetica };
 const header = {
   ...base,
   color: Color.white,
-  fontSize: 34,
+  fontSize: normalize(34),
   textAlign: "center",
   color: Color.header
 };
 
 const normal = {
   ...base,
-  fontSize: 24
+  fontSize: normalize(24)
 };
 //Base dos textos primários
 export const primaryBig = {
-  fontSize: 16,
+  fontSize: normalize(16),
   color: Color.primaryText
 };
 
@@ -41,7 +42,7 @@ export const contadorText = {
 };
 //Style do preço ex: R$ 86,00
 export const textPreco = {
-  fontSize: 15,
+  fontSize: normalize(15),
   color: Color.secondaryText,
   textAlign: "center",
   fontWeight: "100",
@@ -50,7 +51,7 @@ export const textPreco = {
 
 //Style custo total
 export const textCusto = {
-  fontSize: 12,
+  fontSize: normalize(12),
   textAlign: "center",
   color: Color.primaryText
 };
@@ -59,7 +60,7 @@ const primarySmall = {
   color: Color.primaryText,
   textAlign: "center",
 
-  fontSize: 10
+  fontSize: normalize(10)
 };
 //Style do valor das labels ex: 25m²
 export const textValue = {
