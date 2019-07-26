@@ -58,7 +58,7 @@ export default class Home extends PureComponent {
       onSalvaRalo
     } = this;
     return (
-      <ScrollView >
+      <ScrollView>
         <View style={styles.container}>
           <View style={{ ...styles.cardLine, marginTop: 5 }}>
             <TouchableOpacity style={styles.card} onPress={onSalvaPiso}>
@@ -68,7 +68,10 @@ export default class Home extends PureComponent {
                 resizeMode={"stretch"}
               />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.card} onPress={onSalvaPisoEspeciais}>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={onSalvaPisoEspeciais}
+            >
               <Image
                 style={styles.imageStyle}
                 source={require("../img/index/spm-logo.png")}
@@ -77,7 +80,10 @@ export default class Home extends PureComponent {
             </TouchableOpacity>
           </View>
           <View style={styles.cardLine}>
-            <TouchableOpacity style={styles.card} onPress={onSalvaPisoResistente}>
+            <TouchableOpacity
+              style={styles.card}
+              onPress={onSalvaPisoResistente}
+            >
               <Image
                 style={styles.imageStyle}
                 source={require("../img/index/spr-logo.png")}
@@ -141,12 +147,13 @@ export default class Home extends PureComponent {
             </TouchableOpacity>
           </View>
           <View style={styles.logoView}>
-          <Image
-                style={styles.logoStyle}
-                source={require("../img/logo/fabricado-salvabras.png")}
-                resizeMode={"contain"}
-              /></View>
+            <Image
+              style={styles.logoStyle}
+              source={require("../img/logo/fabricado-salvabras.png")}
+              resizeMode={"contain"}
+            />
           </View>
+        </View>
       </ScrollView>
     );
   }
@@ -176,8 +183,10 @@ const styles = StyleSheet.create({
   },
   logoView: {
     paddingTop: 15,
+    justifyContent: "center",
+    alignItems: "center"
   },
   logoStyle: {
-    height: 59,
+    height: 59
   }
 });
