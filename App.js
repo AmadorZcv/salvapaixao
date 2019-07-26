@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Provider } from "react-redux";
 import SplashScreen from "./app/components/SplashScreen";
 import makeStore from "./app/redux/store";
 import Router from "./app/config/Router";
 import Drawer from "./app/config/routes";
+import { Color } from "./app/styles";
 
 class App extends Component {
   constructor(props) {
@@ -37,9 +38,11 @@ class App extends Component {
       return <SplashScreen />;
     }
     return (
-      <Provider store={this.state.store}>
-        <Router />
-      </Provider>
+      <View style={{ flex: 1, backgroundColor: Color.background }}>
+        <Provider store={this.state.store}>
+          <Router />
+        </Provider>
+      </View>
     );
   }
 }

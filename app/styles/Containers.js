@@ -3,7 +3,6 @@ export const itemContainer = {
   flexDirection: "row",
   flex: 1,
   paddingLeft: 6,
-  height: 105,
   paddingVertical: 9
 };
 
