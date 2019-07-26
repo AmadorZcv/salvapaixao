@@ -5,7 +5,7 @@ import moment from "moment";
 
 const initialState = {
   orcamentos: [],
-  logged: true
+  logged: false
 };
 
 export default (state = initialState, action) => {
