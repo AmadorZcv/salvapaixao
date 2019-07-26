@@ -80,7 +80,7 @@ export default class CarrinhoItem extends PureComponent {
           style={{
             backgroundColor,
             flexDirection: "row",
-            height: 49
+            paddingVertical: 5
           }}
         >
           <TouchableOpacity
