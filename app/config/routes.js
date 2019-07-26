@@ -27,6 +27,9 @@ import { CustomDrawerContentComponent } from "../components/DrawerComponent";
 import Orcamentos from "../screens/Orcamentos";
 import Config from "../screens/Config";
 import Orcamento from "../screens/Orcamento";
+import HeaderButton from "../components/header/HeaderButton";
+import CarrinhoIcon from "../components/header/CarrinhoIcon";
+import CarrinhoButton from "../components/header/CarrinhoButton";
 
 const OrcamentoStack = createStackNavigator(
   {
@@ -180,20 +183,7 @@ const HomeStack = createStackNavigator(
             </TouchableOpacity>
           ),
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{
-                  height: 22,
-                  width: 22,
-                  margin: 5
-                }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
@@ -205,16 +195,7 @@ const HomeStack = createStackNavigator(
           headerTitle: "Salva Bancada",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
@@ -226,16 +207,7 @@ const HomeStack = createStackNavigator(
           headerTitle: "Salva Metais",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
@@ -247,16 +219,7 @@ const HomeStack = createStackNavigator(
           headerTitle: "Salva Piso Tradicional",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
@@ -268,16 +231,7 @@ const HomeStack = createStackNavigator(
           headerTitle: "Salva Piso Madeira",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
@@ -289,16 +243,7 @@ const HomeStack = createStackNavigator(
           headerTitle: "Salva Piso Pintura",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
@@ -310,16 +255,7 @@ const HomeStack = createStackNavigator(
           headerTitle: "Salva Piso Limpeza",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
@@ -331,16 +267,7 @@ const HomeStack = createStackNavigator(
           headerTitle: "Salva Piso Resistente",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
@@ -352,16 +279,7 @@ const HomeStack = createStackNavigator(
           headerTitle: "Salva Quina",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
@@ -373,16 +291,7 @@ const HomeStack = createStackNavigator(
           headerTitle: "Salva Ralo",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
@@ -394,16 +303,7 @@ const HomeStack = createStackNavigator(
           headerTitle: "Materiais Básicos",
 
           headerRight: (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Carrinho")}
-              style={{ paddingRight: 16 }}
-            >
-              <Image
-                style={{ height: 22, width: 22, margin: 5 }}
-                source={require("../img/icons/shopping-cart.png")}
-                resizeMode={"contain"}
-              />
-            </TouchableOpacity>
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
         };
       }
