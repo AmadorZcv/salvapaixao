@@ -1,4 +1,4 @@
-Versão 1.2.0
+Versão 1.2.1
 
 Pequenas correções de formatação
  - Agora a tela de adição de item demonstra o valor no formato R$ 0,00
