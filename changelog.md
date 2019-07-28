@@ -1,11 +1,18 @@
-Versão 1.1.3
+Versão 1.2.0
 
-Novo design da Tela de Login e Menu.
-Ícone do carrinho agora mostra quantidade de itens.
-Ajustes de posição para melhorar compatibilidade em diversos dispositivos.
-Pequenos bugs corrigidos.
+Pequenas correções de formatação
+ - Agora a tela de adição de item demonstra o valor no formato R$ 0,00
 
-Data: 26/07/2019
+Correções de bugs na tela de Carrinho de Orçamento
+ - Valores de até 5 dígitos mostrados corretamente
+ - Ajustes em descrições de alguns itens
+ - Itens agora direcionam corretamente às suas respectivas páginas
+
+Ajustes em formatações da tela Salvar Orçamento
+
+Outras pequenas correções
+
+Data: 28/07/2019
 
 Desenvolvido por:
 @amadorzcv
