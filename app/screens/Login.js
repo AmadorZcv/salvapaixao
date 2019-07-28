@@ -41,7 +41,7 @@ class Login extends PureComponent {
       >
         <Image
           source={require("../img/logo/login-ntp-logo.png")}
-          style={{ width: 250, height: 100, marginVertical: 5 }}
+          style={{ width: 250, height: 100, marginVertical: 15 }}
           resizeMode={"contain"}
         />
         <View
@@ -49,10 +49,10 @@ class Login extends PureComponent {
             height: 200,
             width: 250,
             alignItems: "center",
-            marginTop: 15
+            marginTop: 10
           }}
         >
-          <View style={{ backgroundColor: "#449296", width: 250 }}>
+          <View style={{ backgroundColor: "#449296", width: 252 }}>
             <Text
               style={{
                 textAlign: "center",
@@ -60,16 +60,15 @@ class Login extends PureComponent {
                 color: "white",
                 fontSize: normalize(21),
                 marginHorizontal: 40,
-                marginTop: 20,
-                marginBottom: 19
+                marginVertical: 20
               }}
             >
-              Seja bem vindo ao Salva Compra!
+              Seja bem-vindo ao Salva Compra!
             </Text>
           </View>
           <View
             style={{
-              width: 250,
+              width: 252,
               backgroundColor: "#88C1C3",
               paddingHorizontal: 37,
               paddingTop: 20,
@@ -84,8 +83,8 @@ class Login extends PureComponent {
                 backgroundColor: Color.background,
                 borderRadius: 10,
                 borderBottomWidth: 0,
-                height: "25%",
-                marginBottom: 20,
+                height: "30%",
+                marginBottom: 10,
                 justifyContent: "center"
               }}
               inputStyle={{
@@ -106,7 +105,7 @@ class Login extends PureComponent {
                 backgroundColor: Color.background,
                 borderRadius: 10,
                 borderBottomWidth: 0,
-                height: "25%",
+                height: "30%",
                 marginBottom: 5,
                 justifyContent: "center"
               }}
@@ -131,29 +130,30 @@ class Login extends PureComponent {
         <Button
           title={"Entrar"}
           containerStyle={{
-            width: "55%",
+            width: "40%",
+            height: "50%",
             flex: 1,
-            marginTop: 40
+            marginTop: 46,
           }}
-          titleStyle={{ fontSize: normalize(13) }}
+          titleStyle={{ fontSize: normalize(16) }}
           onPress={this.onLogin}
           buttonStyle={{ backgroundColor: "#247378", borderRadius: 5 }}
           activeOpacity={1}
         />
+        <Image
+          source={require("../img/logo/salvabras-logo.png")}
+          style={{
+            width: 220,
+            height: 47.5,
+            flex: 0,
+          }}
+          resizeMode={"contain"}
+        />
         <ImageBackground
-          source={require("../img/logo/login-bg.png")}
-          style={{ width: width, height: 170, alignItems: "center" }}
-          resizeMode={"stretch"}
+          source={require("../img/logo/menu-bg.png")}
+          style={{ width: width, height: 117.75, alignItems: "center", marginTop: 30 }}
+          resizeMode={"contain"}
         >
-          <Image
-            source={require("../img/logo/salvabras-logo.png")}
-            style={{
-              width: 250,
-              height: 100,
-              flex: 1
-            }}
-            resizeMode={"contain"}
-          />
           <View style={{ marginBottom: 5, position: "absolute", bottom: 0 }}>
             <Text style={{ color: "white", fontSize: normalize(13) }}>
               Salva Compra
