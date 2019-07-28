@@ -8,11 +8,18 @@ export function navigateFromId(id) {
       return "SalvaPisoEspeciais";
     case "12000":
       return "SalvaPisoResistente";
+    case "13000":
+    case "13100":
+    case "13200":
+    case "13300":
+      return "SalvaPisoLimpeza";
     case "14000":
     case "14001":
     case "14002":
     case "14003":
       return "SalvaPisoPintura";
+    case "15000":
+      return "SalvaQuina";
     case "16000":
       return "SalvaMetais";
     case "17000":
@@ -20,11 +27,9 @@ export function navigateFromId(id) {
     case "17002":
     case "17003":
       return "SalvaBancada";
-    case "13000":
-    case "13100":
-    case "13200":
-    case "13300":
-      return "SalvaPisoLimpeza";
+    case "18000":
+    case "18001":
+      return "SalvaRalo";
     case "19000":
     case "19001":
     case "19100":
