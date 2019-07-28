@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
   informaçõesValue: {
     textAlign: "left",
     textAlignVertical: "center",
-    fontSize: normalize(17),
+    fontSize: normalize(16),
     paddingLeft: 3.5,
     height: 30,
     color: Color.primaryText

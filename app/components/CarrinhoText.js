@@ -67,24 +67,6 @@ export default class CarrinhoText extends PureComponent {
         return "Papel + Bolha + TNT (1m)";
       case "12000":
         return "Papel+Manta Expandida (1,2m)";
-      case "14000":
-        return "Proteção Pintura (0,45m)";
-      case "14001":
-        return "Proteção Pintura (0,9m)";
-      case "14002":
-        return "Proteção Pintura (1,5m)";
-      case "14003":
-        return "Proteção Pintura (2,4m)";
-      case "16000":
-        return "Filme para Envolvimento (6 unid)";
-      case "17000":
-        return "Adesivo para Proteção (0,45m)";
-      case "17001":
-        return "Adesivo para Proteção (0,60m)";
-      case "17002":
-        return "Adesivo para Proteção (0,40m)";
-      case "17003":
-        return "Adesivo para Proteção (0,60m)(30m²)";
       case "13000":
         return "Pós Obra";
       case "13100":
@@ -93,6 +75,30 @@ export default class CarrinhoText extends PureComponent {
         return "Limpa Pedras";
       case "13300":
         return "Limpa Rejunte";
+      case "14000":
+        return "Proteção Pintura (0,45m)";
+      case "14001":
+        return "Proteção Pintura (0,9m)";
+      case "14002":
+        return "Proteção Pintura (1,5m)";
+      case "14003":
+        return "Proteção Pintura (2,4m)";
+      case "15000":
+        return "Proteção para Quinas e Batentes";
+      case "16000":
+        return "Filme para Envolvimento";
+      case "17000":
+        return "Adesivo para Proteção (0,45m)";
+      case "17001":
+        return "Adesivo para Proteção (0,60m)";
+      case "17002":
+        return "Adesivo para Proteção (0,40m)";
+      case "17003":
+        return "Adesivo para Proteção (0,60m)";
+      case "18000":
+        return "Tampão para Ralos (10cm)"
+      case "18001":
+        return "Tampão para Ralos (15cm)"
       case "19000":
         return "Largura: 1,2m Comprimento: 25m";
       case "19001":
