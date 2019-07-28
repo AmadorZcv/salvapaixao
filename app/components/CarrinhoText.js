@@ -15,6 +15,11 @@ export default class CarrinhoText extends PureComponent {
         return "Madeira";
       case "12000":
         return "Extra Resistente";
+      case "13000":
+      case "13100":
+      case "13200":
+      case "13300":
+        return "Limpeza";
       case "14000":
       case "14001":
       case "14002":
@@ -32,11 +37,6 @@ export default class CarrinhoText extends PureComponent {
       case "18000":
       case "18001":
         return "Salva Ralo";
-      case "13000":
-      case "13100":
-      case "13200":
-      case "13300":
-        return "Limpeza";
       case "19000":
       case "19001":
         return "Papelão Ondulado";
@@ -100,9 +100,9 @@ export default class CarrinhoText extends PureComponent {
       case "18001":
         return "Tampão para Ralos (15cm)"
       case "19000":
-        return "Largura: 1,2m Comprimento: 25m";
+        return "Comprimento: 25m";
       case "19001":
-        return "Largura: 1,2m Comprimento: 50m";
+        return "Comprimento: 50m";
       case "19100":
         return "Largura: 6m Comprimento: 5m";
       case "19101":
@@ -116,11 +116,11 @@ export default class CarrinhoText extends PureComponent {
       case "19105":
         return "Largura: 3m Comprimento: 2m";
       case "19200":
-        return "Altura: 1,8cm Comprimento: 50m";
+        return "Altura: 1,8cm";
       case "19201":
-        return "Altura: 4,8cm Comprimento: 50m";
+        return "Altura: 4,8cm";
       case "19300":
-        return "Altura: 4,8cm Comprimento: 50m";
+        return "Altura: 4,8cm";
     }
   }
 
