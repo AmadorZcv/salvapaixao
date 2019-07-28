@@ -117,7 +117,8 @@ class SalvarOrcamento extends PureComponent {
               });
             }}
             keyboardType="numeric"
-            mask={"[0000]"}
+            mask={"[00] dias"}
+            placeholder={"dd dias"}
             style={styles.dateInputStyle}
           />
         </View>
@@ -135,9 +136,11 @@ class SalvarOrcamento extends PureComponent {
         />
         <Text style={styles.labelStyle}>CNPJ/CPF</Text>
         <TextInputMask
-          keyboardType="default"
+          keyboardType="numeric"
+          mask={"[00].[000].[000]/[0000]-[00]"}
+          //mask={"[000].[000].[000]-[00]"}
+          placeholder={"xx.xxx.xxx/xxxx-xx ou xxx.xxx.xxx-xx"}
           style={styles.inputStyle}
-          placeholder={"Digite o nome da empresa"}
           onChangeText={(formatted, extracted) => {
             this.setState({
               cpf: formatted
@@ -168,10 +171,10 @@ class SalvarOrcamento extends PureComponent {
         />
         <Text style={styles.labelStyle}>Telefone</Text>
         <TextInputMask
-          keyboardType="default"
           style={styles.inputStyle}
-          keyboardType="numeric"
-          mask="([00]) [00000]-[0000]"
+          keyboardType="phone-pad"
+          mask={"([00]) [00000]-[0000]"}
+          //mask={"([00]) [0000]-[0000]"}
           placeholder={"Digite o telefone"}
           onChangeText={(formatted, extracted) => {
             this.setState({
@@ -181,7 +184,7 @@ class SalvarOrcamento extends PureComponent {
         />
         <Text style={styles.labelStyle}>E-mail</Text>
         <TextInputMask
-          keyboardType="default"
+          keyboardType="email-address"
           style={styles.inputStyle}
           placeholder={"Digite o email para contato"}
           onChangeText={(formatted, extracted) => {
@@ -197,6 +200,7 @@ class SalvarOrcamento extends PureComponent {
               keyboardType="default"
               style={{ ...styles.inputStyle, width: "90%" }}
               placeholder={"Digite o estado             "}
+              mask={"[AA]"}
               onChangeText={(formatted, extracted) => {
                 this.setState({
                   uf: formatted
@@ -251,7 +255,8 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 10,
     height: 30,
-    paddingVertical: 0
+    paddingVertical: 0,
+    textAlign: "center"
   },
   inputStyle: {
     borderWidth: StyleSheet.hairlineWidth,
