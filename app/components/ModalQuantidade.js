@@ -24,7 +24,6 @@ export default class ModalQuantidade extends PureComponent {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.isVisible !== this.state.isVisible && this.state.isVisible) {
       setTimeout(() => {
-        this.ref.focus();
       }, 1);
     }
   }
@@ -57,7 +56,7 @@ export default class ModalQuantidade extends PureComponent {
       >
         <View>
           <Text style={{ ...textValueFinal, fontSize: normalize(26) }}>
-            {precoFinal}
+            R$ {precoFinal}
           </Text>
           <View
             style={{

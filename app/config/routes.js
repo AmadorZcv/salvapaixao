@@ -266,7 +266,7 @@ const HomeStack = createStackNavigator(
       screen: Carrinho,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Orçamento",
+          headerTitle: "Carrinho de orçamento",
           headerRight: <HomeButton onPress={() => navigation.popToTop()} />
         };
       }

@@ -54,8 +54,8 @@ export const CustomDrawerContentComponent = props => {
                 <Image
                   source={require("../img/logo/menu-ntp-logo.png")}
                   style={{
-                    width: 34,
-                    height: 34
+                    width: 46,
+                    height: 46
                   }}
                   resizeMode={"contain"}
                 />
