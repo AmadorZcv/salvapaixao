@@ -150,19 +150,10 @@ render() {
         buttonStyle={{ backgroundColor: "#247378", borderRadius: 5 }}
         activeOpacity={1}
       />
-      <Image
-        source={require("../img/logo/salvabras-logo.png")}
-        style={{
-          width: 220,
-          height: 47.5,
-          flex: 0,
-        }}
-        resizeMode={"contain"}
-      />
       <ImageBackground
-        source={require("../img/logo/menu-bg.png")}
-        style={{ width: width, height: 117.75, alignItems: "center", marginTop: 30 }}
-        resizeMode={"contain"}
+        source={require("../img/logo/fundo-login-salvabras.png")}
+        style={{ width: width, height: 171.251, alignItems: "center" }}
+        resizeMode={"stretch"}
       >
         <View style={{ marginBottom: 5, position: "absolute", bottom: 0 }}>
           <Text style={{ color: "white", fontSize: normalize(13) }}>
