@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, ScrollView } from "react-native";
 import moment from "moment";
 import { Color } from "../styles";
 import OrcamentoDetalheItem from "../components/OrcamentoDetalheItem";
@@ -28,9 +28,9 @@ class InformacaoOrcamento extends PureComponent {
 
     const id = `#${moment(detalhes.validade).format("YYYYMMDD")}00101501`;
     return (
-      <View style={{ backgroundColor: Color.background, flex: 1 }}>
+      <ScrollView style={{ backgroundColor: Color.background, flex: 1 }}>
         <View>
-          <Text style={{ textAlign: "right", paddingRight: 10 }}>{id}</Text>
+          <Text style={{ textAlign: "right", paddingRight: 10, fontSize: 16, fontWeight: "bold", paddingBottom: 16}}>{id}</Text>
           <FlatList
             data={Object.keys(cart)}
             renderItem={({ item, index }) => (
@@ -53,7 +53,7 @@ class InformacaoOrcamento extends PureComponent {
             text={integerToReal(totalComIpi)}
           />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

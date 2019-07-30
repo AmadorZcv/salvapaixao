@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, TouchableOpacity, SectionList } from "react-native";
+import { View, TouchableOpacity, SectionList, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import { FlatList } from "react-native-gesture-handler";
 import { Text, normalize } from "react-native-elements";
@@ -20,7 +20,7 @@ class Orcamentos extends PureComponent {
     const { orcamentos, products } = this.props;
     const { onOrcamentoPress } = this;
     return (
-      <View style={{ backgroundColor: Color.background }}>
+      <ScrollView style={{ backgroundColor: Color.background }}>
         <SectionList
           renderItem={({ item, index, section }) => (
             <OrcamentoItem
@@ -46,7 +46,7 @@ class Orcamentos extends PureComponent {
           sections={orcamentos}
           keyExtractor={(item, index) => item + index}
         />
-      </View>
+      </ScrollView>
     );
   }
 }
