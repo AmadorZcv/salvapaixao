@@ -71,6 +71,7 @@ class SalvarOrcamento extends PureComponent {
         }
       })
     );
+    this.props.navigation.navigate("Salvos");
   };
   render() {
     return (
