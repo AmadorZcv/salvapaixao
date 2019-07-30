@@ -1,18 +1,16 @@
-Versão 1.2.1
+Versão 1.2.2
 
-Pequenas correções de formatação
- - Agora a tela de adição de item demonstra o valor no formato R$ 0,00
+**NOVO**
+Tela Orçamento
+Informações de venda em Orçamento
 
-Correções de bugs na tela de Carrinho de Orçamento
- - Valores de até 5 dígitos mostrados corretamente
- - Ajustes em descrições de alguns itens
- - Itens agora direcionam corretamente às suas respectivas páginas
+**AJUSTES**
+Tela Salvar Orçamento recebe leves ajustes
+ - Ao salvar, o usuário recebe um popup de confirmação e é redirecionado à tela inicial
 
-Ajustes em formatações da tela Salvar Orçamento
+Tela Orçamentos agora informa valores de orçamento corretamente
 
-Outras pequenas correções
-
-Data: 28/07/2019
+Data: 30/07/2019
 
 Desenvolvido por:
 @amadorzcv
