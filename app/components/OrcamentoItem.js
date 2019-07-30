@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import moment from "moment";
 import { normalize } from "react-native-elements";
 import { Color } from "../styles";
+import { integerToReal } from "../config/formatUtils";
 export default class OrcamentoItem extends PureComponent {
   constructor(props) {
     super(props);
@@ -10,13 +11,9 @@ export default class OrcamentoItem extends PureComponent {
   }
 
   render() {
-    const {
-      nome,
-      validade,
-      nomeCompleto,
-      cidade,
-      uf
-    } = this.props.item.detalhes;
+    const { item, valor } = this.props;
+    const { nome, validade, nomeCompleto, cidade, uf } = item.detalhes;
+
     const { index, onPress } = this.props;
     const backgroundColor = index % 2 === 0 ? "white" : "lightgray";
     return (
@@ -46,7 +43,7 @@ export default class OrcamentoItem extends PureComponent {
             {cidade}/{uf}
           </Text>
           <Text style={{ fontSize: normalize(14), color: Color.primaryText }}>
-            17000
+            R$ {integerToReal(valor)}
           </Text>
         </View>
       </TouchableOpacity>

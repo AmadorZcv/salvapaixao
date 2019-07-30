@@ -5,6 +5,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { Text, normalize } from "react-native-elements";
 import OrcamentoItem from "../components/OrcamentoItem";
 import { Color } from "../styles";
+import { calculateTotalComIpi } from "../redux/cart/reducer";
 
 class Orcamentos extends PureComponent {
   constructor(props) {
@@ -16,7 +17,7 @@ class Orcamentos extends PureComponent {
     navigation.navigate("Orcamento", { item });
   };
   render() {
-    const { orcamentos } = this.props;
+    const { orcamentos, products } = this.props;
     const { onOrcamentoPress } = this;
     return (
       <View style={{ backgroundColor: Color.background }}>
@@ -26,6 +27,7 @@ class Orcamentos extends PureComponent {
               item={item}
               index={index}
               onPress={() => onOrcamentoPress(item)}
+              valor={calculateTotalComIpi(item.cart, products)}
             />
           )}
           renderSectionHeader={({ section: { title } }) => (
@@ -34,7 +36,8 @@ class Orcamentos extends PureComponent {
                 fontWeight: "bold",
                 fontSize: normalize(23),
                 paddingLeft: 38,
-                color: Color.primaryText
+                color: Color.primaryText,
+                backgroundColor: Color.background
               }}
             >
               {title}
@@ -49,6 +52,7 @@ class Orcamentos extends PureComponent {
 }
 const mapStateToProps = state => {
   const { orcamentos } = state.orcamentos;
-  return { orcamentos };
+  const { products } = state.products;
+  return { orcamentos, products };
 };
 export default connect(mapStateToProps)(Orcamentos);
