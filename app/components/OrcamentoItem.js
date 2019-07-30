@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import moment from "moment";
 import { normalize } from "react-native-elements";
 import { Color } from "../styles";
@@ -17,10 +17,13 @@ export default class OrcamentoItem extends PureComponent {
       cidade,
       uf
     } = this.props.item.detalhes;
-    const { index } = this.props;
+    const { index, onPress } = this.props;
     const backgroundColor = index % 2 === 0 ? "white" : "lightgray";
     return (
-      <View style={{ paddingLeft: 38, paddingRight: 27, backgroundColor }}>
+      <TouchableOpacity
+        style={{ paddingLeft: 38, paddingRight: 27, backgroundColor }}
+        onPress={onPress}
+      >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <Text style={{ fontSize: normalize(16), color: Color.primaryText }}>
             Orçamento #01
@@ -46,7 +49,7 @@ export default class OrcamentoItem extends PureComponent {
             17000
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }

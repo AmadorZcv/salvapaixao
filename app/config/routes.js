@@ -55,7 +55,7 @@ const OrcamentoStack = createStackNavigator(
       screen: Orcamento,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Orcamento",
+          headerTitle: "Orçamento",
 
           headerRight: (
             <HomeButton onPress={() => navigation.navigate("Home")} />

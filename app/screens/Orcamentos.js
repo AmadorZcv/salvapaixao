@@ -11,14 +11,22 @@ class Orcamentos extends PureComponent {
     super(props);
     this.state = {};
   }
-
+  onOrcamentoPress = item => {
+    const { navigation } = this.props;
+    navigation.navigate({ routeName: "Orcamento", item });
+  };
   render() {
     const { orcamentos } = this.props;
+    const { onOrcamentoPress } = this;
     return (
       <View style={{ backgroundColor: Color.background }}>
         <SectionList
           renderItem={({ item, index, section }) => (
-            <OrcamentoItem item={item} index={index} />
+            <OrcamentoItem
+              item={item}
+              index={index}
+              onPress={() => onOrcamentoPress(item)}
+            />
           )}
           renderSectionHeader={({ section: { title } }) => (
             <Text
