@@ -225,11 +225,11 @@ class SalvarOrcamento extends PureComponent {
         </View>
         <CheckBox
           title={"Exportar orçamento para PDF"}
-          containerStyle={{ backgroundColor: "#fff" }}
+          containerStyle={{ marginTop: 20, backgroundColor: "#fafafa" }}
         />
         <Button
           title={"Salvar Orçamento"}
-          containerStyle={{ marginBottom: 30, marginTop: 10 }}
+          containerStyle={{ marginBottom: 16, marginTop: 10, marginHorizontal: 36 }}
           onPress={this.salvarOrcamento}
         />
       </ScrollView>

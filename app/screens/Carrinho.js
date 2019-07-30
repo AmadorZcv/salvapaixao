@@ -67,7 +67,7 @@ class Carrinho extends PureComponent {
   render() {
     const { cart, products, totalComIpi, subTotal, totalIpi } = this.props;
     return (
-      <View style={{ paddingBottom: 18 }}>
+      <View>
         <ScrollView>
           <View
             style={{ marginTop: 10, alignItems: "flex-end", marginBottom: 5 }}
@@ -221,8 +221,10 @@ class Carrinho extends PureComponent {
             </View>
           </View>
           <Button
-            title={"Salvar"}
+            color = "#fafafa"
+            title={"Salvar orçamento"}
             onPress={() => this.props.navigation.navigate("SalvarOrcamento")}
+            containerStyle={{ marginBottom: 16, marginTop: 15, marginHorizontal: 70 }}
           />
         </ScrollView>
       </View>
