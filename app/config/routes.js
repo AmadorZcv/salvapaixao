@@ -32,6 +32,7 @@ import CarrinhoIcon from "../components/header/CarrinhoIcon";
 import CarrinhoButton from "../components/header/CarrinhoButton";
 import HomeButton from "../components/header/HomeButton";
 import MenuButton from "../components/header/MenuButton";
+import InformacaoOrcamento from "../screens/InformacaoOrcamento";
 
 const OrcamentoStack = createStackNavigator(
   {
@@ -55,11 +56,15 @@ const OrcamentoStack = createStackNavigator(
       screen: Orcamento,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Orçamento",
-
-          headerRight: (
-            <HomeButton onPress={() => navigation.navigate("Home")} />
-          )
+          headerTitle: "Orçamento"
+        };
+      }
+    },
+    InformacaoOrcamento: {
+      screen: InformacaoOrcamento,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Informações de venda"
         };
       }
     }

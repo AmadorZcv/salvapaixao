@@ -13,7 +13,7 @@ class Orcamentos extends PureComponent {
   }
   onOrcamentoPress = item => {
     const { navigation } = this.props;
-    navigation.navigate({ routeName: "Orcamento", item });
+    navigation.navigate("Orcamento", { item });
   };
   render() {
     const { orcamentos } = this.props;
