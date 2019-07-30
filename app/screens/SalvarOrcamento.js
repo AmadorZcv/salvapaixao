@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Alert } from "react-native";
 import TextInputMask from "react-native-text-input-mask";
 import moment from "moment";
 import { connect } from "react-redux";
@@ -71,7 +71,8 @@ class SalvarOrcamento extends PureComponent {
         }
       })
     );
-    this.props.navigation.navigate("Salvos");
+    Alert.alert("Orçamento salvo com sucesso");
+    this.props.navigation.popToTop();
   };
   render() {
     return (
@@ -229,7 +230,11 @@ class SalvarOrcamento extends PureComponent {
         />
         <Button
           title={"Salvar Orçamento"}
-          containerStyle={{ marginBottom: 16, marginTop: 10, marginHorizontal: 36 }}
+          containerStyle={{
+            marginBottom: 16,
+            marginTop: 10,
+            marginHorizontal: 36
+          }}
           onPress={this.salvarOrcamento}
         />
       </ScrollView>
