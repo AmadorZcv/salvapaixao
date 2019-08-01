@@ -33,10 +33,15 @@ export async function requestDownloadPermission() {
   }
 }
 export function donwload() {
-  RNFetchBlob.config({ path: DownloadDir + "/me_" + "." + "pdf" })
+  RNFetchBlob.config({
+    path: DownloadDir + "/me_" + "." + "pdf",
+    notification: true,
+    title: "Salva Compra",
+    description: "Downloading file."
+  })
     .fetch(
       "POST",
-      "http://192.168.11.103:4000/api/pdf",
+      "http://1db516ac.ngrok.io/api/pdf",
       {
         "Content-Type": "application/json"
       },
