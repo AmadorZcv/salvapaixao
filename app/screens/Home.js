@@ -6,8 +6,9 @@ import {
   ScrollView,
   TouchableOpacity
 } from "react-native";
-import { Image } from "react-native-elements";
+import { Image, Button } from "react-native-elements";
 import Color from "../styles/Color";
+import { donwload, requestDownloadPermission } from "../config/fileSystem";
 
 export default class Home extends PureComponent {
   constructor(props) {
@@ -154,6 +155,7 @@ export default class Home extends PureComponent {
             />
           </View>
         </View>
+        <Button title={"Test Download"} onPress={requestDownloadPermission} />
       </ScrollView>
     );
   }
