@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<title>PDF Produto</title>
+<title>PDF Spec</title>
 <style id="applicationStylesheet" type="text/css">
 	body {
 		margin: 0;
 		padding: 0;
 	}
 	:root {
-		--web-view-ids: PDF_Produto;
+		--web-view-ids: PDF_Spec;
 	}
-	#PDF_Produto * {
+	#PDF_Spec * {
 		margin: 0;
 		padding: 0;
 	}
-	#PDF_Produto {
+	#PDF_Spec {
 		position: absolute;
 		box-sizing: border-box;
 		background: #E5E5E5;
@@ -26,11 +26,11 @@
 		overflow: hidden;
 		margin: 0;
 		padding: 0;
-		--web-view-name: PDF Produto;
-		--web-view-id: PDF_Produto;
+		--web-view-name: PDF Spec;
+		--web-view-id: PDF_Spec;
 		--web-enable-deep-linking: true;
 	}
-	#produto_pvenda {
+	#produto_pspec {
 		position: absolute;
 		width: 1126px;
 		height: 38px;
@@ -38,7 +38,7 @@
 		top: 0px;
 		overflow: visible;
 	}
-	#div_pvenda {
+	#div_pspec {
 		position: absolute;
 		width: 1126px;
 		height: 38px;
@@ -46,7 +46,7 @@
 		top: 0px;
 		overflow: visible;
 	}
-	#produtovalue_pvenda {
+	#produtovalue_pspec {
 		position: absolute;
 		left: 0px;
 		top: 10px;
@@ -60,7 +60,7 @@
 		font-size: 18px;
 		color: rgba(85,85,85,1);
 	}
-	#div1_pvenda {
+	#div1_pspec {
 		fill: transparent;
 		stroke: rgb(118, 118, 118);
 		stroke-width: 1px;
@@ -69,20 +69,20 @@
 		stroke-miterlimit: 4;
 		shape-rendering: auto;
 	}
-	.div1_pvenda {
+	.div1_pspec {
 		overflow: visible;
 		position: absolute;
 		top: 0px;
-		left: 311.5px;
+		left: 218.5px;
 		width: 1px;
 		height: 38px;
 	}
-	#quantidadevalue_pvenda {
+	#descricaovalue_pspec {
 		position: absolute;
-		left: 412px;
+		left: 234px;
 		top: 10px;
 		overflow: visible;
-		width: 46px;
+		width: 128px;
 		white-space: nowrap;
 		text-align: right;
 		font-family: Arial;
@@ -91,7 +91,7 @@
 		font-size: 18px;
 		color: rgba(85,85,85,1);
 	}
-	#div2_pvenda {
+	#div2_pspec {
 		fill: transparent;
 		stroke: rgb(118, 118, 118);
 		stroke-width: 1px;
@@ -100,20 +100,20 @@
 		stroke-miterlimit: 4;
 		shape-rendering: auto;
 	}
-	.div2_pvenda {
+	.div2_pspec {
 		overflow: visible;
 		position: absolute;
 		top: 0px;
-		left: 462.5px;
+		left: 366.5px;
 		width: 1px;
 		height: 38px;
 	}
-	#semipivalue_pvenda {
+	#embalagemvalue_pspec {
 		position: absolute;
-		left: 557px;
+		left: 473px;
 		top: 10px;
 		overflow: visible;
-		width: 74px;
+		width: 63px;
 		white-space: nowrap;
 		text-align: right;
 		font-family: Arial;
@@ -122,7 +122,7 @@
 		font-size: 18px;
 		color: rgba(85,85,85,1);
 	}
-	#div3_pvenda {
+	#div3_pspec {
 		fill: transparent;
 		stroke: rgb(118, 118, 118);
 		stroke-width: 1px;
@@ -131,7 +131,38 @@
 		stroke-miterlimit: 4;
 		shape-rendering: auto;
 	}
-	.div3_pvenda {
+	.div3_pspec {
+		overflow: visible;
+		position: absolute;
+		top: 0px;
+		left: 540.5px;
+		width: 1px;
+		height: 38px;
+	}
+	#alturavalue_pspec {
+		position: absolute;
+		left: 594px;
+		top: 10px;
+		overflow: visible;
+		width: 36px;
+		white-space: nowrap;
+		text-align: right;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(85,85,85,1);
+	}
+	#div4_pspec {
+		fill: transparent;
+		stroke: rgb(118, 118, 118);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.div4_pspec {
 		overflow: visible;
 		position: absolute;
 		top: 0px;
@@ -139,12 +170,12 @@
 		width: 1px;
 		height: 38px;
 	}
-	#ipivalue_pvenda {
+	#larguravalue_pspec {
 		position: absolute;
-		left: 669px;
+		left: 704px;
 		top: 10px;
 		overflow: visible;
-		width: 11px;
+		width: 36px;
 		white-space: nowrap;
 		text-align: right;
 		font-family: Arial;
@@ -153,7 +184,7 @@
 		font-size: 18px;
 		color: rgba(85,85,85,1);
 	}
-	#div4_pvenda {
+	#div5_pspec {
 		fill: transparent;
 		stroke: rgb(118, 118, 118);
 		stroke-width: 1px;
@@ -162,20 +193,20 @@
 		stroke-miterlimit: 4;
 		shape-rendering: auto;
 	}
-	.div4_pvenda {
+	.div5_pspec {
 		overflow: visible;
 		position: absolute;
 		top: 0px;
-		left: 685.5px;
+		left: 745.5px;
 		width: 1px;
 		height: 38px;
 	}
-	#vendavalue_pvenda {
+	#comprimentovalue_pspec {
 		position: absolute;
-		left: 797px;
+		left: 864px;
 		top: 10px;
 		overflow: visible;
-		width: 79px;
+		width: 36px;
 		white-space: nowrap;
 		text-align: right;
 		font-family: Arial;
@@ -184,7 +215,7 @@
 		font-size: 18px;
 		color: rgba(85,85,85,1);
 	}
-	#div5_pvenda {
+	#div6_pspec {
 		fill: transparent;
 		stroke: rgb(118, 118, 118);
 		stroke-width: 1px;
@@ -193,20 +224,51 @@
 		stroke-miterlimit: 4;
 		shape-rendering: auto;
 	}
-	.div5_pvenda {
+	.div6_pspec {
 		overflow: visible;
 		position: absolute;
 		top: 0px;
-		left: 881.5px;
+		left: 905.5px;
 		width: 1px;
 		height: 38px;
 	}
-	#vdescontovalue_pvenda {
+	#ncmvalue_pspec {
 		position: absolute;
-		left: 1048px;
+		left: 927px;
 		top: 10px;
 		overflow: visible;
-		width: 79px;
+		width: 90px;
+		white-space: nowrap;
+		text-align: right;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		color: rgba(85,85,85,1);
+	}
+	#div7_pspec {
+		fill: transparent;
+		stroke: rgb(118, 118, 118);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.div7_pspec {
+		overflow: visible;
+		position: absolute;
+		top: 0px;
+		left: 1022.5px;
+		width: 1px;
+		height: 38px;
+	}
+	#pesovalue_pspec {
+		position: absolute;
+		left: 1091px;
+		top: 10px;
+		overflow: visible;
+		width: 36px;
 		white-space: nowrap;
 		text-align: right;
 		font-family: Arial;
@@ -218,46 +280,60 @@
 </style>
 </head>
 <body>
-<div id="PDF_Produto">
-	<div style="position:absolute;width:1126px;height:38px;left:104px;top:0px;overflow:visible;" id="produto_pvenda">
-		<div style="position:absolute;width:1126px;height:38px;left:0px;top:0px;overflow:visible;" id="div_pvenda">
-			<div id="produtovalue_pvenda">
+<div id="PDF_Spec">
+	<div id="produto_pspec">
+		<div id="div_pspec">
+			<div id="produtovalue_pspec">
 				<span>Salva Piso 1,00m x 25mts</span>
 			</div>
-			<svg class="div1_pvenda">
-				<path id="div1_pvenda" d="M 0 38 L 0 0">
+			<svg class="div1_pspec">
+				<path id="div1_pspec" d="M 0 38 L 0 0">
 				</path>
 			</svg>
-			<div id="quantidadevalue_pvenda">
-				<span>20,00</span>
+			<div id="descricaovalue_pspec">
+				<span>Protetor de piso</span>
 			</div>
-			<svg class="div2_pvenda">
-				<path id="div2_pvenda" d="M 0 38 L 0 0">
+			<svg class="div2_pspec">
+				<path id="div2_pspec" d="M 0 38 L 0 0">
 				</path>
 			</svg>
-			<div id="semipivalue_pvenda">
-				<span>R$ 83,86</span>
+			<div id="embalagemvalue_pspec">
+				<span>Unitário</span>
 			</div>
-			<svg class="div3_pvenda">
-				<path id="div3_pvenda" d="M 0 38 L 0 0">
+			<svg class="div3_pspec">
+				<path id="div3_pspec" d="M 0 38 L 0 0">
 				</path>
 			</svg>
-			<div id="ipivalue_pvenda">
-				<span>5</span>
+			<div id="alturavalue_pspec">
+				<span>0,00</span>
 			</div>
-			<svg class="div4_pvenda">
-				<path id="div4_pvenda" d="M 0 38 L 0 0">
+			<svg class="div4_pspec">
+				<path id="div4_pspec" d="M 0 38 L 0 0">
 				</path>
 			</svg>
-			<div id="vendavalue_pvenda">
-				<span> R$ 88,05</span>
+			<div id="larguravalue_pspec">
+				<span>0,00</span>
 			</div>
-			<svg class="div5_pvenda">
-				<path id="div5_pvenda" d="M 0 38 L 0 0">
+			<svg class="div5_pspec">
+				<path id="div5_pspec" d="M 0 38 L 0 0">
 				</path>
 			</svg>
-			<div id="vdescontovalue_pvenda">
-				<span> R$ 88,05</span>
+			<div id="comprimentovalue_pspec">
+				<span>0,00</span>
+			</div>
+			<svg class="div6_pspec">
+				<path id="div6_pspec" d="M 0 38 L 0 0">
+				</path>
+			</svg>
+			<div id="ncmvalue_pspec">
+				<span>00.000.000</span>
+			</div>
+			<svg class="div7_pspec">
+				<path id="div7_pspec" d="M 0 38 L 0 0">
+				</path>
+			</svg>
+			<div id="pesovalue_pspec">
+				<span>0,00</span>
 			</div>
 		</div>
 	</div>
