@@ -1,9 +1,9 @@
-Versão 1.2.3
+Versão 1.3.0
 
-**NOVO**
-Exportar orçamento para PDF
+**Ajustes**
 
-Data: 01/08/2019
+
+Data: 0?/08/2019
 
 Desenvolvido por:
 @amadorzcv
