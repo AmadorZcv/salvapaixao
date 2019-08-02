@@ -23,7 +23,7 @@ import {
   calculateTotalNoIpi,
   calculateTotalIpi
 } from "../redux/cart/reducer";
-import { integerToReal } from "../config/formatUtils";
+import { integerToReal, fontSizeAdjust } from "../config/formatUtils";
 import { Color } from "../styles";
 import { primaryBig } from "../styles/Text";
 import { navigateFromId } from "../config/navigateUtils";
@@ -186,7 +186,7 @@ class Carrinho extends PureComponent {
               <Text style={styles.informaçõesText}>Subtotal sem IPI</Text>
             </View>
             <View style={styles.rightContainer}>
-              <Text style={styles.informaçõesValue}>
+              <Text style={{ fontSize: fontSizeAdjust(totalComIpi), textAlign: "left", textAlignVertical: "center", paddingLeft: 3.5, height: 30, color: Color.primaryText }}>
                 R$ {integerToReal(subTotal)}
               </Text>
             </View>
@@ -200,7 +200,7 @@ class Carrinho extends PureComponent {
               <Text style={styles.informaçõesText}>Valor do IPI</Text>
             </View>
             <View style={styles.rightContainer}>
-              <Text style={styles.informaçõesValue}>
+              <Text style={{ fontSize: fontSizeAdjust(totalComIpi), textAlign: "left", textAlignVertical: "center", paddingLeft: 3.5, height: 30, color: Color.primaryText }}>
                 R$ {integerToReal(totalIpi)}
               </Text>
             </View>
@@ -215,13 +215,13 @@ class Carrinho extends PureComponent {
               <Text style={styles.informaçõesText}>Valor Total com IPI</Text>
             </View>
             <View style={styles.rightContainer}>
-              <Text style={styles.informaçõesValue}>
+              <Text style={{ fontSize: fontSizeAdjust(totalComIpi), textAlign: "left", textAlignVertical: "center", paddingLeft: 3.5, height: 30, color: Color.primaryText }}>
                 R$ {integerToReal(totalComIpi)}
               </Text>
             </View>
           </View>
           <Button
-            color = "#fafafa"
+            color="#fafafa"
             title={"Salvar orçamento"}
             onPress={() => this.props.navigation.navigate("SalvarOrcamento")}
             containerStyle={{ marginBottom: 16, marginTop: 15, marginHorizontal: 70 }}
@@ -252,21 +252,20 @@ const styles = StyleSheet.create({
     paddingLeft: 34,
     color: Color.primaryText
   },
+  //não utilizada
   informaçõesValue: {
     textAlign: "left",
     textAlignVertical: "center",
-    fontSize: normalize(16),
     paddingLeft: 3.5,
     height: 30,
     color: Color.primaryText
   },
   leftContainer: {
     width: 259,
-
     borderRightWidth: StyleSheet.hairlineWidth,
     borderColor: Color.divbarColor
   },
   rightContainer: {
     width: 101
-  }
+  },
 });

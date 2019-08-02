@@ -24,3 +24,22 @@ export function integerToReal(value) {
     return formatted;
   }
 }
+export function fontSizeAdjust(value) {
+  const string = value.toString();
+  if (string.length < 6){
+    const size = 20
+    return size;
+  }
+  else if (string.length == 6) {
+    const size = 18
+    return size;
+  }
+  else if (string.length == 7) {
+    const size = 16;
+    return size;
+  }
+  else if (string.length > 7) {
+    const size = 14;
+    return size;
+  }
+}
