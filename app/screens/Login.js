@@ -31,9 +31,8 @@ class Login extends PureComponent {
         "Usuário e/ou senha incorretos. Tente novamente.",
         [
           {
-            text: "Fechar",
-            style: "cancel"
-          }
+            text: "Fechar", style: "cancel"
+          },
         ],
         { cancelable: false }
       );
@@ -82,7 +81,8 @@ class Login extends PureComponent {
               width: 252,
               backgroundColor: "#88C1C3",
               paddingHorizontal: 37,
-              paddingTop: 20
+              paddingTop: 20,
+              marginBottom: 20
             }}
           >
             <Input
@@ -93,7 +93,7 @@ class Login extends PureComponent {
                 backgroundColor: Color.background,
                 borderRadius: 10,
                 borderBottomWidth: 0,
-                height: 30,
+                height: "30%",
                 marginBottom: 10,
                 justifyContent: "center"
               }}
@@ -115,8 +115,8 @@ class Login extends PureComponent {
                 backgroundColor: Color.background,
                 borderRadius: 10,
                 borderBottomWidth: 0,
-                height: 30,
-                marginBottom: 10,
+                height: "30%",
+                marginBottom: 5,
                 justifyContent: "center"
               }}
               inputContainerStyle={{ borderBottomWidth: 0 }}
@@ -130,8 +130,7 @@ class Login extends PureComponent {
               style={{
                 textAlign: "center",
                 fontSize: normalize(11),
-                color: "white",
-                marginBottom: 10
+                color: "white"
               }}
             >
               Esqueceu a senha?
@@ -139,18 +138,18 @@ class Login extends PureComponent {
           </View>
         </View>
         <Button
-          title={"Entrar"}
-          containerStyle={{
-            width: "40%",
-            height: "50%",
-            flex: 1,
-            marginTop: 20
-          }}
-          titleStyle={{ fontSize: normalize(16) }}
-          onPress={this.onLogin}
-          buttonStyle={{ backgroundColor: "#247378", borderRadius: 5 }}
-          activeOpacity={1}
-        />
+            title={"Entrar"}
+            containerStyle={{
+              width: "40%",
+              height: "50%",
+              flex: 1,
+              marginTop: 46,
+            }}
+            titleStyle={{ fontSize: normalize(16) }}
+            onPress={this.onLogin}
+            buttonStyle={{ backgroundColor: "#247378", borderRadius: 5 }}
+            activeOpacity={1}
+          />
         <ImageBackground
           source={require("../img/logo/fundo-login-salvabras.png")}
           style={{ width: width, height: 171.251, alignItems: "center" }}
