@@ -47,15 +47,15 @@ export default class ModalQuantidade extends PureComponent {
         isVisible={isVisible}
         onBackdropPress={this.onBackdropPress}
         overlayStyle={{
-          height: 118,
-          width: 209,
+          height: normalize(120),
+          width: "60%",
           borderRadius: 5,
           backgroundColor: "#FAFAFA",
           padding: 20
         }}
       >
         <View>
-          <Text style={{ ...textValueFinal, fontSize: normalize(26) }}>
+          <Text style={{ ...textValueFinal, fontSize: normalize(24) }}>
             R$ {precoFinal}
           </Text>
           <View
@@ -69,12 +69,12 @@ export default class ModalQuantidade extends PureComponent {
             <TouchableOpacity onPress={onMinus}>
               <Image
                 source={require("../img/icons/minus.png")}
-                style={{ width: 30, height: 30 }}
+                style={{ width: normalize(35), height: normalize(35) }}
               />
             </TouchableOpacity>
 
             <TextInput
-              style={{ ...contadorText, fontSize: normalize(28), flex: 1 }}
+              style={{ ...contadorText, fontSize: normalize(26), flex: 1 }}
               ref={ref => (this.ref = ref)}
               keyboardType={"numeric"}
               onChangeText={this.onChangeText}
@@ -85,7 +85,7 @@ export default class ModalQuantidade extends PureComponent {
             <TouchableOpacity onPress={onPlus}>
               <Image
                 source={require("../img/icons/plus.png")}
-                style={{ width: 30, height: 30 }}
+                style={{ width: normalize(35), height: normalize(35) }}
               />
             </TouchableOpacity>
           </View>
