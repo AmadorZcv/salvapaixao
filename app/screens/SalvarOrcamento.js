@@ -145,7 +145,7 @@ class SalvarOrcamento extends PureComponent {
         <Text style={{ marginTop: 20, marginBottom: 7, color: 'rgba(0,0,0,0.87)', fontSize: 16 }}>Empresa e Contato </Text>
         <Text style={styles.labelStyle}>Nome da Conta</Text>
         <TextInputMask
-          autoCapitalize="words"
+          autoCapitalize="characters"
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite o nome da empresa"}
@@ -182,6 +182,7 @@ class SalvarOrcamento extends PureComponent {
         />
         <Text style={styles.labelStyle}>Ramo/Atividade</Text>
         <TextInputMask
+          autoCapitalize="words"
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite a que se aplica a empresa"}
@@ -199,6 +200,7 @@ class SalvarOrcamento extends PureComponent {
         />
         <Text style={styles.labelStyle}>Nome completo</Text>
         <TextInputMask
+          autoCapitalize="characters"
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite o nome da pessoa"}
@@ -275,6 +277,7 @@ class SalvarOrcamento extends PureComponent {
           <View>
             <Text>Cidade</Text>
             <TextInputMask
+              autoCapitalize="characters"
               keyboardType="default"
               style={{ ...styles.inputStyle, width: "100%" }}
               placeholder={"Digite a cidade             "}
