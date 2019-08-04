@@ -12,8 +12,8 @@ class SalvarOrcamento extends PureComponent {
     super(props);
     this.state = {
       criacao: moment(),
-      validade: moment(),
-      condicao: "30",
+      validade: moment().add(1, 'day'),
+      condicao: "",
       nome: "",
       cpf: "",
       ramo: "",
@@ -131,8 +131,8 @@ class SalvarOrcamento extends PureComponent {
               });
             }}
             keyboardType="numeric"
-            mask={"[00] dias"}
-            placeholder={"dd dias"}
+            mask={"[990]"}
+            placeholder={"em dias"}
             style={styles.dateInputStyle}
             refInput={ref => { this.condicao = ref }}
             blurOnSubmit={false}
@@ -145,6 +145,7 @@ class SalvarOrcamento extends PureComponent {
         <Text style={{ marginTop: 20, marginBottom: 7, color: 'rgba(0,0,0,0.87)', fontSize: 16 }}>Empresa e Contato </Text>
         <Text style={styles.labelStyle}>Nome da Conta</Text>
         <TextInputMask
+          autoCapitalize="words"
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite o nome da empresa"}
@@ -217,7 +218,7 @@ class SalvarOrcamento extends PureComponent {
         <TextInputMask
           style={styles.inputStyle}
           keyboardType="phone-pad"
-          mask={"([00]) [00000]-[0000]"}
+          mask={"([00]) [99990]-[0000]"}
           //mask={"([00]) [0000]-[0000]"}
           placeholder={"Digite o telefone"}
           onChangeText={(formatted, extracted) => {
