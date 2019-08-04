@@ -77,7 +77,7 @@ class SalvarOrcamento extends PureComponent {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={{ marginTop: 30 }}>Informações da proposta </Text>
+        <Text style={{ marginTop: 30, paddingBottom: 17, color: 'rgba(0,0,0,0.87)', fontSize: 16 }}>Informações da proposta </Text>
         <View style={styles.dateContainer}>
           <Text style={styles.dateLabel}>Data de criação</Text>
           <TextInputMask
@@ -124,7 +124,7 @@ class SalvarOrcamento extends PureComponent {
             style={styles.dateInputStyle}
           />
         </View>
-        <Text>Empresa e Contato </Text>
+        <Text style={{ marginTop: 20, marginBottom: 7, color: 'rgba(0,0,0,0.87)', fontSize: 16 }}>Empresa e Contato </Text>
         <Text style={styles.labelStyle}>Nome da Conta</Text>
         <TextInputMask
           keyboardType="default"
@@ -254,7 +254,8 @@ const styles = StyleSheet.create({
     marginVertical: 5
   },
   dateLabel: {
-    width: 150
+    width: 150,
+    fontSize: 14 
   },
   dateInputStyle: {
     borderWidth: StyleSheet.hairlineWidth,
@@ -265,6 +266,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   inputStyle: {
+    marginTop: 5,
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 10,
     height: 30,
@@ -272,9 +274,12 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   labelStyle: {
-    marginVertical: 5
+    marginTop: 10,
+    marginBottom: 4,
+    fontSize: 14
   },
   ufContainer: {
+    marginVertical: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
