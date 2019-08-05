@@ -31,8 +31,9 @@ class Login extends PureComponent {
         "Usuário e/ou senha incorretos. Tente novamente.",
         [
           {
-            text: "Fechar", style: "cancel"
-          },
+            text: "Fechar",
+            style: "cancel"
+          }
         ],
         { cancelable: false }
       );
@@ -137,25 +138,31 @@ class Login extends PureComponent {
             </Text>
           </View>
         </View>
-        <Button
+
+        <ImageBackground
+          source={require("../img/logo/fundo-login-salvabras.png")}
+          style={{
+            width: width,
+            height: 190,
+            alignItems: "center",
+            marginTop: 46,
+            paddingTop: 70
+          }}
+          resizeMode={"stretch"}
+        >
+          <Button
             title={"Entrar"}
             containerStyle={{
               width: "40%",
               height: "50%",
-              flex: 1,
-              marginTop: 46,
+              paddingBottom: 0
             }}
             titleStyle={{ fontSize: normalize(16) }}
             onPress={this.onLogin}
             buttonStyle={{ backgroundColor: "#247378", borderRadius: 5 }}
             activeOpacity={1}
           />
-        <ImageBackground
-          source={require("../img/logo/fundo-login-salvabras.png")}
-          style={{ width: width, height: 171.251, alignItems: "center" }}
-          resizeMode={"stretch"}
-        >
-          <View style={{ marginBottom: 5, position: "absolute", bottom: 0 }}>
+          <View style={{}}>
             <Text style={{ color: "white", fontSize: normalize(13) }}>
               Salva Compra
             </Text>
