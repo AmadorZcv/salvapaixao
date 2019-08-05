@@ -12,8 +12,8 @@ class SalvarOrcamento extends PureComponent {
     super(props);
     this.state = {
       criacao: moment(),
-      validade: moment(),
-      condicao: "30",
+      validade: moment().add(1, 'day'),
+      condicao: "",
       nome: "",
       cpf: "",
       ramo: "",
@@ -77,7 +77,7 @@ class SalvarOrcamento extends PureComponent {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={{ marginTop: 30 }}>Informações da proposta </Text>
+        <Text style={{ marginTop: 30, paddingBottom: 17, color: 'rgba(0,0,0,0.87)', fontSize: 16 }}>Informações da proposta </Text>
         <View style={styles.dateContainer}>
           <Text style={styles.dateLabel}>Data de criação</Text>
           <TextInputMask
@@ -92,6 +92,12 @@ class SalvarOrcamento extends PureComponent {
             mask={"[00]/[00]/[0000]"}
             style={styles.dateInputStyle}
             placeholder={`${this.state.criacao.format("DD/MM/YYYY")}`}
+            refInput={ref => { this.criacao = ref }}
+            blurOnSubmit={false}
+            onSubmitEditing={() => {
+              this.validade.focus()
+            }}
+            returnKeyType={"next"}
           />
         </View>
         <View style={styles.dateContainer}>
@@ -107,6 +113,12 @@ class SalvarOrcamento extends PureComponent {
             mask={"[00]/[00]/[0000]"}
             style={styles.dateInputStyle}
             placeholder={`${this.state.validade.format("DD/MM/YYYY")}`}
+            refInput={ref => { this.validade = ref }}
+            blurOnSubmit={false}
+            onSubmitEditing={() => {
+              this.condicao.focus()
+            }}
+            returnKeyType={"next"}
           />
         </View>
         <View style={styles.dateContainer}>
@@ -119,14 +131,21 @@ class SalvarOrcamento extends PureComponent {
               });
             }}
             keyboardType="numeric"
-            mask={"[00] dias"}
-            placeholder={"dd dias"}
+            mask={"[990]"}
+            placeholder={"em dias"}
             style={styles.dateInputStyle}
+            refInput={ref => { this.condicao = ref }}
+            blurOnSubmit={false}
+            onSubmitEditing={() => {
+              this.nome.focus()
+            }}
+            returnKeyType={"next"}
           />
         </View>
-        <Text>Empresa e Contato </Text>
+        <Text style={{ marginTop: 20, marginBottom: 7, color: 'rgba(0,0,0,0.87)', fontSize: 16 }}>Empresa e Contato </Text>
         <Text style={styles.labelStyle}>Nome da Conta</Text>
         <TextInputMask
+          autoCapitalize="characters"
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite o nome da empresa"}
@@ -135,6 +154,12 @@ class SalvarOrcamento extends PureComponent {
               nome: formatted
             });
           }}
+          refInput={ref => { this.nome = ref }}
+          blurOnSubmit={false}
+          onSubmitEditing={() => {
+            this.cpf.focus()
+          }}
+          returnKeyType={"next"}
         />
         <Text style={styles.labelStyle}>CNPJ/CPF</Text>
         <TextInputMask
@@ -148,9 +173,16 @@ class SalvarOrcamento extends PureComponent {
               cpf: formatted
             });
           }}
+          refInput={ref => { this.cpf = ref }}
+          blurOnSubmit={false}
+          onSubmitEditing={() => {
+            this.ramo.focus()
+          }}
+          returnKeyType={"next"}
         />
         <Text style={styles.labelStyle}>Ramo/Atividade</Text>
         <TextInputMask
+          autoCapitalize="words"
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite a que se aplica a empresa"}
@@ -159,9 +191,16 @@ class SalvarOrcamento extends PureComponent {
               ramo: formatted
             });
           }}
+          refInput={ref => { this.ramo = ref }}
+          blurOnSubmit={false}
+          onSubmitEditing={() => {
+            this.nomeCompleto.focus()
+          }}
+          returnKeyType={"next"}
         />
         <Text style={styles.labelStyle}>Nome completo</Text>
         <TextInputMask
+          autoCapitalize="characters"
           keyboardType="default"
           style={styles.inputStyle}
           placeholder={"Digite o nome da pessoa"}
@@ -170,12 +209,18 @@ class SalvarOrcamento extends PureComponent {
               nomeCompleto: formatted
             });
           }}
+          refInput={ref => { this.nomeCompleto = ref }}
+          blurOnSubmit={false}
+          onSubmitEditing={() => {
+            this.telefone.focus()
+          }}
+          returnKeyType={"next"}
         />
         <Text style={styles.labelStyle}>Telefone</Text>
         <TextInputMask
           style={styles.inputStyle}
           keyboardType="phone-pad"
-          mask={"([00]) [00000]-[0000]"}
+          mask={"([00]) [99990]-[0000]"}
           //mask={"([00]) [0000]-[0000]"}
           placeholder={"Digite o telefone"}
           onChangeText={(formatted, extracted) => {
@@ -183,6 +228,12 @@ class SalvarOrcamento extends PureComponent {
               telefone: extracted
             });
           }}
+          refInput={ref => { this.telefone = ref }}
+          blurOnSubmit={false}
+          onSubmitEditing={() => {
+            this.email.focus()
+          }}
+          returnKeyType={"next"}
         />
         <Text style={styles.labelStyle}>E-mail</Text>
         <TextInputMask
@@ -194,11 +245,18 @@ class SalvarOrcamento extends PureComponent {
               email: formatted
             });
           }}
+          refInput={ref => { this.email = ref }}
+          blurOnSubmit={false}
+          onSubmitEditing={() => {
+            this.uf.focus()
+          }}
+          returnKeyType={"next"}
         />
         <View style={styles.ufContainer}>
           <View>
             <Text>UF</Text>
             <TextInputMask
+              autoCapitalize="characters"
               keyboardType="default"
               style={{ ...styles.inputStyle, width: "90%" }}
               placeholder={"Digite o estado             "}
@@ -208,11 +266,18 @@ class SalvarOrcamento extends PureComponent {
                   uf: formatted
                 });
               }}
+              refInput={ref => { this.uf = ref }}
+              blurOnSubmit={false}
+              onSubmitEditing={() => {
+                this.cidade.focus()
+              }}
+              returnKeyType={"next"}
             />
           </View>
           <View>
             <Text>Cidade</Text>
             <TextInputMask
+              autoCapitalize="characters"
               keyboardType="default"
               style={{ ...styles.inputStyle, width: "100%" }}
               placeholder={"Digite a cidade             "}
@@ -221,6 +286,9 @@ class SalvarOrcamento extends PureComponent {
                   cidade: formatted
                 });
               }}
+              refInput={ref => { this.cidade = ref }}
+              blurOnSubmit={true}
+              returnKeyType={"done"}
             />
           </View>
         </View>
@@ -254,7 +322,8 @@ const styles = StyleSheet.create({
     marginVertical: 5
   },
   dateLabel: {
-    width: 150
+    width: 150,
+    fontSize: 14
   },
   dateInputStyle: {
     borderWidth: StyleSheet.hairlineWidth,
@@ -265,6 +334,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   inputStyle: {
+    marginTop: 5,
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 10,
     height: 30,
@@ -272,9 +342,12 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   labelStyle: {
-    marginVertical: 5
+    marginTop: 10,
+    marginBottom: 4,
+    fontSize: 14
   },
   ufContainer: {
+    marginVertical: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
