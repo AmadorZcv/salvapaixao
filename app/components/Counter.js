@@ -1,9 +1,7 @@
 import React, { PureComponent } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 
-import { Image, Overlay } from "react-native-elements";
-import { contadorText, textValueFinal } from "../styles/Text";
-import ModalQuantidade from "./ModalQuantidade";
+import { contadorText } from "../styles/Text";
 
 export default class Counter extends PureComponent {
   render() {

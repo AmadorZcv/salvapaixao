@@ -30,7 +30,7 @@ export default class CarrinhoItem extends PureComponent {
     this.setState({ modal: false });
   };
   render() {
-    const { item, index, total, onRemove } = this.props;
+    const { item, index, total, onRemove, preco } = this.props;
     const backgroundColor = index % 2 === 0 ? Color.lightBackground : "white";
 
     return (
@@ -111,6 +111,7 @@ export default class CarrinhoItem extends PureComponent {
           onPlus={this.props.onPlus}
           onMinus={this.props.onMinus}
           onChange={this.props.onChange}
+          preco={preco}
           precoFinal={integerToReal(total)}
           isVisible={this.state.modal}
           onCloseModal={this.closeModal}

@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { Text, View, TouchableOpacity, TextInput } from "react-native";
 import { Overlay, Image, normalize } from "react-native-elements";
 import { textValueFinal, contadorText } from "../styles/Text";
+import { integerToReal } from "../config/formatUtils";
 
 export default class ModalQuantidade extends PureComponent {
   constructor(props) {
@@ -14,25 +15,33 @@ export default class ModalQuantidade extends PureComponent {
   }
   static getDerivedStateFromProps(nextProps, prevState) {
     let text = nextProps.total.toString();
-    if (prevState.text === "" && nextProps.total.toString() === "0") {
-      text = "";
-    }
     return nextProps.isVisible === prevState.isVisible
-      ? { text }
-      : { text, isVisible: nextProps.isVisible };
+      ? {}
+      : { isVisible: nextProps.isVisible, text };
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.isVisible !== this.state.isVisible && this.state.isVisible) {
-      setTimeout(() => {
-      }, 1);
+      setTimeout(() => {}, 1);
     }
   }
+  onPlus = () => {
+    const value = parseInt(this.state.text) + 1;
+    const text = value.toString();
+    this.setState({ text });
+  };
+  onMinus = () => {
+    const value = parseInt(this.state.text) - 1;
+    const text = value.toString();
+    if (value > 0) {
+      this.setState({ text });
+    } else {
+      this.setState({ text: "0" });
+    }
+  };
   onChangeText = text => {
     const { onChange } = this.props;
     const cleanText = text.replace(/[^\d-]/g, "");
-    this.setState({ text: cleanText }, () => {
-      onChange(cleanText);
-    });
+    this.setState({ text: cleanText });
   };
   onBackdropPress = () => {
     const { onCloseModal, onChange } = this.props;
@@ -41,7 +50,12 @@ export default class ModalQuantidade extends PureComponent {
   };
 
   render() {
-    const { onMinus, onPlus, precoFinal, isVisible } = this.props;
+    const { isVisible, preco } = this.props;
+    const { onPlus, onMinus } = this;
+    const qtdNumber = parseInt(this.state.text);
+    const qtd = isNaN(qtdNumber) ? 0 : qtdNumber;
+    const precoTotal = preco !== undefined ? preco * qtd : 0;
+
     return (
       <Overlay
         isVisible={isVisible}
@@ -56,7 +70,7 @@ export default class ModalQuantidade extends PureComponent {
       >
         <View>
           <Text style={{ ...textValueFinal, fontSize: normalize(24) }}>
-            R$ {precoFinal}
+            R$ {integerToReal(precoTotal)}
           </Text>
           <View
             style={{
@@ -80,6 +94,7 @@ export default class ModalQuantidade extends PureComponent {
               onChangeText={this.onChangeText}
               value={this.state.text}
               maxLength={3}
+              selectTextOnFocus
             />
 
             <TouchableOpacity onPress={onPlus}>

@@ -90,6 +90,7 @@ export default class SalvaPinturaItem extends PureComponent {
           onMinus={onMinus}
           onPlus={onPlus}
           onChange={onChange}
+          preco={precoTotal}
         />
       </TouchableOpacity>
     );

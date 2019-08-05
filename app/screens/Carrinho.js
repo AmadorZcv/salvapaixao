@@ -127,6 +127,7 @@ class Carrinho extends PureComponent {
                 onChange={qtd => this.onChange(qtd, item)}
                 total={calculateItemTotal(cart, products, item)}
                 onNavigate={() => this.onNavigate(item)}
+                preco={products[item].total}
               />
             )}
             keyExtractor={item => item.toString()}
@@ -186,7 +187,16 @@ class Carrinho extends PureComponent {
               <Text style={styles.informaçõesText}>Subtotal sem IPI</Text>
             </View>
             <View style={styles.rightContainer}>
-              <Text style={{ fontSize: fontSizeAdjust(totalComIpi), textAlign: "left", textAlignVertical: "center", paddingLeft: 3.5, height: 30, color: Color.primaryText }}>
+              <Text
+                style={{
+                  fontSize: fontSizeAdjust(totalComIpi),
+                  textAlign: "left",
+                  textAlignVertical: "center",
+                  paddingLeft: 3.5,
+                  height: 30,
+                  color: Color.primaryText
+                }}
+              >
                 R$ {integerToReal(subTotal)}
               </Text>
             </View>
@@ -200,7 +210,16 @@ class Carrinho extends PureComponent {
               <Text style={styles.informaçõesText}>Valor do IPI</Text>
             </View>
             <View style={styles.rightContainer}>
-              <Text style={{ fontSize: fontSizeAdjust(totalComIpi), textAlign: "left", textAlignVertical: "center", paddingLeft: 3.5, height: 30, color: Color.primaryText }}>
+              <Text
+                style={{
+                  fontSize: fontSizeAdjust(totalComIpi),
+                  textAlign: "left",
+                  textAlignVertical: "center",
+                  paddingLeft: 3.5,
+                  height: 30,
+                  color: Color.primaryText
+                }}
+              >
                 R$ {integerToReal(totalIpi)}
               </Text>
             </View>
@@ -215,7 +234,16 @@ class Carrinho extends PureComponent {
               <Text style={styles.informaçõesText}>Valor Total com IPI</Text>
             </View>
             <View style={styles.rightContainer}>
-              <Text style={{ fontSize: fontSizeAdjust(totalComIpi), textAlign: "left", textAlignVertical: "center", paddingLeft: 3.5, height: 30, color: Color.primaryText }}>
+              <Text
+                style={{
+                  fontSize: fontSizeAdjust(totalComIpi),
+                  textAlign: "left",
+                  textAlignVertical: "center",
+                  paddingLeft: 3.5,
+                  height: 30,
+                  color: Color.primaryText
+                }}
+              >
                 R$ {integerToReal(totalComIpi)}
               </Text>
             </View>
@@ -224,7 +252,11 @@ class Carrinho extends PureComponent {
             color="#fafafa"
             title={"Salvar orçamento"}
             onPress={() => this.props.navigation.navigate("SalvarOrcamento")}
-            containerStyle={{ marginBottom: 16, marginTop: 15, marginHorizontal: 70 }}
+            containerStyle={{
+              marginBottom: 16,
+              marginTop: 15,
+              marginHorizontal: 70
+            }}
           />
         </ScrollView>
       </View>
@@ -267,5 +299,5 @@ const styles = StyleSheet.create({
   },
   rightContainer: {
     width: 101
-  },
+  }
 });

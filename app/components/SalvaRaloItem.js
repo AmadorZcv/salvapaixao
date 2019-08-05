@@ -89,6 +89,7 @@ export default class SalvaRaloItem extends PureComponent {
           onMinus={onMinus}
           onPlus={onPlus}
           onChange={onChange}
+          preco={precoTotal}
         />
       </TouchableOpacity>
     );
