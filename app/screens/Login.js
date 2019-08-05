@@ -10,6 +10,7 @@ import { Input, Button, Image, Text, normalize } from "react-native-elements";
 import VersionNumber from "react-native-version-number";
 import { connect } from "react-redux";
 import { Color } from "../styles";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class Login extends PureComponent {
   constructor(props) {
@@ -52,38 +53,34 @@ class Login extends PureComponent {
       >
         <Image
           source={require("../img/logo/login-ntp-logo.png")}
-          style={{ width: 250, height: 100, marginVertical: 15 }}
+          style={{ width: wp("55.55%") }}
           resizeMode={"contain"}
         />
         <View
           style={{
-            height: 200,
-            width: 250,
+            height: hp(34),
+            width: wp(70),
             alignItems: "center",
-            marginTop: 10
           }}
         >
-          <View style={{ backgroundColor: "#449296", width: 252 }}>
+          <View style={{ backgroundColor: "#449296", height: hp("13.90%") }}>
             <Text
               style={{
+                paddingVertical: hp("3,125%"),
+                paddingHorizontal: wp("10%"),
                 textAlign: "center",
-                textAlignVertical: "center",
                 color: "white",
-                fontSize: normalize(21),
-                marginHorizontal: 40,
-                marginVertical: 20
+                fontSize: wp(6),
               }}
-            >
-              Seja bem-vindo ao Salva Compra!
+            >Seja bem-vindo ao Salva Compra!
             </Text>
           </View>
           <View
             style={{
-              width: 252,
+              width: wp(70),
               backgroundColor: "#88C1C3",
-              paddingHorizontal: 37,
-              paddingTop: 20,
-              marginBottom: 20
+              paddingHorizontal: wp(10),
+              paddingVertical: hp("3,125%")
             }}
           >
             <Input
@@ -94,7 +91,7 @@ class Login extends PureComponent {
                 backgroundColor: Color.background,
                 borderRadius: 10,
                 borderBottomWidth: 0,
-                height: "30%",
+                height: hp("6%"),
                 marginBottom: 10,
                 justifyContent: "center"
               }}
@@ -116,7 +113,7 @@ class Login extends PureComponent {
                 backgroundColor: Color.background,
                 borderRadius: 10,
                 borderBottomWidth: 0,
-                height: "30%",
+                height: hp("6%"),
                 marginBottom: 5,
                 justifyContent: "center"
               }}
@@ -142,34 +139,35 @@ class Login extends PureComponent {
         <ImageBackground
           source={require("../img/logo/fundo-login-salvabras.png")}
           style={{
-            width: width,
-            height: 190,
+            width: wp(100),
+            height: hp("36.25%"),
             alignItems: "center",
-            marginTop: 46,
-            paddingTop: 70
+            marginTop: hp("5.625%"),
           }}
-          resizeMode={"stretch"}
         >
           <Button
             title={"Entrar"}
             containerStyle={{
-              width: "40%",
-              height: "50%",
-              paddingBottom: 0
+              width: wp(35),
+              height: hp(6),
             }}
             titleStyle={{ fontSize: normalize(16) }}
             onPress={this.onLogin}
             buttonStyle={{ backgroundColor: "#247378", borderRadius: 5 }}
             activeOpacity={1}
           />
-          <View style={{}}>
-            <Text style={{ color: "white", fontSize: normalize(13) }}>
+          <View style={{
+              marginTop: hp("22%"),
+              alignItems: "center",
+              paddingBottom: hp(10)
+            }}>
+            <Text style={{ color: "white", fontSize: wp(3.5) }}>
               Salva Compra
             </Text>
             <Text
               style={{
                 color: "white",
-                fontSize: normalize(13),
+                fontSize: wp(3.5),
                 textAlign: "center"
               }}
             >
