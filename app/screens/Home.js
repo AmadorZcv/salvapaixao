@@ -111,7 +111,7 @@ export default class Home extends PureComponent {
               <Image
                 style={styles.imageStyle}
                 source={require("../img/index/sq-logo.png")}
-                resizeMode={"center"}
+                resizeMode={"stretch"}
               />
             </TouchableOpacity>
           </View>
