@@ -39,7 +39,9 @@ async function createPDF(html) {
   let options = {
     html: html,
     fileName: "test22.pdf",
-    directory: DownloadDir
+    directory: DownloadDir,
+    width: 595,
+    height: 842
   };
 
   let file = await RNHTMLtoPDF.convert(options);
