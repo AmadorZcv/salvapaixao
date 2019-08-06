@@ -27,7 +27,7 @@ import { integerToReal, fontSizeAdjust } from "../config/formatUtils";
 import { Color } from "../styles";
 import { primaryBig } from "../styles/Text";
 import { navigateFromId } from "../config/navigateUtils";
-
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Button, normalize } from "react-native-elements";
 
 class Carrinho extends PureComponent {
@@ -253,9 +253,9 @@ class Carrinho extends PureComponent {
             title={"Salvar orçamento"}
             onPress={() => this.props.navigation.navigate("SalvarOrcamento")}
             containerStyle={{
-              marginBottom: 16,
-              marginTop: 15,
-              marginHorizontal: 70
+              marginBottom: hp(2.5),
+              marginTop: hp(1.5),
+              marginHorizontal: hp(11)
             }}
           />
         </ScrollView>

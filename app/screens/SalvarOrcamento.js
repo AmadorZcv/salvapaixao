@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Alert } from "react-native";
 import TextInputMask from "react-native-text-input-mask";
 import moment from "moment";
 import { connect } from "react-redux";
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { Button, CheckBox } from "react-native-elements";
 import { add_orcamento } from "../redux/orcamentos/actions";
@@ -299,9 +300,9 @@ class SalvarOrcamento extends PureComponent {
         <Button
           title={"Salvar Orçamento"}
           containerStyle={{
-            marginBottom: 16,
-            marginTop: 10,
-            marginHorizontal: 36
+            marginBottom: hp(2.5),
+            marginTop: hp(1.5),
+            marginHorizontal: hp(5)
           }}
           onPress={this.salvarOrcamento}
         />

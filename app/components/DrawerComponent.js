@@ -3,8 +3,7 @@ import {
   ScrollView,
   StyleSheet,
   Animated,
-  View,
-  ImageBackground
+  View
 } from "react-native";
 import VersionNumber from "react-native-version-number";
 import { DrawerItems, SafeAreaView } from "react-navigation";
