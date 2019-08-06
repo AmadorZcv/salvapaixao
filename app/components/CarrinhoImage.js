@@ -1,10 +1,11 @@
 import React, { PureComponent } from "react";
 import { Image } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default class CarrinhoImage extends PureComponent {
   render() {
     const { id } = this.props;
-    const style = { marginLeft: 15, width: 70, height: 37.5 };
+    const style = { marginLeft: wp(4.16), width: wp(19.45), height: hp(5.85) };
     switch (id) {
       case "10000":
       case "10001":

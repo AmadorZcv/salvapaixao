@@ -2,7 +2,6 @@ import React, { PureComponent } from "react";
 import { View, Text, ScrollView } from "react-native";
 import moment from "moment";
 import { Button } from "react-native-elements";
-import { setCart } from "../redux/cart/actions";
 import { connect } from "react-redux";
 import LabelWithTextBelow from "../components/LabelWithTextBelow";
 import LabelWithTextRight from "../components/LabelWithTextRight";

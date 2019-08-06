@@ -4,6 +4,8 @@ import moment from "moment";
 import { normalize } from "react-native-elements";
 import { Color } from "../styles";
 import { integerToReal } from "../config/formatUtils";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
+
 export default class OrcamentoItem extends PureComponent {
   constructor(props) {
     super(props);
@@ -12,25 +14,25 @@ export default class OrcamentoItem extends PureComponent {
 
   render() {
     const { item, valor } = this.props;
-    const { nome, validade, nomeCompleto, cidade, uf } = item.detalhes;
+    const { nome, validade, nomeCompleto, cidade, uf, criacao } = item.detalhes;
 
     const { index, onPress } = this.props;
     const backgroundColor = index % 2 === 0 ? "white" : "lightgray";
     return (
       <TouchableOpacity
-        style={{ paddingLeft: 38, paddingRight: 27, backgroundColor }}
+        style={{ paddingTop: hp(1.56), paddingLeft: wp(11), paddingRight: wp(7.5), paddingBottom: hp(2.5), backgroundColor }}
         onPress={onPress}
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <Text style={{ fontSize: normalize(16), color: Color.primaryText }}>
+          <Text style={{ fontWeight: "bold", fontSize: normalize(16), color: Color.primaryText }}>
             Orçamento #01
           </Text>
           <Text style={{ fontSize: normalize(14), color: Color.primaryText }}>
             Até {moment(validade).format("DD/MM/YYYY")}
           </Text>
         </View>
-        <Text style={{ fontSize: normalize(12), color: Color.secondaryText }}>
-          {`#${moment(validade).format("YYYYMMDD")}00101501`}
+        <Text style={{paddingBottom: hp(0.5), fontSize: normalize(12), color: Color.secondaryText }}>
+          {`#${moment(criacao).format("YYYYMMDD")}00101501`}
         </Text>
         <Text style={{ fontSize: normalize(13), color: Color.secondaryText }}>
           {nome}

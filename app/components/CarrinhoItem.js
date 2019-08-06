@@ -2,12 +2,11 @@ import React, { PureComponent } from "react";
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   StyleSheet,
   Alert
 } from "react-native";
-import { Icon, normalize } from "react-native-elements";
+import { normalize } from "react-native-elements";
 import Swipeout from "react-native-swipeout";
 import CarrinhoImage from "./CarrinhoImage";
 import CarrinhoText from "./CarrinhoText";
@@ -15,6 +14,7 @@ import { integerToReal } from "../config/formatUtils";
 import { Color } from "../styles";
 import Counter from "./Counter";
 import ModalQuantidade from "./ModalQuantidade";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default class CarrinhoItem extends PureComponent {
   constructor(props) {
@@ -36,7 +36,7 @@ export default class CarrinhoItem extends PureComponent {
     return (
       <Swipeout
         autoClose={true}
-        buttonWidth={49}
+        buttonWidth={wp(13.61)}
         left={[
           {
             text: "Excluir",
@@ -63,7 +63,7 @@ export default class CarrinhoItem extends PureComponent {
                   color: "rgba(255,255,255,0.87)",
                   backgroundColor: "#FE3A3A",
                   fontSize: normalize(13),
-                  width: 49,
+                  width: wp(13.61),
                   textAlign: "center",
                   textAlignVertical: "center",
                   alignSelf: "center",
@@ -80,16 +80,14 @@ export default class CarrinhoItem extends PureComponent {
           style={{
             backgroundColor,
             flexDirection: "row",
-            paddingVertical: 5
           }}
         >
           <TouchableOpacity
             style={{
-              width: 259,
+              width: wp(72),
               flexDirection: "row",
-              paddingVertical: 8,
+              paddingVertical: hp(1.25),
               alignItems: "center",
-              paddingLeft: 0,
               borderRightWidth: StyleSheet.hairlineWidth,
               borderColor: Color.divbarColor
             }}
@@ -99,7 +97,7 @@ export default class CarrinhoItem extends PureComponent {
             <CarrinhoText id={item.id} />
           </TouchableOpacity>
           <TouchableOpacity
-            style={{ width: 101, paddingVertical: 8, alignItems: "center" }}
+            style={{ width: wp(28), paddingVertical: hp(1.25), alignItems: "center" }}
             onPress={this.openModal}
           >
             <Text>R$ {integerToReal(total)}</Text>

@@ -10,7 +10,7 @@ export default class Config extends PureComponent {
   render() {
     return (
       <View>
-        <Text> componentText </Text>
+        <Text> Área em desenvolvimento </Text>
       </View>
     );
   }
