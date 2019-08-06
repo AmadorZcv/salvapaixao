@@ -5,7 +5,8 @@ import moment from "moment";
 
 const initialState = {
   orcamentos: [],
-  logged: true
+  logged: true,
+  lastOrcamento: null
 };
 
 export default (state = initialState, action) => {
@@ -28,11 +29,13 @@ export default (state = initialState, action) => {
         }).reverse();
 
         return update(state, {
-          orcamentos: { $set: newOrcamentos }
+          orcamentos: { $set: newOrcamentos },
+          lastOrcamento: { $set: action.payload }
         });
       }
       return update(state, {
-        orcamentos: { [index]: { data: { $push: [action.payload] } } }
+        orcamentos: { [index]: { data: { $push: [action.payload] } } },
+        lastOrcamento: { $set: action.payload }
       });
     case "SET_LOGGED":
       return { ...state, logged: action.payload };

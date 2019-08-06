@@ -33,6 +33,7 @@ import CarrinhoButton from "../components/header/CarrinhoButton";
 import HomeButton from "../components/header/HomeButton";
 import MenuButton from "../components/header/MenuButton";
 import InformacaoOrcamento from "../screens/InformacaoOrcamento";
+import LastOrcamento from "../screens/LastOrcamento";
 
 const OrcamentoStack = createStackNavigator(
   {
@@ -89,7 +90,45 @@ const OrcamentoStack = createStackNavigator(
     }
   }
 );
-
+const LastOrcamentoStack = createStackNavigator(
+  {
+    LastOrcamento: {
+      screen: LastOrcamento,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Ultimo Orçamento",
+          headerLeft: (
+            <MenuButton
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            />
+          ),
+          headerRight: (
+            <HomeButton onPress={() => navigation.navigate("Home")} />
+          )
+        };
+      }
+    }
+  },
+  {
+    /* The header config from HomeScreen is now here */
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: Color.header
+      },
+      headerTitleStyle: {
+        ...TextStyle.header,
+        alignSelf: "center",
+        textAlign: "center",
+        justifyContent: "center",
+        color: Color.primaryText,
+        fontSize: normalize(20),
+        fontWeight: "500",
+        marginLeft: 20
+      },
+      headerTintColor: Color.headerIcons
+    }
+  }
+);
 const ConfigStack = createStackNavigator(
   {
     Config: {
@@ -324,7 +363,7 @@ const DrawerNavigatorExample = createDrawerNavigator(
     },
     UltimoOrcamento: {
       //Title
-      screen: OrcamentoStack,
+      screen: LastOrcamentoStack,
       navigationOptions: {
         drawerLabel: "Último orçamento",
         drawerIcon: () => (
