@@ -3,17 +3,18 @@ import { View, Text, StyleSheet, ScrollView, Alert } from "react-native";
 import TextInputMask from "react-native-text-input-mask";
 import moment from "moment";
 import { connect } from "react-redux";
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 import { Button, CheckBox } from "react-native-elements";
 import { add_orcamento } from "../redux/orcamentos/actions";
+import { requestDownloadPermission } from "../config/fileSystem";
 
 class SalvarOrcamento extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       criacao: moment(),
-      validade: moment().add(1, 'day'),
+      validade: moment().add(1, "day"),
       condicao: "",
       nome: "",
       cpf: "",
@@ -22,7 +23,8 @@ class SalvarOrcamento extends PureComponent {
       telefone: "",
       email: "",
       uf: "",
-      cidade: ""
+      cidade: "",
+      pdf: false
     };
   }
 
@@ -41,19 +43,29 @@ class SalvarOrcamento extends PureComponent {
       uf,
       validade
     } = this.state;
-    console.log("Hello?", {
-      cidade,
-      condicao,
-      cpf,
-      criacao,
-      email,
-      nome,
-      nomeCompleto,
-      ramo,
-      telefone,
-      uf,
-      validade
-    });
+    if (this.state.pdf) {
+      console.log("cART É", cart);
+      const chaves = Object.keys(cart);
+      const carrinho = chaves.map(element => {
+        const item = cart[element];
+        return { id: item.id.toString(), qtd: item.qtd };
+      });
+
+      requestDownloadPermission({
+        criacao: criacao.format("DD/MM/YYYY"),
+        validade: validade.format("DD/MM/YYYY"),
+        condicao: condicao,
+        telefone,
+        cidade,
+        nome,
+        nome_completo: nomeCompleto,
+        uf,
+        cpf,
+        email,
+        ramo,
+        carrinho
+      });
+    }
     dispatch(
       add_orcamento({
         cart,
@@ -78,7 +90,16 @@ class SalvarOrcamento extends PureComponent {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={{ marginTop: 30, paddingBottom: 17, color: 'rgba(0,0,0,0.87)', fontSize: 16 }}>Informações da proposta </Text>
+        <Text
+          style={{
+            marginTop: 30,
+            paddingBottom: 17,
+            color: "rgba(0,0,0,0.87)",
+            fontSize: 16
+          }}
+        >
+          Informações da proposta{" "}
+        </Text>
         <View style={styles.dateContainer}>
           <Text style={styles.dateLabel}>Data de criação</Text>
           <TextInputMask
@@ -93,10 +114,12 @@ class SalvarOrcamento extends PureComponent {
             mask={"[00]/[00]/[0000]"}
             style={styles.dateInputStyle}
             placeholder={`${this.state.criacao.format("DD/MM/YYYY")}`}
-            refInput={ref => { this.criacao = ref }}
+            refInput={ref => {
+              this.criacao = ref;
+            }}
             blurOnSubmit={false}
             onSubmitEditing={() => {
-              this.validade.focus()
+              this.validade.focus();
             }}
             returnKeyType={"next"}
           />
@@ -114,10 +137,12 @@ class SalvarOrcamento extends PureComponent {
             mask={"[00]/[00]/[0000]"}
             style={styles.dateInputStyle}
             placeholder={`${this.state.validade.format("DD/MM/YYYY")}`}
-            refInput={ref => { this.validade = ref }}
+            refInput={ref => {
+              this.validade = ref;
+            }}
             blurOnSubmit={false}
             onSubmitEditing={() => {
-              this.condicao.focus()
+              this.condicao.focus();
             }}
             returnKeyType={"next"}
           />
@@ -135,15 +160,26 @@ class SalvarOrcamento extends PureComponent {
             mask={"[990]"}
             placeholder={"em dias"}
             style={styles.dateInputStyle}
-            refInput={ref => { this.condicao = ref }}
+            refInput={ref => {
+              this.condicao = ref;
+            }}
             blurOnSubmit={false}
             onSubmitEditing={() => {
-              this.nome.focus()
+              this.nome.focus();
             }}
             returnKeyType={"next"}
           />
         </View>
-        <Text style={{ marginTop: 20, marginBottom: 7, color: 'rgba(0,0,0,0.87)', fontSize: 16 }}>Empresa e Contato </Text>
+        <Text
+          style={{
+            marginTop: 20,
+            marginBottom: 7,
+            color: "rgba(0,0,0,0.87)",
+            fontSize: 16
+          }}
+        >
+          Empresa e Contato{" "}
+        </Text>
         <Text style={styles.labelStyle}>Nome da Conta</Text>
         <TextInputMask
           autoCapitalize="characters"
@@ -155,10 +191,12 @@ class SalvarOrcamento extends PureComponent {
               nome: formatted
             });
           }}
-          refInput={ref => { this.nome = ref }}
+          refInput={ref => {
+            this.nome = ref;
+          }}
           blurOnSubmit={false}
           onSubmitEditing={() => {
-            this.cpf.focus()
+            this.cpf.focus();
           }}
           returnKeyType={"next"}
         />
@@ -174,10 +212,12 @@ class SalvarOrcamento extends PureComponent {
               cpf: formatted
             });
           }}
-          refInput={ref => { this.cpf = ref }}
+          refInput={ref => {
+            this.cpf = ref;
+          }}
           blurOnSubmit={false}
           onSubmitEditing={() => {
-            this.ramo.focus()
+            this.ramo.focus();
           }}
           returnKeyType={"next"}
         />
@@ -192,10 +232,12 @@ class SalvarOrcamento extends PureComponent {
               ramo: formatted
             });
           }}
-          refInput={ref => { this.ramo = ref }}
+          refInput={ref => {
+            this.ramo = ref;
+          }}
           blurOnSubmit={false}
           onSubmitEditing={() => {
-            this.nomeCompleto.focus()
+            this.nomeCompleto.focus();
           }}
           returnKeyType={"next"}
         />
@@ -210,10 +252,12 @@ class SalvarOrcamento extends PureComponent {
               nomeCompleto: formatted
             });
           }}
-          refInput={ref => { this.nomeCompleto = ref }}
+          refInput={ref => {
+            this.nomeCompleto = ref;
+          }}
           blurOnSubmit={false}
           onSubmitEditing={() => {
-            this.telefone.focus()
+            this.telefone.focus();
           }}
           returnKeyType={"next"}
         />
@@ -229,10 +273,12 @@ class SalvarOrcamento extends PureComponent {
               telefone: extracted
             });
           }}
-          refInput={ref => { this.telefone = ref }}
+          refInput={ref => {
+            this.telefone = ref;
+          }}
           blurOnSubmit={false}
           onSubmitEditing={() => {
-            this.email.focus()
+            this.email.focus();
           }}
           returnKeyType={"next"}
         />
@@ -246,10 +292,12 @@ class SalvarOrcamento extends PureComponent {
               email: formatted
             });
           }}
-          refInput={ref => { this.email = ref }}
+          refInput={ref => {
+            this.email = ref;
+          }}
           blurOnSubmit={false}
           onSubmitEditing={() => {
-            this.uf.focus()
+            this.uf.focus();
           }}
           returnKeyType={"next"}
         />
@@ -267,10 +315,12 @@ class SalvarOrcamento extends PureComponent {
                   uf: formatted
                 });
               }}
-              refInput={ref => { this.uf = ref }}
+              refInput={ref => {
+                this.uf = ref;
+              }}
               blurOnSubmit={false}
               onSubmitEditing={() => {
-                this.cidade.focus()
+                this.cidade.focus();
               }}
               returnKeyType={"next"}
             />
@@ -287,7 +337,9 @@ class SalvarOrcamento extends PureComponent {
                   cidade: formatted
                 });
               }}
-              refInput={ref => { this.cidade = ref }}
+              refInput={ref => {
+                this.cidade = ref;
+              }}
               blurOnSubmit={true}
               returnKeyType={"done"}
             />
@@ -296,6 +348,8 @@ class SalvarOrcamento extends PureComponent {
         <CheckBox
           title={"Exportar orçamento para PDF"}
           containerStyle={{ marginTop: 20, backgroundColor: "#fafafa" }}
+          checked={this.state.pdf}
+          onPress={() => this.setState({ pdf: !this.state.pdf })}
         />
         <Button
           title={"Salvar Orçamento"}

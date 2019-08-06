@@ -14,7 +14,7 @@ let options = {
     description: "Downloading file."
   }
 };
-export async function requestDownloadPermission() {
+export async function requestDownloadPermission(orcamento) {
   try {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
@@ -27,7 +27,7 @@ export async function requestDownloadPermission() {
       }
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      donwload();
+      donwload(orcamento);
     } else {
       console.log("Camera permission denied");
     }
@@ -38,48 +38,17 @@ export async function requestDownloadPermission() {
 async function createPDF(html) {
   let options = {
     html: html,
-    fileName: "test22.pdf",
+    fileName: "Orçamento",
     directory: DownloadDir,
     width: 595,
     height: 842
   };
 
   let file = await RNHTMLtoPDF.convert(options);
-  console.log(file.filePath);
   android.actionViewIntent(file.filePath, "application/pdf");
 }
-export function donwload() {
+export function donwload(orcamento) {
   Api.post("/api/pdf", {
-    orcamento: {
-      criacao: "01/08/2019",
-      validade: "30/08/2019",
-      condicao: "23",
-      telefone: "(91) 988935643",
-      cidade: "Belém",
-      nome: "Lucas Amador",
-      nome_completo: "Lucas Amadoe de Oliveira",
-      uf: "PA",
-      cpf: "026.810.342-99",
-      email: "a@a.com",
-      ramo: "Desenvolvimento",
-      carrinho: [
-        {
-          id: "10000",
-          qtd: 20
-        },
-        {
-          id: "13100",
-          qtd: 3
-        },
-        {
-          id: "14001",
-          qtd: 7
-        },
-        {
-          id: "17000",
-          qtd: 15
-        }
-      ]
-    }
+    orcamento
   }).then(response => createPDF(response.data));
 }

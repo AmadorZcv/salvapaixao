@@ -155,7 +155,6 @@ export default class Home extends PureComponent {
             />
           </View>
         </View>
-        <Button title={"Test Download"} onPress={requestDownloadPermission} />
       </ScrollView>
     );
   }
