@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import LabelWithTextBelow from "../components/LabelWithTextBelow";
 import LabelWithTextRight from "../components/LabelWithTextRight";
 import { Color } from "../styles";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 class LastOrcamento extends PureComponent {
   render() {
@@ -29,15 +30,16 @@ class LastOrcamento extends PureComponent {
       <ScrollView
         style={{ paddingHorizontal: 10, backgroundColor: Color.background }}
       >
-        <Text style={{ textAlign: "right", fontSize: 16, fontWeight: "bold" }}>
+        <Text style={{ textAlign: "right", fontSize: wp(4.5), fontWeight: "bold", paddingTop: hp(2) }}>
           {id}
         </Text>
         <View style={{ marginHorizontal: 30 }}>
           <Text
             style={{
               fontWeight: "bold",
-              fontSize: 16,
-              paddingBottom: 19,
+              fontSize: wp(4.5),
+              paddingTop: hp(3.4),
+              paddingBottom: hp(3),
               color: Color.primaryText,
               backgroundColor: Color.background
             }}

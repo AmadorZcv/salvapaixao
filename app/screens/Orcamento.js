@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import LabelWithTextBelow from "../components/LabelWithTextBelow";
 import LabelWithTextRight from "../components/LabelWithTextRight";
 import { Color } from "../styles";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 class Orcamento extends PureComponent {
   render() {
@@ -18,15 +19,16 @@ class Orcamento extends PureComponent {
     const id = `#${moment(detalhes.validade).format("YYYYMMDD")}00101501`;
     return (
       <ScrollView
-        style={{ paddingHorizontal: 10, backgroundColor: Color.background }}
+        style={{ paddingHorizontal: wp(7.5), backgroundColor: Color.background }}
       >
-        <Text style={{ textAlign: "right", fontSize: 16, fontWeight: "bold" }}>{id}</Text>
-        <View style={{ marginHorizontal: 30 }}>
+        <Text style={{ textAlign: "right", fontSize: wp(4.5), fontWeight: "bold", paddingTop: hp(2) }}>{id}</Text>
+        <View style={{ marginHorizontal: wp(7.5) }}>
           <Text
             style={{
               fontWeight: "bold",
-              fontSize: 16,
-              paddingBottom: 19,
+              fontSize: wp(4.5),
+              paddingTop: hp(3.4),
+              paddingBottom: hp(3),
               color: Color.primaryText,
               backgroundColor: Color.background
             }}
@@ -42,9 +44,9 @@ class Orcamento extends PureComponent {
           <Text
             style={{
               fontWeight: "bold",
-              fontSize: 16,
-              paddingTop: 20,
-              paddingBottom: 19,
+              fontSize: wp(4.5),
+              paddingTop: hp(3.4),
+              paddingBottom: hp(3),
               color: Color.primaryText,
               backgroundColor: Color.background
             }}
@@ -62,17 +64,17 @@ class Orcamento extends PureComponent {
           <LabelWithTextBelow label={"E-mail"} text={detalhes.email} />
           <Button
             containerStyle={{
-              marginTop: 30,
-              marginHorizontal: 36
+              marginTop: hp(4.5),
+              marginHorizontal: hp(5)
             }}
             title={"Informações da Venda"}
             onPress={() => navigation.navigate("InformacaoOrcamento", { item })}
           />
           <Button
             containerStyle={{
-              marginBottom: 16,
-              marginTop: 10,
-              marginHorizontal: 36
+              marginBottom: hp(2.5),
+              marginTop: hp(1.5),
+              marginHorizontal: hp(5)
             }}
             title={"Exportar para PDF"} />
         </View>
