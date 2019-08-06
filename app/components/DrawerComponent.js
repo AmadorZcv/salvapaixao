@@ -10,6 +10,7 @@ import VersionNumber from "react-native-version-number";
 import { DrawerItems, SafeAreaView } from "react-navigation";
 import { Text, Avatar, Image } from "react-native-elements";
 import { Color } from "../styles";
+import Sair from "./drawer/Sair";
 
 export const CustomDrawerContentComponent = props => {
   const translateX = props.drawerOpenProgress.interpolate({
@@ -84,7 +85,7 @@ export const CustomDrawerContentComponent = props => {
             <View
               style={{ flexDirection: "row", justifyContent: "space-around" }}
             >
-              <Text>Sair</Text>
+              <Sair />
               <Text>Sobre</Text>
             </View>
             <Text style={{ textAlign: "center" }}>Salva Compra</Text>
