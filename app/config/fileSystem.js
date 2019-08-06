@@ -1,5 +1,8 @@
 import { PermissionsAndroid } from "react-native";
 import RNFetchBlob from "rn-fetch-blob";
+import Api from "./api";
+import RNHTMLtoPDF from "react-native-html-to-pdf";
+const android = RNFetchBlob.android;
 let dirs = RNFetchBlob.fs.dirs;
 let DownloadDir = RNFetchBlob.fs.dirs.DownloadDir;
 let options = {
@@ -32,59 +35,49 @@ export async function requestDownloadPermission() {
     console.warn(err);
   }
 }
+async function createPDF(html) {
+  let options = {
+    html: html,
+    fileName: "test22.pdf",
+    directory: DownloadDir
+  };
+
+  let file = await RNHTMLtoPDF.convert(options);
+  console.log(file.filePath);
+  android.actionViewIntent(file.filePath, "application/pdf");
+}
 export function donwload() {
-  RNFetchBlob.config({
-    path: DownloadDir + "/me_" + "." + "pdf",
-    notification: true,
-    title: "Salva Compra",
-    description: "Downloading file."
-  })
-    .fetch(
-      "POST",
-      "http://1db516ac.ngrok.io/api/pdf",
-      {
-        "Content-Type": "application/json"
-      },
-      JSON.stringify({
-        orcamento: {
-          criacao: "01/08/2019",
-          validade: "30/08/2019",
-          condicao: "23",
-          telefone: "(91) 988935643",
-          cidade: "Belém",
-          nome: "Lucas Amador",
-          nome_completo: "Lucas Amadoe de Oliveira",
-          uf: "PA",
-          cpf: "026.810.342-99",
-          email: "a@a.com",
-          ramo: "Desenvolvimento",
-          carrinho: [
-            {
-              id: "10000",
-              qtd: 20
-            },
-            {
-              id: "13100",
-              qtd: 3
-            },
-            {
-              id: "14001",
-              qtd: 7
-            },
-            {
-              id: "17000",
-              qtd: 15
-            }
-          ]
+  Api.post("/api/pdf", {
+    orcamento: {
+      criacao: "01/08/2019",
+      validade: "30/08/2019",
+      condicao: "23",
+      telefone: "(91) 988935643",
+      cidade: "Belém",
+      nome: "Lucas Amador",
+      nome_completo: "Lucas Amadoe de Oliveira",
+      uf: "PA",
+      cpf: "026.810.342-99",
+      email: "a@a.com",
+      ramo: "Desenvolvimento",
+      carrinho: [
+        {
+          id: "10000",
+          qtd: 20
+        },
+        {
+          id: "13100",
+          qtd: 3
+        },
+        {
+          id: "14001",
+          qtd: 7
+        },
+        {
+          id: "17000",
+          qtd: 15
         }
-      })
-    )
-    .then(res => {
-      console.log("The file saved to ", res.path());
-    })
-    // Something went wrong:
-    .catch((errorMessage, statusCode) => {
-      console.log("erro é", errorMessage, "status", statusCode);
-      // error handling
-    });
+      ]
+    }
+  }).then(response => createPDF(response.data));
 }

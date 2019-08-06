@@ -3,6 +3,7 @@ package com.salvacompra;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.christopherdro.htmltopdf.RNHTMLtoPDFPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.apsl.versionnumber.RNVersionNumberPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNHTMLtoPDFPackage(),
             new RNFetchBlobPackage(),
             new RNVersionNumberPackage(),
             new VectorIconsPackage(),

@@ -1,5 +1,5 @@
 import axios from "axios";
-const hostUrl = "http://10.11.81.17:4000/";
+const hostUrl = "https://fathomless-hamlet-33662.herokuapp.com";
 
 const defaultOptions = {
   baseURL: hostUrl,
@@ -9,7 +9,7 @@ const defaultOptions = {
     dataType: "json"
   },
   transformResponse: [
-    function (data) {
+    function(data) {
       // Transformando pro formato antigo da api
       // Alguns erros não podem ser formatados para json,nesse caso simplesmente retornamos data
       try {
@@ -26,7 +26,7 @@ const defaultOptions = {
 };
 
 const Api = axios.create(defaultOptions);
-Api.interceptors.request.use(function (config) {
+Api.interceptors.request.use(function(config) {
   console.log("Request headers", config.headers);
   if (__DEV__) {
     console.log("URL  é", config.url);
@@ -34,4 +34,4 @@ Api.interceptors.request.use(function (config) {
   }
   return config;
 });
-export default api;
+export default Api;
