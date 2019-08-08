@@ -21,7 +21,7 @@ export default class ModalQuantidade extends PureComponent {
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.isVisible !== this.state.isVisible && this.state.isVisible) {
-      setTimeout(() => {}, 1);
+      setTimeout(() => { }, 1);
     }
   }
   onPlus = () => {
@@ -94,6 +94,10 @@ export default class ModalQuantidade extends PureComponent {
               value={this.state.text}
               maxLength={3}
               selectTextOnFocus
+              onSubmitEditing={() => {
+                this.onBackdropPress();
+              }
+              }
             />
 
             <TouchableOpacity onPress={onPlus}>
