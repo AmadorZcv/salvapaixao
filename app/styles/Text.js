@@ -71,7 +71,7 @@ export const textValue = {
 //Styles das Labels da tela de produto ex: Altura(metros)
 export const textInfo = {
   ...primarySmall,
-  fontWeight: "600"
+  color: "rgba(0,0,0,0.87)"
 };
 const TextStyle = { header, normal };
 

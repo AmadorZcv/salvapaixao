@@ -51,15 +51,17 @@ export default class SalvaQuinaItem extends PureComponent {
               justifyContent: "space-around"
             }}
           >
-            <View>
+            <View style={{left: 15}}>
               <Text style={textInfo}>Altura</Text>
               <Text style={textInfo}>(Centímetros)</Text>
               <Text style={textValue}>{altura}</Text>
+              <Text style={textValue}> </Text>
             </View>
-            <View>
+            <View style={{left: 15}}>
               <Text style={textInfo}>Comprimento</Text>
               <Text style={textInfo}>(Centímetros)</Text>
               <Text style={textValue}>{comprimento}</Text>
+              <Text style={textValue}> </Text>
             </View>
           </View>
           <View
@@ -69,17 +71,17 @@ export default class SalvaQuinaItem extends PureComponent {
               justifyContent: "space-between"
             }}
           >
-            <View>
+            <View style={{left: 15}}>
               <Text style={textInfo}>Preço</Text>
               <Text style={textInfo}>(ICMS)</Text>
               <Text style={textValue}>R$ {integerToReal(preco)}</Text>
             </View>
-            <View>
+            <View style={{left: 15}}>
               <Text style={textInfo}>IPI</Text>
               <Text style={textInfo}>(%)</Text>
               <Text style={textValue}>{ipi}</Text>
             </View>
-            <View>
+            <View style={{left: 15}}>
               <Text style={textInfo}>IPI</Text>
               <Text style={textInfo}>(R$)</Text>
               <Text style={textValue}>R$ {integerToReal(ipiR)}</Text>

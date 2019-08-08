@@ -47,28 +47,30 @@ export default class SalvaLimpezaItem extends PureComponent {
         onPress={this.openModal}
       >
         <View style={columnContainer}>
-          <View>
+          <View style={{left: 15}}>
             <Text style={textInfo}>Unidade</Text>
             <Text style={textInfo}>(Litros)</Text>
             <Text style={textValue}>{unidade}</Text>
+            <Text style={textValue}> </Text>
             <Text style={textInfo}>Preço</Text>
             <Text style={textInfo}>(ICMS)</Text>
             <Text style={textValue}>R$ {integerToReal(preco)}</Text>
           </View>
 
-          <View>
+          <View style={{left: 15}}>
             <Text style={textInfo}>Diluição</Text>
-            <Text style={textInfo}> </Text>
             <Text style={textValue}>{diluicao}</Text>
+            <Text style={textValue}> </Text>
             <Text style={textInfo}>IPI</Text>
             <Text style={textInfo}>(%)</Text>
             <Text style={textValue}>{ipi}</Text>
           </View>
 
-          <View>
+          <View style={{left: 15}}>
             <Text style={textInfo}>Rendimento</Text>
             <Text style={textInfo}>(Metros²)</Text>
             <Text style={textValue}>{rendimento}</Text>
+            <Text style={textValue}> </Text>
             <Text style={textInfo}>IPI</Text>
             <Text style={textInfo}>(R$)</Text>
             <Text style={textValue}>R$ {integerToReal(ipiR)}</Text>

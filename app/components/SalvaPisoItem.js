@@ -47,28 +47,31 @@ export default class SalvaPisoItem extends PureComponent {
         onPress={this.openModal}
       >
         <View style={columnContainer}>
-          <View>
+          <View style={{left: 15}}>
             <Text style={textInfo}>Largura</Text>
             <Text style={textInfo}>(Metros)</Text>
             <Text style={textValue}>{largura}</Text>
+            <Text style={textValue}> </Text>
             <Text style={textInfo}>Preço</Text>
             <Text style={textInfo}>(ICMS)</Text>
             <Text style={textValue}>R$ {integerToReal(preco)}</Text>
           </View>
 
-          <View>
+          <View style={{left: 15}}>
             <Text style={textInfo}>Comprimento</Text>
             <Text style={textInfo}>(Metros)</Text>
             <Text style={textValue}>{comprimento}</Text>
+            <Text style={textValue}> </Text>
             <Text style={textInfo}>IPI</Text>
             <Text style={textInfo}>(%)</Text>
             <Text style={textValue}>{ipi}</Text>
           </View>
 
-          <View>
+          <View style={{left: 15}}>
             <Text style={textInfo}>Cobertura</Text>
             <Text style={textInfo}>(Metros²)</Text>
             <Text style={textValue}>{cobertura}</Text>
+            <Text style={textValue}> </Text>
             <Text style={textInfo}>IPI</Text>
             <Text style={textInfo}>(R$)</Text>
             <Text style={textValue}>R$ {integerToReal(ipiR)}</Text>

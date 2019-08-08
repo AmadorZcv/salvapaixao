@@ -43,10 +43,11 @@ export default class SalvaRaloItem extends PureComponent {
         onPress={this.openModal}
       >
         <View style={{ ...columnContainer, flexDirection: "column" }}>
-          <View style={{ flex: 1, alignItems: "center" }}>
+          <View style={{ flex: 1, alignItems: "center", left: 15 }}>
             <Text style={textInfo}>Largura</Text>
             <Text style={textInfo}>(Centímetros)</Text>
             <Text style={textValue}>{largura}</Text>
+            <Text style={textValue}> </Text>
           </View>
           <View
             style={{
@@ -55,17 +56,17 @@ export default class SalvaRaloItem extends PureComponent {
               justifyContent: "space-between"
             }}
           >
-            <View>
+            <View style={{left: 15}}>
               <Text style={textInfo}>Preço</Text>
               <Text style={textInfo}>(ICMS)</Text>
               <Text style={textValue}>R$ {integerToReal(preco)}</Text>
             </View>
-            <View>
+            <View style={{left: 15}}>
               <Text style={textInfo}>IPI</Text>
               <Text style={textInfo}>(%)</Text>
               <Text style={textValue}>{ipi}</Text>
             </View>
-            <View>
+            <View style={{left: 15}}>
               <Text style={textInfo}>IPI</Text>
               <Text style={textInfo}>(R$)</Text>
               <Text style={textValue}>R$ {integerToReal(ipiR)}</Text>

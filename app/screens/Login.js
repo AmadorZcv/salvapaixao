@@ -159,7 +159,8 @@ class Login extends PureComponent {
           <View style={{
               marginTop: hp("22%"),
               alignItems: "center",
-              paddingBottom: hp(10)
+              paddingBottom: hp(10),
+              bottom: hp(0.5)
             }}>
             <Text style={{ color: "white", fontSize: wp(3.5) }}>
               Salva Compra
