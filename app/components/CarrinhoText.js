@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import { View, Text } from "react-native";
 import { Color } from "../styles";
-import { normalize } from "react-native-elements";
 import { productName, productAmount } from "../config/nameUtils";
+import { widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 export default class CarrinhoText extends PureComponent {
   render() {
@@ -17,7 +17,7 @@ export default class CarrinhoText extends PureComponent {
       >
         <Text
           style={{
-            fontSize: normalize(16),
+            fontSize: wp(4.5),
             color: Color.primaryText
           }}
         >
@@ -26,7 +26,7 @@ export default class CarrinhoText extends PureComponent {
         <Text
           style={{
             textAlign: "center",
-            fontSize: normalize(10),
+            fontSize: wp(2.77),
             color: Color.secondaryText
           }}
         >

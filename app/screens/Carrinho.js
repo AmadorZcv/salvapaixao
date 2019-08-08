@@ -27,7 +27,7 @@ import { integerToReal, fontSizeAdjust } from "../config/formatUtils";
 import { Color } from "../styles";
 import { primaryBig } from "../styles/Text";
 import { navigateFromId } from "../config/navigateUtils";
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { Button, normalize } from "react-native-elements";
 
 class Carrinho extends PureComponent {
@@ -70,14 +70,14 @@ class Carrinho extends PureComponent {
       <View>
         <ScrollView>
           <View
-            style={{ marginTop: 10, alignItems: "flex-end", marginBottom: 5 }}
+            style={{ marginTop: hp(1.5625), alignItems: "flex-end", marginBottom: hp(0.78125) }}
           >
             <TouchableOpacity
-              style={{ paddingRight: 5 }}
+              style={{ paddingRight: hp(1.38) }}
               onPress={this.onClean}
             >
               <Text
-                style={{ color: Color.secondaryText, fontSize: normalize(13) }}
+                style={{ color: Color.secondaryText, fontSize: wp(3.5) }}
               >
                 Limpar Carrinho
               </Text>
@@ -88,8 +88,8 @@ class Carrinho extends PureComponent {
               flexDirection: "row",
               backgroundColor: Color.darkBackground,
 
-              height: 30,
-              marginBottom: 16
+              height: hp(4.6875),
+              marginBottom: hp(2.5)
             }}
           >
             <Text
@@ -97,7 +97,7 @@ class Carrinho extends PureComponent {
                 ...primaryBig,
                 textAlign: "center",
                 textAlignVertical: "center",
-                width: 259,
+                width: wp(72),
                 borderRightWidth: StyleSheet.hairlineWidth,
                 borderColor: Color.divbarColor
               }}
@@ -109,7 +109,7 @@ class Carrinho extends PureComponent {
                 ...primaryBig,
                 textAlign: "center",
                 textAlignVertical: "center",
-                width: 101
+                width: wp(28)
               }}
             >
               Subtotal
@@ -133,14 +133,14 @@ class Carrinho extends PureComponent {
             keyExtractor={item => item.toString()}
           />
           <View
-            style={{ marginTop: 15, alignItems: "flex-end", marginBottom: 5 }}
+            style={{ marginTop: hp(2.34375), alignItems: "flex-end", marginBottom: hp(0.78125) }}
           >
             <TouchableOpacity
-              style={{ paddingRight: 5 }}
+              style={{ paddingRight: wp(1.38) }}
               onPress={this.onClean}
             >
               <Text
-                style={{ color: Color.secondaryText, fontSize: normalize(13) }}
+                style={{ color: Color.secondaryText, fontSize: wp(3.5) }}
               >
                 Limpar Carrinho
               </Text>
@@ -151,8 +151,8 @@ class Carrinho extends PureComponent {
               flexDirection: "row",
               backgroundColor: Color.darkBackground,
 
-              height: 30,
-              marginBottom: 16
+              height: hp(4.6875),
+              marginBottom: wp(2.5)
             }}
           >
             <Text
@@ -192,8 +192,8 @@ class Carrinho extends PureComponent {
                   fontSize: fontSizeAdjust(totalComIpi),
                   textAlign: "left",
                   textAlignVertical: "center",
-                  paddingLeft: 3.5,
-                  height: 30,
+                  paddingLeft: wp(1),
+                  height: hp(4.6875),
                   color: Color.primaryText
                 }}
               >
@@ -215,8 +215,8 @@ class Carrinho extends PureComponent {
                   fontSize: fontSizeAdjust(totalComIpi),
                   textAlign: "left",
                   textAlignVertical: "center",
-                  paddingLeft: 3.5,
-                  height: 30,
+                  paddingLeft: wp(1),
+                  height: hp(4.6875),
                   color: Color.primaryText
                 }}
               >
@@ -239,8 +239,8 @@ class Carrinho extends PureComponent {
                   fontSize: fontSizeAdjust(totalComIpi),
                   textAlign: "left",
                   textAlignVertical: "center",
-                  paddingLeft: 3.5,
-                  height: 30,
+                  paddingLeft: wp(1),
+                  height: hp(4.6875),
                   color: Color.primaryText
                 }}
               >
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
   informaçõesText: {
     textAlign: "left",
     textAlignVertical: "center",
-    fontSize: normalize(17),
+    fontSize: wp(4.5),
     height: 30,
     paddingLeft: 34,
     color: Color.primaryText
@@ -293,11 +293,11 @@ const styles = StyleSheet.create({
     color: Color.primaryText
   },
   leftContainer: {
-    width: 259,
+    width: wp(72),
     borderRightWidth: StyleSheet.hairlineWidth,
     borderColor: Color.divbarColor
   },
   rightContainer: {
-    width: 101
+    width: wp(28)
   }
 });
