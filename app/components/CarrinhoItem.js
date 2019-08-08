@@ -31,7 +31,7 @@ export default class CarrinhoItem extends PureComponent {
   };
   render() {
     const { item, index, total, onRemove, preco } = this.props;
-    const backgroundColor = index % 2 === 0 ? Color.lightBackground : "white";
+    const backgroundColor = index % 2 === 0 ? Color.lightBackground : "#FAFAFA";
 
     return (
       <Swipeout

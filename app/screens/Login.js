@@ -48,7 +48,7 @@ class Login extends PureComponent {
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "white"
+          backgroundColor: "#FAFAFA"
         }}
       >
         <Image
@@ -69,7 +69,7 @@ class Login extends PureComponent {
                 paddingVertical: hp("3,125%"),
                 paddingHorizontal: wp("10%"),
                 textAlign: "center",
-                color: "white",
+                color: "#FAFAFA",
                 fontSize: wp(6),
               }}
             >Seja bem-vindo ao Salva Compra!
@@ -128,7 +128,7 @@ class Login extends PureComponent {
               style={{
                 textAlign: "center",
                 fontSize: normalize(11),
-                color: "white"
+                color: "#FAFAFA"
               }}
             >
               Esqueceu a senha?
@@ -162,12 +162,12 @@ class Login extends PureComponent {
               paddingBottom: hp(10),
               bottom: hp(0.5)
             }}>
-            <Text style={{ color: "white", fontSize: wp(3.5) }}>
+            <Text style={{ color: "#FAFAFA", fontSize: wp(3.5) }}>
               Salva Compra
             </Text>
             <Text
               style={{
-                color: "white",
+                color: "#FAFAFA",
                 fontSize: wp(3.5),
                 textAlign: "center"
               }}

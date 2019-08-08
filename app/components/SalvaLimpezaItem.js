@@ -39,7 +39,7 @@ export default class SalvaLimpezaItem extends PureComponent {
     const precoTotal = preco + ipiR;
     const precoFinal = precoTotal * trueTotal;
     const formatPrecoFinal = precoFinal > 0 ? integerToReal(precoFinal) : "0";
-    const backgroundColor = index % 2 === 0 ? "white" : Color.darkBackground;
+    const backgroundColor = index % 2 === 0 ? "#FAFAFA" : Color.darkBackground;
     return (
       <TouchableOpacity
         style={{ ...itemContainer, backgroundColor }}

@@ -37,7 +37,7 @@ export default class SalvaQuinaItem extends PureComponent {
     const precoTotal = preco + ipiR;
     const precoFinal = precoTotal * trueTotal;
     const formatPrecoFinal = precoFinal > 0 ? integerToReal(precoFinal) : "0";
-    const backgroundColor = index % 2 === 0 ? "white" : "lightgray";
+    const backgroundColor = index % 2 === 0 ? "#FAFAFA" : "lightgray";
     return (
       <TouchableOpacity
         style={{ ...itemContainer, backgroundColor }}
