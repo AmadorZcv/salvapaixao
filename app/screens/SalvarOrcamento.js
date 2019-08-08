@@ -141,7 +141,7 @@ class SalvarOrcamento extends PureComponent {
   };
   render() {
     return (
-      <ScrollView ref={(ref) => this.myScroll = ref} style={styles.container}>
+      <ScrollView ref={(ref) => this.myScroll = ref} style={styles.container} keyboardShouldPersistTaps={'always'}>
         <Text
           style={{
             marginTop: 30,
