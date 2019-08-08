@@ -2,9 +2,9 @@ import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
-import { Color } from "../styles";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
 import { productLabel } from "../styles/Text";
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 class SBancada extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -22,7 +22,7 @@ class SBancada extends PureComponent {
       <ScrollView style={{ flex: 1 }}>
         <Image
           source={require("../img/product-screen/s-bancada-top.png")}
-          style={{ width, height: 190 }}
+          style={{ width, height: hp(26.6875) }}
         />
         <Text style={productLabel}>Adesivo para Proteção</Text>
         <SalvaPinturaItem

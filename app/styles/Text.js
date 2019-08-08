@@ -25,7 +25,14 @@ export const primaryBig = {
 export const productLabel = {
   ...primaryBig,
   paddingLeft: 10,
-  height: 31,
+  textAlignVertical: "center"
+};
+//Quantidade dos produtos ex: Caixa c/ 6 unidades
+export const productSublabel = {
+  ...primaryBig,
+  color: Color.secondaryText,
+  fontSize: normalize(14),
+  paddingLeft: 12,
   textAlignVertical: "center"
 };
 //Style valor final

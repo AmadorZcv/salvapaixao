@@ -1,11 +1,10 @@
 import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
-import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
-import { productLabel } from "../styles/Text";
-import SalvaRaloItem from "../components/SalvaRaloItem";
+import { productLabel, productSublabel } from "../styles/Text";
 import SalvaQuinaItem from "../components/SalvaQuinaItem";
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 class SQuina extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -23,9 +22,12 @@ class SQuina extends PureComponent {
       <ScrollView style={{ flex: 1 }}>
         <Image
           source={require("../img/product-screen/s-quina-top.png")}
-          style={{ width, height: 190 }}
+          style={{ width, height: hp(26.6875) }}
         />
         <Text style={productLabel}>Proteção para Quinas e Batentes</Text>
+        <Text style={{ ...productSublabel}}
+        >Pacote c/ 6 unidades
+        </Text>
         <SalvaQuinaItem
           index={0}
           altura={products["15000"].largura}

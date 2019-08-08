@@ -1,12 +1,11 @@
 import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
-
 import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import { Color } from "../styles";
-import SalvaPinturaItem from "../components/SalvaPinturaItem";
 import SalvaLimpezaItem from "../components/SalvaLimpezaItem";
-import { productLabel } from "../styles/Text";
+import { productLabel, productSublabel } from "../styles/Text";
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 class SPLimpeza extends PureComponent {
   onPlus = id => {
@@ -25,9 +24,13 @@ class SPLimpeza extends PureComponent {
       <ScrollView style={{ flex: 1 }}>
         <Image
           source={require("../img/product-screen/sp-limpeza-top.png")}
-          style={{ width, height: 190 }}
+          style={{ width, height: hp(26.6875) }}
         />
         <Text style={productLabel}>Limpeza Pesada Pós Obra (Porcelanato)</Text>
+        <Text
+          style={{ ...productSublabel }}
+        >Caixa c/ 6 unidades
+        </Text>
         <SalvaLimpezaItem
           index={0}
           unidade={products["13000"].usidade}
@@ -46,6 +49,10 @@ class SPLimpeza extends PureComponent {
         >
           Limpeza Diária (Cerâmica {"&"} Porcelanato)
         </Text>
+        <Text
+          style={{ ...productSublabel, backgroundColor: Color.darkBackground }}
+        >Caixa c/ 6 unidades
+        </Text>
         <SalvaLimpezaItem
           index={1}
           unidade={products["13100"].usidade}
@@ -60,6 +67,10 @@ class SPLimpeza extends PureComponent {
           total={cart["13100"]}
         />
         <Text style={productLabel}>Limpeza Pedras</Text>
+        <Text
+          style={{ ...productSublabel}}
+        >Caixa c/ 6 unidades
+        </Text>
         <SalvaLimpezaItem
           index={2}
           unidade={products["13200"].usidade}
@@ -75,8 +86,10 @@ class SPLimpeza extends PureComponent {
         />
         <Text
           style={{ ...productLabel, backgroundColor: Color.darkBackground }}
-        >
-          Limpeza Pesada Pós Obra (Porcelanato)
+        >Limpeza Pesada Pós Obra (Porcelanato)</Text>
+        <Text
+          style={{ ...productSublabel, backgroundColor: Color.darkBackground }}
+        >Caixa c/ 12 unidades
         </Text>
         <SalvaLimpezaItem
           index={3}

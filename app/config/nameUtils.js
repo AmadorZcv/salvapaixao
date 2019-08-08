@@ -123,7 +123,7 @@ export function productAmount(id) {
 1L Caixa c/ 6 unidades`;
     case "13300":
       return `Produto químico para limpeza
-0,5L Caixa c/ 6 unidades`;
+0,5L Caixa c/ 12 unidades`;
     case "14000":
       return `Mascaramento para pintura
 20m x 0,45mts`;
@@ -193,13 +193,13 @@ Pacote c/ 6 unidades`;
 3m x 2mts`;
     case "19200":
       return `Fita crepe
-1,8cm x 50mts`;
+1,8cm x 50mts Pacote c/ 4 unidades`;
     case "19201":
       return `Fita crepe
-4,8cm x 50mts`;
+4,8cm x 50mts Pacote c/ 2 unidades`;
     case "19300":
       return `Fita crepe premium para construção civil
-4,8cm x 50mts`;
+4,8cm x 50mts Pacote c/ 2 unidades`;
     case "19400":
       return `Plástico lona bolha preto
 1,20m x 25mts`;

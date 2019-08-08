@@ -3,10 +3,10 @@ import { Text, Image, ScrollView, Dimensions } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
-import { productLabel } from "../styles/Text";
+import { productLabel, productSublabel } from "../styles/Text";
 import { FlatList } from "react-native-gesture-handler";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
-
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 class Materiais extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -28,7 +28,7 @@ class Materiais extends PureComponent {
       <ScrollView style={{ flex: 1 }}>
         <Image
           source={require("../img/product-screen/m-basicos-top.png")}
-          style={{ width, height: 190 }}
+          style={{ width, height: hp(26.6875) }}
         />
         <Text style={productLabel}>Papelão Ondulado</Text>
         <FlatList
@@ -71,6 +71,7 @@ class Materiais extends PureComponent {
           )}
         />
         <Text style={productLabel}>Fita Crepe</Text>
+        <Text style={{ ...productSublabel }}>Caixa c/ 4 unidades</Text>
         <FlatList
           data={crepes}
           keyExtractor={item => item}
@@ -91,6 +92,7 @@ class Materiais extends PureComponent {
           )}
         />
         <Text style={productLabel}>Fita Crepe Premium</Text>
+        <Text style={{ ...productSublabel }}>Caixa c/ 2 unidades</Text>
         <FlatList
           data={crepePremium}
           keyExtractor={item => item}

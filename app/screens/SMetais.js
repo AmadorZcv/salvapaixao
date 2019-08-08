@@ -3,7 +3,8 @@ import { Text, Image, ScrollView, Dimensions } from "react-native";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import SalvaPisoItem from "../components/SalvaPisoItem";
-import { productLabel } from "../styles/Text";
+import { productLabel, productSublabel } from "../styles/Text";
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 class SMetais extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -21,9 +22,12 @@ class SMetais extends PureComponent {
       <ScrollView style={{ flex: 1 }}>
         <Image
           source={require("../img/product-screen/s-metais-top.png")}
-          style={{ width, height: 190 }}
+          style={{ width, height: hp(26.6875) }}
         />
         <Text style={productLabel}>Filme para Envolvimento</Text>
+        <Text style={{ ...productSublabel }}
+        >Caixa c/ 6 unidades
+        </Text>
         <SalvaPisoItem
           index={0}
           largura={products["16000"].largura}

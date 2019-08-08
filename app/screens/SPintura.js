@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
 import { productLabel } from "../styles/Text";
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 class SPintura extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -21,7 +22,7 @@ class SPintura extends PureComponent {
       <ScrollView style={{ flex: 1 }}>
         <Image
           source={require("../img/product-screen/s-pintura-top.png")}
-          style={{ width, height: 190 }}
+          style={{ width, height: hp(26.6875) }}
         />
         <Text style={productLabel}>Proteção Pintura</Text>
         <SalvaPinturaItem

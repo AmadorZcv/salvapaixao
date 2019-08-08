@@ -1,10 +1,10 @@
 import React, { PureComponent } from "react";
 import { Text, Image, ScrollView, Dimensions } from "react-native";
-import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
-import { productLabel } from "../styles/Text";
+import { productLabel, productSublabel } from "../styles/Text";
 import SalvaRaloItem from "../components/SalvaRaloItem";
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 class SRalo extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -22,9 +22,12 @@ class SRalo extends PureComponent {
       <ScrollView style={{ flex: 1 }}>
         <Image
           source={require("../img/product-screen/s-ralo-top.png")}
-          style={{ width, height: 190 }}
+          style={{ width, height: hp(26.6875) }}
         />
         <Text style={productLabel}>Tampão para Ralos</Text>
+        <Text style={{ ...productSublabel}}
+        >Caixa c/ 6 unidades
+        </Text>
         <SalvaRaloItem
           index={0}
           largura={products["18000"].largura}
