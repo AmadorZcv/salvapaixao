@@ -84,7 +84,7 @@ class Login extends PureComponent {
             }}
           >
             <Input
-              placeholder={"Usuario"}
+              placeholder={"Usuário"}
               onChangeText={text => this.setState({ login: text })}
               autoCapitalize={"none"}
               containerStyle={{
