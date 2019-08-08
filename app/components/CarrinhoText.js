@@ -25,6 +25,7 @@ export default class CarrinhoText extends PureComponent {
         </Text>
         <Text
           style={{
+            textAlign: "center",
             fontSize: normalize(10),
             color: Color.secondaryText
           }}

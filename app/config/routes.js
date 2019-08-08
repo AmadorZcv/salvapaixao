@@ -96,7 +96,7 @@ const LastOrcamentoStack = createStackNavigator(
       screen: LastOrcamento,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Ultimo Orçamento",
+          headerTitle: "Último Orçamento",
           headerLeft: (
             <MenuButton
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
@@ -202,7 +202,7 @@ const HomeStack = createStackNavigator(
       screen: SMetais,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Salva Metais",
+          headerTitle: "Salva Metal",
 
           headerRight: (
             <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
@@ -214,7 +214,7 @@ const HomeStack = createStackNavigator(
       screen: SP,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Salva Piso Tradicional",
+          headerTitle: "Tradicional",
 
           headerRight: (
             <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
@@ -226,7 +226,7 @@ const HomeStack = createStackNavigator(
       screen: SPEspeciais,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Salva Piso Madeira",
+          headerTitle: "Pisos Especiais",
 
           headerRight: (
             <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
@@ -238,7 +238,7 @@ const HomeStack = createStackNavigator(
       screen: SPintura,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Salva Piso Pintura",
+          headerTitle: "Salva Pintura",
 
           headerRight: (
             <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
@@ -250,7 +250,7 @@ const HomeStack = createStackNavigator(
       screen: SPLimpeza,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Salva Piso Limpeza",
+          headerTitle: "Salva Limpeza",
 
           headerRight: (
             <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
@@ -262,7 +262,7 @@ const HomeStack = createStackNavigator(
       screen: SPResistente,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Salva Piso Resistente",
+          headerTitle: "Extra Resistente",
 
           headerRight: (
             <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
@@ -310,7 +310,7 @@ const HomeStack = createStackNavigator(
       screen: Carrinho,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Carrinho de orçamento",
+          headerTitle: "Carrinho de Orçamento",
           headerRight: <HomeButton onPress={() => navigation.popToTop()} />
         };
       }
