@@ -1,15 +1,13 @@
 import React, { PureComponent } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   ScrollView,
   TouchableOpacity
 } from "react-native";
-import { Image, Button } from "react-native-elements";
+import { Image, } from "react-native-elements";
 import Color from "../styles/Color";
-import { donwload, requestDownloadPermission } from "../config/fileSystem";
-
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 export default class Home extends PureComponent {
   constructor(props) {
     super(props);
@@ -164,7 +162,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Color.background,
-    paddingBottom: 24
+    paddingBottom: hp(3.75)
   },
   cardLine: {
     flexDirection: "row",
@@ -178,16 +176,16 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
   imageStyle: {
-    width: 156,
-    height: 101,
+    width: wp(43,33),
+    height: hp(15.78),
     borderRadius: 5
   },
   logoView: {
-    paddingTop: 15,
+    paddingTop: hp(2.34),
     justifyContent: "center",
     alignItems: "center"
   },
   logoStyle: {
-    height: 59
+    height: hp(9.21)
   }
 });
