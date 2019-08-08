@@ -59,7 +59,7 @@ class SPLimpeza extends PureComponent {
           onChange={qtd => this.onChange(qtd, "13100")}
           total={cart["13100"]}
         />
-        <Text style={productLabel}>Limpeza Predas</Text>
+        <Text style={productLabel}>Limpeza Pedras</Text>
         <SalvaLimpezaItem
           index={2}
           unidade={products["13200"].usidade}
