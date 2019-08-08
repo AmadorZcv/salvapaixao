@@ -1,3 +1,4 @@
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 export function integerToReal(value) {
   const string = value.toString();
   if (string.length == 1) {
@@ -27,19 +28,19 @@ export function integerToReal(value) {
 export function fontSizeAdjust(value) {
   const string = value.toString();
   if (string.length < 6){
-    const size = 20
+    const size = wp(5)
     return size;
   }
   else if (string.length == 6) {
-    const size = 18
+    const size = wp(4.5)
     return size;
   }
   else if (string.length == 7) {
-    const size = 16;
+    const size = wp(4)
     return size;
   }
   else if (string.length > 7) {
-    const size = 14;
+    const size = wp(3.5)
     return size;
   }
 }
