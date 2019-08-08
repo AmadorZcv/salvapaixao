@@ -28,7 +28,7 @@ import { Color } from "../styles";
 import { primaryBig } from "../styles/Text";
 import { navigateFromId } from "../config/navigateUtils";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import { Button, normalize } from "react-native-elements";
+import { Button } from "react-native-elements";
 
 class Carrinho extends PureComponent {
   onClean = () => {
