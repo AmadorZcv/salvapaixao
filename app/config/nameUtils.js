@@ -2,17 +2,32 @@ export function productName(id) {
   switch (id) {
     case "10000":
     case "10001":
-    case "10100":
+    case "10002":
+    case "10003":
+    case "10004":
+    case "10005":
       return "Tradicional";
+    case "10100":
+    case "10101":
+    case "10102":
+      return "Tradicional Com Fita";
     case "11000":
-      return "Madeira";
+    case "11001":
+      return "Pisos Especiais";
+    case "11100":
+      return "Fora do Padrão";
+    case "11200":
+      return "Personalizado";
     case "12000":
       return "Extra Resistente";
     case "13000":
+      return "Pós Obra";
     case "13100":
+      return "Porcelanato";
     case "13200":
+      return "Limpa Pedras";
     case "13300":
-      return "Limpeza";
+      return "Limpa Rejunte";
     case "14000":
     case "14001":
     case "14002":
@@ -21,7 +36,7 @@ export function productName(id) {
     case "15000":
       return "Salva Quina";
     case "16000":
-      return "Salva Metais";
+      return "Salva Metal";
     case "17000":
     case "17001":
     case "17002":
@@ -32,6 +47,9 @@ export function productName(id) {
       return "Salva Ralo";
     case "19000":
     case "19001":
+    case "19002":
+    case "19003":
+    case "19004":
       return "Papelão Ondulado";
     case "19100":
     case "19101":
@@ -45,73 +63,160 @@ export function productName(id) {
       return "Fita Crepe";
     case "19300":
       return "Fita Crepe Premium";
+    case "19400":
+    case "19401":
+    case "19402":
+    case "19403":
+      return "Lona Bolha";
+    case "20000":
+    case "20001":
+      return "Kraft";
+
   }
 }
 export function productAmount(id) {
   switch (id) {
     case "10000":
-      return "Papel + Bolha (1m)";
+      return `Protetor de piso
+1,00m x 25mts`;
     case "10001":
-      return "Papel + Bolha (0.5m)";
+      return `Protetor de piso
+0,50m x 25mts`;
+    case "10002":
+      `Protetor de piso
+1,00m x 15mts`;
+    case "10003":
+      `Protetor de piso
+0,50m x 15mts`;
+    case "10004":
+      `Protetor de piso
+1,00m x 10mts`;
+    case "10005":
+      `Protetor de piso
+0,50m x 10mts`;
     case "10100":
-      return "Papel + Bolha + Fita Adesiva (1m)";
+      return `Protetor de piso com fita
+        1,00m x 25mts`;
+    case "10101":
+      return `Protetor de piso com fita
+1,00m x 15mts`;
+    case "10102":
+      return `Protetor de piso com fita
+1,00m x 10mts`;
     case "11000":
-      return "Papel + Bolha + TNT (1m)";
+      return `Protetor de pisos de madeira
+1,00m x 25mts`;
+    case "11001":
+      return `Protetor de pisos de madeira
+1,00m x 15mts`;
+    case "11100":
+    case "11200":
+      return `Protetor de piso
+1,00m x 25mts`;
     case "12000":
-      return "Papel+Manta Expandida (1,2m)";
+      return `Manta protetora de piso extra resistente
+1,20m x 25mts`;
     case "13000":
-      return "Pós Obra";
     case "13100":
-      return "Limpeza Diária";
     case "13200":
-      return "Limpa Pedras";
+      return `Produto químico para limpeza
+1L Caixa c/ 6 unidades`;
     case "13300":
-      return "Limpa Rejunte";
+      return `Produto químico para limpeza
+0,5L Caixa c/ 6 unidades`;
     case "14000":
-      return "Proteção Pintura (0,45m)";
+      return `Mascaramento para pintura
+20m x 0,45mts`;
     case "14001":
-      return "Proteção Pintura (0,9m)";
+      return `Mascaramento para pintura
+20m x 0,90mts`;
     case "14002":
-      return "Proteção Pintura (1,5m)";
+      return `Mascaramento para pintura
+20m x 1,50mts`;
     case "14003":
-      return "Proteção Pintura (2,4m)";
+      return `Mascaramento para pintura
+20m x 2,40mts`;
     case "15000":
-      return "Proteção para Quinas e Batentes";
+      return `Proteção para quinas e batentes
+0,05m x 0,05m x 1,8m
+Pacote c/ 6 unidades`;
     case "16000":
-      return "Filme para Envolvimento";
+      return `Proteção para metais e maçanetas
+0,10m x 75mts Caixa c/ 6 unidades`;
     case "17000":
-      return "Adesivo para Proteção (0,45m)";
+      return `Proteção para louça sanitária
+0,40m x 25mts`;
     case "17001":
-      return "Adesivo para Proteção (0,60m)";
+      return `Proteção para bancadas
+0,60m x 25mts`;
     case "17002":
-      return "Adesivo para Proteção (0,40m)";
+      return `Proteção para louça sanitária
+0,40m x 50mts`;
     case "17003":
-      return "Adesivo para Proteção (0,60m)";
+      return `Proteção para bancadas
+0,60m x 50mts`;
     case "18000":
-      return "Tampão para Ralos (10cm)";
+      return `Tampão para Ralos
+0,10m Ø Caixa c/ 6 unidades`;
     case "18001":
-      return "Tampão para Ralos (15cm)";
+      return `Tampão para Ralos
+0,15m Ø Caixa c/ 6 unidades`;
     case "19000":
-      return "Comprimento: 25m";
+      return `Papelão ondulado tipo B
+1,20m x 25mts`;
     case "19001":
-      return "Comprimento: 50m";
+      return `Papelão ondulado tipo B
+1,20m x 50mts`;
+    case "19002":
+      return `Papelão ondulado tipo B
+1,20m x 5mts`;
+    case "19003":
+      return `Papelão ondulado tipo B
+1,20m x 10mts`;
     case "19100":
-      return "Largura: 6m Comprimento: 5m";
+      return `Lona plástica preta
+6m x 5mts`;
     case "19101":
-      return "Largura: 5m Comprimento: 4m";
+      return `Lona plástica preta
+5m x 4mts`;
     case "19102":
-      return "Largura: 4m Comprimento: 5m";
+      return `Lona plástica preta
+4m x 4mts`;
     case "19103":
-      return "Largura: 4m Comprimento: 3m";
+      return `Lona plástica preta
+4m x 3mts`;
     case "19104":
-      return "Largura: 3m Comprimento: 3m";
+      return `Lona plástica preta
+3m x 3mts`;
     case "19105":
-      return "Largura: 3m Comprimento: 2m";
+      return `Lona plástica preta
+3m x 2mts`;
     case "19200":
-      return "Altura: 1,8cm";
+      return `Fita crepe
+1,8cm x 50mts`;
     case "19201":
-      return "Altura: 4,8cm";
+      return `Fita crepe
+4,8cm x 50mts`;
     case "19300":
-      return "Altura: 4,8cm";
+      return `Fita crepe premium para construção civil
+4,8cm x 50mts`;
+    case "19400":
+      return `Plástico lona bolha preto
+1,20m x 25mts`;
+    case "19401":
+      return `Plástico lona bolha preto
+1,20m x 10mts`;
+    case "19402":
+      return `Plástico lona bolha preto
+0,60m x 25mts`;
+    case "19403":
+      return `Plástico lona bolha preto
+0,60m x 10mts`;
+    case "20000":
+      return `Papel kraft pardo
+1,00m x 25mts`;
+    case "20001":
+      return `Papel kraft pardo
+1,00m x 50mts`;
   }
 }
