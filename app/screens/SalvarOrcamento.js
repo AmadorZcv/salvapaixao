@@ -42,15 +42,15 @@ class SalvarOrcamento extends PureComponent {
                       this.salvarOrcamento()
                     } else {
                       this.cidade.focus()
-                      this.myScroll.scrollTo({x: 0, y: 560, animated: true})
+                      this.myScroll.scrollTo({x: 0, y: 650, animated: true})
                     }
                   } else {
                     this.uf.focus()
-                    this.myScroll.scrollTo({x: 0, y: 560, animated: true})
+                    this.myScroll.scrollTo({x: 0, y: 650, animated: true})
                   }
                 } else {
                   this.email.focus()
-                  this.myScroll.scrollTo({x: 0, y: 480, animated: true})
+                  this.myScroll.scrollTo({x: 0, y: 500, animated: true})
                 }
               } else {
                 this.telefone.focus()
@@ -58,19 +58,19 @@ class SalvarOrcamento extends PureComponent {
               }
             } else {
               this.nomeCompleto.focus()
-              this.myScroll.scrollTo({x: 0, y: 320, animated: true})
+              this.myScroll.scrollTo({x: 0, y: 350, animated: true})
             }
           } else {
             this.ramo.focus()
-            this.myScroll.scrollTo({x: 0, y: 240, animated: true})
+            this.myScroll.scrollTo({x: 0, y: 250, animated: true})
           }
         } else {
           this.cpf.focus()
-          this.myScroll.scrollTo({x: 0, y: 160, animated: true})
+          this.myScroll.scrollTo({x: 0, y: 200, animated: true})
         }
       } else {
         this.nome.focus()
-        this.myScroll.scrollTo({x: 0, y: 80, animated: true})
+        this.myScroll.scrollTo({x: 0, y: 150, animated: true})
       }
     } else {
       this.condicao.focus()
@@ -294,7 +294,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.ramo.focus();
-            this.myScroll.scrollTo({x: 0, y: 260, animated: true})
+            this.myScroll.scrollTo({x: 0, y: 250, animated: true})
           }}
           returnKeyType={"next"}
         />
@@ -315,7 +315,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.nomeCompleto.focus();
-            this.myScroll.scrollTo({x: 0, y: 320, animated: true})
+            this.myScroll.scrollTo({x: 0, y: 350, animated: true})
           }}
           returnKeyType={"next"}
         />
@@ -336,7 +336,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.telefone.focus();
-            this.myScroll.scrollTo({x: 0, y: 450, animated: true})
+            this.myScroll.scrollTo({x: 0, y: 400, animated: true})
           }}
           returnKeyType={"next"}
         />
@@ -358,7 +358,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.email.focus();
-            this.myScroll.scrollTo({x: 0, y: 480, animated: true})
+            this.myScroll.scrollTo({x: 0, y: 500, animated: true})
           }}
           returnKeyType={"next"}
         />
@@ -378,7 +378,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.uf.focus();
-            this.myScroll.scrollTo({x: 0, y: 540, animated: true})
+            this.myScroll.scrollTo({x: 0, y: 650, animated: true})
           }}
           returnKeyType={"next"}
         />
