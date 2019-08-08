@@ -3,7 +3,6 @@ import ReduxThunk from "redux-thunk";
 import * as storage from "redux-storage";
 import createEngine from "redux-storage-engine-reactnativeasyncstorage";
 import debounce from "redux-storage-decorator-debounce";
-import filter from "redux-storage-decorator-filter";
 import reducers from "./reducers";
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // Todos os middlewares vão juntos

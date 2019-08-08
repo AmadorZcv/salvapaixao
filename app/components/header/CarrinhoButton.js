@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-
 import HeaderButton from "./HeaderButton";
 import CarrinhoIcon from "./CarrinhoIcon";
 

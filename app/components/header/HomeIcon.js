@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-
 import { Image } from "react-native-elements";
 
 export default class HomeIcon extends PureComponent {

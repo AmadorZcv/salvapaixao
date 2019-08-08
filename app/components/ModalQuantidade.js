@@ -39,7 +39,6 @@ export default class ModalQuantidade extends PureComponent {
     }
   };
   onChangeText = text => {
-    const { onChange } = this.props;
     const cleanText = text.replace(/[^\d-]/g, "");
     this.setState({ text: cleanText });
   };

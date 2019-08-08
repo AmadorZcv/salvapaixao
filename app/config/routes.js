@@ -1,15 +1,12 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
 import {
-  createBottomTabNavigator,
   createAppContainer,
   createStackNavigator,
-  NavigationActions,
   createDrawerNavigator,
   DrawerActions
 } from "react-navigation";
 import Home from "../screens/Home";
-import { Icon, Image, normalize } from "react-native-elements";
+import { Image, normalize } from "react-native-elements";
 import { Color, TextStyle } from "../styles";
 import SBancada from "../screens/SBancada";
 import SMetais from "../screens/SMetais";
@@ -27,8 +24,6 @@ import { CustomDrawerContentComponent } from "../components/DrawerComponent";
 import Orcamentos from "../screens/Orcamentos";
 import Config from "../screens/Config";
 import Orcamento from "../screens/Orcamento";
-import HeaderButton from "../components/header/HeaderButton";
-import CarrinhoIcon from "../components/header/CarrinhoIcon";
 import CarrinhoButton from "../components/header/CarrinhoButton";
 import HomeButton from "../components/header/HomeButton";
 import MenuButton from "../components/header/MenuButton";

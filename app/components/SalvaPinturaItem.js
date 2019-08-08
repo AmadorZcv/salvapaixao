@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { integerToReal } from "../config/formatUtils";
-
 import { textInfo, textValue } from "../styles/Text";
 import PrecoCustoCounter from "./PrecoCustoCounter";
 import { itemContainer, columnContainer } from "../styles/Containers";
