@@ -1,5 +1,11 @@
 import React, { PureComponent } from "react";
-import { View, Text, FlatList, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  ScrollView,
+  ActivityIndicator
+} from "react-native";
 import { Button } from "react-native-elements";
 import moment from "moment";
 import { Color } from "../styles";
@@ -12,14 +18,59 @@ import {
 } from "../redux/cart/reducer";
 import LabelWithTextRight from "../components/LabelWithTextRight";
 import { integerToReal } from "../config/formatUtils";
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen";
+import { isSavingOrcamento } from "../redux/orcamentos/actions";
+import { requestDownloadPermission } from "../config/fileSystem";
 
 class InformacaoOrcamento extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  exportToPdf = () => {
+    const { navigation, products } = this.props;
+    const item = navigation.getParam("item", "NO-ID");
+    const { cart } = item;
+    const { detalhes } = item;
+    const {
+      cidade,
+      condicao,
+      parcela,
+      cpf,
+      criacao,
+      email,
+      nome,
+      nomeCompleto,
+      ramo,
+      telefone,
+      uf,
+      validade
+    } = detalhes;
 
+    const chaves = Object.keys(cart);
+    const carrinho = chaves.map(element => {
+      const item = cart[element];
+      return { id: item.id.toString(), qtd: item.qtd };
+    });
+    this.props.dispatch(isSavingOrcamento(true));
+    requestDownloadPermission(
+      {
+        criacao: moment(criacao).format("DD/MM/YYYY"),
+        validade: moment(validade).format("DD/MM/YYYY"),
+        condicao: condicao,
+        parcela,
+        telefone,
+        cidade,
+        nome,
+        nome_completo: nomeCompleto,
+        uf,
+        cpf,
+        email,
+        ramo,
+        carrinho
+      },
+      () => this.props.dispatch(isSavingOrcamento(false))
+    );
+  };
   render() {
     const { navigation, products } = this.props;
     const item = navigation.getParam("item", "NO-ID");
@@ -31,8 +82,20 @@ class InformacaoOrcamento extends PureComponent {
     const id = `#${moment(detalhes.validade).format("YYYYMMDD")}00101501`;
     return (
       <ScrollView style={{ backgroundColor: Color.background, flex: 1 }}>
+        <ActivityIndicator animating={this.props.salvando} />
         <View>
-        <Text style={{ textAlign: "right", fontSize: wp(4.5), fontWeight: "bold", paddingTop: hp(2), paddingBottom: hp(3.4), paddingRight: hp(4.2) }}>{id}</Text>
+          <Text
+            style={{
+              textAlign: "right",
+              fontSize: wp(4.5),
+              fontWeight: "bold",
+              paddingTop: hp(2),
+              paddingBottom: hp(3.4),
+              paddingRight: hp(4.2)
+            }}
+          >
+            {id}
+          </Text>
           <FlatList
             data={Object.keys(cart)}
             renderItem={({ item, index }) => (
@@ -45,35 +108,39 @@ class InformacaoOrcamento extends PureComponent {
               />
             )}
           />
-          <View style={{ paddingHorizontal: wp(12), paddingVertical: hp(4.84) }}>
+          <View
+            style={{ paddingHorizontal: wp(12), paddingVertical: hp(4.84) }}
+          >
             <LabelWithTextRight
               label={"Subtotal"}
               text={integerToReal(subTotal)}
             />
-            <LabelWithTextRight
-              label={"Desconto"}
-              text={'0,00%'}
-            />
+            <LabelWithTextRight label={"Desconto"} text={"0,00%"} />
             <LabelWithTextRight
               label={"Total"}
               text={integerToReal(totalComIpi)}
-            /></View>
+            />
+          </View>
         </View>
+        <ActivityIndicator animating={this.props.salvando} />
         <Button
           containerStyle={{
             marginBottom: hp(2.5),
             marginTop: hp(1.5),
             marginHorizontal: hp(13.33)
           }}
-          title={"Exportar para PDF"} />
+          title={"Exportar para PDF"}
+          onPress={() => this.exportToPdf()}
+          loading={this.props.salvando}
+        />
       </ScrollView>
     );
   }
 }
 const mapStateToProps = state => {
-  const { products } = state.products;
+  const { products, salvando } = state.products;
 
-  return { products };
+  return { products, salvando };
 };
 
 export default connect(mapStateToProps)(InformacaoOrcamento);

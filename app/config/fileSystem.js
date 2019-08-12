@@ -14,7 +14,7 @@ let options = {
     description: "Downloading file."
   }
 };
-export async function requestDownloadPermission(orcamento) {
+export async function requestDownloadPermission(orcamento, callback) {
   try {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
@@ -27,7 +27,7 @@ export async function requestDownloadPermission(orcamento) {
       }
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      donwload(orcamento);
+      donwload(orcamento, callback);
     } else {
       console.log("Camera permission denied");
     }
@@ -35,7 +35,7 @@ export async function requestDownloadPermission(orcamento) {
     console.warn(err);
   }
 }
-async function createPDF(html) {
+async function createPDF(html, callback) {
   let options = {
     html: html,
     fileName: "Orçamento",
@@ -43,12 +43,14 @@ async function createPDF(html) {
     width: 595,
     height: 842
   };
-
+  callback();
   let file = await RNHTMLtoPDF.convert(options);
+
   android.actionViewIntent(file.filePath, "application/pdf");
 }
-export function donwload(orcamento) {
+export function donwload(orcamento, callback) {
+  console.log("orçamento é", orcamento);
   Api.post("/api/pdf", {
     orcamento
-  }).then(response => createPDF(response.data));
+  }).then(response => createPDF(response.data, callback));
 }

@@ -3,12 +3,20 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  ActivityIndicator,
+  Text
 } from "react-native";
-import { Image, } from "react-native-elements";
+import { Image } from "react-native-elements";
 import Color from "../styles/Color";
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
-export default class Home extends PureComponent {
+import { connect } from "react-redux";
+
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp
+} from "react-native-responsive-screen";
+import { primaryBig } from "../styles/Text";
+class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
@@ -43,6 +51,16 @@ export default class Home extends PureComponent {
   onMateriais = () => {
     this.props.navigation.navigate("Materiais");
   };
+  renderLoadingText = () => {
+    if (this.props.salvando) {
+      return (
+        <Text style={{ ...primaryBig, textAlign: "center" }}>
+          Salvando o PDf do orçamento...
+        </Text>
+      );
+    }
+    return null;
+  };
   render() {
     const {
       onMateriais,
@@ -59,6 +77,8 @@ export default class Home extends PureComponent {
     return (
       <ScrollView>
         <View style={styles.container}>
+          {this.renderLoadingText()}
+          <ActivityIndicator animating={this.props.salvando} />
           <View style={{ ...styles.cardLine, marginTop: 5 }}>
             <TouchableOpacity style={styles.card} onPress={onSalvaPiso}>
               <Image
@@ -157,6 +177,11 @@ export default class Home extends PureComponent {
     );
   }
 }
+const mapStateToProps = state => {
+  const { salvando } = state.orcamentos;
+  return { salvando };
+};
+export default connect(mapStateToProps)(Home);
 
 const styles = StyleSheet.create({
   container: {
@@ -176,7 +201,7 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
   imageStyle: {
-    width: wp(43,33),
+    width: wp(43, 33),
     height: hp(15.78),
     borderRadius: 5
   },

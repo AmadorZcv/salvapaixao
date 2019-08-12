@@ -1,4 +1,4 @@
-import { ADD_ORCAMENTO } from "./actions";
+import { ADD_ORCAMENTO, IS_SAVING } from "./actions";
 import _ from "lodash";
 import update from "immutability-helper";
 import moment from "moment";
@@ -6,7 +6,8 @@ import moment from "moment";
 const initialState = {
   orcamentos: [],
   logged: true,
-  lastOrcamento: null
+  lastOrcamento: null,
+  salvando: false
 };
 
 export default (state = initialState, action) => {
@@ -39,6 +40,8 @@ export default (state = initialState, action) => {
       });
     case "SET_LOGGED":
       return { ...state, logged: action.payload };
+    case IS_SAVING:
+      return { ...state, salvando: action.payload };
     default:
       return state;
   }

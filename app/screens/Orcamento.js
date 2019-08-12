@@ -1,15 +1,66 @@
 import React, { PureComponent } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, ActivityIndicator } from "react-native";
 import moment from "moment";
 import { Button } from "react-native-elements";
 import { connect } from "react-redux";
 import LabelWithTextBelow from "../components/LabelWithTextBelow";
 import LabelWithTextRight from "../components/LabelWithTextRight";
 import { Color } from "../styles";
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen";
+import { isSavingOrcamento } from "../redux/orcamentos/actions";
+import { requestDownloadPermission } from "../config/fileSystem";
 
 class Orcamento extends PureComponent {
+  exportToPdf = () => {
+    const { navigation, products } = this.props;
+    const item = navigation.getParam("item", "NO-ID");
+    const { cart } = item;
+    const { detalhes } = item;
+    const {
+      cidade,
+      condicao,
+      parcela,
+      cpf,
+      criacao,
+      email,
+      nome,
+      nomeCompleto,
+      ramo,
+      telefone,
+      uf,
+      validade
+    } = detalhes;
+
+    const chaves = Object.keys(cart);
+    const carrinho = chaves.map(element => {
+      const item = cart[element];
+      return { id: item.id.toString(), qtd: item.qtd };
+    });
+    this.props.dispatch(isSavingOrcamento(true));
+    requestDownloadPermission(
+      {
+        criacao: moment(criacao).format("DD/MM/YYYY"),
+        validade: moment(validade).format("DD/MM/YYYY"),
+        condicao: condicao,
+        parcela,
+        telefone,
+        cidade,
+        nome,
+        nome_completo: nomeCompleto,
+        uf,
+        cpf,
+        email,
+        ramo,
+        carrinho
+      },
+      () => this.props.dispatch(isSavingOrcamento(false))
+    );
+  };
   render() {
+    console.log("Is salvando", this.props.salvando);
     const { navigation } = this.props;
     const item = navigation.getParam("item", "NO-ID");
     const { detalhes } = item;
@@ -18,9 +69,21 @@ class Orcamento extends PureComponent {
     const id = `#${moment(detalhes.validade).format("YYYYMMDD")}00101501`;
     return (
       <ScrollView
-        style={{ paddingHorizontal: wp(7.5), backgroundColor: Color.background }}
+        style={{
+          paddingHorizontal: wp(7.5),
+          backgroundColor: Color.background
+        }}
       >
-        <Text style={{ textAlign: "right", fontSize: wp(4.5), fontWeight: "bold", paddingTop: hp(2) }}>{id}</Text>
+        <Text
+          style={{
+            textAlign: "right",
+            fontSize: wp(4.5),
+            fontWeight: "bold",
+            paddingTop: hp(2)
+          }}
+        >
+          {id}
+        </Text>
         <View style={{ marginHorizontal: wp(7.5) }}>
           <Text
             style={{
@@ -33,7 +96,7 @@ class Orcamento extends PureComponent {
             }}
           >
             Informações da proposta
-              </Text>
+          </Text>
           <LabelWithTextRight label={"Data de criação"} text={criacao} />
           <LabelWithTextRight label={"Data de validade"} text={validade} />
           <LabelWithTextRight
@@ -49,7 +112,9 @@ class Orcamento extends PureComponent {
               color: Color.primaryText,
               backgroundColor: Color.background
             }}
-          >Empresa e contato</Text>
+          >
+            Empresa e contato
+          </Text>
           <LabelWithTextBelow label={"Nome da conta"} text={detalhes.nome} />
           <LabelWithTextBelow label={"CPF/CNPJ"} text={detalhes.cpf} />
           <LabelWithTextBelow label={"Ramo/Atividade"} text={detalhes.ramo} />
@@ -61,6 +126,11 @@ class Orcamento extends PureComponent {
           />
           <LabelWithTextBelow label={"Telefone"} text={detalhes.telefone} />
           <LabelWithTextBelow label={"E-mail"} text={detalhes.email} />
+          <ActivityIndicator
+            animating={this.props.salvando}
+            size={"large"}
+            color={"blue"}
+          />
           <Button
             containerStyle={{
               marginTop: hp(4.5),
@@ -69,16 +139,24 @@ class Orcamento extends PureComponent {
             title={"Informações da Venda"}
             onPress={() => navigation.navigate("InformacaoOrcamento", { item })}
           />
+
           <Button
             containerStyle={{
               marginBottom: hp(2.5),
               marginTop: hp(1.5),
               marginHorizontal: hp(5)
             }}
-            title={"Exportar para PDF"} />
+            onPress={() => this.exportToPdf()}
+            title={"Exportar para PDF"}
+            loading={this.props.salvando}
+          />
         </View>
       </ScrollView>
     );
   }
 }
-export default connect()(Orcamento);
+const mapStateToProps = state => {
+  const { salvando } = state.orcamentos;
+  return { salvando };
+};
+export default connect(mapStateToProps)(Orcamento);

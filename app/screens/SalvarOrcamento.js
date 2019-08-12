@@ -1,11 +1,21 @@
 import React, { PureComponent } from "react";
-import { View, Text, StyleSheet, ScrollView, Alert, Picker } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Alert,
+  Picker
+} from "react-native";
 import TextInputMask from "react-native-text-input-mask";
 import moment from "moment";
 import { connect } from "react-redux";
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp
+} from "react-native-responsive-screen";
 import { Button, CheckBox } from "react-native-elements";
-import { add_orcamento } from "../redux/orcamentos/actions";
+import { add_orcamento, isSavingOrcamento } from "../redux/orcamentos/actions";
 import { requestDownloadPermission } from "../config/fileSystem";
 
 class SalvarOrcamento extends PureComponent {
@@ -15,7 +25,7 @@ class SalvarOrcamento extends PureComponent {
       criacao: moment(),
       validade: moment().add(1, "day"),
       condicao: "",
-      parcela: "À VISTA",
+      parcela: "1",
       nome: "",
       cpf: "",
       ramo: "",
@@ -28,53 +38,56 @@ class SalvarOrcamento extends PureComponent {
     };
   }
   CheckTextInput = () => {
-    if (this.state.condicao != '') {
-      if (this.state.nome != '') {
+    if (this.state.condicao != "") {
+      if (this.state.nome != "") {
         if (this.state.cpf.length == 14 || this.state.cpf.length == 18) {
-          if (this.state.ramo != '') {
-            if (this.state.nomeCompleto != '') {
-              console.log(this.state.telefone.length)
-              if (this.state.telefone.length == 10 || this.state.telefone.length ==11) {
-                if (this.state.email != '') {
-                  console.log(this.state.uf.length)
+          if (this.state.ramo != "") {
+            if (this.state.nomeCompleto != "") {
+              console.log(this.state.telefone.length);
+              if (
+                this.state.telefone.length == 10 ||
+                this.state.telefone.length == 11
+              ) {
+                if (this.state.email != "") {
+                  console.log(this.state.uf.length);
                   if (this.state.uf.length == 2) {
-                    if (this.state.cidade != '') {
-                      this.salvarOrcamento()
+                    if (this.state.cidade != "") {
+                      this.salvarOrcamento();
                     } else {
-                      this.cidade.focus()
-                      this.myScroll.scrollTo({x: 0, y: 650, animated: true})
+                      this.cidade.focus();
+                      this.myScroll.scrollTo({ x: 0, y: 650, animated: true });
                     }
                   } else {
-                    this.uf.focus()
-                    this.myScroll.scrollTo({x: 0, y: 650, animated: true})
+                    this.uf.focus();
+                    this.myScroll.scrollTo({ x: 0, y: 650, animated: true });
                   }
                 } else {
-                  this.email.focus()
-                  this.myScroll.scrollTo({x: 0, y: 500, animated: true})
+                  this.email.focus();
+                  this.myScroll.scrollTo({ x: 0, y: 500, animated: true });
                 }
               } else {
-                this.telefone.focus()
-                this.myScroll.scrollTo({x: 0, y: 400, animated: true})
+                this.telefone.focus();
+                this.myScroll.scrollTo({ x: 0, y: 400, animated: true });
               }
             } else {
-              this.nomeCompleto.focus()
-              this.myScroll.scrollTo({x: 0, y: 350, animated: true})
+              this.nomeCompleto.focus();
+              this.myScroll.scrollTo({ x: 0, y: 350, animated: true });
             }
           } else {
-            this.ramo.focus()
-            this.myScroll.scrollTo({x: 0, y: 250, animated: true})
+            this.ramo.focus();
+            this.myScroll.scrollTo({ x: 0, y: 250, animated: true });
           }
         } else {
-          this.cpf.focus()
-          this.myScroll.scrollTo({x: 0, y: 200, animated: true})
+          this.cpf.focus();
+          this.myScroll.scrollTo({ x: 0, y: 200, animated: true });
         }
       } else {
-        this.nome.focus()
-        this.myScroll.scrollTo({x: 0, y: 150, animated: true})
+        this.nome.focus();
+        this.myScroll.scrollTo({ x: 0, y: 150, animated: true });
       }
     } else {
-      this.condicao.focus()
-      this.myScroll.scrollTo({x: 0, y: 0, animated: true})
+      this.condicao.focus();
+      this.myScroll.scrollTo({ x: 0, y: 0, animated: true });
     }
   };
   salvarOrcamento = () => {
@@ -94,28 +107,30 @@ class SalvarOrcamento extends PureComponent {
       validade
     } = this.state;
     if (this.state.pdf) {
-      console.log("cART É", cart);
       const chaves = Object.keys(cart);
       const carrinho = chaves.map(element => {
         const item = cart[element];
         return { id: item.id.toString(), qtd: item.qtd };
       });
-
-      requestDownloadPermission({
-        criacao: criacao.format("DD/MM/YYYY"),
-        validade: validade.format("DD/MM/YYYY"),
-        condicao: condicao,
-        parcela,
-        telefone,
-        cidade,
-        nome,
-        nome_completo: nomeCompleto,
-        uf,
-        cpf,
-        email,
-        ramo,
-        carrinho
-      });
+      dispatch(isSavingOrcamento(true));
+      requestDownloadPermission(
+        {
+          criacao: criacao.format("DD/MM/YYYY"),
+          validade: validade.format("DD/MM/YYYY"),
+          condicao: condicao,
+          parcela,
+          telefone,
+          cidade,
+          nome,
+          nome_completo: nomeCompleto,
+          uf,
+          cpf,
+          email,
+          ramo,
+          carrinho
+        },
+        () => dispatch(isSavingOrcamento(false))
+      );
     }
     dispatch(
       add_orcamento({
@@ -136,12 +151,15 @@ class SalvarOrcamento extends PureComponent {
         }
       })
     );
-    Alert.alert("Orçamento salvo com sucesso");
     this.props.navigation.popToTop();
   };
   render() {
     return (
-      <ScrollView ref={(ref) => this.myScroll = ref} style={styles.container} keyboardShouldPersistTaps={'always'}>
+      <ScrollView
+        ref={ref => (this.myScroll = ref)}
+        style={styles.container}
+        keyboardShouldPersistTaps={"always"}
+      >
         <Text
           style={{
             marginTop: 30,
@@ -218,7 +236,7 @@ class SalvarOrcamento extends PureComponent {
             blurOnSubmit={false}
             onSubmitEditing={() => {
               this.nome.focus();
-              this.myScroll.scrollTo({x: 0, y: 150, animated: true})
+              this.myScroll.scrollTo({ x: 0, y: 150, animated: true });
             }}
             returnKeyType={"next"}
           />
@@ -230,7 +248,8 @@ class SalvarOrcamento extends PureComponent {
             style={styles.pickerStyle}
             onValueChange={(formatted, extracted) =>
               this.setState({ parcela: formatted })
-            }>
+            }
+          >
             <Picker.Item label="À VISTA" value="1" />
             <Picker.Item label="2X" value="2" />
             <Picker.Item label="3X" value="3" />
@@ -253,7 +272,7 @@ class SalvarOrcamento extends PureComponent {
             fontSize: wp(4.5)
           }}
         >
-          Empresa e Contato{" "}
+          Empresa e Contato
         </Text>
         <Text style={styles.labelStyle}>Nome da conta</Text>
         <TextInputMask
@@ -272,7 +291,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.cpf.focus();
-            this.myScroll.scrollTo({x: 0, y: 200, animated: true})
+            this.myScroll.scrollTo({ x: 0, y: 200, animated: true });
           }}
           returnKeyType={"next"}
         />
@@ -294,7 +313,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.ramo.focus();
-            this.myScroll.scrollTo({x: 0, y: 250, animated: true})
+            this.myScroll.scrollTo({ x: 0, y: 250, animated: true });
           }}
           returnKeyType={"next"}
         />
@@ -315,7 +334,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.nomeCompleto.focus();
-            this.myScroll.scrollTo({x: 0, y: 350, animated: true})
+            this.myScroll.scrollTo({ x: 0, y: 350, animated: true });
           }}
           returnKeyType={"next"}
         />
@@ -336,7 +355,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.telefone.focus();
-            this.myScroll.scrollTo({x: 0, y: 400, animated: true})
+            this.myScroll.scrollTo({ x: 0, y: 400, animated: true });
           }}
           returnKeyType={"next"}
         />
@@ -358,7 +377,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.email.focus();
-            this.myScroll.scrollTo({x: 0, y: 500, animated: true})
+            this.myScroll.scrollTo({ x: 0, y: 500, animated: true });
           }}
           returnKeyType={"next"}
         />
@@ -378,7 +397,7 @@ class SalvarOrcamento extends PureComponent {
           blurOnSubmit={false}
           onSubmitEditing={() => {
             this.uf.focus();
-            this.myScroll.scrollTo({x: 0, y: 650, animated: true})
+            this.myScroll.scrollTo({ x: 0, y: 650, animated: true });
           }}
           returnKeyType={"next"}
         />
@@ -455,13 +474,13 @@ const styles = StyleSheet.create({
   dateContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: hp(.78)
+    marginVertical: hp(0.78)
   },
   pickerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: hp(.78)
+    marginVertical: hp(0.78)
   },
   dateLabel: {
     width: wp(41.66),
@@ -478,7 +497,7 @@ const styles = StyleSheet.create({
   pickerStyle: {
     height: hp(4.68),
     width: wp(41.66),
-    backgroundColor: "#fafafa",
+    backgroundColor: "#fafafa"
   },
   inputStyle: {
     marginTop: hp(0.78),
