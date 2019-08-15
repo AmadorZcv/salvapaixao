@@ -15,7 +15,12 @@ import {
   widthPercentageToDP as wp
 } from "react-native-responsive-screen";
 import { Button, CheckBox } from "react-native-elements";
-import { add_orcamento, isSavingOrcamento } from "../redux/orcamentos/actions";
+import {
+  add_orcamento,
+  isSavingOrcamento,
+  generatePDF,
+  decrease_id
+} from "../redux/orcamentos/actions";
 import { requestDownloadPermission } from "../config/fileSystem";
 
 class SalvarOrcamento extends PureComponent {
@@ -107,50 +112,48 @@ class SalvarOrcamento extends PureComponent {
       validade
     } = this.state;
     if (this.state.pdf) {
-      const chaves = Object.keys(cart);
-      const carrinho = chaves.map(element => {
-        const item = cart[element];
-        return { id: item.id.toString(), qtd: item.qtd };
-      });
-      dispatch(isSavingOrcamento(true));
-      requestDownloadPermission(
-        {
-          criacao: criacao.format("DD/MM/YYYY"),
-          validade: validade.format("DD/MM/YYYY"),
-          condicao: condicao,
-          parcela,
-          telefone,
-          cidade,
-          nome,
-          nome_completo: nomeCompleto,
-          uf,
-          cpf,
-          email,
-          ramo,
-          carrinho
-        },
-        () => dispatch(isSavingOrcamento(false))
+      dispatch(
+        generatePDF({
+          cart,
+          detalhes: {
+            cidade,
+            condicao,
+            parcela,
+            cpf,
+            criacao,
+            email,
+            nome,
+            nomeCompleto,
+            ramo,
+            telefone,
+            uf,
+            validade
+          }
+        })
       );
+    } else {
+      dispatch(
+        add_orcamento({
+          cart,
+          detalhes: {
+            cidade,
+            condicao,
+            parcela,
+            cpf,
+            criacao,
+            email,
+            nome,
+            nomeCompleto,
+            ramo,
+            telefone,
+            uf,
+            validade
+          },
+          id: this.props.lastId - 1
+        })
+      );
+      dispatch(decrease_id());
     }
-    dispatch(
-      add_orcamento({
-        cart,
-        detalhes: {
-          cidade,
-          condicao,
-          parcela,
-          cpf,
-          criacao,
-          email,
-          nome,
-          nomeCompleto,
-          ramo,
-          telefone,
-          uf,
-          validade
-        }
-      })
-    );
     this.props.navigation.popToTop();
   };
   render() {
@@ -466,7 +469,8 @@ class SalvarOrcamento extends PureComponent {
 }
 const mapStateToProps = state => {
   const { cart } = state.cart;
-  return { cart };
+  const { lastId } = state.orcamentos;
+  return { cart, lastId };
 };
 export default connect(mapStateToProps)(SalvarOrcamento);
 const styles = StyleSheet.create({
