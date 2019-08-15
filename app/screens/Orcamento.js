@@ -10,54 +10,22 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from "react-native-responsive-screen";
-import { isSavingOrcamento } from "../redux/orcamentos/actions";
+import {
+  isSavingOrcamento,
+  generateFromId,
+  generateNoId
+} from "../redux/orcamentos/actions";
 import { requestDownloadPermission } from "../config/fileSystem";
 
 class Orcamento extends PureComponent {
   exportToPdf = () => {
     const { navigation, products } = this.props;
     const item = navigation.getParam("item", "NO-ID");
-    const { cart } = item;
-    const { detalhes } = item;
-    const {
-      cidade,
-      condicao,
-      parcela,
-      cpf,
-      criacao,
-      email,
-      nome,
-      nomeCompleto,
-      ramo,
-      telefone,
-      uf,
-      validade
-    } = detalhes;
-
-    const chaves = Object.keys(cart);
-    const carrinho = chaves.map(element => {
-      const item = cart[element];
-      return { id: item.id.toString(), qtd: item.qtd };
-    });
-    this.props.dispatch(isSavingOrcamento(true));
-    requestDownloadPermission(
-      {
-        criacao: moment(criacao).format("DD/MM/YYYY"),
-        validade: moment(validade).format("DD/MM/YYYY"),
-        condicao: condicao,
-        parcela,
-        telefone,
-        cidade,
-        nome,
-        nome_completo: nomeCompleto,
-        uf,
-        cpf,
-        email,
-        ramo,
-        carrinho
-      },
-      () => this.props.dispatch(isSavingOrcamento(false))
-    );
+    if (item.id > 0) {
+      this.props.dispatch(generateFromId(item.id));
+    } else {
+      this.props.dispatch(generateNoId(item));
+    }
   };
   render() {
     console.log("Is salvando", this.props.salvando);
