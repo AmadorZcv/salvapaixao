@@ -74,7 +74,11 @@ export function generatePDF(orcamento) {
       })
         .then(response => {
           dispatch(
-            add_orcamento({ ...orcamento, id: response.data.orcamento.id })
+            add_orcamento({
+              ...orcamento,
+              id: response.data.orcamento.id,
+              title: response.data.orcamento.title
+            })
           );
           createPDF(response.data.html, () =>
             dispatch(isSavingOrcamento(false))

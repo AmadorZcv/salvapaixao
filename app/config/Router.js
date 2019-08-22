@@ -9,7 +9,7 @@ class Router extends PureComponent {
   }
 }
 const mapStateToProps = state => {
-  const { logged } = state.orcamentos;
+  const { logged } = state.auth;
   return { logged };
 };
 export default connect(

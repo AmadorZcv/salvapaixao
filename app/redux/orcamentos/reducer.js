@@ -42,7 +42,7 @@ export default (state = initialState, action) => {
       }
       return update(state, {
         orcamentos: { [index]: { data: { $push: [action.payload] } } },
-        lastOrcamento: { $set: action.payload }
+        lastOrcamento: { $set: action.payload.id }
       });
     case "SET_LOGGED":
       return { ...state, logged: action.payload };

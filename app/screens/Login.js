@@ -10,7 +10,11 @@ import { Input, Button, Image, Text, normalize } from "react-native-elements";
 import VersionNumber from "react-native-version-number";
 import { connect } from "react-redux";
 import { Color } from "../styles";
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen";
+import { signIn } from "../redux/auth/actions";
 
 class Login extends PureComponent {
   constructor(props) {
@@ -24,21 +28,7 @@ class Login extends PureComponent {
     console.log("here maybe?");
 
     const { login, senha } = this.state;
-    if (login === "dev" && senha === "2019salvacompra") {
-      this.props.dispatch({ type: "SET_LOGGED", payload: true });
-    } else {
-      Alert.alert(
-        "Atenção",
-        "Usuário e/ou senha incorretos. Tente novamente.",
-        [
-          {
-            text: "Fechar",
-            style: "cancel"
-          }
-        ],
-        { cancelable: false }
-      );
-    }
+    this.props.dispatch(signIn(login, senha));
   };
   render() {
     const { width } = Dimensions.get("window");
@@ -60,7 +50,7 @@ class Login extends PureComponent {
           style={{
             height: hp(34),
             width: wp(70),
-            alignItems: "center",
+            alignItems: "center"
           }}
         >
           <View style={{ backgroundColor: "#449296", height: hp("13.90%") }}>
@@ -70,9 +60,10 @@ class Login extends PureComponent {
                 paddingHorizontal: wp("10%"),
                 textAlign: "center",
                 color: "#FAFAFA",
-                fontSize: wp(6),
+                fontSize: wp(6)
               }}
-            >Seja bem-vindo ao Salva Compra!
+            >
+              Seja bem-vindo ao Salva Compra!
             </Text>
           </View>
           <View
@@ -142,26 +133,28 @@ class Login extends PureComponent {
             width: wp(100),
             height: hp("36.25%"),
             alignItems: "center",
-            marginTop: hp("5.625%"),
+            marginTop: hp("5.625%")
           }}
         >
           <Button
             title={"Entrar"}
             containerStyle={{
               width: wp(35),
-              height: hp(6),
+              height: hp(6)
             }}
             titleStyle={{ fontSize: normalize(16) }}
             onPress={this.onLogin}
             buttonStyle={{ backgroundColor: "#247378", borderRadius: 5 }}
             activeOpacity={1}
           />
-          <View style={{
+          <View
+            style={{
               marginTop: hp("22%"),
               alignItems: "center",
               paddingBottom: hp(10),
               bottom: hp(0.5)
-            }}>
+            }}
+          >
             <Text style={{ color: "#FAFAFA", fontSize: wp(3.5) }}>
               Salva Compra
             </Text>

@@ -28,7 +28,6 @@ class Orcamento extends PureComponent {
     }
   };
   render() {
-    console.log("Is salvando", this.props.salvando);
     const { navigation } = this.props;
     const item = navigation.getParam("item", "NO-ID");
     const { detalhes } = item;
@@ -50,7 +49,7 @@ class Orcamento extends PureComponent {
             paddingTop: hp(2)
           }}
         >
-          {id}
+          {item.title}
         </Text>
         <View style={{ marginHorizontal: wp(7.5) }}>
           <Text
