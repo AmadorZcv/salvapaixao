@@ -114,6 +114,10 @@ class Login extends PureComponent {
                 textAlignVertical: "center"
               }}
               underlineColorAndroid={"transparent"}
+              onSubmitEditing={() => {
+                this.onLogin();
+              }}
+              returnKeyType={"done"}
             />
             <Text
               style={{
