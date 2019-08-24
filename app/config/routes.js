@@ -36,15 +36,7 @@ const OrcamentoStack = createStackNavigator(
       screen: Orcamentos,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Orçamentos",
-          headerLeft: (
-            <MenuButton
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            />
-          ),
-          headerRight: (
-            <HomeButton onPress={() => navigation.navigate("Home")} />
-          )
+          headerTitle: "Orçamentos"
         };
       }
     },
@@ -60,7 +52,10 @@ const OrcamentoStack = createStackNavigator(
       screen: InformacaoOrcamento,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Informações de venda"
+          headerTitle: "Informações de venda",
+          headerRight: (
+            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
+          )
         };
       }
     }
