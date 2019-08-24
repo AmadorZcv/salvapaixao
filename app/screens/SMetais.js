@@ -19,7 +19,7 @@ class SMetais extends PureComponent {
     const { products, cart } = this.props;
     const { width } = Dimensions.get;
     return (
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1, backgroundColor: "#FAFAFA" }}>
         <Image
           source={require("../img/product-screen/s-metais-top.png")}
           style={{ width, height: hp(26.6875) }}

@@ -25,7 +25,7 @@ class Materiais extends PureComponent {
     const crepes = ["19200", "19201"];
     const crepePremium = ["19300"];
     return (
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1, backgroundColor: "#FAFAFA" }}>
         <Image
           source={require("../img/product-screen/m-basicos-top.png")}
           style={{ width, height: hp(26.6875) }}
