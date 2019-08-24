@@ -33,7 +33,7 @@ class Orcamento extends PureComponent {
     const { detalhes } = item;
     const criacao = moment(detalhes.criacao).format("DD/MM/YYYY");
     const validade = moment(detalhes.validade).format("DD/MM/YYYY");
-    const id = `#${moment(detalhes.validade).format("YYYYMMDD")}00101501`;
+
     return (
       <ScrollView
         style={{

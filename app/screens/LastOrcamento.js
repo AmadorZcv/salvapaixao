@@ -16,7 +16,6 @@ import { requestDownloadPermission } from "../config/fileSystem";
 class LastOrcamento extends PureComponent {
   exportToPdf = () => {
     const { lastOrcamento } = this.props;
-
     const item = lastOrcamento;
     const { cart } = item;
     const { detalhes } = item;
@@ -75,7 +74,6 @@ class LastOrcamento extends PureComponent {
     const { detalhes } = item;
     const criacao = moment(detalhes.criacao).format("DD/MM/YYYY");
     const validade = moment(detalhes.validade).format("DD/MM/YYYY");
-    const id = `#${moment(detalhes.criacao).format("YYYYMMDD")}00101501`;
 
     return (
       <ScrollView
@@ -92,7 +90,7 @@ class LastOrcamento extends PureComponent {
             paddingTop: hp(2)
           }}
         >
-          {id}
+          {item.title}
         </Text>
         <View style={{ marginHorizontal: wp(7.5) }}>
           <Text
