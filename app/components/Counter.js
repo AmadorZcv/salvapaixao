@@ -16,7 +16,7 @@ export default class Counter extends PureComponent {
         }}
       >
         <View>
-          <Text style={contadorText}> {total} </Text>
+          <Text style={contadorText}> {total} un.</Text>
         </View>
       </View>
     );
