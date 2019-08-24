@@ -47,7 +47,7 @@ class InformacaoOrcamento extends PureComponent {
     const totalComIpi = calculateTotalComIpi(cart, products);
     const subTotal = calculateTotalNoIpi(cart, products);
 
-    const id = `#${moment(detalhes.validade).format("YYYYMMDD")}00101501`;
+    const id = `#${item.title}`;
     return (
       <ScrollView style={{ backgroundColor: Color.background, flex: 1 }}>
         <ActivityIndicator animating={this.props.salvando} />
