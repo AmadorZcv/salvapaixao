@@ -7,7 +7,7 @@ class Sair extends PureComponent {
     return (
       <TouchableOpacity
         onPress={() =>
-          this.props.dispatch({ type: "SET_LOGGED", payload: false })
+          this.props.dispatch({ type: "SET_IS_LOGGED", payload: false })
         }
       >
         <Text> Sair </Text>
