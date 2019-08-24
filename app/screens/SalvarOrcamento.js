@@ -50,8 +50,8 @@ class SalvarOrcamento extends PureComponent {
             if (this.state.nomeCompleto != "") {
               console.log(this.state.telefone.length);
               if (
-                this.state.telefone.length == 10 ||
-                this.state.telefone.length == 11
+                this.state.telefone.length == 14 ||
+                this.state.telefone.length == 15
               ) {
                 if (this.state.email != "") {
                   console.log(this.state.uf.length);
