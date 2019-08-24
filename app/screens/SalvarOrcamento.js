@@ -371,7 +371,7 @@ class SalvarOrcamento extends PureComponent {
           placeholder={"Digite o telefone"}
           onChangeText={(formatted, extracted) => {
             this.setState({
-              telefone: extracted
+              telefone: formatted
             });
           }}
           refInput={ref => {
