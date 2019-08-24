@@ -22,6 +22,7 @@ import {
   decrease_id
 } from "../redux/orcamentos/actions";
 import { requestDownloadPermission } from "../config/fileSystem";
+import { cleanCart } from "../redux/cart/actions";
 
 class SalvarOrcamento extends PureComponent {
   constructor(props) {
@@ -155,6 +156,7 @@ class SalvarOrcamento extends PureComponent {
       dispatch(decrease_id());
     }
     this.props.navigation.popToTop();
+    this.props.dispatch(cleanCart());
   };
   render() {
     return (
