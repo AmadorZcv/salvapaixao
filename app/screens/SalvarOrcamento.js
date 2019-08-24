@@ -155,8 +155,8 @@ class SalvarOrcamento extends PureComponent {
       );
       dispatch(decrease_id());
     }
-    this.props.navigation.popToTop();
     this.props.dispatch(cleanCart());
+    this.props.navigation.popToTop();
   };
   render() {
     return (
