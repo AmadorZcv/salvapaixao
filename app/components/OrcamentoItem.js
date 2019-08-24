@@ -40,7 +40,7 @@ export default class OrcamentoItem extends PureComponent {
               color: Color.primaryText
             }}
           >
-            {item.title}
+            Orçamento #{item.id}
           </Text>
           <Text style={{ fontSize: normalize(14), color: Color.primaryText }}>
             Até {moment(validade).format("DD/MM/YYYY")}
@@ -53,7 +53,7 @@ export default class OrcamentoItem extends PureComponent {
             color: Color.secondaryText
           }}
         >
-          {`#${moment(criacao).format("YYYYMMDD")}00101501`}
+          {item.title}
         </Text>
         <Text style={{ fontSize: normalize(13), color: Color.secondaryText }}>
           {nome}
