@@ -68,7 +68,11 @@ class Orcamento extends PureComponent {
           <LabelWithTextRight label={"Data de validade"} text={validade} />
           <LabelWithTextRight
             label={"Condição de pagamento"}
-            text={`${detalhes.condicao} dias. ${detalhes.parcela} parcela(s)`}
+            text={`${detalhes.condicao} dias`}
+          />
+          <LabelWithTextRight
+            label={"Parcelas"}
+            text={`${detalhes.parcela} vez(es)`}
           />
           <Text
             style={{
