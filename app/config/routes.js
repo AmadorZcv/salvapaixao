@@ -38,7 +38,7 @@ const OrcamentoStack = createStackNavigator(
       screen: Orcamentos,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Orçamentos"
+          headerTitle: "Orçamentos salvos"
         };
       }
     },
