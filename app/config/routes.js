@@ -29,6 +29,8 @@ import HomeButton from "../components/header/HomeButton";
 import MenuButton from "../components/header/MenuButton";
 import InformacaoOrcamento from "../screens/InformacaoOrcamento";
 import LastOrcamento from "../screens/LastOrcamento";
+import LoadButton from "../components/header/LoadButton";
+import { setCart } from "../redux/cart/actions";
 
 const OrcamentoStack = createStackNavigator(
   {
@@ -54,7 +56,7 @@ const OrcamentoStack = createStackNavigator(
         return {
           headerTitle: "Informações de venda",
           headerRight: (
-            <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
+            <LoadButton onPress={() => navigation.dispatch(setCart())} />
           )
         };
       }
