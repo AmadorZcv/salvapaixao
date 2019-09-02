@@ -20,6 +20,8 @@ const initialState = {
 export default (state = initialState, action) => {
   const { orcamentos } = state;
   switch (action.type) {
+    case SET_LAST_ORCAMENTO:
+      return { ...state, lastId: action.payload };
     case ADD_ORCAMENTO:
       const { criacao } = action.payload.detalhes;
       const title = moment(criacao).format("DD/MM/YYYY");

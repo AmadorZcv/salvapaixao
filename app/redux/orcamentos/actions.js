@@ -8,6 +8,12 @@ export const IS_SAVING = "IS_SAVING";
 export const ADD_ID_ORCAMENTO = "ADD_ID_ORCAMENTO";
 export const SET_TITLE_ORCAMENTO = "SET_TITLE_ORCAMENTO";
 export const DECREASE_ID = "DECREASE_ID";
+export const SET_LAST_ORCAMENTO = "SET_LAST_ORCAMENTO";
+export const set_last_orcamento = id => ({
+  type: SET_LAST_ORCAMENTO,
+  payload: id
+});
+
 export const isSavingOrcamento = bool => ({
   type: IS_SAVING,
   payload: bool
@@ -128,6 +134,7 @@ export function generateFromId(id) {
 export function generateNoId(orcamento) {
   return function fetching(dispatch, getState) {
     dispatch(isSavingOrcamento(true));
+    const { lastId } = getState().orcamentos;
     const chaves = Object.keys(orcamento.cart);
     const carrinho = chaves.map(element => {
       const item = orcamento.cart[element];
@@ -174,6 +181,9 @@ export function generateNoId(orcamento) {
             set_title_orcamento(orcamento, response.data.orcamento.title)
           );
           dispatch(set_id_orcamento(orcamento, response.data.orcamento.id));
+          if (orcamento.id === lastId) {
+            dispatch(set_last_orcamento(orcamento, response.data.orcamento.id));
+          }
           createPDF(response.data.html, () =>
             dispatch(isSavingOrcamento(false))
           );
