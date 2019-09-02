@@ -36,10 +36,10 @@ export async function requestDownloadPermission() {
     return false;
   }
 }
-export async function createPDF(html, callback) {
+export async function createPDF(html, callback, title) {
   let options = {
     html: html,
-    fileName: "Orçamento",
+    fileName: title,
     directory: DownloadDir,
     width: 595,
     height: 842

@@ -91,8 +91,10 @@ export function generatePDF(orcamento) {
               title: response.data.orcamento.title
             })
           );
-          createPDF(response.data.html, () =>
-            dispatch(isSavingOrcamento(false))
+          createPDF(
+            response.data.html,
+            () => dispatch(isSavingOrcamento(false)),
+            response.data.orcamento.title
           );
         })
         .catch(error => {
@@ -116,8 +118,10 @@ export function generateFromId(id) {
     if (download) {
       Api.get(`/api/orcamento/${id}`)
         .then(response => {
-          createPDF(response.data.html, () =>
-            dispatch(isSavingOrcamento(false))
+          createPDF(
+            response.data.html,
+            () => dispatch(isSavingOrcamento(false)),
+            response.data.orcamento.title
           );
         })
         .catch(error => {
@@ -184,8 +188,10 @@ export function generateNoId(orcamento) {
           if (orcamento.id === lastId) {
             dispatch(set_last_orcamento(response.data.orcamento.id));
           }
-          createPDF(response.data.html, () =>
-            dispatch(isSavingOrcamento(false))
+          createPDF(
+            response.data.html,
+            () => dispatch(isSavingOrcamento(false)),
+            response.data.orcamento.title
           );
         })
         .catch(error => {
