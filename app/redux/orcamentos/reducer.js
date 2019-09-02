@@ -2,7 +2,8 @@ import {
   ADD_ORCAMENTO,
   IS_SAVING,
   DECREASE_ID,
-  ADD_ID_ORCAMENTO
+  ADD_ID_ORCAMENTO,
+  SET_TITLE_ORCAMENTO
 } from "./actions";
 import _ from "lodash";
 import update from "immutability-helper";
@@ -63,6 +64,21 @@ export default (state = initialState, action) => {
       return update(state, {
         orcamentos: {
           [newIndex]: { data: { [innerIndex]: { id: { $set: id } } } }
+        }
+      });
+    case SET_TITLE_ORCAMENTO:
+      const criacaoNew1 = action.payload.orcamento.detalhes.criacao;
+      const title1 = action.payload.title;
+      const newTitle1 = moment(criacaoNew1).format("DD/MM/YYYY");
+      const newIndex1 = orcamentos.findIndex(
+        value => value.title === newTitle1
+      );
+      const innerIndex1 = orcamentos[newIndex1].data.findIndex(value => {
+        return value.id === action.payload.orcamento.id;
+      });
+      return update(state, {
+        orcamentos: {
+          [newIndex1]: { data: { [innerIndex1]: { title: { $set: title1 } } } }
         }
       });
     default:

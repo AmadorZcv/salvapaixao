@@ -6,6 +6,7 @@ import Api from "../../config/api";
 export const ADD_ORCAMENTO = "ADD_ORCAMENTO";
 export const IS_SAVING = "IS_SAVING";
 export const ADD_ID_ORCAMENTO = "ADD_ID_ORCAMENTO";
+export const SET_TITLE_ORCAMENTO = "SET_TITLE_ORCAMENTO";
 export const DECREASE_ID = "DECREASE_ID";
 export const isSavingOrcamento = bool => ({
   type: IS_SAVING,
@@ -24,6 +25,10 @@ export const decrease_id = () => ({
 export const set_id_orcamento = (orcamento, id) => ({
   type: ADD_ID_ORCAMENTO,
   payload: { orcamento, id }
+});
+export const set_title_orcamento = (orcamento, title) => ({
+  type: SET_TITLE_ORCAMENTO,
+  payload: { orcamento, title }
 });
 
 export function generatePDF(orcamento) {
@@ -123,8 +128,6 @@ export function generateFromId(id) {
 export function generateNoId(orcamento) {
   return function fetching(dispatch, getState) {
     dispatch(isSavingOrcamento(true));
-    const { lastId } = getState().orcamentos;
-    const newId = lastId - 1;
     const chaves = Object.keys(orcamento.cart);
     const carrinho = chaves.map(element => {
       const item = orcamento.cart[element];
@@ -167,6 +170,9 @@ export function generateNoId(orcamento) {
         orcamento: orcamento_api
       })
         .then(response => {
+          dispatch(
+            set_title_orcamento(orcamento, response.data.orcamento.title)
+          );
           dispatch(set_id_orcamento(orcamento, response.data.orcamento.id));
           createPDF(response.data.html, () =>
             dispatch(isSavingOrcamento(false))
@@ -174,14 +180,11 @@ export function generateNoId(orcamento) {
         })
         .catch(error => {
           Alert.alert("Erro ao se comunicar com o servidor");
-          dispatch(decrease_id());
-          dispatch(add_orcamento({ ...orcamento, id: newId }));
           dispatch(isSavingOrcamento(false));
         });
     } else {
       Alert.alert("Erro de permissão");
       dispatch(isSavingOrcamento(false));
-      dispatch(add_orcamento({ ...orcamento, id: newId }));
     }
   };
 }
