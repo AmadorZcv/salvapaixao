@@ -323,6 +323,9 @@ class SalvarOrcamento extends PureComponent {
               cpf: text
             });
           }}
+          ref={ref => {
+            this.cpf = ref;
+          }}
           onSubmitEditing={() => {
             this.ramo.focus();
             this.myScroll.scrollTo({ x: 0, y: 250, animated: true });
@@ -330,7 +333,7 @@ class SalvarOrcamento extends PureComponent {
           options={
             this.state.cpf.length > 14
               ? {
-                  mask: "99.999.999/9999-999"
+                  mask: "99.999.999/9999-99"
                 }
               : {
                   mask: "999.999.999-9999"
