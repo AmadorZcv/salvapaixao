@@ -7,8 +7,9 @@ import Drawer from "react-native-drawer";
 import { Color } from "../styles";
 import Sair from "./drawer/Sair";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { connect } from "react-redux";
 
-export default class CustomDrawerContentComponent extends PureComponent {
+class CustomDrawerContentComponent extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -24,6 +25,7 @@ export default class CustomDrawerContentComponent extends PureComponent {
   };
   render() {
     const { props } = this;
+    const { nome, cargo } = props;
     return (
       <Drawer
         type="overlay"
@@ -91,8 +93,8 @@ export default class CustomDrawerContentComponent extends PureComponent {
               backgroundColor: "#7C7C7C"
             }}
           >
-            <Text style={{ color: Color.white }}>Daniel</Text>
-            <Text style={{ color: Color.white }}>Gerente de vendas</Text>
+            <Text style={{ color: Color.white }}>{nome}</Text>
+            <Text style={{ color: Color.white }}>{cargo}</Text>
           </View>
         </View>
         <DrawerItems {...props} />
@@ -117,7 +119,11 @@ export default class CustomDrawerContentComponent extends PureComponent {
     );
   }
 }
-
+const mapStateToProps = state => {
+  const { nome, cargo } = state.auth;
+  return { nome, cargo };
+};
+export default connect(mapStateToProps)(CustomDrawerContentComponent);
 const drawerStyles = {
   drawer: { shadowColor: "#000000", shadowOpacity: 0.8, shadowRadius: 3 },
   main: { paddingLeft: 3 }
