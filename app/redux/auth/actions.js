@@ -7,7 +7,6 @@ export const setIsFetching = bool => ({
   payload: bool
 });
 storeToken = async data => {
-  console.log("Aqui salvou otoken");
   try {
     await AsyncStorage.setItem("token", data);
   } catch (e) {

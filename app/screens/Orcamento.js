@@ -16,8 +16,22 @@ import {
   generateNoId
 } from "../redux/orcamentos/actions";
 import { requestDownloadPermission } from "../config/fileSystem";
+import { setCart } from "../redux/cart/actions";
 
 class Orcamento extends PureComponent {
+  componentDidMount() {
+    // console.log('Did Mount')
+    this.props.navigation.setParams({
+      loadPress: this.loadPress
+    });
+  }
+  loadPress = () => {
+    const { navigation } = this.props;
+    const item = navigation.getParam("item", "NO-ID");
+    this.props.dispatch(setCart(item.cart));
+    this.props.navigation.popToTop();
+    this.props.navigation.navigate("Home");
+  };
   exportToPdf = () => {
     const { navigation, products } = this.props;
     const item = navigation.getParam("item", "NO-ID");

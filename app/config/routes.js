@@ -51,7 +51,10 @@ const OrcamentoStack = createStackNavigator(
       screen: Orcamento,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Orçamento"
+          headerTitle: "Orçamento",
+          headerRight: (
+            <LoadButton onPress={() => navigation.state.params.loadPress()} />
+          )
         };
       }
     },
@@ -60,8 +63,9 @@ const OrcamentoStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Informações de venda",
+
           headerRight: (
-            <LoadButton onPress={() => navigation.dispatch(setCart())} />
+            <LoadButton onPress={() => navigation.state.params.loadPress()} />
           )
         };
       }
@@ -116,7 +120,19 @@ const LastOrcamentoStack = createStackNavigator(
             />
           ),
           headerRight: (
-            <HomeButton onPress={() => navigation.navigate("Home")} />
+            <LoadButton onPress={() => navigation.state.params.loadPress()} />
+          )
+        };
+      }
+    },
+    InformacaoOrcamento: {
+      screen: InformacaoOrcamento,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Informações de venda",
+
+          headerRight: (
+            <LoadButton onPress={() => navigation.state.params.loadPress()} />
           )
         };
       }
