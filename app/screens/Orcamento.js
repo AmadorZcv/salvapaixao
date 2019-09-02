@@ -17,6 +17,11 @@ import {
 } from "../redux/orcamentos/actions";
 import { requestDownloadPermission } from "../config/fileSystem";
 import { setCart } from "../redux/cart/actions";
+import {
+  calculateTotalComIpi,
+  calculateTotalNoIpi
+} from "../redux/cart/reducer";
+import { integerToReal } from "../config/formatUtils";
 
 class Orcamento extends PureComponent {
   componentDidMount() {
@@ -42,12 +47,13 @@ class Orcamento extends PureComponent {
     }
   };
   render() {
-    const { navigation } = this.props;
+    const { navigation, products } = this.props;
     const item = navigation.getParam("item", "NO-ID");
-    const { detalhes } = item;
+    const { detalhes, cart } = item;
     const criacao = moment(detalhes.criacao).format("DD/MM/YYYY");
     const validade = moment(detalhes.validade).format("DD/MM/YYYY");
-
+    const totalComIpi = calculateTotalComIpi(cart, products);
+    const subTotal = calculateTotalNoIpi(cart, products);
     return (
       <ScrollView
         style={{
@@ -87,6 +93,14 @@ class Orcamento extends PureComponent {
           <LabelWithTextRight
             label={"Parcelas"}
             text={`${detalhes.parcela} vez(es)`}
+          />
+          <LabelWithTextRight
+            label={"Subtotal"}
+            text={`R$ ${integerToReal(subTotal)}`}
+          />
+          <LabelWithTextRight
+            label={"Total"}
+            text={`R$ ${integerToReal(totalComIpi)}`}
           />
           <Text
             style={{
@@ -142,6 +156,7 @@ class Orcamento extends PureComponent {
 }
 const mapStateToProps = state => {
   const { salvando } = state.orcamentos;
-  return { salvando };
+  const { products } = state.products;
+  return { salvando, products };
 };
 export default connect(mapStateToProps)(Orcamento);
