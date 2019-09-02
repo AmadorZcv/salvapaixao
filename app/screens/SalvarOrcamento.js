@@ -10,6 +10,7 @@ import {
 import DatePicker from "react-native-datepicker";
 import TextInputMask from "react-native-text-input-mask";
 import moment from "moment";
+import { TextInputMask as TextInputMaskCpf } from "react-native-masked-text";
 import { connect } from "react-redux";
 import {
   heightPercentageToDP as hp,
@@ -311,27 +312,35 @@ class SalvarOrcamento extends PureComponent {
           returnKeyType={"next"}
         />
         <Text style={styles.labelStyle}>CNPJ/CPF</Text>
-        <TextInputMask
-          keyboardType="numeric"
-          mask={"[00].[000].[000]/[0000]-[00]"}
-          //mask={"[000].[000].[000]-[00]"}
-          placeholder={"xx.xxx.xxx/xxxx-xx ou xxx.xxx.xxx-xx"}
+
+        <TextInputMaskCpf
+          type={"custom"}
           style={styles.inputStyle}
-          onChangeText={(formatted, extracted) => {
+          placeholder={"xx.xxx.xxx/xxxx-xx ou xxx.xxx.xxx-xx"}
+          value={this.state.cpf}
+          onChangeText={text => {
             this.setState({
-              cpf: formatted
+              cpf: text
             });
           }}
-          refInput={ref => {
-            this.cpf = ref;
-          }}
-          blurOnSubmit={false}
           onSubmitEditing={() => {
             this.ramo.focus();
             this.myScroll.scrollTo({ x: 0, y: 250, animated: true });
           }}
+          options={
+            this.state.cpf.length > 14
+              ? {
+                  mask: "99.999.999/9999-999"
+                }
+              : {
+                  mask: "999.999.999-9999"
+                }
+          }
+          maxLength={19}
           returnKeyType={"next"}
+          keyboardType="numeric"
         />
+
         <Text style={styles.labelStyle}>Ramo/Atividade</Text>
         <TextInputMask
           autoCapitalize="words"
