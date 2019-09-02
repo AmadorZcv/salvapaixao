@@ -38,7 +38,12 @@ const OrcamentoStack = createStackNavigator(
       screen: Orcamentos,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Orçamentos salvos"
+          headerTitle: "Orçamentos salvos",
+          headerLeft: (
+            <MenuButton
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            />
+          )
         };
       }
     },
