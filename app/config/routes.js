@@ -20,7 +20,7 @@ import SRalo from "../screens/SRalo";
 import Carrinho from "../screens/Carrinho";
 import Materiais from "../screens/Materiais";
 import SalvarOrcamento from "../screens/SalvarOrcamento";
-import { CustomDrawerContentComponent } from "../components/DrawerComponent";
+import CustomDrawerContentComponent from "../components/DrawerComponent";
 import Orcamentos from "../screens/Orcamentos";
 import Config from "../screens/Config";
 import Orcamento from "../screens/Orcamento";
@@ -94,6 +94,22 @@ const LastOrcamentoStack = createStackNavigator(
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Último Orçamento",
+          headerLeft: (
+            <MenuButton
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            />
+          ),
+          headerRight: (
+            <HomeButton onPress={() => navigation.navigate("Home")} />
+          )
+        };
+      }
+    },
+    Orcamento: {
+      screen: Orcamento,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Orçamento",
           headerLeft: (
             <MenuButton
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
@@ -427,7 +443,8 @@ const DrawerNavigatorExample = createDrawerNavigator(
         color: Color.secondaryText
       }
     },
-    drawerWidth: 240
+    drawerWidth: 240,
+    edgeWidth: 600
   }
 );
 //export default createAppContainer(DrawerNavigatorExample);

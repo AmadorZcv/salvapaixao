@@ -3,7 +3,8 @@ import {
   IS_SAVING,
   DECREASE_ID,
   ADD_ID_ORCAMENTO,
-  SET_TITLE_ORCAMENTO
+  SET_TITLE_ORCAMENTO,
+  SET_LAST_ORCAMENTO
 } from "./actions";
 import _ from "lodash";
 import update from "immutability-helper";

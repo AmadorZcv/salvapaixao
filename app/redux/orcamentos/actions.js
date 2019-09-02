@@ -182,7 +182,7 @@ export function generateNoId(orcamento) {
           );
           dispatch(set_id_orcamento(orcamento, response.data.orcamento.id));
           if (orcamento.id === lastId) {
-            dispatch(set_last_orcamento(orcamento, response.data.orcamento.id));
+            dispatch(set_last_orcamento(response.data.orcamento.id));
           }
           createPDF(response.data.html, () =>
             dispatch(isSavingOrcamento(false))
