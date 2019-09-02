@@ -7,6 +7,7 @@ import {
   Alert,
   Picker
 } from "react-native";
+import DatePicker from "react-native-datepicker";
 import TextInputMask from "react-native-text-input-mask";
 import moment from "moment";
 import { connect } from "react-redux";
@@ -173,53 +174,62 @@ class SalvarOrcamento extends PureComponent {
             fontSize: 16
           }}
         >
-          Informações da proposta{" "}
+          Informações da proposta
         </Text>
         <View style={styles.dateContainer}>
           <Text style={styles.dateLabel}>Data de criação</Text>
-          <TextInputMask
-            value={moment(this.state.criacao, "YYYY-MM-DD").format("DDMMYYYY")}
-            onChangeText={(formatted, extracted) => {
-              this.setState({
-                criacao: moment(extracted, "DDMMYYYY", true)
-              });
+          <DatePicker
+            style={{ flex: 1 }}
+            date={this.state.criacao}
+            mode="date"
+            placeholder="Data de criação"
+            format="DD-MM-YYYY"
+            confirmBtnText="Confirmar"
+            cancelBtnText="Cancelar"
+            customStyles={{
+              dateIcon: {
+                position: "absolute",
+                left: 0,
+                top: 4,
+                marginLeft: 0,
+                borderRadius: 10
+              },
+              dateInput: {
+                marginLeft: 36
+              }
+              // ... You can check the source to find the other keys.
             }}
-            autoFocus={true}
-            keyboardType="numeric"
-            mask={"[00]/[00]/[0000]"}
-            style={styles.dateInputStyle}
-            placeholder={`${this.state.criacao.format("DD/MM/YYYY")}`}
-            refInput={ref => {
-              this.criacao = ref;
+            onDateChange={date => {
+              this.setState({ criacao: moment(date, "DD-MM-YYYY") });
             }}
-            blurOnSubmit={false}
-            onSubmitEditing={() => {
-              this.validade.focus();
-            }}
-            returnKeyType={"next"}
           />
         </View>
         <View style={styles.dateContainer}>
           <Text style={styles.dateLabel}>Data de validade</Text>
-          <TextInputMask
-            value={moment(this.state.validade, "YYYY-MM-DD").format("DDMMYYYY")}
-            onChangeText={(formatted, extracted) => {
-              this.setState({
-                validade: moment(extracted, "DDMMYYYY", true)
-              });
+          <DatePicker
+            style={{ flex: 1 }}
+            date={this.state.validade}
+            mode="date"
+            placeholder="Data de Validade"
+            format="DD-MM-YYYY"
+            confirmBtnText="Confirmar"
+            cancelBtnText="Cancelar"
+            customStyles={{
+              dateIcon: {
+                position: "absolute",
+                left: 0,
+                top: 4,
+                marginLeft: 0,
+                borderRadius: 10
+              },
+              dateInput: {
+                marginLeft: 36
+              }
+              // ... You can check the source to find the other keys.
             }}
-            keyboardType="numeric"
-            mask={"[00]/[00]/[0000]"}
-            style={styles.dateInputStyle}
-            placeholder={`${this.state.validade.format("DD/MM/YYYY")}`}
-            refInput={ref => {
-              this.validade = ref;
+            onDateChange={date => {
+              this.setState({ validade: moment(date, "DD-MM-YYYY") });
             }}
-            blurOnSubmit={false}
-            onSubmitEditing={() => {
-              this.condicao.focus();
-            }}
-            returnKeyType={"next"}
           />
         </View>
         <View style={styles.dateContainer}>
