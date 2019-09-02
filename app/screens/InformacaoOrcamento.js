@@ -89,6 +89,7 @@ class InformacaoOrcamento extends PureComponent {
                 valorNoIpi={products[item].preco}
               />
             )}
+            keyExtractor={item => item.toString()}
           />
           <View
             style={{ paddingHorizontal: wp(12), paddingVertical: hp(4.84) }}
