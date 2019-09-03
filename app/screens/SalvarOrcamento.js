@@ -86,7 +86,7 @@ class SalvarOrcamento extends PureComponent {
             this.myScroll.scrollTo({ x: 0, y: 250, animated: true });
           }
         } else {
-          this.cpf.focus();
+          this.cpf.getElement().focus();
           this.myScroll.scrollTo({ x: 0, y: 200, animated: true });
         }
       } else {
@@ -306,7 +306,7 @@ class SalvarOrcamento extends PureComponent {
           }}
           blurOnSubmit={false}
           onSubmitEditing={() => {
-            this.cpf.focus();
+            this.cpf.getElement().focus();
             this.myScroll.scrollTo({ x: 0, y: 200, animated: true });
           }}
           returnKeyType={"next"}
