@@ -323,9 +323,7 @@ class SalvarOrcamento extends PureComponent {
               cpf: text
             });
           }}
-          ref={ref => {
-            this.cpf = ref;
-          }}
+          ref={(ref) => this.cpf = ref}
           onSubmitEditing={() => {
             this.ramo.focus();
             this.myScroll.scrollTo({ x: 0, y: 250, animated: true });
