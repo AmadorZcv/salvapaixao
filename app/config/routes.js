@@ -201,6 +201,7 @@ const HomeStack = createStackNavigator(
   {
     Home: {
       screen: Home,
+      path: 'home',
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Tela Inicial",
@@ -373,6 +374,11 @@ const HomeStack = createStackNavigator(
     }
   }
 );
+
+const prefix = 'salvacompra://';
+
+const MainApp = () => <HomeStack uriPrefix={prefix}/>;
+
 const DrawerNavigatorExample = createDrawerNavigator(
   {
     //Drawer Optons and indexing

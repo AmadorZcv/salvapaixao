@@ -3,8 +3,7 @@ import {
   View,
   Dimensions,
   ImageBackground,
-  KeyboardAvoidingView,
-  Alert
+  KeyboardAvoidingView
 } from "react-native";
 import { Input, Button, Image, Text, normalize } from "react-native-elements";
 import VersionNumber from "react-native-version-number";
