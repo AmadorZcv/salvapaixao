@@ -6,7 +6,8 @@ import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import { productLabel, productSublabel } from "../styles/Text";
 import { FlatList } from "react-native-gesture-handler";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { calculateIpic } from "../config/mathUtils";
 class Materiais extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -17,6 +18,7 @@ class Materiais extends PureComponent {
   onChange = (qtd, id) => {
     this.props.dispatch(setQtdCart(qtd, id));
   };
+
   render() {
     const { products, cart } = this.props;
     const { width } = Dimensions.get;
@@ -41,7 +43,7 @@ class Materiais extends PureComponent {
               cobertura={products[item].cobertura}
               preco={products[item].preco}
               ipi={products[item].ipi}
-              ipiR={products[item].ipic}
+              ipiR={calculateIpic(products[item].preco, products[item].ipi)}
               comprimento={products[item].comprimento}
               onPlus={() => this.onPlus(item)}
               onMinus={() => this.onMinus(item)}
@@ -61,7 +63,7 @@ class Materiais extends PureComponent {
               cobertura={products[item].cobertura}
               preco={products[item].preco}
               ipi={products[item].ipi}
-              ipiR={products[item].ipic}
+              ipiR={calculateIpic(products[item].preco, products[item].ipi)}
               comprimento={products[item].comprimento}
               onPlus={() => this.onPlus(item)}
               onMinus={() => this.onMinus(item)}
@@ -82,7 +84,7 @@ class Materiais extends PureComponent {
               cobertura={products[item].cobertura}
               preco={products[item].preco}
               ipi={products[item].ipi}
-              ipiR={products[item].ipic}
+              ipiR={calculateIpic(products[item].preco, products[item].ipi)}
               comprimento={products[item].comprimento}
               onPlus={() => this.onPlus(item)}
               onMinus={() => this.onMinus(item)}
@@ -103,7 +105,7 @@ class Materiais extends PureComponent {
               cobertura={products[item].cobertura}
               preco={products[item].preco}
               ipi={products[item].ipi}
-              ipiR={products[item].ipic}
+              ipiR={calculateIpic(products[item].preco, products[item].ipi)}
               comprimento={products[item].comprimento}
               onPlus={() => this.onPlus(item)}
               onMinus={() => this.onMinus(item)}

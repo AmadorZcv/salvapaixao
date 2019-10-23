@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import { productLabel, productSublabel } from "../styles/Text";
 import SalvaQuinaItem from "../components/SalvaQuinaItem";
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { calculateIpic } from "../config/mathUtils";
 class SQuina extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -25,16 +26,14 @@ class SQuina extends PureComponent {
           style={{ width, height: hp(26.6875) }}
         />
         <Text style={productLabel}>Proteção para Quinas e Batentes</Text>
-        <Text style={{ ...productSublabel}}
-        >Pacote c/ 6 unidades
-        </Text>
+        <Text style={{ ...productSublabel }}>Pacote c/ 6 unidades</Text>
         <SalvaQuinaItem
           index={0}
           altura={products["15000"].largura}
           comprimento={products["15000"].comprimento}
           preco={products["15000"].preco}
           ipi={products["15000"].ipi}
-          ipiR={products["15000"].ipic}
+          ipiR={calculateIpic(products["15000"].preco, products["15000"].ipi)}
           onPlus={() => this.onPlus("15000")}
           onMinus={() => this.onMinus("15000")}
           onChange={qtd => this.onChange(qtd, "15000")}

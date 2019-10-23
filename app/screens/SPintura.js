@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
 import { productLabel } from "../styles/Text";
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { calculateIpic } from "../config/mathUtils";
 class SPintura extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -31,7 +32,7 @@ class SPintura extends PureComponent {
           cobertura={products["14000"].cobertura}
           preco={products["14000"].preco}
           ipi={products["14000"].ipi}
-          ipiR={products["14000"].ipic}
+          ipiR={calculateIpic(products["14000"].preco, products["14000"].ipi)}
           comprimento={products["14000"].comprimento}
           onPlus={() => this.onPlus("14000")}
           onMinus={() => this.onMinus("14000")}
@@ -44,7 +45,7 @@ class SPintura extends PureComponent {
           cobertura={products["14001"].cobertura}
           preco={products["14001"].preco}
           ipi={products["14001"].ipi}
-          ipiR={products["14001"].ipic}
+          ipiR={calculateIpic(products["14001"].preco, products["14001"].ipi)}
           comprimento={products["14001"].comprimento}
           onPlus={() => this.onPlus("14001")}
           onMinus={() => this.onMinus("14001")}
@@ -57,7 +58,7 @@ class SPintura extends PureComponent {
           cobertura={products["14002"].cobertura}
           preco={products["14002"].preco}
           ipi={products["14002"].ipi}
-          ipiR={products["14002"].ipic}
+          ipiR={calculateIpic(products["14002"].preco, products["14002"].ipi)}
           comprimento={products["14002"].comprimento}
           onPlus={() => this.onPlus("14002")}
           onMinus={() => this.onMinus("14002")}
@@ -70,7 +71,7 @@ class SPintura extends PureComponent {
           cobertura={products["14003"].cobertura}
           preco={products["14003"].preco}
           ipi={products["14003"].ipi}
-          ipiR={products["14003"].ipic}
+          ipiR={calculateIpic(products["14003"].preco, products["14003"].ipi)}
           comprimento={products["14003"].comprimento}
           onPlus={() => this.onPlus("14003")}
           onMinus={() => this.onMinus("14003")}

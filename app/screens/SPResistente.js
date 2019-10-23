@@ -3,8 +3,9 @@ import { Text, Image, ScrollView, Dimensions } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { productLabel } from "../styles/Text";
+import { calculateIpic } from "../config/mathUtils";
 class SPResistente extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -31,7 +32,7 @@ class SPResistente extends PureComponent {
           cobertura={products["12000"].cobertura}
           preco={products["12000"].preco}
           ipi={products["12000"].ipi}
-          ipiR={products["12000"].ipic}
+          ipiR={calculateIpic(products["12000"].preco, products["12000"].ipi)}
           comprimento={products["12000"].comprimento}
           onPlus={() => this.onPlus("12000")}
           onMinus={() => this.onMinus("12000")}

@@ -3,8 +3,9 @@ import { Text, Image, ScrollView, Dimensions } from "react-native";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { productLabel } from "../styles/Text";
+import { calculateIpic } from "../config/mathUtils";
 
 class SP extends PureComponent {
   onPlus = id => {
@@ -20,7 +21,7 @@ class SP extends PureComponent {
     const { products, cart } = this.props;
     const { width } = Dimensions.get;
     return (
-      <ScrollView style={{ flex: 1, backgroundColor: "#FAFAFA"}} >
+      <ScrollView style={{ flex: 1, backgroundColor: "#FAFAFA" }}>
         <Image
           source={require("../img/product-screen/sp-tradicional-top.png")}
           style={{ width, height: hp(26.6875) }}
@@ -32,7 +33,7 @@ class SP extends PureComponent {
           cobertura={products["10000"].cobertura}
           preco={products["10000"].preco}
           ipi={products["10000"].ipi}
-          ipiR={products["10000"].ipic}
+          ipiR={calculateIpic(products["10000"].preco, products["10000"].ipi)}
           comprimento={products["10000"].comprimento}
           onPlus={() => this.onPlus("10000")}
           onMinus={() => this.onMinus("10000")}
@@ -45,7 +46,7 @@ class SP extends PureComponent {
           cobertura={products["10001"].cobertura}
           preco={products["10001"].preco}
           ipi={products["10001"].ipi}
-          ipiR={products["10001"].ipic}
+          ipiR={calculateIpic(products["10001"].preco, products["10001"].ipi)}
           comprimento={products["10001"].comprimento}
           onPlus={() => this.onPlus("10001")}
           onMinus={() => this.onMinus("10001")}
@@ -60,7 +61,7 @@ class SP extends PureComponent {
           cobertura={products["10100"].cobertura}
           preco={products["10100"].preco}
           ipi={products["10100"].ipi}
-          ipiR={products["10100"].ipic}
+          ipiR={calculateIpic(products["10100"].preco, products["10100"].ipi)}
           comprimento={products["10100"].comprimento}
           onPlus={() => this.onPlus("10100")}
           onMinus={() => this.onMinus("10100")}

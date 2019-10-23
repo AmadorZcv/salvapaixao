@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import SalvaPisoItem from "../components/SalvaPisoItem";
 import { productLabel, productSublabel } from "../styles/Text";
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { calculateIpic } from "../config/mathUtils";
 class SMetais extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -25,16 +26,14 @@ class SMetais extends PureComponent {
           style={{ width, height: hp(26.6875) }}
         />
         <Text style={productLabel}>Filme para Envolvimento</Text>
-        <Text style={{ ...productSublabel }}
-        >Caixa c/ 6 unidades
-        </Text>
+        <Text style={{ ...productSublabel }}>Caixa c/ 6 unidades</Text>
         <SalvaPisoItem
           index={0}
           largura={products["16000"].largura}
           cobertura={products["16000"].cobertura}
           preco={products["16000"].preco}
           ipi={products["16000"].ipi}
-          ipiR={products["16000"].ipic}
+          ipiR={calculateIpic(products["16000"].preco, products["16000"].ipi)}
           comprimento={products["16000"].comprimento}
           onPlus={() => this.onPlus("16000")}
           onMinus={() => this.onMinus("16000")}

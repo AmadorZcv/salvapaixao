@@ -4,7 +4,8 @@ import SalvaPisoItem from "../components/SalvaPisoItem";
 import { connect } from "react-redux";
 import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import { productLabel } from "../styles/Text";
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { calculateIpic } from "../config/mathUtils";
 class SPEspeciais extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -32,7 +33,10 @@ class SPEspeciais extends PureComponent {
           preco={products["11000"].preco}
           ipi={products["11000"].ipi}
           ipiR={products["11000"].ipic}
-          comprimento={products["11000"].comprimento}
+          comprimento={calculateIpic(
+            products["11000"].preco,
+            products["11000"].ipi
+          )}
           onPlus={() => this.onPlus("11000")}
           onMinus={() => this.onMinus("11000")}
           onChange={qtd => this.onChange(qtd, "11000")}

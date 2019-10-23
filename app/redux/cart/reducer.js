@@ -7,6 +7,7 @@ import {
   SET_CART
 } from "./actions";
 import update from "immutability-helper";
+import { calculateIpic } from "../../config/mathUtils";
 const initialState = {
   cart: {}
 };
@@ -74,14 +75,20 @@ export const calculateItemTotal = (cart, products, id) => {
 
 export const calculateTotalComIpi = (cart, products) => {
   return Object.keys(cart).reduce((previous, current) => {
-    const newSoma = cart[current].qtd * products[current].total;
+    const preco = products[current].preco;
+    const ipi = products[current].ipi;
+    const total = preco + calculateIpic(preco, ipi);
+    const newSoma = cart[current].qtd * total;
     return previous + newSoma;
   }, 0);
 };
 
 export const calculateTotalIpi = (cart, products) => {
   return Object.keys(cart).reduce((previous, current) => {
-    const newSoma = cart[current].qtd * products[current].ipic;
+    const preco = products[current].preco;
+    const ipi = products[current].ipi;
+    const ipic = calculateIpic(preco, ipi);
+    const newSoma = cart[current].qtd * ipic;
     return previous + newSoma;
   }, 0);
 };
