@@ -28,7 +28,7 @@ import CarrinhoButton from "../components/header/CarrinhoButton";
 import HomeButton from "../components/header/HomeButton";
 import MenuButton from "../components/header/MenuButton";
 import InformacaoOrcamento from "../screens/InformacaoOrcamento";
-import LastOrcamento from "../screens/LastOrcamento";
+//import LastOrcamento from "../screens/LastOrcamento"; <-- Ultimo Orçamento desabilitado temporariamente
 import LoadButton from "../components/header/LoadButton";
 import { setCart } from "../redux/cart/actions";
 
@@ -93,8 +93,8 @@ const OrcamentoStack = createStackNavigator(
 );
 const LastOrcamentoStack = createStackNavigator(
   {
-    LastOrcamento: {
-      screen: LastOrcamento,
+    Orcamento: { //<-- Ultimo Orçamento desabilitado temporariamente (alterado de LastOrcamento)
+      screen: Orcamento,
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Último Orçamento",
@@ -396,19 +396,21 @@ const DrawerNavigatorExample = createDrawerNavigator(
         )
       }
     },
-    UltimoOrcamento: {
-      //Title
-      screen: LastOrcamentoStack,
-      navigationOptions: {
-        drawerLabel: "Último orçamento",
-        drawerIcon: () => (
-          <Image
-            source={require("../img/icons/last-document.png")}
-            style={{ opacity: 0.54 }}
-          />
-        )
-      }
-    },
+    //<-- Ultimo Orçamento desabilitado temporariamente -->
+    // UltimoOrcamento: {
+    //   //Title
+    //   screen: LastOrcamentoStack,
+    //   navigationOptions: {
+    //     drawerLabel: "Último orçamento",
+    //     drawerIcon: () => (
+    //       <Image
+    //         source={require("../img/icons/last-document.png")}
+    //         style={{ opacity: 0.54 }}
+    //       />
+    //     )
+    //   }
+    // }, 
+    //<-- Ultimo Orçamento desabilitado temporariamente -->
     Salvos: {
       //Title
       screen: OrcamentoStack,

@@ -1,23 +1,17 @@
-Versão 1.3.4
+Versão 1.3.5
 
 **NOVO**
-Acréscimo de informações em produtos vendidos em pacotes/caixas
-Login através do servidor
-Orçamentos salvos em servidor
-Orçamentos nomeados de acordo com data, filial e funcionário
-Botão para carregar itens do orçamento no carrinho
-Calendário na tela de Salvar Orçamento
-PDF salvo à conta e nomeado corretamente
+Acrescentada tabela de preço para revenda
+Barra de assinatura no PDF
+Possibilidade de acessar orçamento da conta ao reinstalar ou instalar em outro dispositivo
+
 
 **AJUSTES**
-Pequenos ajustes em textos
-Pequenos ajustes para diferentes telas
-Ajustes de usabilidade
-Ajustes de cores de fundo
-Função para acessar o último orçamento finalizada
-CPF/CNPJ ajustados
+Correção de quebra de página do PDF
+Corrigida função "Último orçamento"
+Corrigido o glitch em que aparece o Loading do PDF sem ter realizado a função
 
-Data: 03/09/2019
+Data: 23/10/2019
 
 Desenvolvido por:
 NTP Engenharia

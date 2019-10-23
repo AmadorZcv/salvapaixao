@@ -38,7 +38,7 @@ export default class SalvaPinturaItem extends PureComponent {
     const precoTotal = preco + ipiR;
     const precoFinal = precoTotal * trueTotal;
     const formatPrecoFinal = precoFinal > 0 ? integerToReal(precoFinal) : "0";
-    const backgroundColor = index % 2 === 0 ? "#FAFAFA" : "lightgray";
+    const backgroundColor = index % 2 === 0 ? "#FAFAFA" : "#D6D6D6";
     return (
       <TouchableOpacity
         style={{ ...itemContainer, backgroundColor }}

@@ -20,7 +20,7 @@ export default class OrcamentoItem extends PureComponent {
     const { nome, validade, nomeCompleto, cidade, uf, criacao } = item.detalhes;
 
     const { index, onPress } = this.props;
-    const backgroundColor = index % 2 === 0 ? "#FAFAFA" : "lightgray";
+    const backgroundColor = index % 2 === 0 ? "#FAFAFA" : "#D6D6D6";
     return (
       <TouchableOpacity
         style={{
