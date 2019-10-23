@@ -70,7 +70,10 @@ export default (state = initialState, action) => {
 };
 
 export const calculateItemTotal = (cart, products, id) => {
-  return products[id].total * cart[id].qtd;
+  const preco = products[id].preco;
+  const ipi = products[id].ipi;
+  const total = preco + calculateIpic(preco, ipi);
+  return total * cart[id].qtd;
 };
 
 export const calculateTotalComIpi = (cart, products) => {

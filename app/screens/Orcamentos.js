@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
-import { View, TouchableOpacity, SectionList, ScrollView } from "react-native";
+import { SectionList, ScrollView } from "react-native";
 import { connect } from "react-redux";
-import { FlatList } from "react-native-gesture-handler";
 import { Text, normalize } from "react-native-elements";
 import OrcamentoItem from "../components/OrcamentoItem";
 import { Color } from "../styles";
