@@ -41,6 +41,7 @@ export function generatePDF(orcamento) {
   return function fetching(dispatch, getState) {
     dispatch(isSavingOrcamento(true));
     const { lastId } = getState().orcamentos;
+    const { isConsumidor } = getState().products;
     const newId = lastId - 1;
     const chaves = Object.keys(orcamento.cart);
     const carrinho = chaves.map(element => {
@@ -77,7 +78,8 @@ export function generatePDF(orcamento) {
       cpf,
       email,
       ramo,
-      carrinho
+      carrinho,
+      isConsumidor
     };
     if (download) {
       Api.post("/api/orcamento", {
@@ -139,6 +141,7 @@ export function generateNoId(orcamento) {
   return function fetching(dispatch, getState) {
     dispatch(isSavingOrcamento(true));
     const { lastId } = getState().orcamentos;
+    const { isConsumidor } = getState().products;
     const chaves = Object.keys(orcamento.cart);
     const carrinho = chaves.map(element => {
       const item = orcamento.cart[element];
@@ -174,7 +177,8 @@ export function generateNoId(orcamento) {
       cpf,
       email,
       ramo,
-      carrinho
+      carrinho,
+      isConsumidor
     };
     if (download) {
       Api.post("/api/orcamento", {

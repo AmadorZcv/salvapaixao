@@ -1,4 +1,5 @@
 import Api from "../../config/api";
+import { Alert } from "react-native";
 
 export const SET_CONSUMIDOR = "SET_CONSUMIDOR";
 export const setConsumidor = produtos => ({
