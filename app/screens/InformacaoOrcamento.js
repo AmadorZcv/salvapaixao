@@ -22,17 +22,11 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from "react-native-responsive-screen";
-import {
-  isSavingOrcamento,
-  generateFromId,
-  generateNoId
-} from "../redux/orcamentos/actions";
-import { requestDownloadPermission } from "../config/fileSystem";
+import { generateFromId, generateNoId } from "../redux/orcamentos/actions";
 import { setCart } from "../redux/cart/actions";
 
 class InformacaoOrcamento extends PureComponent {
   componentDidMount() {
-    // console.log('Did Mount')
     this.props.navigation.setParams({
       loadPress: this.loadPress
     });

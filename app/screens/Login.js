@@ -24,13 +24,10 @@ class Login extends PureComponent {
     };
   }
   onLogin = () => {
-    console.log("here maybe?");
-
     const { login, senha } = this.state;
     this.props.dispatch(signIn(login, senha));
   };
   render() {
-    const { width } = Dimensions.get("window");
     return (
       <KeyboardAvoidingView
         style={{

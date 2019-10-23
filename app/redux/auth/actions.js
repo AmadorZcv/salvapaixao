@@ -20,9 +20,7 @@ export const setIsFetching = bool => ({
 storeToken = async data => {
   try {
     await AsyncStorage.setItem("token", data);
-  } catch (e) {
-    console.log("erro foi", e);
-  }
+  } catch (e) {}
 };
 export const setIsLogged = bool => ({
   type: SET_IS_LOGGED,
@@ -34,7 +32,6 @@ export function signIn(login, password) {
 
     Api.post(`/auth/sign_in/`, { login, password })
       .then(response => {
-        console.log("response é", response);
         const { token, nome, cargo } = response.data;
         Api.defaults.headers.common["Authorization"] = response.data.token;
         storeToken(token);

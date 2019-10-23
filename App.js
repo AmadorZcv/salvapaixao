@@ -21,7 +21,6 @@ class App extends Component {
     this.callbackRedux = this.callbackRedux.bind(this);
   }
   getToken = async () => {
-    console.log("Aqui");
     try {
       const value = await AsyncStorage.getItem("token");
       if (value !== null) {
@@ -46,7 +45,6 @@ class App extends Component {
   }
   componentWillMount() {
     this.loadStore();
-    console.log("Mas que porra?");
     this.getToken();
   }
   render() {

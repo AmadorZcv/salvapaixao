@@ -51,13 +51,11 @@ class SalvarOrcamento extends PureComponent {
         if (this.state.cpf.length == 14 || this.state.cpf.length == 18) {
           if (this.state.ramo != "") {
             if (this.state.nomeCompleto != "") {
-              console.log(this.state.telefone.length);
               if (
                 this.state.telefone.length == 14 ||
                 this.state.telefone.length == 15
               ) {
                 if (this.state.email != "") {
-                  console.log(this.state.uf.length);
                   if (this.state.uf.length == 2) {
                     if (this.state.cidade != "") {
                       this.salvarOrcamento();
@@ -323,7 +321,7 @@ class SalvarOrcamento extends PureComponent {
               cpf: text
             });
           }}
-          ref={(ref) => this.cpf = ref}
+          ref={ref => (this.cpf = ref)}
           onSubmitEditing={() => {
             this.ramo.focus();
             this.myScroll.scrollTo({ x: 0, y: 250, animated: true });

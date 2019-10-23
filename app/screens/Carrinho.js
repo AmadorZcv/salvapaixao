@@ -27,7 +27,10 @@ import { integerToReal, fontSizeAdjust } from "../config/formatUtils";
 import { Color } from "../styles";
 import { primaryBig } from "../styles/Text";
 import { navigateFromId } from "../config/navigateUtils";
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp
+} from "react-native-responsive-screen";
 import { Button } from "react-native-elements";
 
 class Carrinho extends PureComponent {
@@ -40,7 +43,7 @@ class Carrinho extends PureComponent {
         [
           {
             text: "Cancelar",
-            onPress: () => console.log("Cancelar Pressionado"),
+            onPress: () => {},
             style: "cancel"
           },
           { text: "Excluir", onPress: () => this.props.dispatch(cleanCart()) }
@@ -70,15 +73,17 @@ class Carrinho extends PureComponent {
       <View>
         <ScrollView>
           <View
-            style={{ marginTop: hp(1.5625), alignItems: "flex-end", marginBottom: hp(0.78125) }}
+            style={{
+              marginTop: hp(1.5625),
+              alignItems: "flex-end",
+              marginBottom: hp(0.78125)
+            }}
           >
             <TouchableOpacity
               style={{ paddingRight: hp(1.38) }}
               onPress={this.onClean}
             >
-              <Text
-                style={{ color: Color.secondaryText, fontSize: wp(3.5) }}
-              >
+              <Text style={{ color: Color.secondaryText, fontSize: wp(3.5) }}>
                 Limpar Carrinho
               </Text>
             </TouchableOpacity>
@@ -133,15 +138,17 @@ class Carrinho extends PureComponent {
             keyExtractor={item => item.toString()}
           />
           <View
-            style={{ marginTop: hp(2.34375), alignItems: "flex-end", marginBottom: hp(0.78125) }}
+            style={{
+              marginTop: hp(2.34375),
+              alignItems: "flex-end",
+              marginBottom: hp(0.78125)
+            }}
           >
             <TouchableOpacity
               style={{ paddingRight: wp(1.38) }}
               onPress={this.onClean}
             >
-              <Text
-                style={{ color: Color.secondaryText, fontSize: wp(3.5) }}
-              >
+              <Text style={{ color: Color.secondaryText, fontSize: wp(3.5) }}>
                 Limpar Carrinho
               </Text>
             </TouchableOpacity>

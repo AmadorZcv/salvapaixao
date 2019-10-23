@@ -1,11 +1,5 @@
 import React, { PureComponent } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Alert
-} from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import Swipeout from "react-native-swipeout";
 import CarrinhoImage from "./CarrinhoImage";
 import CarrinhoText from "./CarrinhoText";
@@ -13,7 +7,10 @@ import { integerToReal } from "../config/formatUtils";
 import { Color } from "../styles";
 import Counter from "./Counter";
 import ModalQuantidade from "./ModalQuantidade";
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen";
 
 export default class CarrinhoItem extends PureComponent {
   constructor(props) {
@@ -48,7 +45,7 @@ export default class CarrinhoItem extends PureComponent {
                 [
                   {
                     text: "Cancelar",
-                    onPress: () => console.log("Cancelar Pressionado"),
+                    onPress: () => {},
                     style: "cancel"
                   },
                   { text: "Excluir", onPress: () => onRemove() }
@@ -78,7 +75,7 @@ export default class CarrinhoItem extends PureComponent {
         <View
           style={{
             backgroundColor,
-            flexDirection: "row",
+            flexDirection: "row"
           }}
         >
           <TouchableOpacity
@@ -96,7 +93,11 @@ export default class CarrinhoItem extends PureComponent {
             <CarrinhoText id={item.id} />
           </TouchableOpacity>
           <TouchableOpacity
-            style={{ width: wp(28), paddingVertical: hp(1.25), alignItems: "center" }}
+            style={{
+              width: wp(28),
+              paddingVertical: hp(1.25),
+              alignItems: "center"
+            }}
             onPress={this.openModal}
           >
             <Text>R$ {integerToReal(total)}</Text>
