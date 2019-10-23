@@ -15,7 +15,7 @@ export default class OrcamentoDetalheItem extends PureComponent {
 
   render() {
     const { item, index, valor, valorNoIpi, ipi } = this.props;
-    const backgroundColor = index % 2 === 0 ? "#FAFAFA" : "lightgrey";
+    const backgroundColor = index % 2 === 0 ? "#FAFAFA" : "#D6D6D6";
     return (
       <ScrollView style={{ backgroundColor }}>
         <View style={{ paddingHorizontal: wp(5.55) }}>
