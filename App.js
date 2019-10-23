@@ -8,6 +8,7 @@ import Router from "./app/config/Router";
 import Drawer from "./app/config/routes";
 import { Color } from "./app/styles";
 import Api from "./app/config/api";
+import { isSavingOrcamento } from "./app/redux/orcamentos/actions";
 
 class App extends Component {
   constructor(props) {
@@ -23,9 +24,7 @@ class App extends Component {
     console.log("Aqui");
     try {
       const value = await AsyncStorage.getItem("token");
-      console.log("Value é", value);
       if (value !== null) {
-        console.log("aqui???");
         Api.defaults.headers.common["Authorization"] = value;
       }
     } catch (e) {
@@ -40,10 +39,10 @@ class App extends Component {
   }
   async loadStore() {
     const store = await makeStore();
-    console.log("store é", store);
-    this.setState({ store: store }, () =>
-      this.setState({ loadingRedux: false })
-    );
+    this.setState({ store: store }, () => {
+      this.state.store.dispatch(isSavingOrcamento(false));
+      this.setState({ loadingRedux: false });
+    });
   }
   componentWillMount() {
     this.loadStore();
