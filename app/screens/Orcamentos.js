@@ -6,6 +6,7 @@ import { Text, normalize } from "react-native-elements";
 import OrcamentoItem from "../components/OrcamentoItem";
 import { Color } from "../styles";
 import { calculateTotalComIpi } from "../redux/cart/reducer";
+import { selectProducts } from "../redux/products/selectors";
 
 class Orcamentos extends PureComponent {
   constructor(props) {
@@ -52,7 +53,7 @@ class Orcamentos extends PureComponent {
 }
 const mapStateToProps = state => {
   const { orcamentos } = state.orcamentos;
-  const { products } = state.products;
+  const products = selectProducts(state);
   return { orcamentos, products };
 };
 export default connect(mapStateToProps)(Orcamentos);

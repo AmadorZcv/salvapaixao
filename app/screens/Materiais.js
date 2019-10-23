@@ -8,6 +8,7 @@ import { FlatList } from "react-native-gesture-handler";
 import SalvaPinturaItem from "../components/SalvaPinturaItem";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { calculateIpic } from "../config/mathUtils";
+import { selectProducts } from "../redux/products/selectors";
 class Materiais extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -119,7 +120,7 @@ class Materiais extends PureComponent {
   }
 }
 const mapStateToProps = state => {
-  const { products } = state.products;
+  const products = selectProducts(state);
   const { cart } = state.cart;
   return { products, cart };
 };

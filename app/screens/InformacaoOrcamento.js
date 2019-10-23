@@ -24,6 +24,7 @@ import {
 } from "react-native-responsive-screen";
 import { generateFromId, generateNoId } from "../redux/orcamentos/actions";
 import { setCart } from "../redux/cart/actions";
+import { selectProducts } from "../redux/products/selectors";
 
 class InformacaoOrcamento extends PureComponent {
   componentDidMount() {
@@ -115,7 +116,7 @@ class InformacaoOrcamento extends PureComponent {
   }
 }
 const mapStateToProps = state => {
-  const { products } = state.products;
+  const products = selectProducts(state);
   const { salvando } = state.orcamentos;
 
   return { products, salvando };

@@ -18,6 +18,7 @@ import {
   calculateTotalNoIpi
 } from "../redux/cart/reducer";
 import { integerToReal } from "../config/formatUtils";
+import { selectProducts } from "../redux/products/selectors";
 
 class Orcamento extends PureComponent {
   componentDidMount() {
@@ -151,7 +152,7 @@ class Orcamento extends PureComponent {
 }
 const mapStateToProps = state => {
   const { salvando } = state.orcamentos;
-  const { products } = state.products;
+  const products = selectProducts(state);
   return { salvando, products };
 };
 export default connect(mapStateToProps)(Orcamento);

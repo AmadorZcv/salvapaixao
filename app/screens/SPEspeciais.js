@@ -6,6 +6,7 @@ import { addToCart, removeFromCart, setQtdCart } from "../redux/cart/actions";
 import { productLabel } from "../styles/Text";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { calculateIpic } from "../config/mathUtils";
+import { selectProducts } from "../redux/products/selectors";
 class SPEspeciais extends PureComponent {
   onPlus = id => {
     this.props.dispatch(addToCart(id));
@@ -47,7 +48,7 @@ class SPEspeciais extends PureComponent {
   }
 }
 const mapStateToProps = state => {
-  const { products } = state.products;
+  const products = selectProducts(state);
   const { cart } = state.cart;
   return { products, cart };
 };

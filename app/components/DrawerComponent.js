@@ -2,12 +2,13 @@ import React, { PureComponent } from "react";
 import { ScrollView, StyleSheet, Animated, View } from "react-native";
 import VersionNumber from "react-native-version-number";
 import { DrawerItems, SafeAreaView } from "react-navigation";
-import { Text, Avatar, Image } from "react-native-elements";
+import { Text, Avatar, Image, CheckBox } from "react-native-elements";
 import Drawer from "react-native-drawer";
 import { Color } from "../styles";
 import Sair from "./drawer/Sair";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { connect } from "react-redux";
+import { setIsConsumidor } from "../redux/products/actions";
 
 class CustomDrawerContentComponent extends PureComponent {
   constructor(props) {
@@ -98,8 +99,15 @@ class CustomDrawerContentComponent extends PureComponent {
           </View>
         </View>
         <DrawerItems {...props} />
-
-        <View style={{ marginTop: 100 }}>
+        <CheckBox
+          checked={this.props.isConsumidor}
+          title="Preço Consumidor"
+          onPress={() =>
+            this.props.dispatch(setIsConsumidor(!this.props.isConsumidor))
+          }
+          containerStyle={{ borderWidth: 0, backgroundColor: "#fff" }}
+        />
+        <View style={{ marginTop: 80 }}>
           <Image
             source={require("../img/icons/qr-icon.png")}
             style={{ opacity: 0.5, alignSelf: "center" }}
@@ -121,7 +129,8 @@ class CustomDrawerContentComponent extends PureComponent {
 }
 const mapStateToProps = state => {
   const { nome, cargo } = state.auth;
-  return { nome, cargo };
+  const { isConsumidor } = state.products;
+  return { nome, cargo, isConsumidor };
 };
 export default connect(mapStateToProps)(CustomDrawerContentComponent);
 const drawerStyles = {

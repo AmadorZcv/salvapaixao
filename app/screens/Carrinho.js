@@ -32,6 +32,7 @@ import {
   widthPercentageToDP as wp
 } from "react-native-responsive-screen";
 import { Button } from "react-native-elements";
+import { selectProducts } from "../redux/products/selectors";
 
 class Carrinho extends PureComponent {
   onClean = () => {
@@ -273,7 +274,7 @@ class Carrinho extends PureComponent {
 
 const mapStateToProps = state => {
   const { cart } = state.cart;
-  const { products } = state.products;
+  const products = selectProducts(state);
   const totalComIpi = calculateTotalComIpi(cart, products);
   const subTotal = calculateTotalNoIpi(cart, products);
   const totalIpi = calculateTotalIpi(cart, products);

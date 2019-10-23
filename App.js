@@ -9,6 +9,7 @@ import Drawer from "./app/config/routes";
 import { Color } from "./app/styles";
 import Api from "./app/config/api";
 import { isSavingOrcamento } from "./app/redux/orcamentos/actions";
+import { getProducts } from "./app/redux/products/actions";
 
 class App extends Component {
   constructor(props) {
@@ -40,6 +41,8 @@ class App extends Component {
     const store = await makeStore();
     this.setState({ store: store }, () => {
       this.state.store.dispatch(isSavingOrcamento(false));
+      this.state.store.dispatch(getProducts());
+
       this.setState({ loadingRedux: false });
     });
   }
