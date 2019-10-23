@@ -33,11 +33,8 @@ class SPEspeciais extends PureComponent {
           cobertura={products["11000"].cobertura}
           preco={products["11000"].preco}
           ipi={products["11000"].ipi}
-          ipiR={products["11000"].ipic}
-          comprimento={calculateIpic(
-            products["11000"].preco,
-            products["11000"].ipi
-          )}
+          ipiR={calculateIpic(products["11000"].preco, products["11000"].ipi)}
+          comprimento={products["11000"].comprimento}
           onPlus={() => this.onPlus("11000")}
           onMinus={() => this.onMinus("11000")}
           onChange={qtd => this.onChange(qtd, "11000")}
