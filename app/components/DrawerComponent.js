@@ -48,7 +48,7 @@ class CustomDrawerContentComponent extends PureComponent {
       >
         <View
           style={{
-            backgroundColor: "#7C7C7C"
+            backgroundColor: "#449296"
           }}
         >
           <View style={{ flexDirection: "row", height: 50 }}>
@@ -61,7 +61,7 @@ class CustomDrawerContentComponent extends PureComponent {
               }}
             >
               <Avatar
-                source={require("../img/icons/home.png")}
+                source={require("../img/icons/avatar.jpg")}
                 size={"small"}
                 rounded
               />
@@ -91,7 +91,6 @@ class CustomDrawerContentComponent extends PureComponent {
               justifyContent: "center",
               alignItems: "flex-start",
               paddingLeft: 30,
-              backgroundColor: "#7C7C7C"
             }}
           >
             <Text style={{ color: Color.white }}>{nome}</Text>
