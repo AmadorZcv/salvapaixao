@@ -1,7 +1,7 @@
 import axios from "axios";
-const hostUrl = "https://fathomless-hamlet-33662.herokuapp.com";
+//const hostUrl = "https://fathomless-hamlet-33662.herokuapp.com";
 //const hostUrl = "http://b4c50280.ngrok.io/";
-//const hostUrl = "http://192.168.15.103:4000";
+const hostUrl = "http://192.168.15.103:4000";
 
 const defaultOptions = {
   baseURL: hostUrl,

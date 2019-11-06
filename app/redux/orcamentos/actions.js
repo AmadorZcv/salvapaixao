@@ -189,7 +189,7 @@ export function generateNoId(orcamento) {
       .then(response => {
         dispatch(
           add_orcamento({
-            ...orcamentoRedux,
+            ...orcamento,
             id: response.data.orcamento.id
           })
         );
@@ -198,6 +198,7 @@ export function generateNoId(orcamento) {
         );
       })
       .catch(error => {
+        console.log("Error é", error);
         Alert.alert("Erro ao se comunicar com o servidor");
         dispatch(isSavingOrcamento(false));
       });
