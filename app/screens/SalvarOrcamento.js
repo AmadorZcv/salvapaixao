@@ -480,10 +480,11 @@ class SalvarOrcamento extends PureComponent {
         <View>
           <Text style={styles.labelStyle}>Observações</Text>
         <TextInputMask
+          multiline
           maxLength={200}
           keyboardType="default"
-          style={styles.inputStyle}
-          placeholder={"Digite suas observações de venda"}
+          style={styles.obsStyle}
+          placeholder={"Digite suas observações."}
           onChangeText={(formatted, extracted) => {
             this.setState({
               obs: extracted
@@ -542,20 +543,27 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     flex: 1,
     borderRadius: 10,
-    height: hp(4.68),
+    // height: hp(4.68),
     paddingVertical: 0,
     textAlign: "center"
   },
   pickerStyle: {
-    height: hp(4.68),
+    // height: hp(4.68),
     width: wp(41.66),
     backgroundColor: "#fafafa"
+  },
+  obsStyle: {
+    marginTop: hp(0.78),
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 10,
+    paddingVertical: 0,
+    width: "100%",
   },
   inputStyle: {
     marginTop: hp(0.78),
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 10,
-    height: hp(4.68),
+    // height: hp(4.68),
     paddingVertical: 0,
     width: "100%"
   },
