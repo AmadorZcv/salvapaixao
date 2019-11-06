@@ -3,7 +3,8 @@ import {
   createAppContainer,
   createStackNavigator,
   createDrawerNavigator,
-  DrawerActions
+  DrawerActions,
+  createBottomTabNavigator
 } from "react-navigation";
 import Home from "../screens/Home";
 import { Image, normalize } from "react-native-elements";
@@ -20,7 +21,6 @@ import SRalo from "../screens/SRalo";
 import Carrinho from "../screens/Carrinho";
 import Materiais from "../screens/Materiais";
 import SalvarOrcamento from "../screens/SalvarOrcamento";
-import CustomDrawerContentComponent from "../components/DrawerComponent";
 import Orcamentos from "../screens/Orcamentos";
 import Config from "../screens/Config";
 import Orcamento from "../screens/Orcamento";
@@ -30,7 +30,6 @@ import MenuButton from "../components/header/MenuButton";
 import InformacaoOrcamento from "../screens/InformacaoOrcamento";
 //import LastOrcamento from "../screens/LastOrcamento"; <-- Ultimo Orçamento desabilitado temporariamente
 import LoadButton from "../components/header/LoadButton";
-import { setCart } from "../redux/cart/actions";
 
 const OrcamentoStack = createStackNavigator(
   {
@@ -38,12 +37,7 @@ const OrcamentoStack = createStackNavigator(
       screen: Orcamentos,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Orçamentos salvos",
-          headerLeft: (
-            <MenuButton
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            />
-          )
+          headerTitle: "Orçamentos salvos"
         };
       }
     },
@@ -91,88 +85,14 @@ const OrcamentoStack = createStackNavigator(
     }
   }
 );
-const LastOrcamentoStack = createStackNavigator(
-  {
-    Orcamento: { //<-- Ultimo Orçamento desabilitado temporariamente (alterado de LastOrcamento)
-      screen: Orcamento,
-      navigationOptions: ({ navigation }) => {
-        return {
-          headerTitle: "Último Orçamento",
-          headerLeft: (
-            <MenuButton
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            />
-          ),
-          headerRight: (
-            <HomeButton onPress={() => navigation.navigate("Home")} />
-          )
-        };
-      }
-    },
-    Orcamento: {
-      screen: Orcamento,
-      navigationOptions: ({ navigation }) => {
-        return {
-          headerTitle: "Orçamento",
-          headerLeft: (
-            <MenuButton
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            />
-          ),
-          headerRight: (
-            <LoadButton onPress={() => navigation.state.params.loadPress()} />
-          )
-        };
-      }
-    },
-    InformacaoOrcamento: {
-      screen: InformacaoOrcamento,
-      navigationOptions: ({ navigation }) => {
-        return {
-          headerTitle: "Informações de venda",
 
-          headerRight: (
-            <LoadButton onPress={() => navigation.state.params.loadPress()} />
-          )
-        };
-      }
-    }
-  },
-  {
-    /* The header config from HomeScreen is now here */
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Color.header
-      },
-      headerTitleStyle: {
-        ...TextStyle.header,
-        alignSelf: "center",
-        textAlign: "center",
-        justifyContent: "center",
-        color: Color.primaryText,
-        fontSize: normalize(20),
-        fontWeight: "500",
-        marginLeft: 20
-      },
-      headerTintColor: Color.headerIcons
-    }
-  }
-);
 const ConfigStack = createStackNavigator(
   {
     Config: {
       screen: Config,
       navigationOptions: ({ navigation }) => {
         return {
-          headerTitle: "Configurações",
-          headerLeft: (
-            <MenuButton
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            />
-          ),
-          headerRight: (
-            <HomeButton onPress={() => navigation.navigate("Home")} />
-          )
+          headerTitle: "Configurações"
         };
       }
     }
@@ -201,15 +121,10 @@ const HomeStack = createStackNavigator(
   {
     Home: {
       screen: Home,
-      path: 'home',
+      path: "home",
       navigationOptions: ({ navigation }) => {
         return {
           headerTitle: "Tela Inicial",
-          headerLeft: (
-            <MenuButton
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            />
-          ),
           headerRight: (
             <CarrinhoButton onPress={() => navigation.navigate("Carrinho")} />
           )
@@ -375,101 +290,10 @@ const HomeStack = createStackNavigator(
   }
 );
 
-const prefix = 'salvacompra://';
+const Tabs = createBottomTabNavigator({
+  Home: { screen: HomeStack },
+  Orcamentos: { screen: OrcamentoStack },
+  Config: { screen: ConfigStack }
+});
 
-const MainApp = () => <HomeStack uriPrefix={prefix}/>;
-
-const DrawerNavigatorExample = createDrawerNavigator(
-  {
-    //Drawer Optons and indexing
-    Home: {
-      //Title
-      screen: HomeStack,
-      navigationOptions: {
-        drawerLabel: "Inicial",
-        drawerIcon: () => (
-          <Image
-            source={require("../img/icons/home.png")}
-            style={{ width: 20, height: 24 }}
-            resizeMode={"contain"}
-          />
-        )
-      }
-    },
-    //<-- Ultimo Orçamento desabilitado temporariamente -->
-    // UltimoOrcamento: {
-    //   //Title
-    //   screen: LastOrcamentoStack,
-    //   navigationOptions: {
-    //     drawerLabel: "Último orçamento",
-    //     drawerIcon: () => (
-    //       <Image
-    //         source={require("../img/icons/last-document.png")}
-    //         style={{ opacity: 0.54 }}
-    //       />
-    //     )
-    //   }
-    // }, 
-    //<-- Ultimo Orçamento desabilitado temporariamente -->
-    Salvos: {
-      //Title
-      screen: OrcamentoStack,
-      navigationOptions: {
-        drawerLabel: "Orçamentos salvos",
-        drawerIcon: () => (
-          <Image
-            source={require("../img/icons/document.png")}
-            style={{ opacity: 0.54 }}
-          />
-        )
-      }
-    },
-    Relatorio: {
-      //Title
-      screen: OrcamentoStack,
-      navigationOptions: {
-        drawerLabel: "Relatório mensal",
-        drawerIcon: () => (
-          <Image
-            source={require("../img/icons/folder.png")}
-            style={{ opacity: 0.54 }}
-          />
-        )
-      }
-    },
-    Config: {
-      //Title
-      screen: ConfigStack,
-      navigationOptions: {
-        drawerLabel: "Configurações",
-        drawerIcon: () => (
-          <Image
-            source={require("../img/icons/settings.png")}
-            style={{ opacity: 0.54 }}
-          />
-        )
-      }
-    }
-  },
-  {
-    contentComponent: CustomDrawerContentComponent,
-    contentOptions: {
-      activeTintColor: "#e91e63",
-      itemsContainerStyle: {
-        marginVertical: 0
-      },
-      iconContainerStyle: {
-        opacity: 1
-      },
-      labelStyle: {
-        marginLeft: 0,
-        fontWeight: "normal",
-        color: Color.secondaryText
-      }
-    },
-    drawerWidth: 240,
-    edgeWidth: 600
-  }
-);
-//export default createAppContainer(DrawerNavigatorExample);
-export default createAppContainer(DrawerNavigatorExample);
+export default createAppContainer(Tabs);
