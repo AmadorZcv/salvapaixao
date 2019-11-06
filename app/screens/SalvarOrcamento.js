@@ -295,7 +295,6 @@ class SalvarOrcamento extends PureComponent {
         <Text style={styles.labelStyle}>CNPJ/CPF</Text>
 
         <TextInputMaskCpf
-          maxLength={18}
           type={"custom"}
           style={styles.inputStyle}
           placeholder={"xx.xxx.xxx/xxxx-xx ou xxx.xxx.xxx-xx"}
