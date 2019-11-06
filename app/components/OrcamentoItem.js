@@ -14,11 +14,16 @@ export default class OrcamentoItem extends PureComponent {
     super(props);
     this.state = {};
   }
-
+  calculateTotal = () => {
+    const { item } = this.props;
+    const { produtos } = item;
+    const reducer = (accumulator, currentValue) =>
+      accumulator + currentValue.total;
+    return produtos.reduce(reducer, 0);
+  };
   render() {
-    const { item, valor } = this.props;
-    const { nome, validade, nomeCompleto, cidade, uf, criacao } = item.detalhes;
-
+    const { item } = this.props;
+    const { nome, validade, nomeCompleto, cidade, uf } = item;
     const { index, onPress } = this.props;
     const backgroundColor = index % 2 === 0 ? "#FAFAFA" : "#D6D6D6";
     return (
@@ -43,7 +48,7 @@ export default class OrcamentoItem extends PureComponent {
             Orçamento #{item.id}
           </Text>
           <Text style={{ fontSize: normalize(14), color: Color.primaryText }}>
-            Até {moment(validade).format("DD/MM/YYYY")}
+            Até {moment(validade, "DD/MM/YYYY").format("DD/MM/YYYY")}
           </Text>
         </View>
         <Text
@@ -66,7 +71,7 @@ export default class OrcamentoItem extends PureComponent {
             {cidade}/{uf}
           </Text>
           <Text style={{ fontSize: normalize(14), color: Color.primaryText }}>
-            R$ {integerToReal(valor)}
+            R$ {integerToReal(this.calculateTotal())}
           </Text>
         </View>
       </TouchableOpacity>

@@ -12,11 +12,8 @@ import {
 } from "react-native-responsive-screen";
 import { generateFromId, generateNoId } from "../redux/orcamentos/actions";
 
-import { setCart } from "../redux/cart/actions";
-import {
-  calculateTotalComIpi,
-  calculateTotalNoIpi
-} from "../redux/cart/reducer";
+import { setCart, cartFromProdutos } from "../redux/cart/actions";
+
 import { integerToReal } from "../config/formatUtils";
 import { selectProducts } from "../redux/products/selectors";
 
@@ -29,27 +26,45 @@ class Orcamento extends PureComponent {
   loadPress = () => {
     const { navigation } = this.props;
     const item = navigation.getParam("item", "NO-ID");
-    this.props.dispatch(setCart(item.cart));
+    const { produtos } = item;
+    const cart = cartFromProdutos(produtos);
+
+    this.props.dispatch(setCart(cart));
     this.props.navigation.popToTop();
     this.props.navigation.navigate("Home");
   };
   exportToPdf = () => {
-    const { navigation, products } = this.props;
+    const { navigation } = this.props;
     const item = navigation.getParam("item", "NO-ID");
-    if (item.id > 0) {
+    if (item.id) {
       this.props.dispatch(generateFromId(item.id));
     } else {
       this.props.dispatch(generateNoId(item));
     }
   };
-  render() {
-    const { navigation, products } = this.props;
+  calculateTotalComIpi = () => {
+    const { navigation } = this.props;
     const item = navigation.getParam("item", "NO-ID");
-    const { detalhes, cart } = item;
-    const criacao = moment(detalhes.criacao).format("DD/MM/YYYY");
-    const validade = moment(detalhes.validade).format("DD/MM/YYYY");
-    const totalComIpi = calculateTotalComIpi(cart, products);
-    const subTotal = calculateTotalNoIpi(cart, products);
+    const { produtos } = item;
+    const reducer = (accumulator, currentValue) =>
+      accumulator + currentValue.total;
+    return produtos.reduce(reducer, 0);
+  };
+  calculateTotalNoIpi = () => {
+    const { navigation } = this.props;
+    const item = navigation.getParam("item", "NO-ID");
+    const { produtos } = item;
+    const reducer = (accumulator, currentValue) =>
+      accumulator + currentValue.preco;
+    return produtos.reduce(reducer, 0);
+  };
+  render() {
+    const { navigation } = this.props;
+    const item = navigation.getParam("item", "NO-ID");
+    const criacao = item.criacao;
+    const validade = item.validade;
+    const totalComIpi = this.calculateTotalComIpi();
+    const subTotal = this.calculateTotalNoIpi();
     return (
       <ScrollView
         style={{
@@ -84,11 +99,11 @@ class Orcamento extends PureComponent {
           <LabelWithTextRight label={"Data de validade"} text={validade} />
           <LabelWithTextRight
             label={"Condição de pagamento"}
-            text={`${detalhes.condicao} dias`}
+            text={`${item.condicao} dias`}
           />
           <LabelWithTextRight
             label={"Parcelas"}
-            text={`${detalhes.parcela} vez(es)`}
+            text={`${item.parcela} vez(es)`}
           />
           <LabelWithTextRight
             label={"Subtotal"}
@@ -110,17 +125,17 @@ class Orcamento extends PureComponent {
           >
             Empresa e contato
           </Text>
-          <LabelWithTextBelow label={"Nome da conta"} text={detalhes.nome} />
-          <LabelWithTextBelow label={"CPF/CNPJ"} text={detalhes.cpf} />
-          <LabelWithTextBelow label={"Ramo/Atividade"} text={detalhes.ramo} />
-          <LabelWithTextBelow label={"UF"} text={detalhes.uf} />
-          <LabelWithTextBelow label={"Cidade"} text={detalhes.cidade} />
+          <LabelWithTextBelow label={"Nome da conta"} text={item.nome} />
+          <LabelWithTextBelow label={"CPF/CNPJ"} text={item.cpf} />
+          <LabelWithTextBelow label={"Ramo/Atividade"} text={item.ramo} />
+          <LabelWithTextBelow label={"UF"} text={item.uf} />
+          <LabelWithTextBelow label={"Cidade"} text={item.cidade} />
           <LabelWithTextBelow
             label={"Nome Completo"}
-            text={detalhes.nomeCompleto}
+            text={item.nomeCompleto}
           />
-          <LabelWithTextBelow label={"Telefone"} text={detalhes.telefone} />
-          <LabelWithTextBelow label={"E-mail"} text={detalhes.email} />
+          <LabelWithTextBelow label={"Telefone"} text={item.telefone} />
+          <LabelWithTextBelow label={"E-mail"} text={item.email} />
           <ActivityIndicator
             animating={this.props.salvando}
             size={"large"}

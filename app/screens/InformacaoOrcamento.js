@@ -7,15 +7,9 @@ import {
   ActivityIndicator
 } from "react-native";
 import { Button } from "react-native-elements";
-import moment from "moment";
 import { Color } from "../styles";
 import OrcamentoDetalheItem from "../components/OrcamentoDetalheItem";
 import { connect } from "react-redux";
-import {
-  calculateTotalComIpi,
-  calculateTotalNoIpi,
-  calculateItemTotal
-} from "../redux/cart/reducer";
 import LabelWithTextRight from "../components/LabelWithTextRight";
 import { integerToReal } from "../config/formatUtils";
 import {
@@ -35,26 +29,43 @@ class InformacaoOrcamento extends PureComponent {
   loadPress = () => {
     const { navigation } = this.props;
     const item = navigation.getParam("item", "NO-ID");
-    this.props.dispatch(setCart(item.cart));
+    const { produtos } = item;
+    const cart = cartFromProdutos(produtos);
+    this.props.dispatch(setCart(cart));
     this.props.navigation.popToTop();
     this.props.navigation.navigate("Home");
   };
   exportToPdf = () => {
     const { navigation, products } = this.props;
     const item = navigation.getParam("item", "NO-ID");
-    if (item.id > 0) {
+    if (item.id) {
       this.props.dispatch(generateFromId(item.id));
     } else {
       this.props.dispatch(generateNoId(item));
     }
   };
-  render() {
-    const { navigation, products } = this.props;
+  calculateTotalComIpi = () => {
+    const { navigation } = this.props;
     const item = navigation.getParam("item", "NO-ID");
-    const { cart } = item;
-    const { detalhes } = item;
-    const totalComIpi = calculateTotalComIpi(cart, products);
-    const subTotal = calculateTotalNoIpi(cart, products);
+    const { produtos } = item;
+    const reducer = (accumulator, currentValue) =>
+      accumulator + currentValue.total;
+    return produtos.reduce(reducer, 0);
+  };
+  calculateTotalNoIpi = () => {
+    const { navigation } = this.props;
+    const item = navigation.getParam("item", "NO-ID");
+    const { produtos } = item;
+    const reducer = (accumulator, currentValue) =>
+      accumulator + currentValue.preco;
+    return produtos.reduce(reducer, 0);
+  };
+  render() {
+    const { navigation } = this.props;
+    const item = navigation.getParam("item", "NO-ID");
+    const { produtos } = item;
+    const totalComIpi = this.calculateTotalComIpi();
+    const subTotal = this.calculateTotalNoIpi();
 
     const id = `#${item.title}`;
     return (
@@ -74,17 +85,16 @@ class InformacaoOrcamento extends PureComponent {
             {id}
           </Text>
           <FlatList
-            data={Object.keys(cart)}
+            data={produtos}
             renderItem={({ item, index }) => (
               <OrcamentoDetalheItem
-                item={cart[item]}
+                item={item}
                 index={index}
-                valor={calculateItemTotal(cart, products, item)}
-                ipi={products[item].ipi}
-                valorNoIpi={products[item].preco}
+                ipi={item.ipi}
+                valorNoIpi={item.preco}
               />
             )}
-            keyExtractor={item => item.toString()}
+            keyExtractor={(item, index) => index.toString()}
           />
           <View
             style={{ paddingHorizontal: wp(12), paddingVertical: hp(4.84) }}

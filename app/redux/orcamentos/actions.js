@@ -9,6 +9,12 @@ export const ADD_ID_ORCAMENTO = "ADD_ID_ORCAMENTO";
 export const SET_TITLE_ORCAMENTO = "SET_TITLE_ORCAMENTO";
 export const DECREASE_ID = "DECREASE_ID";
 export const SET_LAST_ORCAMENTO = "SET_LAST_ORCAMENTO";
+export const SET_ORCAMENTOS = "SET_ORCAMENTOS";
+export const setOrcamentos = orcamentos => ({
+  type: SET_ORCAMENTOS,
+  payload: orcamentos
+});
+
 export const set_last_orcamento = id => ({
   type: SET_LAST_ORCAMENTO,
   payload: id
@@ -36,6 +42,14 @@ export const set_title_orcamento = (orcamento, title) => ({
   type: SET_TITLE_ORCAMENTO,
   payload: { orcamento, title }
 });
+
+export function getOrcamentos() {
+  return function fetching(dispatch) {
+    Api.get("/api/orcamentos")
+      .then(response => dispatch(setOrcamentos(response.data)))
+      .catch(error => console.log(error));
+  };
+}
 
 export function generatePDF(orcamento) {
   return function fetching(dispatch, getState) {

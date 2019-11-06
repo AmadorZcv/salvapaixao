@@ -1,11 +1,13 @@
 import React, { PureComponent } from "react";
-import { SectionList, ScrollView } from "react-native";
+import { ScrollView, View, FlatList } from "react-native";
 import { connect } from "react-redux";
 import { Text, normalize } from "react-native-elements";
 import OrcamentoItem from "../components/OrcamentoItem";
 import { Color } from "../styles";
-import { calculateTotalComIpi } from "../redux/cart/reducer";
+
 import { selectProducts } from "../redux/products/selectors";
+
+import { getOrcamentos } from "../redux/orcamentos/actions";
 
 class Orcamentos extends PureComponent {
   constructor(props) {
@@ -16,35 +18,48 @@ class Orcamentos extends PureComponent {
     const { navigation } = this.props;
     navigation.navigate("Orcamento", { item });
   };
+  componentDidMount() {
+    this.props.dispatch(getOrcamentos());
+  }
   render() {
-    const { orcamentos, products } = this.props;
+    const { orcamentos } = this.props;
     const { onOrcamentoPress } = this;
     return (
       <ScrollView style={{ backgroundColor: Color.background }}>
-        <SectionList
-          renderItem={({ item, index, section }) => (
-            <OrcamentoItem
-              item={item}
-              index={index}
-              onPress={() => onOrcamentoPress(item)}
-              valor={calculateTotalComIpi(item.cart, products)}
-            />
+        <FlatList
+          data={Object.keys(orcamentos)}
+          renderItem={({ item }) => (
+            <View>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: normalize(23),
+                  paddingLeft: 38,
+                  color: Color.primaryText,
+                  backgroundColor: Color.background
+                }}
+              >
+                {item}
+              </Text>
+              <FlatList
+                data={Object.keys(orcamentos[item])}
+                renderItem={nestedItem => {
+                  const orcamento = orcamentos[item][nestedItem.item];
+                  const index = nestedItem.index;
+
+                  return (
+                    <OrcamentoItem
+                      item={orcamento}
+                      index={index}
+                      onPress={() => onOrcamentoPress(orcamento)}
+                    />
+                  );
+                }}
+                keyExtractor={item => item}
+              />
+            </View>
           )}
-          renderSectionHeader={({ section: { title } }) => (
-            <Text
-              style={{
-                fontWeight: "bold",
-                fontSize: normalize(23),
-                paddingLeft: 38,
-                color: Color.primaryText,
-                backgroundColor: Color.background
-              }}
-            >
-              {title}
-            </Text>
-          )}
-          sections={orcamentos}
-          keyExtractor={(item, index) => item + index}
+          keyExtractor={item => item}
         />
       </ScrollView>
     );

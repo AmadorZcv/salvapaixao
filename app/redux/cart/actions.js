@@ -9,6 +9,17 @@ export const setCart = cart => ({
   type: SET_CART,
   payload: cart
 });
+export function cartFromProdutos(produtos) {
+  return produtos.reduce((map, produto) => {
+    let { produto_id, qtd } = produto;
+    const newMap = map;
+    newMap[produto_id] = {
+      id: produto_id.toString(),
+      qtd
+    };
+    return newMap;
+  }, {});
+}
 
 export const addToCart = id => ({
   type: ADD_TO_CART,
