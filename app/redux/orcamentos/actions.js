@@ -168,11 +168,12 @@ export function generateFromId(id) {
 
     Api.get(`/api/orcamento/${id}`)
       .then(response => {
-        buildPdf(response.data.html, orcamento.title, () =>
+        buildPdf(response.data.html, response.data.orcamento.title, () =>
           dispatch(isSavingOrcamento(false))
         );
       })
       .catch(error => {
+        console.log("Error é", error);
         Alert.alert("Erro ao se comunicar com o servidor");
         dispatch(isSavingOrcamento(false));
       });
