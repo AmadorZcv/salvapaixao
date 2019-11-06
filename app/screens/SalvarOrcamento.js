@@ -42,6 +42,7 @@ class SalvarOrcamento extends PureComponent {
       email: "",
       uf: "",
       cidade: "",
+      obs: "",
       pdf: false
     };
   }
@@ -99,6 +100,7 @@ class SalvarOrcamento extends PureComponent {
   salvarOrcamento = () => {
     const { dispatch, cart } = this.props;
     const {
+      obs,
       cidade,
       condicao,
       parcela,
@@ -117,6 +119,7 @@ class SalvarOrcamento extends PureComponent {
         generatePDF({
           cart,
           detalhes: {
+            obs,
             cidade,
             condicao,
             parcela,
@@ -137,6 +140,7 @@ class SalvarOrcamento extends PureComponent {
         add_orcamento({
           cart,
           detalhes: {
+            obs,
             cidade,
             condicao,
             parcela,
@@ -312,6 +316,7 @@ class SalvarOrcamento extends PureComponent {
         <Text style={styles.labelStyle}>CNPJ/CPF</Text>
 
         <TextInputMaskCpf
+          maxLength={18}
           type={"custom"}
           style={styles.inputStyle}
           placeholder={"xx.xxx.xxx/xxxx-xx ou xxx.xxx.xxx-xx"}
@@ -463,11 +468,34 @@ class SalvarOrcamento extends PureComponent {
               refInput={ref => {
                 this.cidade = ref;
               }}
-              blurOnSubmit={true}
-              returnKeyType={"done"}
+              blurOnSubmit={false}
+              onSubmitEditing={() => {
+                this.obs.focus();
+                this.myScroll.scrollTo({ x: 0, y: 650, animated: true });
+              }}
+              returnKeyType={"next"}
             />
           </View>
         </View>
+        <View>
+          <Text style={styles.labelStyle}>Observações</Text>
+        <TextInputMask
+          maxLength={200}
+          keyboardType="default"
+          style={styles.inputStyle}
+          placeholder={"Digite suas observações de venda"}
+          onChangeText={(formatted, extracted) => {
+            this.setState({
+              obs: extracted
+            });
+          }}
+          refInput={ref => {
+            this.obs = ref;
+          }}
+          blurOnSubmit={true}
+          returnKeyType={"done"}
+        />
+          </View>
         <CheckBox
           title={"Exportar orçamento para PDF"}
           containerStyle={{ marginTop: hp(3.125), backgroundColor: "#fafafa" }}
