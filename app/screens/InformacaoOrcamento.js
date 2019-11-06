@@ -36,7 +36,7 @@ class InformacaoOrcamento extends PureComponent {
     this.props.navigation.navigate("Home");
   };
   exportToPdf = () => {
-    const { navigation, products } = this.props;
+    const { navigation } = this.props;
     const item = navigation.getParam("item", "NO-ID");
     if (item.id) {
       this.props.dispatch(generateFromId(item.id));

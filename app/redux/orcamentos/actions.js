@@ -2,6 +2,7 @@ import { requestDownloadPermission, createPDF } from "../../config/fileSystem";
 import { Alert } from "react-native";
 import moment from "moment";
 import Api from "../../config/api";
+import { calculateIpic } from "../../config/mathUtils";
 
 export const ADD_ORCAMENTO = "ADD_ORCAMENTO";
 export const IS_SAVING = "IS_SAVING";
@@ -50,19 +51,41 @@ export function getOrcamentos() {
       .catch(error => console.log(error));
   };
 }
-
-export function generatePDF(orcamento) {
+function buildTitle(orcamentos, criacao, filialId, funcionarioId) {
+  const parent = moment(criacao).format("YYYYMMDD");
+  let dayId = 0;
+  if (orcamentos.hasOwnProperty(parent)) {
+    const values = Object.keys(orcamentos[parent]).map(key => {
+      const strings = key.split("-");
+      return parseInt(strings[1]);
+    });
+    dayId = Math.max(values) + 1;
+  } else {
+    dayId = 1;
+  }
+  return `${parent}${filialId}${funcionarioId}-${dayId}`;
+}
+async function buildPdf(html, title, callback) {
+  const download = await requestDownloadPermission();
+  if (download) {
+    createPDF(html, callback, title);
+  } else {
+    Alert.alert("Erro de permissão");
+    callback();
+  }
+}
+export function generatePDF(orcamento, generate) {
   return function fetching(dispatch, getState) {
     dispatch(isSavingOrcamento(true));
-    const { lastId } = getState().orcamentos;
-    const { isConsumidor } = getState().products;
-    const newId = lastId - 1;
+    const { orcamentos } = getState().orcamentos;
+    const { isConsumidor, consumidor, revenda } = getState().products;
+    const { filialId, funcionarioId } = getState().auth;
     const chaves = Object.keys(orcamento.cart);
     const carrinho = chaves.map(element => {
       const item = orcamento.cart[element];
       return { id: item.id.toString(), qtd: item.qtd };
     });
-    const download = requestDownloadPermission();
+
     const { detalhes } = orcamento;
     const {
       criacao,
@@ -76,149 +99,106 @@ export function generatePDF(orcamento) {
       uf,
       cpf,
       email,
-      ramo
+      ramo,
+      obs
     } = detalhes;
-
-    const orcamento_api = {
-      criacao: moment(criacao).format("DD/MM/YYYY"),
-      validade: moment(validade).format("DD/MM/YYYY"),
-      condicao,
-      parcela,
-      telefone,
+    const title = buildTitle(orcamentos, criacao, filialId, funcionarioId);
+    /*  {
+      "ipi": 5,
+      "ipic": 419,
+      "preco": 8386,
+      "produto_id": 10000,
+      "qtd": 1,
+      "total": 8805
+  } */
+    const products = isConsumidor ? consumidor : revenda;
+    const produtos = carrinho.map(item => {
+      const { qtd } = item;
+      const { ipi, preco } = products[item.id];
+      const ipic = calculateIpic(preco, ipi);
+      const total = preco + ipic;
+      const produto_id = parseInt(item.id);
+      return { ipi, ipic, preco, produto_id, qtd, total };
+    });
+    const orcamentoRedux = {
       cidade,
+      condicao,
+      cpf,
+      criacao: moment(criacao).format("DD/MM/YYYY"),
+      email,
       nome,
       nome_completo: nomeCompleto,
-      uf,
-      cpf,
-      email,
+      parcela,
       ramo,
-      carrinho,
-      isConsumidor
+      telefone,
+      uf,
+      validade: moment(validade).format("DD/MM/YYYY"),
+      parent: moment(criacao).format("YYYYMMDD"),
+      obs,
+      title,
+      produtos
     };
-    if (download) {
-      Api.post("/api/orcamento", {
-        orcamento: orcamento_api
+    Api.post("api/v1/orcamento", {
+      orcamento: orcamentoRedux
+    })
+      .then(response => {
+        dispatch(
+          add_orcamento({
+            ...orcamentoRedux,
+            id: response.data.orcamento.id
+          })
+        );
+        if (generate) {
+          buildPdf(response.data.html, orcamento.title, () =>
+            dispatch(isSavingOrcamento(false))
+          );
+        }
       })
-        .then(response => {
-          dispatch(
-            add_orcamento({
-              ...orcamento,
-              id: response.data.orcamento.id,
-              title: response.data.orcamento.title
-            })
-          );
-          createPDF(
-            response.data.html,
-            () => dispatch(isSavingOrcamento(false)),
-            response.data.orcamento.title
-          );
-        })
-        .catch(error => {
-          Alert.alert("Erro ao se comunicar com o servidor");
-          dispatch(decrease_id());
-          dispatch(add_orcamento({ ...orcamento, id: newId }));
-          dispatch(isSavingOrcamento(false));
-        });
-    } else {
-      Alert.alert("Erro de permissão");
-      dispatch(isSavingOrcamento(false));
-      dispatch(add_orcamento({ ...orcamento, id: newId }));
-    }
+      .catch(error => {
+        Alert.alert("Erro ao se comunicar com o servidor");
+        dispatch(add_orcamento(orcamentoRedux));
+        dispatch(isSavingOrcamento(false));
+      });
   };
 }
 
 export function generateFromId(id) {
   return function fecthing(dispatch) {
     dispatch(isSavingOrcamento(true));
-    const download = requestDownloadPermission();
-    if (download) {
-      Api.get(`/api/orcamento/${id}`)
-        .then(response => {
-          createPDF(
-            response.data.html,
-            () => dispatch(isSavingOrcamento(false)),
-            response.data.orcamento.title
-          );
-        })
-        .catch(error => {
-          Alert.alert("Erro ao se comunicar com o servidor");
-          dispatch(isSavingOrcamento(false));
-        });
-    } else {
-      Alert.alert("Erro de permissão");
-      dispatch(isSavingOrcamento(false));
-    }
+
+    Api.get(`/api/orcamento/${id}`)
+      .then(response => {
+        buildPdf(response.data.html, orcamento.title, () =>
+          dispatch(isSavingOrcamento(false))
+        );
+      })
+      .catch(error => {
+        Alert.alert("Erro ao se comunicar com o servidor");
+        dispatch(isSavingOrcamento(false));
+      });
   };
 }
 
 export function generateNoId(orcamento) {
-  return function fetching(dispatch, getState) {
+  return function fetching(dispatch) {
     dispatch(isSavingOrcamento(true));
-    const { lastId } = getState().orcamentos;
-    const { isConsumidor } = getState().products;
-    const chaves = Object.keys(orcamento.cart);
-    const carrinho = chaves.map(element => {
-      const item = orcamento.cart[element];
-      return { id: item.id.toString(), qtd: item.qtd };
-    });
-    const download = requestDownloadPermission();
-    const { detalhes } = orcamento;
-    const {
-      criacao,
-      validade,
-      condicao,
-      parcela,
-      telefone,
-      cidade,
-      nome,
-      nomeCompleto,
-      uf,
-      cpf,
-      email,
-      ramo
-    } = detalhes;
-
-    const orcamento_api = {
-      criacao: moment(criacao).format("DD/MM/YYYY"),
-      validade: moment(validade).format("DD/MM/YYYY"),
-      condicao,
-      parcela,
-      telefone,
-      cidade,
-      nome,
-      nome_completo: nomeCompleto,
-      uf,
-      cpf,
-      email,
-      ramo,
-      carrinho,
-      isConsumidor
-    };
-    if (download) {
-      Api.post("/api/orcamento", {
-        orcamento: orcamento_api
+    Api.post("/api/v1/orcamento", {
+      orcamento
+    })
+      .then(response => {
+        dispatch(
+          add_orcamento({
+            ...orcamentoRedux,
+            id: response.data.orcamento.id
+          })
+        );
+        buildPdf(response.data.html, orcamento.title, () =>
+          dispatch(isSavingOrcamento(false))
+        );
       })
-        .then(response => {
-          dispatch(
-            set_title_orcamento(orcamento, response.data.orcamento.title)
-          );
-          dispatch(set_id_orcamento(orcamento, response.data.orcamento.id));
-          if (orcamento.id === lastId) {
-            dispatch(set_last_orcamento(response.data.orcamento.id));
-          }
-          createPDF(
-            response.data.html,
-            () => dispatch(isSavingOrcamento(false)),
-            response.data.orcamento.title
-          );
-        })
-        .catch(error => {
-          Alert.alert("Erro ao se comunicar com o servidor");
-          dispatch(isSavingOrcamento(false));
-        });
-    } else {
-      Alert.alert("Erro de permissão");
-      dispatch(isSavingOrcamento(false));
-    }
+      .catch(error => {
+        Alert.alert("Erro ao se comunicar com o servidor");
+        dispatch(isSavingOrcamento(false));
+      });
   };
 }

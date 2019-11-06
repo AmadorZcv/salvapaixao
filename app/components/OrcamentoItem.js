@@ -23,6 +23,7 @@ export default class OrcamentoItem extends PureComponent {
   };
   render() {
     const { item } = this.props;
+    const id = item.id ? item.id : "offline";
     const { nome, validade, nomeCompleto, cidade, uf } = item;
     const { index, onPress } = this.props;
     const backgroundColor = index % 2 === 0 ? "#FAFAFA" : "#D6D6D6";
@@ -45,7 +46,7 @@ export default class OrcamentoItem extends PureComponent {
               color: Color.primaryText
             }}
           >
-            Orçamento #{item.id}
+            Orçamento #{id}
           </Text>
           <Text style={{ fontSize: normalize(14), color: Color.primaryText }}>
             Até {moment(validade, "DD/MM/YYYY").format("DD/MM/YYYY")}
