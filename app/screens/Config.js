@@ -1,10 +1,16 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import { Alert, ActivityIndicator, View } from "react-native";
 import { StyleSheet, Text, TouchableOpacity, Linking } from "react-native";
 
 import QRCodeScanner from "react-native-qrcode-scanner";
+import { CheckBox, Button } from "react-native-elements";
+import { setIsConsumidor } from "../redux/products/actions";
+import { Color } from "../styles";
+import Api from "../config/api";
 
-export default class Config extends Component {
+class Config extends Component {
   constructor(props) {
     super(props);
 
@@ -16,9 +22,7 @@ export default class Config extends Component {
 
   onSuccess = e => {
     const { navigation } = this.props;
-    navigation.navigate("Orcamento", { item });
     this.setState({ fetching: true });
-    Alert.alert("Funcionou", e.data);
     orcamentoId = e.data;
     Api.get(`/api/orcamento/${orcamentoId}`)
       .then(response => {
@@ -29,32 +33,84 @@ export default class Config extends Component {
         this.setState({ fetching: false });
         Alert.alert("Erro ao se comunicar com o servidor");
       });
+    this.scanner.reactivate();
   };
-
+  renderLoading = () => {
+    if (this.state.fetching) {
+      return <ActivityIndicator animating={this.state.fetching} />;
+    }
+    return null;
+  };
   render() {
+    const { nome, cargo, filialId, funcionarioId, isConsumidor } = this.props;
     return (
       <View style={{ flex: 1 }}>
-        <ActivityIndicator animating={this.state.fetching} />
+        <View style={{ flex: 1 }}>
+          {this.renderLoading()}
+          <View
+            style={{
+              alignItems: "center",
+              flexDirection: "row",
+              justifyContent: "space-around",
+              marginTop: 30
+            }}
+          >
+            <View>
+              <Text style={{ color: Color.primaryText }}>{nome}</Text>
+              <Text style={{ color: Color.secondaryText }}>{cargo}</Text>
+              <Text style={{ color: Color.secondaryText }}>
+                {filialId}
+                {funcionarioId}
+              </Text>
+            </View>
+            <Button
+              title={"Sair da conta"}
+              onPress={() =>
+                this.props.dispatch({ type: "SET_IS_LOGGED", payload: false })
+              }
+            />
+          </View>
+          <CheckBox
+            checked={isConsumidor}
+            title="Preço Consumidor"
+            onPress={() =>
+              this.props.dispatch(setIsConsumidor(!this.props.isConsumidor))
+            }
+            containerStyle={{
+              borderWidth: 0,
+              backgroundColor: "#fff",
+              paddingBottom: 0
+            }}
+          />
+          <Text
+            style={{ color: Color.primaryText, flex: 1, textAlign: "center" }}
+          >
+            Centralize o QR na camera para acessar os orçamentos
+          </Text>
+        </View>
         <QRCodeScanner
+          containerStyle={{ flex: 1 }}
           onRead={this.onSuccess}
-          topContent={
-            <Text style={styles.centerText}>
-              Go to{" "}
-              <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text> on
-              your computer and scan the QR code.
-            </Text>
-          }
-          bottomContent={
-            <TouchableOpacity style={styles.buttonTouchable}>
-              <Text style={styles.buttonText}>OK. Got it!</Text>
-            </TouchableOpacity>
-          }
+          ref={node => {
+            this.scanner = node;
+          }}
         />
       </View>
     );
   }
 }
-
+const mapStateToProps = state => {
+  const { nome, cargo, filialId, funcionarioId } = state.auth;
+  const { isConsumidor } = state.products;
+  return {
+    nome,
+    cargo,
+    filialId,
+    funcionarioId,
+    isConsumidor
+  };
+};
+export default connect(mapStateToProps)(Config);
 const styles = StyleSheet.create({
   centerText: {
     flex: 1,
@@ -65,12 +121,5 @@ const styles = StyleSheet.create({
   textBold: {
     fontWeight: "500",
     color: "#000"
-  },
-  buttonText: {
-    fontSize: 21,
-    color: "rgb(0,122,255)"
-  },
-  buttonTouchable: {
-    padding: 16
   }
 });

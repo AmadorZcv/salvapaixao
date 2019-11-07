@@ -7,7 +7,7 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 import Home from "../screens/Home";
-import { Image, normalize } from "react-native-elements";
+import { Image, normalize, Icon } from "react-native-elements";
 import { Color, TextStyle } from "../styles";
 import SBancada from "../screens/SBancada";
 import SMetais from "../screens/SMetais";
@@ -313,10 +313,49 @@ const HomeStack = createStackNavigator(
   }
 );
 
-const Tabs = createBottomTabNavigator({
-  Home: { screen: HomeStack },
-  Orcamentos: { screen: OrcamentoStack },
-  Config: { screen: ConfigStack }
-});
+const Tabs = createBottomTabNavigator(
+  {
+    Home: { screen: HomeStack },
+    Orcamentos: { screen: OrcamentoStack },
+    Config: { screen: ConfigStack }
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        if (routeName === "Home") {
+          return (
+            <Image
+              source={require("../img/icons/home.png")}
+              style={{ width: 20, height: 24 }}
+              resizeMode={"contain"}
+            />
+          );
+        } else if (routeName === "Orcamentos") {
+          return (
+            <Image
+              source={require("../img/icons/document.png")}
+              style={{ opacity: 0.54 }}
+            />
+          );
+        } else if (routeName === "Config") {
+          return (
+            <Image
+              source={require("../img/icons/settings.png")}
+              style={{ opacity: 0.54, width: 24, height: 24 }}
+              resizeMode={"contain"}
+            />
+          );
+        }
+
+        // You can return any component that you like here
+      }
+    }),
+    tabBarOptions: {
+      activeTintColor: "#449296",
+      inactiveTintColor: "gray"
+    }
+  }
+);
 
 export default createAppContainer(Tabs);
