@@ -33,7 +33,7 @@ export default class Config extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <ActivityIndicator animating={this.state.fetching} />
         <QRCodeScanner
           onRead={this.onSuccess}
