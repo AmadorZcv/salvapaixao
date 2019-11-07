@@ -1,17 +1,17 @@
-Versão 1.3.5
+Versão 1.4.0
 
 **NOVO**
-Acrescentada tabela de preço para revenda
-Barra de assinatura no PDF
-Possibilidade de acessar orçamento da conta ao reinstalar ou instalar em outro dispositivo
-
+!! QR e Leitor de QR !!
+Orçamentos sincronizados com o servidor.
+Área de Observações no PDF.
+Novo Menu de Abas.
+Tela de Orçamento reorganizada.
 
 **AJUSTES**
-Correção de quebra de página do PDF
-Corrigida função "Último orçamento"
-Corrigido o glitch em que aparece o Loading do PDF sem ter realizado a função
+PDF 2.0 totalmente corrigido.
+Corrigida mostragem de valores de IPI.
 
-Data: 23/10/2019
+Data: 07/11/2019
 
 Desenvolvido por:
 NTP Engenharia

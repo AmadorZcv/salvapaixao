@@ -56,7 +56,7 @@ class Login extends PureComponent {
                 paddingHorizontal: wp("10%"),
                 textAlign: "center",
                 color: "#FFFFFF",
-                fontSize: wp(5)
+                fontSize: wp(4.5)
               }}
             >
               Seja bem-vindo ao Salva Compra!
