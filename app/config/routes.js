@@ -30,6 +30,7 @@ import MenuButton from "../components/header/MenuButton";
 import InformacaoOrcamento from "../screens/InformacaoOrcamento";
 //import LastOrcamento from "../screens/LastOrcamento"; <-- Ultimo Orçamento desabilitado temporariamente
 import LoadButton from "../components/header/LoadButton";
+import { SvgUri } from 'react-native-svg';
 
 const OrcamentoStack = createStackNavigator(
   {
@@ -325,25 +326,29 @@ const Tabs = createBottomTabNavigator(
         const { routeName } = navigation.state;
         if (routeName === "Home") {
           return (
-            <Image
-              source={require("../img/icons/home.png")}
-              style={{ width: 20, height: 24 }}
-              resizeMode={"contain"}
+            <SvgUri
+              width="120%"
+              height="120%"
+              style={{ opacity: 0.54 }}
+              uri="https://gist.githubusercontent.com/booude/ea337365705a1c48985ea67bc39fb949/raw/ee579f1b513a9dc5660cf8f20be7a749ccdd4eda/home.svg"
             />
           );
         } else if (routeName === "Orcamentos") {
           return (
-            <Image
-              source={require("../img/icons/document.png")}
+            <SvgUri
+              width="100%"
+              height="100%"
               style={{ opacity: 0.54 }}
+              uri="https://gist.githubusercontent.com/booude/ea337365705a1c48985ea67bc39fb949/raw/ee579f1b513a9dc5660cf8f20be7a749ccdd4eda/folder.svg"
             />
           );
         } else if (routeName === "Config") {
           return (
-            <Image
-              source={require("../img/icons/settings.png")}
-              style={{ opacity: 0.54, width: 24, height: 24 }}
-              resizeMode={"contain"}
+            <SvgUri
+              width="100%"
+              height="100%"
+              style={{ opacity: 0.54 }}
+              uri="https://gist.githubusercontent.com/booude/ea337365705a1c48985ea67bc39fb949/raw/ee579f1b513a9dc5660cf8f20be7a749ccdd4eda/settings.svg"
             />
           );
         }

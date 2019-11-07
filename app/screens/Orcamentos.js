@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Text, normalize } from "react-native-elements";
 import OrcamentoItem from "../components/OrcamentoItem";
 import { Color } from "../styles";
-
+import moment from "moment";
 import { selectProducts } from "../redux/products/selectors";
 
 import { getOrcamentos } from "../redux/orcamentos/actions";
@@ -27,7 +27,7 @@ class Orcamentos extends PureComponent {
     return (
       <ScrollView style={{ backgroundColor: Color.background }}>
         <FlatList
-          data={Object.keys(orcamentos)}
+          data={Object.keys(orcamentos).reverse()}
           renderItem={({ item }) => (
             <View>
               <Text
@@ -39,10 +39,10 @@ class Orcamentos extends PureComponent {
                   backgroundColor: Color.background
                 }}
               >
-                {item}
+              {moment(item,"YYYYMMDD").format("DD/MM/YYYY")}
               </Text>
               <FlatList
-                data={Object.keys(orcamentos[item])}
+                data={Object.keys(orcamentos[item]).reverse()}
                 renderItem={nestedItem => {
                   const orcamento = orcamentos[item][nestedItem.item];
                   const index = nestedItem.index;

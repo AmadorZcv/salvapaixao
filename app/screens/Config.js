@@ -55,13 +55,9 @@ class Config extends Component {
               marginTop: 30
             }}
           >
-            <View>
-              <Text style={{ color: Color.primaryText }}>{nome}</Text>
+            <View style={{ paddingVertical: 20 }}>
+              <Text style={{ color: Color.primaryText, paddingBottom: 5 }}>{nome}</Text>
               <Text style={{ color: Color.secondaryText }}>{cargo}</Text>
-              <Text style={{ color: Color.secondaryText }}>
-                {filialId}
-                {funcionarioId}
-              </Text>
             </View>
             <Button
               title={"Sair da conta"}
