@@ -552,7 +552,7 @@ export default {
     ncm: "39.259.090",
     peso: "0,01",
     preco: 426,
-    ipi: 15,
+    ipi: 5,
     ipic: 21,
     total: 447
   },
@@ -571,7 +571,7 @@ export default {
     ncm: "39.259.090",
     peso: "0,01",
     preco: 650,
-    ipi: 15,
+    ipi: 5,
     ipic: 33,
     total: 683
   },
