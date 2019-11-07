@@ -95,6 +95,29 @@ const ConfigStack = createStackNavigator(
           headerTitle: "Configurações"
         };
       }
+    },
+    Orcamento: {
+      screen: Orcamento,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Orçamento",
+          headerRight: (
+            <LoadButton onPress={() => navigation.state.params.loadPress()} />
+          )
+        };
+      }
+    },
+    InformacaoOrcamento: {
+      screen: InformacaoOrcamento,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Informações de venda",
+
+          headerRight: (
+            <LoadButton onPress={() => navigation.state.params.loadPress()} />
+          )
+        };
+      }
     }
   },
   {

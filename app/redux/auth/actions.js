@@ -1,5 +1,6 @@
 import Api from "../../config/api";
 import AsyncStorage from "@react-native-community/async-storage";
+import { getOrcamentos } from "../orcamentos/actions";
 export const SET_IS_LOGGED = "SET_IS_LOGGED";
 export const SET_IS_FETCHING = "SET_IS_FETCHING";
 export const SET_CARGO = "SET_CARGO";
@@ -52,6 +53,7 @@ export function signIn(login, password) {
         dispatch(setCargo(cargo));
         dispatch(setFilialId(filialId));
         dispatch(setFuncionarioId(funcionarioId));
+        dispatch(getOrcamentos());
       })
       .catch(error => {
         Alert.alert("Erro ao se comunicar com o servidor");
