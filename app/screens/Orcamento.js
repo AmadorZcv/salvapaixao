@@ -132,7 +132,7 @@ class Orcamento extends PureComponent {
           <LabelWithTextBelow label={"Cidade"} text={item.cidade} />
           <LabelWithTextBelow
             label={"Nome Completo"}
-            text={item.nomeCompleto}
+            text={item.nome_completo}
           />
           <LabelWithTextBelow label={"Telefone"} text={item.telefone} />
           <LabelWithTextBelow label={"E-mail"} text={item.email} />

@@ -24,7 +24,7 @@ export default class OrcamentoItem extends PureComponent {
   render() {
     const { item } = this.props;
     const id = item.id ? item.id : "offline";
-    const { nome, validade, nomeCompleto, cidade, uf } = item;
+    const { nome, validade, nome_completo, cidade, uf } = item;
     const { index, onPress } = this.props;
     const backgroundColor = index % 2 === 0 ? "#FAFAFA" : "#D6D6D6";
     return (
@@ -65,7 +65,7 @@ export default class OrcamentoItem extends PureComponent {
           {nome}
         </Text>
         <Text style={{ fontSize: normalize(13), color: Color.secondaryText }}>
-          {nomeCompleto}
+          {nome_completo}
         </Text>
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <Text style={{ fontSize: normalize(13), color: Color.secondaryText }}>
