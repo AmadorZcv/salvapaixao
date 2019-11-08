@@ -59,7 +59,7 @@ function buildTitle(orcamentos, criacao, filialId, funcionarioId) {
       const strings = key.split("-");
       return parseInt(strings[1]);
     });
-    dayId = Math.max(values) + 1;
+    dayId = Math.max(...values) + 1;
   } else {
     dayId = 1;
   }
