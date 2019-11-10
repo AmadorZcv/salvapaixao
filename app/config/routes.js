@@ -31,6 +31,7 @@ import InformacaoOrcamento from "../screens/InformacaoOrcamento";
 //import LastOrcamento from "../screens/LastOrcamento"; <-- Ultimo Orçamento desabilitado temporariamente
 import LoadButton from "../components/header/LoadButton";
 import { SvgUri } from 'react-native-svg';
+import Camera from "../screens/Camera";
 
 const OrcamentoStack = createStackNavigator(
   {
@@ -117,6 +118,14 @@ const ConfigStack = createStackNavigator(
           headerRight: (
             <LoadButton onPress={() => navigation.state.params.loadPress()} />
           )
+        };
+      }
+    },
+    Camera: {
+      screen: Camera,
+      navigationOptions: ({ navigation }) => {
+        return {
+          headerTitle: "Câmera QR"
         };
       }
     }

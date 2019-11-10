@@ -10,7 +10,7 @@ import { setIsConsumidor } from "../redux/products/actions";
 import { Color } from "../styles";
 import Api from "../config/api";
 
-class Config extends Component {
+class Camera extends Component {
   constructor(props) {
     super(props);
 
@@ -47,45 +47,18 @@ class Config extends Component {
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           {this.renderLoading()}
-          <View
-            style={{
-              alignItems: "center",
-              flexDirection: "row",
-              justifyContent: "space-around",
-              marginTop: 30
-            }}
+          <Text
+            style={{ color: Color.primaryText, flex: 1, textAlign: "center" }}
           >
-            <View style={{ paddingVertical: 20 }}>
-              <Text style={{ color: Color.primaryText, paddingBottom: 5 }}>{nome}</Text>
-              <Text style={{ color: Color.secondaryText }}>{cargo}</Text>
-            </View>
-            <Button
-              title={"Sair da conta"}
-              onPress={() =>
-                this.props.dispatch({ type: "SET_IS_LOGGED", payload: false })
-              }
-            />
-          </View>
-          <CheckBox
-            checked={isConsumidor}
-            title="Preço Consumidor"
-            onPress={() =>
-              this.props.dispatch(setIsConsumidor(!this.props.isConsumidor))
-            }
-            containerStyle={{
-              borderWidth: 0,
-              backgroundColor: "#fff",
-              paddingBottom: 0
-            }}
-          />
+            Centralize o QR na camera para acessar os orçamentos
+          </Text>
         </View>
-        <Button
-          title='Camera'
-          onPress={
-            () => {
-              this.props.navigation.navigate('Camera')
-            }
-          }
+        <QRCodeScanner
+          containerStyle={{ flex: 9 }}
+          onRead={this.onSuccess}
+          ref={node => {
+            this.scanner = node;
+          }}
         />
       </View>
     );
@@ -102,7 +75,7 @@ const mapStateToProps = state => {
     isConsumidor
   };
 };
-export default connect(mapStateToProps)(Config);
+export default connect(mapStateToProps)(Camera);
 const styles = StyleSheet.create({
   centerText: {
     flex: 1,
