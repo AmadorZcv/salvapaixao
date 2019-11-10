@@ -1,4 +1,4 @@
-Versão 1.4.0
+Versão 1.4.2
 
 **NOVO**
 !! QR e Leitor de QR !!
